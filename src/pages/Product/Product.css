@@ -1,0 +1,114 @@
+/* PRODUTO */
+
+.imagem-produto {
+    background-color: #C4C4C4;
+    height: 220px;
+    width: 250px;
+    font-size: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-produto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nome-do-produto {
+    padding-left: 2px;
+    font-size: 30px;
+    width: 264px;
+}
+
+.preco {
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.texto-desconto, .texto-categoria {
+    color: #860E1C;
+}
+
+.texto-cartao-credito, .texto-boleto, .texto-pix {
+    font-size: 20px;
+    margin-left: 45px;
+}
+
+.texto-cartao-credito::before {
+    content: "";
+    background-image: url(../../assets/imgs/product/icone-cartao-credito.png);
+    background-size: 35px;
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    margin-top: -4px;
+    margin-left: -45px;
+    width: 40px;
+    height: 40px;
+}
+
+.texto-boleto::before {
+    content: "";
+    background-image: url(../../assets/imgs/product/icone-boleto.png);
+    background-size: 35px;
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    margin-top: -8px;
+    margin-left: -45px;
+    width: 40px;
+    height: 40px;
+}
+
+.texto-pix::before {
+    content: "";
+    background-image: url(../../assets/imgs/product/icone-pix.png);
+    background-size: 35px;
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    margin-top: 0px;
+    margin-left: -45px;
+    width: 40px;
+    height: 40px;
+}
+
+/* DESCRIÇÃO */
+
+.col-descricao, .col-especificacoes {
+    box-shadow: 2px 2px 5px black;
+}
+
+/* CSS DE AVALIAÇÃO: */
+
+/* .texto-avalie-produto::after {
+    content: "";
+    background-image: url(../img/Classificacao_Estrelas2.png);
+    background-size: 160px;
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 185px;
+    width: 160px;
+    height: 40px;
+} */
+
+.btn-comprar {
+    width: 240px;
+    font-size: 20px;
+}
+
+.caixa-cor-cabo {
+    height: 43px;
+}
+
+@media (min-width:400px) and (max-width: 768px) {
+    .caixa-cor-cabo {
+        margin-bottom: 20px;
+    }
+    
+}
