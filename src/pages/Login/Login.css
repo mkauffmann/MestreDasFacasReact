@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&family=Barlow:wght@100;300;400;700&display=swap');
+
+/*
+CORES:
+- AMARELO: #FFC07F
+- VERMELHO: #860E1C
+- MARROM: #4E1E00
+- LARANJA: #E5571A
+- PRETO: #170900
+*/
+
+/* *{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E5E5E5;
+    font-family: 'Barlow', Arial, sans-serif;
+} */
+
+
+/* LOGIN CARD START */
+.login-card {
+    background-color: white;
+    box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.25);
+    height: 520px;
+}
+
+/* LOGIN CARD END  */
+
+.login-titulo h3 {
+    font-family: 'Archivo Narrow', Arial, sans-serif;
+    color: #860E1C;
+}
+
+.custom-label{
+    font-weight: bold;
+}
+
+.inputs-login a {
+    color: #860E1C;
+    text-decoration: none;
+}
+
+.cadastro a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.divisao {
+    color: #860E1C;
+}
+
+.btn-login {
+    width: 190px;
+}
