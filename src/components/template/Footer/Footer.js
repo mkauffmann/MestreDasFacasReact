@@ -11,6 +11,7 @@ function Footer(props) {
 
     return (
         <>
+        
             <footer>
                 {/* Inicio footer desktop */}
                 <div className="container-fluid d-flex footer">
