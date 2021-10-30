@@ -1,0 +1,113 @@
+.slide{
+    margin-top: 10px;
+}
+
+p{
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+}
+.banner1,
+.banner2,
+.banner3,
+.destaques {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.destaques {
+    color: #860E1C;
+    font-size: 32px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.tituloProduto {
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+}
+
+.precoProduto {
+    font-size: 16px;
+    font-weight: bold;
+    color:  #860E1C;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+}
+
+
+.botaoComprar {
+    color: white;
+    background-color: #E5571A;
+    width: 85%;
+    margin-left: 7%;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 15px;
+    transition: 0.1s;
+    font-size: 16px;
+    font-family: 'Barlow', sans-serif;
+}
+
+
+
+
+
+.botaoComprar:hover {
+    background-color: #FFC07F;
+    color: #860E1C;
+}
+
+.canva {
+    width: 100vw;
+    height: 230px;
+    background-color: rgba(23, 9, 0, 1);
+}
+
+.atendimento {
+    margin-top: 1%;
+}
+
+.blocoBotao {
+    background-color: #170900;
+}
+
+.cana {
+    width: 100vw;
+    background-color: #860E1C;
+}
+
+.listaCanva {
+    text-align: center;
+}
+
+.produtoDesktop {
+    display: flex;
+    
+}
+    
+@media (min-width: 990px) {
+.blocoBotao {
+            display: none;
+        }
+    }
+@media (max-width:767px) {
+        .ocultaProduto {
+            display: none;
+        }
+    }
+
+    @media (max-width:355px) {
+        .botaoComprar {
+            font-size: 12px;
+        }
+    }
+
+    
+h2{
+    font-family: 'Archivo Narrow', sans-serif;
+   
+}    
+

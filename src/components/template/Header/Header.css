@@ -1,0 +1,112 @@
+.topHeader,
+.midHeader,
+.telefone,
+.navegacao,
+.blocoTelefone {
+    color          : #ffbf7f;
+    font-size      : 16px;
+    text-decoration: none;
+    text-decoration: #FFC07F;
+    text-align     : center;
+    font-weight    : bold;
+}
+
+.topHeader, .logo{
+    
+    display: flex;
+    justify-content: center;
+    display: flex;
+    position: sticky;
+    
+
+    
+    
+    }
+    
+
+.topHeader {
+    background-color: #4E1E00;
+    ;
+    padding: 10px;
+}
+
+.iconTopheader {
+    margin-right: 10px;
+}
+
+.midHeader {
+
+    padding         : 25px;
+    background-color: rgba(134, 14, 28, 1);
+}
+
+.Barranavegacao {
+    background-color: rgba(23, 9, 0, 1);
+    padding         : 12px;
+    font-weight     : bold;
+    text-align      : center;
+
+}
+
+.navegacao:hover,
+.telefone:hover {
+    color: #d1781ff3;
+}
+
+
+.canva {
+    width : 100vw;
+    height: 230px;
+
+    background-color: rgba(23, 9, 0, 1);
+
+}
+
+.cana {
+    width           : 100vw;
+    background-color: #860E1C;
+}
+
+.listaCanva {
+    text-align: center;
+}
+
+.blocoBotao {
+    background-color: #170900;
+}
+
+@media (min-width:990px) {
+
+    .blocoBotao {
+        display: none;
+    }
+}
+
+@media (max-width:1486px) {
+    .blocoTelefone {
+        display: none;
+    }
+}
+
+@media (max-width:991px) {
+
+    .blocoMeusPedidos,
+    .blocoMinhaLista,
+    .navDesktop {
+        display: none;
+    }
+}
+
+
+@media (max-width:800px) {
+    .pesquisa {
+        display: none;
+    }
+
+}
+
+.blocoMeusPedidos,
+.blocoMinhaLista {
+    font-weight: bold;
+}
+

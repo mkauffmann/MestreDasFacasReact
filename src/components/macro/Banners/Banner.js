@@ -8,7 +8,8 @@ function Banner(props) {
 
     return (
         <>
-            <Carousel variant="dark">
+        <div className="container">
+        <Carousel variant="light">
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
@@ -31,6 +32,8 @@ function Banner(props) {
                     />
                 </Carousel.Item>
             </Carousel>
+        </div>
+            
         </>
     )
 }
