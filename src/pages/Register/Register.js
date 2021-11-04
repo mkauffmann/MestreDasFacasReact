@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Form, Col, Accordion } from 'react-bootstrap'
 import Button from '../../components/micro/Button/Button'
+import Input from '../../components/micro/Forms/Input/Input'
 import './Register.css'
 
 function Register(props) {
@@ -12,6 +13,7 @@ function Register(props) {
                 <h1 className="h1">Criar novo cadastro</h1>
             </div>
             <Form >
+                <Input />
                 <Col md={10} lg={8} className="mx-auto">
                     <Row className="mb-3">
                         <Form.Group controlId="nome">

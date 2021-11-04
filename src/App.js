@@ -6,15 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from './components/template/Header/Header'
 import Footer from './components/template/Footer/Footer'
+import FormTest from "./pages/Register/FormTest";
 
 function App() {
   return (
     <>
-      <Header/>
+      <FormTest/>
+      {/* <Header/>
       <Router>
         <Routes/>
       </Router>
-      <Footer/>
+      <Footer/> */}
     </>
   );
 }
