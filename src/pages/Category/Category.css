@@ -1,4 +1,8 @@
-/* .filtros {
+body {
+    font-family: 'Archivo Narrow', sans-serif;
+}
+
+.filtros {
     border-style: solid;
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.555);
@@ -10,7 +14,7 @@
     padding-top: 10px;
 }
 
-.titulo-filtro::after {
+/* .titulo-filtro::after {
     content: "";
     background-image: url(../img/icone-diminuir-filtros.png);
     background-size: 30px;
@@ -23,12 +27,12 @@
     height: 40px;
 } */
 
-/* .custom-check {
+.custom-check {
     border-color: #860e1c;
     border-width: 2px;
     width: 20px;
     height: 20px;
-} */
+}
 
 .label-check-custom {
     font-size: 20px;
@@ -42,7 +46,9 @@
 .linha-produtos-encontrados {
     display: flex;
     justify-content: space-between;
+    height: 50px;
     align-items: center;
+    align-content: flex-start;
 }
 
 .produtos-encontrados {
@@ -50,23 +56,22 @@
 }
 
 .drop-ordena {
-    margin-bottom: 15px;
+    width: 170px;
 }
 
-.imagem-produto2 {
+.imagem-produto {
     background-color: #C4C4C4;
     height: 200px;
-    width: 80%;
-    font-size: 20px;
+    width: 100%;
+    font-size: 25px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.btn-comprar-category {
-    width: 50%;
-    font-size: 17px;
+.btn-comprar {
+    width: -webkit-fill-available;
 }
 
 .item-catalogo {
@@ -74,15 +79,9 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 10px;
-    /* box-shadow: 0px -4px 13px 6px rgba(0,0,0,0.17); */
-    /* border-radius: 14px 14px 14px 15px; */
 }
 
-.item-catalogo:hover {
-    border: 2px solid rgba(0,0,0,0.04);
-}
-
-.nome-do-produto2 {
+.nome-do-produto {
     font-size: 22px;
     margin-bottom: 0px;
 }
@@ -94,7 +93,7 @@
     margin-bottom: 1px;
 }
 
-.catalogo-produtos {
+.catalogo-produtos2 {
     display: flex;
 }
 
@@ -109,7 +108,7 @@
     align-items: center;
 }
 
-/* @media (max-width: 1000px) {
+@media (max-width: 1000px) {
     .filtros {
         display: none;
     }
@@ -128,4 +127,4 @@
         display: none;
     }
     
-} */
+}
