@@ -33,6 +33,7 @@ function Footer(props) {
                             <a className="footer linkFooter" href="#">Atendimento</a>
 
                         </div>
+                        {/* Fcabook e instagram */}
                         <div className="container col-3 iconeRed footer">
                             <a href="https://www.facebook.com/Mestre-das-Facas-109510481482419/" target="_blank"><img className="icones" src={facebook} /></a>
                             <a href="https://www.instagram.com/eimestredasfacas?r=nametag/" target="_blank"><img className="icones icone-espaco" src={instagram} /></a>
@@ -60,6 +61,7 @@ function Footer(props) {
                             <a class="footer linkFooter" href="#">Quem somos</a>
 
                         </div>
+                        {/* Youtube e twitter */}
                         <div class="container col-3 iconeRed footer">
                             <a href="https://youtube.com/channel/UCcDiqj726UwCd9MYwmpVOmA/" target="_blank"><img className="icones" src={youtube} /></a>
                             <a href="https://twitter.com/FacasMestre?s=08/" target="_blank"><img className="icones icone-espaco" src={twitter} /></a>
@@ -112,6 +114,7 @@ function Footer(props) {
                     <div class="container col-12 footerMobile">Redes Sociais</div>
 
                 </div>
+                {/* Redes sociais  */}
                 <div class="container-fluid col-12 footerMobile">
                     <div class="container col-12">
                         <a href="https://www.facebook.com/Mestre-das-Facas-109510481482419/" target="_blank"><img className="icones espaco-icone-mobile" src={facebook} /></a>
@@ -125,6 +128,7 @@ function Footer(props) {
                     <div class="container col-12 footerMobile">Formas Pagamentos</div>
 
                 </div>
+                {/* Icones de forma de pagamento */}
                 <div class="container-fluid col-12 footerMobile">
                     <div class="container col-12 footerMobile">
                         <svg width="40" className="espaco-icone-mobile" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

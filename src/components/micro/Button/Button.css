@@ -1,5 +1,5 @@
 .btn-custom-default {
-    padding: 5px 20px;
+    padding: 5px 15px;
     border-radius: 30px;
     transition: 0.1s;
     display: inline-block;
@@ -13,6 +13,7 @@
     background-color: #E5571A;
     border: solid 1px #E5571A;
     color: white;
+    
   
 }
 
@@ -37,5 +38,18 @@
     background-color: #860E1C;
 }
 
+.home-btn {
+
+    width      : 85%;
+    margin-left: 7.5%;
+    font-family: 'Barlow', sans-serif;
+    
+}
+
+@media (max-width:355px) {
+    .home-btn {
+        font-size: 12px;
+    }
+}
 
 /* BOTAO CANCELAR fim */

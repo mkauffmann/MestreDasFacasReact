@@ -8,7 +8,7 @@ function Banner(props) {
 
     return (
         <>
-        <div className="container">
+        <div className="container"  style={{ marginTop:'10px'}}>
         <Carousel variant="light">
                 <Carousel.Item>
                     <img

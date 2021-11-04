@@ -1,5 +1,7 @@
 import React from 'react'
 import './OrderDetails.css'
+import Button from '../../components/micro/Button/Button'
+import { Link } from 'react-router-dom'
 
 function OrderDetails(props) {
 
@@ -129,8 +131,8 @@ function OrderDetails(props) {
                         <div>Ribeirão Preto, SP</div>
                         <hr/>
                         </div>
-                        <div class="container d-flex flex-row-reverse bd-highlight"> <a href="meusPedidos.html"><button
-                            class="botaoVoltar">Voltar</button></a>
+                        <div class="container d-flex flex-row-reverse bd-highlight">
+                            <Link to="/home"><Button label="Voltar" class="btn-default btn-principal btn-back"></Button></Link>
 
                         </div>
                         </div>

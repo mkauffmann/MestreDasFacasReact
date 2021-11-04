@@ -26,16 +26,8 @@ h3 {
     font-weight: bold;
 }
 
-.botaoVoltar {
-    color: white;
-    background-color: #E5571A;
+.btn-back {
     width: 150px;
-    border: none;
-    border-radius: 30px;
-    padding: 5px 15px;
-    transition: 0.1s;
-    font-size: 16px;
-    margin-bottom: 2%;
     font-family: 'Barlow', sans-serif;
 }
 
