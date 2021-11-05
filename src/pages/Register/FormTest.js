@@ -3,16 +3,16 @@ import axios from "axios";
 import RegisterForm from "../../components/micro/Forms/Form/RegisterForm";
 
 
-function FormTest(props){
+function FormTest(props) {
     const URL = 'http://localhost:3001/users';
 
     const saveUser = (user) => {
         axios.post(`${URL}`, user)
-        .then(console.log(user))
+            .then(console.log(user))
     }
 
     return (
-        <RegisterForm save={saveUser}/>
+        <RegisterForm save={saveUser} />
     )
 }
 

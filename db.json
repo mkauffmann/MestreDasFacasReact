@@ -6,14 +6,34 @@
       "id": 1
     },
     {
-      "name": "assdasd",
-      "email": "",
+      "name": "da",
+      "email": "sadasd@as",
+      "cpf": "122.223.344-55",
+      "birthDate": "",
+      "gender": {
+        "description": ""
+      },
       "id": 2
     },
     {
-      "name": "CS",
-      "email": "",
+      "name": "Maria Kauffmann",
+      "email": "mariatkauffmann@gmail.com",
+      "cpf": "122.223.344-55",
+      "birthDate": "",
+      "gender": {
+        "description": "Outros"
+      },
       "id": 3
+    },
+    {
+      "name": "sdfgdsfg",
+      "email": "dfgsdf@sdfasd",
+      "cpf": "145.268.216-84",
+      "birthDate": "2021-10-14",
+      "gender": {
+        "description": "Não-binário"
+      },
+      "id": 4
     }
   ]
 }

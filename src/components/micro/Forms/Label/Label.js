@@ -4,7 +4,7 @@ import './Label.css'
 
 function Label(props){
     return (
-        <label className="custom-label">
+        <label className="custom-label form-label" id={props.id}>
             {props.label}{props.obrigatorio ? <span className="obrigatorio">*</span> : ''}
         </label>
     )

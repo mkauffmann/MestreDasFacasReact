@@ -5,17 +5,9 @@ import './Input.css'
 
 function Input(props) {
 
-
-    const masks = {
-        creditCard: "9999 9999 9999 9999", 
-        name: [/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð\s,.'-]{1,}$/u]
-
-    }
-    
-
     return(
         <>
-        <Label label={props.label} obrigatorio={props.obrigatorio}/>
+        <Label label={props.label} obrigatorio={props.obrigatorio} id={props.id}/>
         <ReactInputMask mask={props.mask}
                         maskChar={null}
                         type={props.type} 
