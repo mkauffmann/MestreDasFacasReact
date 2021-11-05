@@ -6,7 +6,7 @@ function Select(props) {
     const renderOptions = () => {
         return props.options.map((option, index) => {
             return (
-                <option key={index} value={option}>
+                <option key={index + 1} value={option}>
                     {option}
                 </option>
             );
@@ -25,7 +25,7 @@ function Select(props) {
                 className="form-select"
                 onChange={(event) => props.changeFunction(event)}
             >
-                <option value="" selected disabled> Selecione </option>
+                <option value="" key={0} selected> Selecione </option>
                 {renderOptions()}
             </select>
         </>

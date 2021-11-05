@@ -9,7 +9,9 @@ const initialInputValues = {
     email: "",
     cpf: "",
     birthDate: "",
-    gender: {}
+    gender: {},
+    telephones : [],
+    telephoneTemp : ""
 };
 
 function RegisterForm(props) {
@@ -43,6 +45,18 @@ function RegisterForm(props) {
         })
     }
 
+    const handleChangeTelephone = (event) => {
+        const value = event.target.value
+
+            setInputValues((prevState) => {
+                return {
+                    ...prevState,
+                    telephoneTemp : value
+                }
+            })
+        }
+        
+
     const resetForm = () => {
         setInputValues({ ...initialInputValues });
         setErrors({});
@@ -53,12 +67,13 @@ function RegisterForm(props) {
         let nameIsValid = true;
         let emailIsValid = true;
         let cpfIsValid = true;
+        let telephoneIsValid = true;
 
         const regexName =
             /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð\s,.'-]{1,}$/u;
 
         const regexCpf = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/g;
-        
+
         /*
         VALIDACAO NOME 
          */
@@ -131,6 +146,18 @@ function RegisterForm(props) {
             });
         }
 
+        /*
+        VALIDACAO TELEFONE 
+         */
+        if(inputValues.telephoneTemp != "" && inputValues.telephoneTemp.length < 15){
+            setErrors((prevState) => {
+                return {...prevState, telephone : "Telefone inválido"}
+            })
+            isValid = false;
+            telephoneIsValid = false;
+        }
+
+
         return isValid;
     };
 
@@ -195,9 +222,13 @@ function RegisterForm(props) {
                         </Col>
                     </Row>
                     <Row>
-                        {/* <Col md={6} className="mb-3">
-              <Input type="tel" id="telephone" placeholder="(XX) XXXXX-XXXX"/>
-          </Col> */}
+                        <Col md={6} className="mb-3">
+                            <Input type="tel" id="telephone" placeholder="(XX) XXXXX-XXXX" label="Telefone" 
+                                mask="(99) 99999-9999"
+                                value={inputValues.telephoneTemp}
+                                changeFunction={handleChangeTelephone}
+                                error={errors.telephone}/>
+                        </Col>
                         <Col md={6} className="mb-3">
                             <Select id="gender" name="gender" label="Gênero"
                                 options={["Feminino", "Masculino", "Não-binário", "Outros", "Prefiro não dizer"]}
