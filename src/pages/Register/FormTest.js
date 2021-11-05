@@ -7,15 +7,20 @@ function FormTest(props) {
     const URL = 'http://localhost:3001/users';
 
     const saveUser = (user) => {
+        user = handleObject(user)
+        axios.post(`${URL}`, user)
+            .then(console.log(user))
+    }
 
+    const handleObject = (user) => {
         if(user.telephoneTemp != ""){
             user = {...user, telephones: [handleTelephoneCreation(user.telephoneTemp)]}
             delete user.telephoneTemp
         }
-        
 
-        axios.post(`${URL}`, user)
-            .then(console.log(user))
+        delete user.confirmPassword
+
+        return user
     }
 
     const handleTelephoneCreation = (inputTelephone) => {

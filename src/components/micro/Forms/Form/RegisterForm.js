@@ -11,6 +11,8 @@ const initialInputValues = {
     birthDate: "",
     gender: {},
     telephones : [],
+    password: "",
+    confirmPassword: "",
     telephoneTemp : ""
 };
 
@@ -67,7 +69,8 @@ function RegisterForm(props) {
         let nameIsValid = true;
         let emailIsValid = true;
         let cpfIsValid = true;
-        let telephoneIsValid = true;
+        let passwordIsValid = true;
+        let confirmPasswordIsValid = true;
 
         const regexName =
             /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð\s,.'-]{1,}$/u;
@@ -154,7 +157,34 @@ function RegisterForm(props) {
                 return {...prevState, telephone : "Telefone inválido"}
             })
             isValid = false;
-            telephoneIsValid = false;
+        }
+
+        /*
+        VALIDACAO SENHA 
+         */
+        if(inputValues.password !== inputValues.confirmPassword){
+            setErrors((prevState) => {
+                return {...prevState, confirmPassword : "Senhas digitadas não conferem"}
+            })
+            isValid = false;
+            confirmPasswordIsValid = false;
+        }
+        if (inputValues.password == ""){
+            setErrors((prevState) => {
+                return {...prevState, password : "Senha é um campo obrigatório"}
+            })
+            isValid = false;
+            passwordIsValid = false;
+        }
+        if(passwordIsValid){
+            setErrors((prevState) => {
+                return {...prevState, password : ""}
+            })
+        }
+        if(confirmPasswordIsValid){
+            setErrors((prevState) => {
+                return {...prevState, confirmPassword : ""}
+            })
         }
 
 
@@ -234,6 +264,18 @@ function RegisterForm(props) {
                                 options={["Feminino", "Masculino", "Não-binário", "Outros", "Prefiro não dizer"]}
                                 changeFunction={handleChangeGender}
                                 value={inputValues.gender.description} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6} className="mb-3">
+                            <Input type="password" id="senha" name="password" placeholder="Digite sua senha" label="Digite sua senha"
+                                    obrigatorio changeFunction={handleChange} value={inputValues.password}
+                                    error={errors.password}/>
+                        </Col>
+                        <Col md={6} className="mb-3">
+                        <Input type="password" id="confirmarSenha" name="confirmPassword" placeholder="Digite novamente sua senha" label="Confirme sua senha"
+                                    obrigatorio changeFunction={handleChange} value={inputValues.confirmPassword}
+                                    error={errors.confirmPassword}/>
                         </Col>
                     </Row>
 

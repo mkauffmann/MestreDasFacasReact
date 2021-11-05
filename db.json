@@ -4,36 +4,6 @@
       "name": "maria",
       "email": "maria@maria.com",
       "id": 1
-    },
-    {
-      "name": "Maria Kauffmann",
-      "email": "mariatkauffmann@gmail.com",
-      "cpf": "122.223.344-55",
-      "birthDate": "",
-      "gender": {
-        "description": "Feminino"
-      },
-      "telephones": [
-        {
-          "ddd": "13",
-          "phoneNumber": "991056424"
-        }
-      ],
-      "id": 2
-    },
-    {
-      "name": "Maria Kauffmann",
-      "email": "mariatkauffmann@gmail.com",
-      "cpf": "122.223.344-55",
-      "birthDate": "",
-      "gender": {},
-      "telephones": [
-        {
-          "ddd": "13",
-          "phoneNumber": "991056424"
-        }
-      ],
-      "id": 3
     }
   ]
 }
