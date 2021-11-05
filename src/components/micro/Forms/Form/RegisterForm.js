@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Accordion } from "react-bootstrap";
+import { Row, Col} from "react-bootstrap";
 import Button from "../../Button/Button";
 import Input from "../Input/Input";
 import Select from "../Select/Select";
+
 
 const initialInputValues = {
     name: "",
@@ -57,7 +58,7 @@ function RegisterForm(props) {
                 }
             })
         }
-        
+ 
 
     const resetForm = () => {
         setInputValues({ ...initialInputValues });
@@ -278,7 +279,6 @@ function RegisterForm(props) {
                                     error={errors.confirmPassword}/>
                         </Col>
                     </Row>
-
                     <Row className="my-3 justify-content-end">
                         <Col className="d-flex justify-content-end">
                             <Button class="btn-cancelar mx-2" label="Limpar" type="reset" />

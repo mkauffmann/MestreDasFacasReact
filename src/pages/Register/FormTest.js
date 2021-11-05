@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import RegisterForm from "../../components/micro/Forms/Form/RegisterForm";
+import RegisterAddressForm from "../../components/micro/Forms/Form/RegisterAddressForm";
+
 
 
 function FormTest(props) {
     const URL = 'http://localhost:3001/users';
+    const [address, setAddress] = useState("");
+
 
     const saveUser = (user) => {
         user = handleObject(user)
@@ -13,9 +17,13 @@ function FormTest(props) {
     }
 
     const handleObject = (user) => {
-        if(user.telephoneTemp != ""){
+        if(user.telephoneTemp !== ""){
             user = {...user, telephones: [handleTelephoneCreation(user.telephoneTemp)]}
             delete user.telephoneTemp
+        }
+
+        if(address !== ""){
+            user = {...user, addresses : [{...address}]}
         }
 
         delete user.confirmPassword
@@ -33,8 +41,15 @@ function FormTest(props) {
         return {ddd, phoneNumber}
     }
 
+    const handleAddress = (inputAddress) => {
+        setAddress({...inputAddress})
+    }
+
     return (
+        <>
         <RegisterForm save={saveUser} />
+        <RegisterAddressForm save={handleAddress} />
+        </>
     )
 }
 
