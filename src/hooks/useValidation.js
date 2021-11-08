@@ -1,4 +1,6 @@
 import { useState } from "react";
+import cardValidator from 'card-validator'
+
 
 
 function useValidation(inputValues) {
@@ -172,6 +174,26 @@ function useValidation(inputValues) {
         })
     }
 
+    const validateCreditCardDate = (inputValue, name) => {
+        const cardValidation = cardValidator.expirationDate(inputValue)
+        if (!isEmpty(inputValue, name) && !cardValidation.isValid){
+            setErrors((prevState) => {
+                return {
+                    ...prevState,
+                    [name] : "Data inválida"
+                }
+            })
+
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        }
+    }
+
+
     const validateForm = (requiredFields) => {
         let formIsValid = true
 
@@ -200,7 +222,8 @@ function useValidation(inputValues) {
         validateCpflNotEmpty,
         validateTelephoneEmpty,
         validateNotRequired,
-        validatePasswordNotEmpty
+        validatePasswordNotEmpty,
+        validateCreditCardDate
     }
 }
 
