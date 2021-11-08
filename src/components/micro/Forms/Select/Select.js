@@ -22,10 +22,11 @@ function Select(props) {
             />
             <select
                 id={props.id}
+                name={props.name}
                 className="form-select"
                 onChange={(event) => props.changeFunction(event)}
             >
-                <option value="" key={0} selected> Selecione </option>
+                <option value="" key={0} defaultValue> Selecione </option>
                 {renderOptions()}
             </select>
         </>

@@ -16,6 +16,7 @@ function Input(props) {
                         placeholder={props.placeholder}
                         value={props.value}
                         onChange={(event) => {props.changeFunction(event)}}
+                        onBlur={(event) => {props.blurFunction && props.blurFunction(event, props.validation)}}
                         className={"form-control " + (props.error ? "error" : "")} />
         {props.error ? <div className="form-text error-text">{props.error}</div> : ""}
         </>

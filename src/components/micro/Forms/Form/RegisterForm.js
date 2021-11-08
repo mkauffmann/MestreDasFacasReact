@@ -3,6 +3,7 @@ import { Row, Col} from "react-bootstrap";
 import Button from "../../Button/Button";
 import Input from "../Input/Input";
 import Select from "../Select/Select";
+import useValidation from '../../../../hooks/useValidation'
 
 
 const initialInputValues = {
@@ -10,8 +11,7 @@ const initialInputValues = {
     email: "",
     cpf: "",
     birthDate: "",
-    gender: {},
-    telephones : [],
+    genderTemp: "",
     password: "",
     confirmPassword: "",
     telephoneTemp : ""
@@ -19,16 +19,28 @@ const initialInputValues = {
 
 function RegisterForm(props) {
     const [inputValues, setInputValues] = useState({ ...initialInputValues });
-    const [errors, setErrors] = useState({});
+    const requiredFields = ["name", "email", "cpf", "password", "confirmPassword"]
+
+    const {
+        validateForm,
+        resetErrorStates,
+        errors,
+        validateStringNotEmpty,
+        validateEmailNotEmpty,
+        validateCpflNotEmpty,
+        validateTelephoneEmpty,
+        validatePasswordNotEmpty,
+        validateNotRequired
+    } = useValidation(inputValues);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (validateForm()) {
+
+        if (validateForm(requiredFields)) {
             props.save(inputValues);
-            setInputValues({ ...initialInputValues });
-            setErrors({});
+            resetForm()
         }
-        console.log(errors);
+
     };
 
     const handleChange = (event) => {
@@ -40,156 +52,15 @@ function RegisterForm(props) {
         });
     };
 
-    const handleChangeGender = (event) => {
-        const value = event.target.value
-
-        setInputValues((prevState) => {
-            return { ...prevState, gender: { description: value } }
-        })
+    const handleBlur = (event, validationCallback) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        validationCallback(value, name)
     }
-
-    const handleChangeTelephone = (event) => {
-        const value = event.target.value
-
-            setInputValues((prevState) => {
-                return {
-                    ...prevState,
-                    telephoneTemp : value
-                }
-            })
-        }
- 
 
     const resetForm = () => {
         setInputValues({ ...initialInputValues });
-        setErrors({});
-    };
-
-    const validateForm = () => {
-        let isValid = true;
-        let nameIsValid = true;
-        let emailIsValid = true;
-        let cpfIsValid = true;
-        let passwordIsValid = true;
-        let confirmPasswordIsValid = true;
-
-        const regexName =
-            /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð\s,.'-]{1,}$/u;
-
-        const regexCpf = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/g;
-
-        /*
-        VALIDACAO NOME 
-         */
-        if (!regexName.test(inputValues.name)) {
-            setErrors((prevState) => {
-                return { ...prevState, name: "Caracteres inválidos" };
-            });
-
-            isValid = false;
-            nameIsValid = false;
-        }
-
-        if (inputValues.name == "") {
-            setErrors((prevState) => {
-                return { ...prevState, name: "Nome é um campo obrigatório" };
-            });
-            isValid = false;
-            nameIsValid = false;
-        }
-
-        if (nameIsValid) {
-            setErrors((prevState) => {
-                return { ...prevState, name: "" }; //limpar mensagem de erro
-            });
-        }
-
-        /*
-        VALIDACAO EMAIL 
-         */
-        if (inputValues.email == "") {
-            setErrors((prevState) => {
-                return { ...prevState, email: "Email é um campo obrigatório" };
-            });
-            isValid = false;
-            emailIsValid = false;
-        }
-
-        if (emailIsValid) {
-            setErrors((prevState) => {
-                return { ...prevState, email: "" }; //limpar mensagem de erro
-            });
-        }
-
-        /*
-        VALIDACAO CPF 
-         */
-        if (!regexCpf.test(inputValues.cpf)) {
-            setErrors((prevState) => {
-                return {
-                    ...prevState,
-                    cpf: "CPF inválido",
-                };
-            });
-            isValid = false;
-            cpfIsValid = false;
-        }
-        if (inputValues.cpf == "") {
-            setErrors((prevState) => {
-                return {
-                    ...prevState,
-                    cpf: "CPF é um campo obrigatório",
-                };
-            });
-            isValid = false;
-            cpfIsValid = false;
-        }
-        if (cpfIsValid) {
-            setErrors((prevState) => {
-                return { ...prevState, cpf: "" };
-            });
-        }
-
-        /*
-        VALIDACAO TELEFONE 
-         */
-        if(inputValues.telephoneTemp != "" && inputValues.telephoneTemp.length < 15){
-            setErrors((prevState) => {
-                return {...prevState, telephone : "Telefone inválido"}
-            })
-            isValid = false;
-        }
-
-        /*
-        VALIDACAO SENHA 
-         */
-        if(inputValues.password !== inputValues.confirmPassword){
-            setErrors((prevState) => {
-                return {...prevState, confirmPassword : "Senhas digitadas não conferem"}
-            })
-            isValid = false;
-            confirmPasswordIsValid = false;
-        }
-        if (inputValues.password == ""){
-            setErrors((prevState) => {
-                return {...prevState, password : "Senha é um campo obrigatório"}
-            })
-            isValid = false;
-            passwordIsValid = false;
-        }
-        if(passwordIsValid){
-            setErrors((prevState) => {
-                return {...prevState, password : ""}
-            })
-        }
-        if(confirmPasswordIsValid){
-            setErrors((prevState) => {
-                return {...prevState, confirmPassword : ""}
-            })
-        }
-
-
-        return isValid;
+        resetErrorStates();
     };
 
     return (
@@ -206,6 +77,8 @@ function RegisterForm(props) {
                                 placeholder="Digite seu nome"
                                 obrigatorio
                                 changeFunction={handleChange}
+                                blurFunction={handleBlur}
+                                validation={validateStringNotEmpty}
                                 value={inputValues.name}
                                 error={errors.name}
                             />
@@ -221,6 +94,8 @@ function RegisterForm(props) {
                                 placeholder="Digite seu email"
                                 obrigatorio
                                 changeFunction={handleChange}
+                                blurFunction={handleBlur}
+                                validation={validateEmailNotEmpty}
                                 value={inputValues.email}
                                 error={errors.email}
                             />
@@ -236,6 +111,8 @@ function RegisterForm(props) {
                                 label="CPF"
                                 obrigatorio
                                 changeFunction={handleChange}
+                                blurFunction={handleBlur}
+                                validation={validateCpflNotEmpty}
                                 value={inputValues.cpf}
                                 error={errors.cpf}
                                 mask="999.999.999-99"
@@ -248,34 +125,39 @@ function RegisterForm(props) {
                                 name="birthDate"
                                 label="Data de nascimento"
                                 changeFunction={handleChange}
+                                blurFunction={handleBlur} validation={validateNotRequired}
                                 value={inputValues.birthDate}
                             />
                         </Col>
                     </Row>
                     <Row>
                         <Col md={6} className="mb-3">
-                            <Input type="tel" id="telephone" placeholder="(XX) XXXXX-XXXX" label="Telefone" 
-                                mask="(99) 99999-9999"
+                            <Input type="tel" id="telephone" placeholder="(XX) XXXXX-XXXX" label="Celular" 
+                                mask="(99) 99999-9999" name="telephoneTemp"
                                 value={inputValues.telephoneTemp}
-                                changeFunction={handleChangeTelephone}
-                                error={errors.telephone}/>
+                                changeFunction={handleChange}
+                                blurFunction={handleBlur}
+                                validation={validateTelephoneEmpty}
+                                error={errors.telephoneTemp}/>
                         </Col>
                         <Col md={6} className="mb-3">
-                            <Select id="gender" name="gender" label="Gênero"
+                            <Select id="gender" name="genderTemp" label="Gênero"
                                 options={["Feminino", "Masculino", "Não-binário", "Outros", "Prefiro não dizer"]}
-                                changeFunction={handleChangeGender}
-                                value={inputValues.gender.description} />
+                                changeFunction={handleChange} blurFunction={handleBlur} validation={validateNotRequired}
+                                value={inputValues.genderTemp} />
                         </Col>
                     </Row>
                     <Row>
                         <Col md={6} className="mb-3">
                             <Input type="password" id="senha" name="password" placeholder="Digite sua senha" label="Digite sua senha"
-                                    obrigatorio changeFunction={handleChange} value={inputValues.password}
+                                    obrigatorio changeFunction={handleChange} 
+                                    blurFunction={handleBlur} validation={validatePasswordNotEmpty}
+                                    value={inputValues.password}
                                     error={errors.password}/>
                         </Col>
                         <Col md={6} className="mb-3">
                         <Input type="password" id="confirmarSenha" name="confirmPassword" placeholder="Digite novamente sua senha" label="Confirme sua senha"
-                                    obrigatorio changeFunction={handleChange} value={inputValues.confirmPassword}
+                                    obrigatorio changeFunction={handleChange} value={inputValues.confirmPassword} blurFunction={handleBlur} validation={validatePasswordNotEmpty}
                                     error={errors.confirmPassword}/>
                         </Col>
                     </Row>
