@@ -192,6 +192,7 @@ function useValidation(inputValues) {
     return {
         validateForm,
         resetErrorStates,
+        setErrors,
         errors, validInput,
         isEmpty,
         validateStringNotEmpty,
