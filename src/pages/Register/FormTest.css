@@ -1,0 +1,36 @@
+.unsaved {
+    background-color: white;
+    border: 1px #FFC07F solid;
+    color: #E5571A;
+}
+
+.unsaved:hover {
+    background-color: #FFC07F
+}
+
+.saved {
+    background-color: rgb(117, 180, 117);
+    border: 1px rgb(78, 119, 78) solid;
+    color: rgb(38, 58, 38)
+}
+
+.saved:hover {
+    background-color: rgba(117, 180, 117,0.7);
+}
+
+.position-custom{
+    position: relative;
+    top: 65px;
+}
+
+.model-position {
+    position: relative;
+    top: -50px
+}
+
+@media screen and (max-width: 475px) {
+    .position-custom{
+        position: relative;
+        top: 100px;
+    }
+}

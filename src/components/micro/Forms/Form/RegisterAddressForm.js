@@ -21,7 +21,7 @@ function RegisterAddressForm(props) {
     const {
         validateForm,
         resetErrorStates,
-        errors, validInput,
+        errors,
         validateStringNotEmpty,
         validateNotRequired,
         isEmpty,

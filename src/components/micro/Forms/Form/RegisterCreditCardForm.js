@@ -10,14 +10,14 @@ import useValidation from "../../../../hooks/useValidation";
 const initialInputValues = {
     cardNumber: "",
     cardValidDate: "",
-    cpf: "",
+    holderCpf: "",
     holderName: "",
     cardBrandTemp: ""
 }
 
 function RegisterCreditCardForm(props) {
     const [creditCardValues, setCreditCardValues] = useState({ ...initialInputValues })
-    const requiredFields = ["cardNumber", "cpf", "holderName", "cardBrandTemp", "cardValidDate"]
+    const requiredFields = ["cardNumber", "holderCpf", "holderName", "cardBrandTemp", "cardValidDate"]
     const {
         validateForm,
         resetErrorStates,
@@ -116,7 +116,7 @@ function RegisterCreditCardForm(props) {
                             error={errors.holderName} />
                         </Col>
                         <Col md={4} className="mb-3">
-                            <Input type="text" id="cpf" name="cpf"
+                            <Input type="text" id="holderCpf" name="holderCpf"
                                     label="CPF do titular" obrigatorio
                                     mask="999.999.999-99"
                                     changeFunction={handleChange} value={creditCardValues.cpf}
