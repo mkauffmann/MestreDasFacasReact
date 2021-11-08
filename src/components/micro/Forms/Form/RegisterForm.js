@@ -20,7 +20,6 @@ const initialInputValues = {
 function RegisterForm(props) {
     const [inputValues, setInputValues] = useState({ ...initialInputValues });
     const requiredFields = ["name", "email", "cpf", "password", "confirmPassword"]
-
     const {
         validateForm,
         resetErrorStates,
@@ -33,14 +32,15 @@ function RegisterForm(props) {
         validateNotRequired
     } = useValidation(inputValues);
 
-    const handleSubmit = (event) => {
+    //const formIsValid = validateForm(requiredFields)
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         if (validateForm(requiredFields)) {
             props.save(inputValues);
             resetForm()
         }
-
     };
 
     const handleChange = (event) => {
@@ -56,6 +56,7 @@ function RegisterForm(props) {
         const value = event.target.value;
         const name = event.target.name;
         validationCallback(value, name)
+        validateForm(requiredFields)
     }
 
     const resetForm = () => {

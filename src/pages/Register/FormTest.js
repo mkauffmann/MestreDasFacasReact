@@ -13,7 +13,10 @@ function FormTest(props) {
     const saveUser = (user) => {
         user = handleObject(user)
         axios.post(`${URL}`, user)
-            .then(console.log(user))
+            .then(() => {
+                console.log(user)
+                setAddress("")
+            })
     }
 
     const handleObject = (user) => {
