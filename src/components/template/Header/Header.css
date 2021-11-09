@@ -1,4 +1,4 @@
-header{
+header {
     margin-bottom: 30px;
 }
 
@@ -6,29 +6,25 @@ header{
 .midHeader,
 .telefone,
 .navegacao,
+.logo,
 .blocoTelefone {
     color          : #ffbf7f;
-    font-size      : 16px;
+    font-size      : 13px;
     text-decoration: none;
     text-decoration: #FFC07F;
-    text-align     : center;
-    font-weight    : bold;
+    text-align : center;
+    font-weight: bold;
 }
 
-
-
-.topHeader, .logo{
-    
-    display: flex;
+.topHeader,
+.midHeader,
+.logo,
+.blocoTelefone {
+    display    : flex;
+    align-items: center;
     justify-content: center;
-    display: flex;
-    position: sticky;
-    
+}
 
-    
-    
-    }
-    
 
 .topHeader {
     background-color: #4E1E00;
@@ -88,7 +84,7 @@ header{
     }
 }
 
-@media (max-width:1300px) {
+@media (max-width:1200px) {
     .blocoTelefone {
         display: none;
     }
@@ -117,4 +113,8 @@ header{
     .blocoMeuCarrinho {
         display: none;
     }
+}
+
+.blocoTelefone {
+    flex-direction: column;
 }
