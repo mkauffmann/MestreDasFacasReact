@@ -1,0 +1,29 @@
+.tituloProduto {
+    font-size  : 16px;
+    text-align : center;
+    font-family: 'Barlow', sans-serif;
+}
+
+.precoProduto {
+    font-size  : 16px;
+    font-weight: bold;
+    color      : #860E1C;
+    text-align : center;
+    font-family: 'Barlow', sans-serif;
+}
+
+.produtoDesktop {
+    display: flex;
+
+}
+
+@media (max-width:767px) {
+    .ocultaProduto {
+        display: none;
+    }
+}
+
+p{
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+}
