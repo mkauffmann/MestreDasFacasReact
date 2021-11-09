@@ -1,3 +1,7 @@
+header{
+    margin-bottom: 30px;
+}
+
 .topHeader,
 .midHeader,
 .telefone,
@@ -10,6 +14,8 @@
     text-align     : center;
     font-weight    : bold;
 }
+
+
 
 .topHeader, .logo{
     
@@ -82,16 +88,13 @@
     }
 }
 
-@media (max-width:1486px) {
+@media (max-width:1300px) {
     .blocoTelefone {
         display: none;
     }
 }
 
 @media (max-width:991px) {
-
-    .blocoMeusPedidos,
-    .blocoMinhaLista,
     .navDesktop {
         display: none;
     }
@@ -110,3 +113,8 @@
     font-weight: bold;
 }
 
+@media (max-width:575px) {
+    .blocoMeuCarrinho {
+        display: none;
+    }
+}

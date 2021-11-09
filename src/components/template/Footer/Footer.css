@@ -1,6 +1,6 @@
 footer{
     font-family: 'Barlow', sans-serif;
-    margin-top: 20px
+   
     
 }
 
@@ -14,9 +14,8 @@ footer{
 
 .footer, .footerMobile{
     background-color:rgba(134, 14, 28, 1);
-    
     font-weight: bold;
-    padding-top: 5px;
+    padding-top: 1px;
     
 }
 

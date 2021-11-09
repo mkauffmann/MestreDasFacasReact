@@ -1,5 +1,4 @@
 import React from 'react'
-import Patrocinador from '../../../assets/imgs/banners/patrocinador.png'
 import './Patrocinio.css'
 
 function Patrocinio(props) {
@@ -7,10 +6,10 @@ function Patrocinio(props) {
         <>
             <div class="container d-flex banner1">
                 <div class="container col-6">
-                    <img src={Patrocinador} style={{ height: '7vw' }} class="d-block w-100" />
+                    <img src={props.imagem} class="d-block w-100 patrocinio" />
                 </div>
                 <div class="container col-6">
-                    <img src={Patrocinador} style={{ height: '7vw' }} class="d-block w-100" />
+                    <img src={props.imagem}  class="d-block w-100 patrocinio" />
                 </div>
             </div>
         </>
