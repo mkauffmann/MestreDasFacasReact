@@ -57,6 +57,10 @@
     padding: 16px 0;
 }
 
+.menu-item a:hover {
+    color: white
+}
+
 .menu-fechado {
     transform: translateY(-400px);
 }
