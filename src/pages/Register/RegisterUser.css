@@ -20,6 +20,8 @@
 
 .position-custom{
     margin-top: 90px !important;
+    position: relative;
+    z-index: 1;
 }
 
 .model-position {
