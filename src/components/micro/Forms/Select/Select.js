@@ -3,14 +3,24 @@ import Label from "../Label/Label";
 import "./Select.css";
 
 function Select(props) {
-    const renderOptions = () => {
-        return props.options.map((option, index) => {
-            return (
-                <option key={index + 1} value={option}>
-                    {option}
-                </option>
-            );
-        });
+    const renderOptions = (update) => {
+        if (update) {
+            return props.options.map((option, index) => {
+                return (
+                    <option key={index + 1} value={option} selected={option === props.value ? true : false}>
+                        {option}
+                    </option>
+                );
+            });
+        } else {
+            return props.options.map((option, index) => {
+                return (
+                    <option key={index + 1} value={option}>
+                        {option}
+                    </option>
+                );
+            });
+        }
     };
 
     return (
@@ -27,7 +37,7 @@ function Select(props) {
                 onChange={(event) => props.changeFunction(event)}
             >
                 <option value="" key={0} defaultValue> Selecione </option>
-                {renderOptions()}
+                {renderOptions(props.update)}
             </select>
         </>
     );

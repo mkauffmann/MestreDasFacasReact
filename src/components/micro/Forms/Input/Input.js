@@ -17,7 +17,8 @@ function Input(props) {
                         value={props.value}
                         onChange={(event) => {props.changeFunction(event)}}
                         onBlur={(event) => {props.blurFunction && props.blurFunction(event, props.validation)}}
-                        className={"form-control " + (props.error ? "error" : "")} />
+                        className={"form-control " + (props.error ? "error" : "")} 
+                        disabled={props.disabled}/>
         {props.error ? <div className="form-text error-text">{props.error}</div> : ""}
         </>
     )

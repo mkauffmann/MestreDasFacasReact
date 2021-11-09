@@ -4,8 +4,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 
@@ -17,25 +15,69 @@ import OrderList from '../../components/macro/Dashboard/OrderList/OrderList'
 import InfoList from '../../components/macro/Dashboard/InfoList/InfoList'
 import ComponentCard from '../../components/macro/Dashboard/ComponentCard/ComponentCard'
 
+const userTemp = {
+    "name": "Maria Kauffmann",
+    "email": "maria@gmail",
+    "cpf": "122.223.344-55",
+    "birthDate": "1992-06-13",
+    "password": "123",
+    "telephones": [
+      {
+        "ddd": "11",
+        "phoneNumber": "111111111"
+      }
+    ],
+    "gender": {
+      "description": "Feminino"
+    },
+    "addresses": [
+      {
+        "street": "Praça da Sé",
+        "number": "02",
+        "complement": "",
+        "cep": "01001-001",
+        "neighborhood": "Sé",
+        "city": {
+          "cityName": "São Paulo"
+        },
+        "state": {
+          "uf": "SP"
+        }
+      }
+    ],
+    "creditCards": [
+      {
+        "cardNumber": "4111 1111 1111 1111",
+        "cardValidDate": "12/21",
+        "holderCpf": "123.456.787-87",
+        "holderName": "Maria Kauffmann",
+        "cardBrand": {
+          "cardBrandName": "VISA"
+        }
+      }
+    ],
+    "id": 2
+}
 
 function Dashboard(props) {
     let { url } = useRouteMatch()
+    let user = userTemp
 
     return (
         <>
             <Container>
                 <Row>
                     <Col>
-                        <DashboardMenuMobile username={"Fulana Gomes"} />
+                        <DashboardMenuMobile username={user.name} />
                     </Col>
                 </Row>
                 <Row>
                     <Col className="d-flex justify-content-between">
-                        <DashboardMenuDesktop username={"Fulana Gomes"}/>
+                        <DashboardMenuDesktop username={user.name}/>
                         <ComponentCard>
                             <Switch>
                                 <Route path={`${url}/userForm`}>
-                                    <UserForm />
+                                    <UserForm userData={user}/>
                                 </Route>
                                 <Route path={`${url}/myOrders`}>
                                     <OrderList />

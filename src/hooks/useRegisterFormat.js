@@ -5,6 +5,10 @@ function useRegisterFormat(){
         return { description : inputGender }
     }
 
+    const handleShowGender = (inputValues) => {
+        return inputValues.gender.description
+    }
+
     const handleTelephoneCreation = (inputTelephone) => {
         let telArr = inputTelephone.split(") ")
         const ddd = telArr[0].slice(1)
@@ -43,7 +47,8 @@ function useRegisterFormat(){
         handleAddressCreation,
         handleCreditCardCreation,
         handleGenderCreation,
-        handleTelephoneCreation
+        handleTelephoneCreation,
+        handleShowGender
     }
 }
 
