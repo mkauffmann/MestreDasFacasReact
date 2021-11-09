@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Row, Col} from "react-bootstrap";
-import Button from "../../Button/Button";
-import Input from "../Input/Input";
-import Select from "../Select/Select";
+import Button from "../../../micro/Button/Button";
+import Input from "../../../micro/Forms/Input/Input";
+import Select from "../../../micro/Forms/Select/Select";
 import useValidation from '../../../../hooks/useValidation'
 
 

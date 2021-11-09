@@ -54,7 +54,6 @@ function Dashboard(props) {
                     </Col>
                 </Row>
             </Container>
-
         </>
     )
 }

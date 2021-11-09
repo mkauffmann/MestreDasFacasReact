@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import cardValidator from 'card-validator'
-import Input from "../Input/Input";
-import Button from "../../Button/Button";
+import Input from "../../../micro/Forms/Input/Input";
+import Button from "../../../micro/Button/Button";
 import useValidation from "../../../../hooks/useValidation";
 
 
@@ -122,7 +122,7 @@ function RegisterCreditCardForm(props) {
                                     mask="999.999.999-99"
                                     changeFunction={handleChange} value={creditCardValues.holderCpf}
                                     blurFunction={handleBlur} validation={validateCpflNotEmpty}
-                                    error={errors.cpf} />
+                                    error={errors.holderCpf} />
                         </Col>
                     </Row>
                     <Row className="my-3 justify-content-end">

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Modal, Row, Col, Container } from "react-bootstrap";
 import useRegisterFormat from "../../hooks/useRegisterFormat";
-import RegisterUserDataForm from "../../components/micro/Forms/Form/RegisterUserDataForm";
-import RegisterAddressForm from "../../components/micro/Forms/Form/RegisterAddressForm";
-import RegisterCreditCardForm from "../../components/micro/Forms/Form/RegisterCreditCardForm";
+import RegisterUserDataForm from '../../components/macro/Forms/Register/RegisterUserDataForm'
+import RegisterAddressForm from '../../components/macro/Forms/Register/RegisterAddressForm'
+import RegisterCreditCardForm from '../../components/macro/Forms/Register/RegisterCreditCardForm'
 
 import './RegisterUser.css'
 
