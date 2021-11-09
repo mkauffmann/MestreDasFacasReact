@@ -4,8 +4,6 @@ import './Category.css'
 import Button from '../../components/micro/Button/Button'
 import '../../components/micro/Button/Button.css'
 
-import { Dropdown } from 'react-bootstrap'
-
 function Category(props) {
 
     return (
@@ -19,7 +17,7 @@ function Category(props) {
         <h2 class="texto-pesquisa mb-4"> Você buscou por X </h2>
     </div>
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-3 filtros">
+        {/* <div class="col-12 col-md-6 col-lg-3 filtros">
             <h5 class="titulo-filtro mt-3"> Desconto </h5>
             <div class="form-floating mb-3">
             </div>
@@ -111,13 +109,12 @@ function Category(props) {
             </div>
 
             
-
+        </div> */}
     {/* <!-- ENDING FILTROS -->
 
     <!-- BEGIN CATALOGO PRODUTOS --> */}
 
-        </div>
-        <div class="col-12 col-md-12 col-lg-9 catalogo-produtos">
+        <div class="col-12 col-md-12 col-lg-12 catalogo-produtos">
             <div class="row linha-produtos-encontrados">
                 <h5 class="produtos-encontrados"> X Produtos Encontrados </h5>
                 <div class="dropdown drop-ordena">
@@ -134,125 +131,56 @@ function Category(props) {
             </div>
             <div class="row catalogo-produtos2">
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
                     <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'" > Comprar </button>
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
+                    {/* <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'" > Comprar </button> */}
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
                     <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
                     <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
                     <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
                 </div>
             </div>
 
             <div class="row catalogo-produtos2">
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
                     <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
                     <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
                     <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
                     <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
-                </div>
-            </div>
-
-            <div class="row catalogo-produtos2">
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
-                </div>
-            </div>
-
-            <div class="row catalogo-produtos2">
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto"> IMAGEM PRODUTO </label>
-                    <img src="./img/Classificacao_Estrelas.png" class="classifica-estrelas" width="100px"/>
-                    <p class="nome-do-produto"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'"> Comprar </button>
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
                 </div>
             </div>
             
@@ -265,7 +193,7 @@ function Category(props) {
         <div class="row linha-botao-carregar">
             <div class="col-12 col-md-6 col-lg-3 botao-carregar">
                 <br/><br/><br/><br/>
-                <button type="reset" class="btn-cancelar"> Carregar mais </button>
+                <Button class="btn-principal btn-cancelar" label="Carregar mais"/>
             </div>
         </div>
 
