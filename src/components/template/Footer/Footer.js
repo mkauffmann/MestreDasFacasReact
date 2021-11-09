@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './Footer.css'
 import facebook from '../../../assets/imgs/footer/facebook.png'
 import instagram from '../../../assets/imgs/footer/instagram.png'
@@ -17,7 +18,7 @@ function Footer(props) {
                 <div className="container-fluid d-flex footer">
                     <div className="container col-12 d-flex footer ">
                         <div className="container col-3 alinhaFooter">
-                            <a className="footer linkFooter" href="#">Explorar Categorias</a>
+                            <Link to="/category" className="footer linkFooter">Explorar Categorias</Link>
 
                         </div>
                         <div className="container col-3 footer">Redes Sociais
@@ -30,7 +31,7 @@ function Footer(props) {
                 <div className="container-fluid d-flex footer ">
                     <div className="container ro col-12 d-flex footer ">
                         <div className="container col-3 footer atendimento alinhaFooter">
-                            <a className="footer linkFooter" href="#">Atendimento</a>
+                            <Link to="/contact"className="footer linkFooter">Atendimento</Link>
 
                         </div>
                         {/* Fcabook e instagram */}
