@@ -19,13 +19,11 @@
 }
 
 .position-custom{
-    position: relative;
-    top: 65px;
+    margin-top: 90px !important;
 }
 
 .model-position {
-    position: relative;
-    top: -50px
+    margin-top: -120px !important;
 }
 
 .btn-cancelar2 {
@@ -41,8 +39,10 @@
 
 
 @media screen and (max-width: 475px) {
+    .model-position {
+        margin-top: -130px !important;
+    }
     .position-custom{
-        position: relative;
-        top: 100px;
+        margin-top: 100px !important; 
     }
 }

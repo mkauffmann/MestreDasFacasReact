@@ -161,7 +161,7 @@ function RegisterForm(props) {
                                     error={errors.confirmPassword}/>
                         </Col>
                     </Row>
-                    <Row className="my-3 justify-content-end position-custom">
+                    <Row className="justify-content-end position-custom">
                         <Col className="d-flex justify-content-end">
                             <Button class="btn-cancelar mx-2" label="Limpar" type="reset" />
                             <Button class="btn-principal" label="Cadastrar" type="submit" />
