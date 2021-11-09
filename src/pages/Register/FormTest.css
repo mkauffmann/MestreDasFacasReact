@@ -9,13 +9,13 @@
 }
 
 .saved {
-    background-color: rgb(117, 180, 117);
-    border: 1px rgb(78, 119, 78) solid;
-    color: rgb(38, 58, 38)
+    background-color: #108357;
+    border: 1px #0c6946 solid;
+    color: white
 }
 
 .saved:hover {
-    background-color: rgba(117, 180, 117,0.7);
+    background-color: #139c68;
 }
 
 .position-custom{
@@ -27,6 +27,18 @@
     position: relative;
     top: -50px
 }
+
+.btn-cancelar2 {
+    background-color: #860E1C;
+    border: solid 1px #860E1C;
+    color: white;
+}
+
+.btn-cancelar2:hover {
+    color: #860E1C;
+    background-color: white
+}
+
 
 @media screen and (max-width: 475px) {
     .position-custom{

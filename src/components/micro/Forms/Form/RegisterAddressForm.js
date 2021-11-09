@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import axios from "axios";
 import Input from "../Input/Input";
 import Button from "../../Button/Button";
@@ -16,7 +16,7 @@ const initialValue = {
 }
 
 function RegisterAddressForm(props) {
-    const [addressValues, setAddressValues] = useState({ ...initialValue })
+    const [addressValues, setAddressValues] = useState(props.alter ? props.alter : { ...initialValue })
     const requiredFields = ["street", "number", "cep", "neighborhood", "cityTemp", "stateTemp"]
     const {
         validateForm,
@@ -56,6 +56,7 @@ function RegisterAddressForm(props) {
         const value = event.target.value;
         const name = event.target.name;
         validationCallback(value, name)
+        validateForm(requiredFields)
     }
 
     const handleBlurCep = (event, validationCallback) => {
@@ -106,7 +107,7 @@ function RegisterAddressForm(props) {
 
     return (
         <form onSubmit={handleSubmit} onReset={resetForm}>
-            <Col md={10} lg={8} className="mx-auto">
+            <Container className="mx-auto">
                 <Row>
                     <Col md={6} className="mb-3">
                         <Input type="text" id="cep" name="cep"
@@ -173,7 +174,7 @@ function RegisterAddressForm(props) {
                         <Button class="btn-principal" label="Salvar" type="submit" />
                     </Col>
                 </Row>
-            </Col>
+            </Container>
         </form>
     )
 }

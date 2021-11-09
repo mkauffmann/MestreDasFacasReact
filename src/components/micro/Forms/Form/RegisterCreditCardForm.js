@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import cardValidator from 'card-validator'
 import Input from "../Input/Input";
 import Button from "../../Button/Button";
@@ -16,7 +16,7 @@ const initialInputValues = {
 }
 
 function RegisterCreditCardForm(props) {
-    const [creditCardValues, setCreditCardValues] = useState({ ...initialInputValues })
+    const [creditCardValues, setCreditCardValues] = useState(props.alter ? props.alter : { ...initialInputValues })
     const requiredFields = ["cardNumber", "holderCpf", "holderName", "cardBrandTemp", "cardValidDate"]
     const {
         validateForm,
@@ -55,6 +55,7 @@ function RegisterCreditCardForm(props) {
         const value = event.target.value;
         const name = event.target.name;
         validationCallback(value, name)
+        validateForm(requiredFields)
     }
 
     const handleBlurNumber = (event, validationCallback) => {
@@ -81,7 +82,7 @@ function RegisterCreditCardForm(props) {
     return (
         <>
             <form onSubmit={handleSubmit} onReset={resetForm}>
-                <Col md={10} lg={8} className="mx-auto">
+                <Container className="mx-auto">
                     <Row>
                         <Col md={7} className="mb-3">
                             <Input type="text" id="cardNumber" name="cardNumber"
@@ -119,7 +120,7 @@ function RegisterCreditCardForm(props) {
                             <Input type="text" id="holderCpf" name="holderCpf"
                                     label="CPF do titular" obrigatorio
                                     mask="999.999.999-99"
-                                    changeFunction={handleChange} value={creditCardValues.cpf}
+                                    changeFunction={handleChange} value={creditCardValues.holderCpf}
                                     blurFunction={handleBlur} validation={validateCpflNotEmpty}
                                     error={errors.cpf} />
                         </Col>
@@ -130,7 +131,7 @@ function RegisterCreditCardForm(props) {
                         <Button class="btn-principal" label="Salvar" type="submit" />
                     </Col>
                 </Row>
-                </Col>
+                </Container>
             </form>
         </>
     )

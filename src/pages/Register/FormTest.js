@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Modal, Row, Col } from "react-bootstrap";
-import Button from '../../components/micro/Button/Button'
+import { Modal, Row, Col, Container } from "react-bootstrap";
 import RegisterUserDataForm from "../../components/micro/Forms/Form/RegisterUserDataForm";
 import RegisterAddressForm from "../../components/micro/Forms/Form/RegisterAddressForm";
 import RegisterCreditCardForm from "../../components/micro/Forms/Form/RegisterCreditCardForm";
@@ -16,6 +15,8 @@ function FormTest(props) {
     const [showAddress, setShowAddress] = useState(false);
     const [showCreditCard, setShowCreditCard] = useState(false);
 
+    const savedAddress = address === "" ? false : true
+    const savedCreditCard = creditCard === "" ? false : true
 
     const handleCloseAddress = () => setShowAddress(false);
     const handleShowAddress = () => setShowAddress(true);
@@ -30,6 +31,7 @@ function FormTest(props) {
             .then(() => {
                 console.log(user)
                 setAddress("")
+                setCreditCard("")
             })
     }
 
@@ -37,6 +39,11 @@ function FormTest(props) {
         if (user.telephoneTemp !== "") {
             user = { ...user, telephones: [handleTelephoneCreation(user.telephoneTemp)] }
             delete user.telephoneTemp
+        }
+
+        if (user.genderTemp !== ""){
+            user = {...user, gender : handleGenderCreation(user.genderTemp)}
+            delete user.genderTemp
         }
 
         if (address !== "") {
@@ -51,6 +58,10 @@ function FormTest(props) {
         return user
     }
 
+    const handleGenderCreation = (inputGender) => {
+        return { description : inputGender }
+    }
+
     const handleTelephoneCreation = (inputTelephone) => {
         let telArr = inputTelephone.split(") ")
         const ddd = telArr[0].slice(1)
@@ -61,48 +72,93 @@ function FormTest(props) {
         return { ddd, phoneNumber }
     }
 
+    const handleAddressCreation = (inputAddress) => {
+        let newObj = {
+            ...inputAddress, 
+            city : {cityName : inputAddress.cityTemp},
+            state : {uf: inputAddress.stateTemp}
+        }
+
+        delete newObj.cityTemp
+        delete newObj.stateTemp
+
+        return newObj
+
+    }
+
+    const handleCreditCardCreation = (inputCreditCard) => {
+        let newObj = {
+            ...inputCreditCard,
+            cardBrand : {cardBrandName : inputCreditCard.cardBrandTemp}
+        }
+
+        delete newObj.cardBrandTemp
+        return newObj
+    }
+
     const handleAddress = (inputAddress) => {
-        setAddress({ ...inputAddress })
+        const formatedAddress = handleAddressCreation(inputAddress)
+        setAddress({ ...formatedAddress })
+        handleCloseAddress()
     }
 
     const handleCreditCard = (inputCreditCard) => {
-        setCreditCard({ ...inputCreditCard })
+        const formatedCreditCard = handleCreditCardCreation(inputCreditCard)
+        setCreditCard({ ...formatedCreditCard })
+        handleCloseCreditCard()
+    }
+
+    const cancelAddressRegister = () => {
+        setAddress("")
+        handleCloseAddress()
+    }
+
+    const cancelCreditCardRegister = () => {
+        setCreditCard("")
+        handleCloseCreditCard()
     }
 
     return (
         <>
-            <RegisterUserDataForm save={saveUser} />
-            <Col>
-                <Row>
-                    <Col className="text-center model-position">
-                        <button class="btn-custom-default unsaved mb-2" onClick={handleShowAddress} >Cadastrar endereço</button>
-                        <button class="btn-custom-default unsaved mx-3" onClick={handleShowCreditCard} >Cadastrar Cartão de Crédito</button>
-                    </Col> 
-                </Row>
-            </Col>
+            <Container>
+                <RegisterUserDataForm save={saveUser} />
+                <Col>
+                    <Row>
+                        <Col className="text-center model-position">
+                            <button className={"btn-custom-default mb-2 " + (savedAddress ? "saved" : "unsaved")} onClick={handleShowAddress} >{savedAddress ? "Alterar endereço" : "Cadastrar endereço"}</button>
+                            <button className={"btn-custom-default mx-3 " + (savedCreditCard ? "saved" : "unsaved")} onClick={handleShowCreditCard} >{savedCreditCard ? "Alterar Cartão de Crédito" : "Cadastrar Cartão de Crédito"}</button>
+                        </Col>
+                    </Row>
+                </Col>
 
-            <Modal show={showAddress} onHide={handleCloseAddress} size="lg">
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-modal-sizes-title-lg">
-                        Cadastrar endereço
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <RegisterAddressForm save={handleAddress} />
-                </Modal.Body>
-            </Modal>
-            <Modal show={showCreditCard} onHide={handleCloseCreditCard} size="lg">
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-modal-sizes-title-lg">
-                        Cadastrar cartão de crédito
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <RegisterCreditCardForm save={handleCreditCard} />
-                </Modal.Body>
-            </Modal>
+                <Modal show={showAddress} onHide={handleCloseAddress} size="lg">
+                    <Modal.Header closeButton>
+                        <Modal.Title id="example-modal-sizes-title-lg">
+                            Cadastrar endereço
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <RegisterAddressForm save={handleAddress} alter={savedAddress ? address : ""} />
+                    </Modal.Body>
+                    <Modal.Footer className="justify-content-center">
+                        <button className="btn-custom-default btn-cancelar2" onClick={cancelAddressRegister}>Cancelar cadastro</button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal show={showCreditCard} onHide={handleCloseCreditCard} size="lg">
+                    <Modal.Header closeButton>
+                        <Modal.Title id="example-modal-sizes-title-lg">
+                            Cadastrar cartão de crédito
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <RegisterCreditCardForm save={handleCreditCard} alter={savedCreditCard ? creditCard : ""} />
+                    </Modal.Body>
+                    <Modal.Footer className="justify-content-center">
+                        <button className="btn-custom-default btn-cancelar2" onClick={cancelCreditCardRegister}>Cancelar cadastro</button>
+                    </Modal.Footer>
+                </Modal>
 
-
+            </Container>
         </>
     )
 }
