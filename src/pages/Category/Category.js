@@ -7,6 +7,10 @@ import '../../components/micro/Button/Button.css'
 import Card from '../../components/macro/CardHome/Card'
 import '../../components/macro/CardHome/Card.css'
 
+import SearchText from '../../components/micro/SearchText/SearchText'
+
+import SearchQuantityResult from '../../components/micro/SearchQuantityResult/SearchQuantityResult'
+
 import Faca2 from '../../assets/imgs/produtos/2.jpeg'
 import Faca3 from '../../assets/imgs/produtos/3.jpeg'
 import Faca4 from '../../assets/imgs/produtos/24.jpeg'
@@ -22,7 +26,7 @@ function Category(props) {
 
 <div class="container mt-5 mb-4">
     <div class="row">
-        <h2 class="texto-pesquisa mb-4"> Você buscou por X </h2>
+        <SearchText textoPesquisa="tramontina"/>
     </div>
     <div class="row">
         {/* <div class="col-12 col-md-6 col-lg-3 filtros">
@@ -124,7 +128,7 @@ function Category(props) {
 
         <div class="col-12 col-md-12 col-lg-12 catalogo-produtos">
             <div class="row linha-produtos-encontrados">
-                <h5 class="produtos-encontrados"> X Produtos Encontrados </h5>
+                <SearchQuantityResult quantityResult={4} />
                 <div class="dropdown drop-ordena">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                       Ordenar por:

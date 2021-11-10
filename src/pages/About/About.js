@@ -1,13 +1,19 @@
 import React from 'react';
 
+import Logo from '../../assets/imgs/about/img-logo-mdf.png'
+
 import '../About/About.css'
 
 function About(props) {
 
     return (
         <>
-            <div className="container mt-5 mb-4"> 
+            <div className="container mb-4"> 
 
+                <div className="logo-about">
+                    <img src={Logo} className="img-logo-about"/> 
+                </div>
+                
                 <div className="row"> 
                     <h2 className="mb-4"> Quem somos </h2>
                 </div> 
