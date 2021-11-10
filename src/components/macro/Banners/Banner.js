@@ -1,41 +1,42 @@
 import React from 'react'
 import './Banner.css'
 import { Carousel } from 'react-bootstrap'
-import  Banner2  from '../../../assets/imgs/banners/BANNER4.jpg'
-import  Banner3  from '../../../assets/imgs/banners/banner-1.png'
-import  Banner4  from '../../../assets/imgs/banners/banner-5.png'
+import Banner2 from '../../../assets/imgs/banners/BANNER4.jpg'
+import Banner3 from '../../../assets/imgs/banners/banner-1.png'
+import Banner4 from '../../../assets/imgs/banners/banner-5.png'
+import { Link } from 'react-router-dom'
 
 function Banner(props) {
 
     return (
         <>
-       
-        <div className="container"  >
-        <Carousel variant="light">
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 carousel" 
-                        src={Banner4}
-                        alt="First slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 carousel" 
-                        src={Banner2}
-                        alt="Second slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 carousel"
-                        src={Banner3}
-                        alt="Third slide"
-                    />
-                </Carousel.Item>
-            </Carousel>
-        </div>
-        
+
+            <div className="container carousel-custom"  >
+                <Carousel variant="light">
+                    <Carousel.Item>
+                        <Link to="/product/:id"><img
+                            className="d-block w-100 carousel"
+                            src={Banner4}
+                            alt="First slide"
+                        /></Link>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <Link to="/product/:id"><img
+                            className="d-block w-100 carousel"
+                            src={Banner2}
+                            alt="Second slide"
+                        /></Link>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <Link to="/product/:id"><img
+                            className="d-block w-100 carousel"
+                            src={Banner3}
+                            alt="Third slide"
+                        /></Link>
+                    </Carousel.Item>
+                </Carousel>
+            </div>
+
         </>
     )
 }
