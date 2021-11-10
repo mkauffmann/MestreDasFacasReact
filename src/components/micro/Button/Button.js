@@ -1,29 +1,29 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './Button.css'
-import { Link } from 'react-router-dom'
 
 function Button(props) {
 
-    const typeButton = () => {
-        if (props.navigation) {
+    const typeButton = (props) => {
+        if(props.navigation){
             return (
-                <Link to={props.route} className={"btn-custom-default " + props.class}>
-                    {props.label}
-                </Link>
-                )
-        } else {
+                <Link to={props.route} className={'btn-custom-default ' + props.class}>{props.label}</Link>
+            )
+        }
+        else {
             return (
-                <button onClick={() => props.onclick} className={"btn-custom-default " + props.class}>
+                <button onClick={() => props.onclick} 
+                        className={"btn-custom-default " + props.class}
+                        type={props.type}>
                     {props.label}
                 </button>
             )
         }
-        
     }
 
     return(
         <>
-            {typeButton()}
+            {typeButton(props)}
         </>
     )
 }

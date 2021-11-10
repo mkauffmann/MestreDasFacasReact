@@ -1,10 +1,7 @@
-.input-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.error {
+    border: 1px solid #860E1C !important;
 }
 
-.input-container input {
-    padding: 0 5px;
-    height: 35px;
+.error-text {
+    color: #860E1C !important;
 }

@@ -1,25 +1,41 @@
 .btn-custom-default {
-    font-weight: bold;
-    padding: 10px 20px;
-    margin-top:10px;
-    margin-right: 10px;
-    text-transform: uppercase;
-    border:none;
+    padding: 5px 20px;
+    border-radius: 30px;
+    transition: 0.1s;
+    display: inline-block;
     text-decoration: none;
-    display: inline-block
+    
 }
 
-.btn-custom-default:hover {
-    opacity: 0.8;
-    color: #fff
+/* BOTAO PRINCIPAL inicio */
+
+.btn-principal{
+    background-color: #E5571A;
+    border: solid 1px #E5571A;
+    color: white;
+  
 }
 
-.conversao {
-    background-color: green;
-    color: #fff;
+.btn-principal:hover {
+    background-color: #FFC07F;
+    border: solid 1px #FFC07F;
+    color: #860E1C;
 }
 
-.apoio {
-    background-color: #333;
-    color: #fff;
+/* BOTAO PRINCIPAL fim */
+
+/* BOTAO CANCELAR inicio */
+
+.btn-cancelar {
+    background-color: white;
+    border: solid 1px #860E1C;
+    color: #860E1C;
 }
+
+.btn-cancelar:hover {
+    color: white;
+    background-color: #860E1C;
+}
+
+
+/* BOTAO CANCELAR fim */
