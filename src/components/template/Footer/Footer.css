@@ -1,79 +1,97 @@
-footer{
+footer {
     font-family: 'Barlow', sans-serif;
-   
-    
+
 }
 
-.footer, .telefonesFooter, .footerMobile{
-    color: #FFC07F;
-    font-size: 16px;
+.footer,
+.telefonesFooter,
+.footerMobile {
+    color          : #FFC07F;
+    font-size      : 16px;
     text-decoration: none;
-    text-decoration:#FFC07F ;
+    text-decoration: #FFC07F;
 }
 
 
-.footer, .footerMobile{
-    background-color:rgba(134, 14, 28, 1);
-    font-weight: bold;
-    padding-top: 1px;
-    
+.footer,
+.footerMobile {
+    background-color: rgba(134, 14, 28, 1);
+    font-weight     : bold;
+    padding-top     : 1px;
+
 }
 
-.iconRedes, .iconPagamento{
+.iconRedes,
+.iconPagamento {
     margin-left: 20%;
 }
 
-.espaco-icone-mobile{
-    margin-left:10px;
+.espaco-icone-mobile {
+    margin-left: 10px;
 }
 
 
-.iconPix{
+.iconPix {
     margin-left: 21%;
 }
 
-.iconBoleto{
+.iconBoleto {
     margin-left: 2%;
 }
 
-.icones{
-    width: 32px;
+.icones {
+    width : 32px;
     height: 32px;
 }
 
-.icone-espaco{
-    margin-left:40px;
+.icone-espaco {
+    margin-left: 40px;
 }
 
 
 
-.footerMobile{
+.footerMobile {
     text-align: center;
 
 }
 
-.iconMobile{
+.iconMobile {
     padding: 2%;
 }
 
 @media (min-width:869px) {
-    .footerMobile, .listMobile{
+
+    .footerMobile,
+    .listMobile {
         display: none;
     }
-    
-}
-@media (max-width:869px){
-    .final, .endereco, .footer{
-        display: none;
-        
-    }   
+
 }
 
-.final, .finalMobile{
-    color: rgba(255, 255, 255, 0.774);
+@media (max-width:869px) {
+
+    .final,
+    .endereco,
+    .footer {
+        display: none;
+
+    }
+}
+
+.final,
+.finalMobile {
+    color      : rgba(255, 255, 255, 0.774);
     font-weight: normal;
 }
 
-.linkFooter:hover, .telefonesFooter:hover{
- color: #d1781ff3;
+.linkFooter:hover,
+.telefonesFooter:hover {
+    color: #d1781ff3;
+}
+
+footer {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    flex-direction : column;
 }
