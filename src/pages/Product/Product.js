@@ -1,32 +1,22 @@
 import React from 'react'
 import './Product.css'
-
 import Button from '../../components/micro/Button/Button'
 import '../../components/micro/Button/Button.css'
+import Faca7 from '../../assets/imgs/home/7.jpeg'
 
 function Product(props) {
 
-    return(
+    return (
         <>
-        <div className="container mt-5 mb-4 produto">
+            <div className="container mt-5 mb-4 produto paddProduto">
                 <div className="row">
-                    <p className="texto-categoria"> Mestre das Facas - Categoria 1 </p>
+                    <div className="texto-categoria"> Mestre das Facas - Categoria {props.categoria} </div>
                     <div className="col-12 col-md-6 col-lg-3 col-produto">
-                        <label className="imagem-produto"> IMAGEM PRODUTO </label>
-                        {/* Classificação e calculo de frete: */}
-                        {/* <img src="./img/Classificacao_Estrelas.png" className="classifica-estrelas" width="100px"/> */}
-                            {/* <div className="col-12 col-md-6 col-lg-10">
-                                <p> Calcular o frete e prazo de entrega </p>
-                                <div className="input-group input-group-sm mb-3">
-                                    <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="_____-___"/> */}
-                                    {/* <button type="reset" className="btn-cancelar mx-2"> Calcular </button> */}
-                                    {/* <Button label='Calcular' class='btn-cancelar'/>
-                                </div>
-                            </div> */}
+                        <img className="imagem-produto" src={Faca7}></img>
                     </div>
                     <div className="col-12 col-md-6 col-lg-9">
                         <div className="nome-do-produto">
-                           <p> Nome do produto </p> 
+                            <div><b> Nome do produto </b></div>
                         </div>
                         <div className="row">
                             <div className="col-12 col-md-6 col-lg-5">
@@ -35,24 +25,21 @@ function Product(props) {
                                     <option value="1">Azul</option>
                                     <option value="2">Verde</option>
                                     <option value="3">Amarelo</option>
-                                  </select>
+                                </select>
                             </div>
                             <div className="col-12 col-md-6 col-lg-5">
-                                    {/* <button type="submit" className="btn-principal" onclick="window.location.href='meucarrinho.html'"> Comprar </button> */}
-                                    <Button label='Comprar' class='btn-principal btn-comprar'/>
+                                {/* <button type="submit" className="btn-principal" onclick="window.location.href='meucarrinho.html'"> Comprar </button> */}
+                                <Button label='Comprar' class='btn-principal btn-comprar' />
                             </div>
                         </div>
                         <div>
-                            <h3 className="preco"> R$ XX,XX </h3>
+                            <h3 className="preco">R$ 200,30</h3>
                         </div>
-                        <p className="texto-desconto"> 10% de desconto em 1x no Cartão ou Boleto. sem juros </p>
-                        <hr/>
-                        <p className="texto-cartao-credito"> R$ XX,XX ou até 1x de R$XX,XX sem juros no Cartão de Crédito </p>
-                        <hr/>
-                        <p className="texto-boleto"> R$ XX,XX - 10% de desconto
-                        em 1x no Boleto. </p>
-                        <hr/>
-                        <p className="texto-pix"> R$ XX,XX - Em pagamento por PIX </p>
+                        <div className="texto-cartao-credito">R${props.preco} ou até 12x de R$ {120 / 12} sem juros no Cartão de Crédito </div>
+                        <hr />
+                        <div className="texto-boleto">Pagamento por Boleto </div>
+                        <hr />
+                        <div className="texto-pix">Pagamento por PIX </div>
                     </div>
                 </div>
             </div>
@@ -67,46 +54,29 @@ function Product(props) {
                 <div className="row">
                     <div className="col-12 col-md-12 col-lg-12 col-descricao">
                         <h3 className="mt-2"> Descrição do Produto </h3>
-                        <p> Morbi nisi diam, aliquet ut vulputate sit amet, sodales ut metus. Sed ut nisl consectetur, molestie neque nec, mollis velit. Sed sit amet erat dolor. Ut quis ligula eu neque egestas faucibus. Sed eleifend arcu ac quam cursus, sed dignissim magna feugiat. Nullam eget tortor id est interdum accumsan. Fusce volutpat, nisi ut pharetra sodales, lacus odio interdum purus, sed dignissim leo ipsum ac lectus. </p>
+                        <div>{props.descricao}Uma faca muito dahora legal, se eu fosse voces compraria, porque é uma faca que corta tomate e ate cebola,
+                            não é algo que se vê todos os dias, alem disso ela tem uma outra função, é só passar agua que ela ta limpa denovo e pode cortar
+                            até beringela e bacate</div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12 col-md-12 col-lg-12 col-especificacoes mt-5">
                         <h3 className="mt-2"> Especificações e Dimensões </h3>
                         <ul>
-                            <li> Altura:  </li>
-                            <li> Largura:  </li>  
-                            <li> Comprimento:  </li>  
-                            <li> Peso: </li> 
+                            <li> Altura: {props.altura} </li>
+                            <li> Largura: {props.largura}  </li>
+                            <li> Comprimento: {props.comprimento}  </li>
+                            <li> Peso:{props.peso} </li>
                         </ul>
                     </div>
                 </div>
 
-            {/* <!-- ENDING DESCRICAO --> */}
+                {/* <!-- ENDING DESCRICAO --> */}
 
-            {/* <!-- BEGIN AVALIACAO --> */}
-            
+                {/* <!-- BEGIN AVALIACAO --> */}
 
-                {/* <div class="row">
-                    <div class="col-12 col-md-6 col-lg-12 mt-4">
-                        <h3 class="texto-avalie-produto"> Avalie o Produto: </h3>
-                    </div>
-                </div> */}
 
-                {/* <div class="row">
-                    <div class="col-12 col-md-6 col-lg-12 mt-4">
-                        <h3 class="mt-2"> Deixe um comentário! </h3>
-                        <div class="input-group">
-                            <textarea class="form-control" aria-label="With textarea"></textarea>
-                        </div>
-                    </div>
-                </div> */}
 
-                {/* <div class="row">
-                    <div class="col-12 col-md-6 col-lg-3 mt-4">
-                        <button type="reset" class="btn-cancelar btn-enviar"> Enviar </button>
-                    </div>
-                </div> */}
             </div>
 
         </>

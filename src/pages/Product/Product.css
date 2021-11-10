@@ -1,14 +1,14 @@
 /* PRODUTO */
 
 .imagem-produto {
-    background-color: #C4C4C4;
     height: 220px;
-    width: 250px;
+    width: 230px;
     font-size: 25px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .col-produto {
@@ -24,12 +24,19 @@
 }
 
 .preco {
-    padding-top: 10px;
+    color:rgba(0, 0, 0, 0.87);
+    padding-top: 20px;
     font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 .texto-desconto, .texto-categoria {
     color: #860E1C;
+}
+
+.texto-categoria{
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .texto-cartao-credito, .texto-boleto, .texto-pix {
@@ -82,20 +89,7 @@
     box-shadow: 2px 2px 5px black;
 }
 
-/* CSS DE AVALIAÇÃO: */
 
-/* .texto-avalie-produto::after {
-    content: "";
-    background-image: url(../img/Classificacao_Estrelas2.png);
-    background-size: 160px;
-    background-repeat: no-repeat;
-    display: block;
-    position: absolute;
-    margin-top: -34px;
-    margin-left: 185px;
-    width: 160px;
-    height: 40px;
-} */
 
 .btn-comprar {
     width: 240px;
@@ -111,4 +105,14 @@
         margin-bottom: 20px;
     }
     
+}
+
+
+.produto{
+    padding:  30px;
+    margin-top: 10px
+}
+
+.btn-comprar{
+    width: 180px
 }
