@@ -1,0 +1,32 @@
+.btn-custom{
+
+    background-color: #860E1C;
+    border: solid 1px #a3a3a3;
+    color: white;
+    
+    text-align: center;
+    
+    width: 25px;
+  
+
+
+}
+
+.btn-custom2{
+    text-decoration: none;
+    color: red;
+    position: relative;
+    left: 6px;
+    
+    
+   border: none;
+   background-color: white;
+
+}
+
+.btn-custom:hover{
+
+    background-color: #5a0913;
+    
+    color: white;
+}
