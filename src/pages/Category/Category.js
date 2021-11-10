@@ -4,6 +4,14 @@ import './Category.css'
 import Button from '../../components/micro/Button/Button'
 import '../../components/micro/Button/Button.css'
 
+import Card from '../../components/macro/CardHome/Card'
+import '../../components/macro/CardHome/Card.css'
+
+import Faca2 from '../../assets/imgs/produtos/2.jpeg'
+import Faca3 from '../../assets/imgs/produtos/3.jpeg'
+import Faca4 from '../../assets/imgs/produtos/24.jpeg'
+import Faca5 from '../../assets/imgs/produtos/25.jpeg'
+
 function Category(props) {
 
     return (
@@ -130,34 +138,40 @@ function Category(props) {
                 </div>
             </div>
             <div class="row catalogo-produtos2">
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
-                    <p class="nome-do-produto-ctg"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <Button class="btn-principal btn-comprar" label="Comprar"/>
-                    {/* <button type="submit" class="btn-principal btn-comprar" onclick="window.location.href='pdp.html'" > Comprar </button> */}
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
-                    <p class="nome-do-produto-ctg"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <Button class="btn-principal btn-comprar" label="Comprar"/>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
-                    <p class="nome-do-produto-ctg"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <Button class="btn-principal btn-comprar" label="Comprar"/>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
-                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
-                    <p class="nome-do-produto-ctg"> Nome do produto </p>
-                    <p class="preco-do-produto"> R$ XX,XX </p> 
-                    <Button class="btn-principal btn-comprar" label="Comprar"/>
-                </div>
-            </div>
 
-            <div class="row catalogo-produtos2">
+            <Card nomeProduto="Faca-A47" imagem={Faca5} preco="156,50" parcelamento="12,30" />
+            <Card nomeProduto="Mc_Carioca" imagem={Faca2} preco="180,50" parcelamento="16,00" />
+            <Card nomeProduto="XTR-Lich" imagem={Faca3} preco="160,50" parcelamento="19,36" />
+            <Card nomeProduto="Trx-360"  imagem={Faca4} preco="50,00" parcelamento="11,20" />
+
+            {/*
+                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
+                    <p class="preco-do-produto"> R$ XX,XX </p> 
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
+                    <p class="preco-do-produto"> R$ XX,XX </p> 
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
+                    <p class="preco-do-produto"> R$ XX,XX </p> 
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 item-catalogo">
+                    <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
+                    <p class="nome-do-produto-ctg"> Nome do produto </p>
+                    <p class="preco-do-produto"> R$ XX,XX </p> 
+                    <Button class="btn-principal btn-comprar" label="Comprar"/>
+                </div> */}
+            </div> 
+
+            {/* <div class="row catalogo-produtos2">
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">
                     <label class="imagem-produto-ctg"> IMAGEM PRODUTO </label>
                     <p class="nome-do-produto-ctg"> Nome do produto </p>
@@ -182,22 +196,22 @@ function Category(props) {
                     <p class="preco-do-produto"> R$ XX,XX </p> 
                     <Button class="btn-principal btn-comprar" label="Comprar"/>
                 </div>
-            </div>
-            
-        </div>
+            </div> */}
 
         {/* <!-- ENDING CATALOGO PRODUTOS -->
 
         <!-- BEGIN BOTAO CARREGAR --> */}
 
         <div class="row linha-botao-carregar">
-            <div class="col-12 col-md-6 col-lg-3 botao-carregar">
+            <div class="col-12 col-md-12 col-lg-12 botao-carregar">
                 <br/><br/><br/><br/>
                 <Button class="btn-principal btn-cancelar" label="Carregar mais"/>
             </div>
         </div>
 
         {/* <!-- ENDING BOTAO CARREGAR --> */}
+            
+        </div>
 
     </div>
 </div>

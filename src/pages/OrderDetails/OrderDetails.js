@@ -131,8 +131,8 @@ function OrderDetails(props) {
                         <div>Ribeirão Preto, SP</div>
                         <hr/>
                         </div>
-                        <div class="container d-flex flex-row-reverse bd-highlight">
-                            <Link to="/home"><Button label="Voltar" class="btn-default btn-principal btn-back"></Button></Link>
+                        <div class="container d-flex flex-row-reverse bd-highlight"  style={{marginBottom: '20px'}}>
+                            <Link to="/home"><Button label="Voltar" class="btn-default btn-cancelar btn-back"></Button></Link>
 
                         </div>
                         </div>

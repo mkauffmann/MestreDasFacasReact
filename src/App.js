@@ -9,12 +9,13 @@ import Footer from './components/template/Footer/Footer'
 
 function App() {
   return (
-    <>
+    <> <Router>
       <Header/>
-      <Router>
+     
         <Routes/>
+        <Footer/>
       </Router>
-      <Footer/>
+     
     </>
   );
 }
