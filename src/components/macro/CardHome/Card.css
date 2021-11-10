@@ -19,6 +19,9 @@
 
 }
 
+.produtoDesktop:hover {
+    cursor: pointer;
+}
 
 
 p{

@@ -111,13 +111,14 @@ body {
 
 .linha-botao-carregar {
     display: flex;
-    justify-content: center;
+    
 }
 
 .botao-carregar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
 
 /* @media (max-width: 1000px) {
@@ -138,9 +139,17 @@ body {
 
 }
 
-/* @media (max-width: 402px) {
+@media (max-width: 420px) {
     .drop-ordena {
-        display: none;
+        width: 150px;
+    }
+
+    .produtos-encontrados {
+        width: 125px;
+    }
+
+    .texto-pesquisa {
+        font-size: 25px;
     }
     
-} */
+}
