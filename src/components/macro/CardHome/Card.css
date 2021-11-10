@@ -1,0 +1,55 @@
+.tituloProduto {
+    font-size  : 16px;
+    text-align : center;
+    font-family: 'Barlow', sans-serif;
+    font-weight: bold;
+}
+
+.precoProduto {
+    font-size  : 16px;
+    font-weight: bold;
+    color      : #860E1C;
+    text-align : center;
+    font-family: 'Barlow', sans-serif;
+}
+
+.produtoDesktop {
+    display: flex;
+    
+
+}
+
+
+
+p{
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+}
+
+img{
+    
+    border: rgba(0, 0, 0, 0.096) solid 1px;
+}
+
+
+
+@media (max-width:768px) {
+    .tituloProduto{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:576px) { 
+    .ocultaProduto1 {
+        display: none;
+
+    }
+}
+
+@media (max-width:768px) { 
+    .ocultaProduto2 {
+        display: none;
+
+    }
+}
+

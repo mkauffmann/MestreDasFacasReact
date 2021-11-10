@@ -6,8 +6,8 @@
       "id": 1
     },
     {
-      "name": "Maria Kauffmann",
-      "email": "maria@gmail",
+      "name": "Fulana da Silva",
+      "email": "fulana@gmail.com",
       "cpf": "122.223.344-55",
       "birthDate": "1992-06-13",
       "password": "123",
@@ -57,7 +57,7 @@
           "cardNumber": "4111 1111 1111 1111",
           "cardValidDate": "12/21",
           "holderCpf": "123.456.787-87",
-          "holderName": "Maria Kauffmann",
+          "holderName": "Fulana Gomes",
           "cardBrand": {
             "cardBrandName": "VISA"
           }
@@ -73,6 +73,49 @@
         }
       ],
       "id": 2
+    },
+    {
+      "name": "Beth Gonçalves",
+      "email": "beth@gmail.com",
+      "cpf": "121.212.121-21",
+      "birthDate": "",
+      "password": "123",
+      "telephones": [
+        {
+          "ddd": "54",
+          "phoneNumber": "646546465"
+        }
+      ],
+      "gender": {
+        "description": "Não-binário"
+      },
+      "addresses": [
+        {
+          "street": "Rua Pitangueiras",
+          "number": "123",
+          "complement": "",
+          "cep": "04052-020",
+          "neighborhood": "Mirandópolis",
+          "city": {
+            "cityName": "São Paulo"
+          },
+          "state": {
+            "uf": "SP"
+          }
+        }
+      ],
+      "creditCards": [
+        {
+          "cardNumber": "5555 5555 5555 4444",
+          "cardValidDate": "12/25",
+          "holderCpf": "554.545.454-54",
+          "holderName": "Beth silva",
+          "cardBrand": {
+            "cardBrandName": "MASTERCARD"
+          }
+        }
+      ],
+      "id": 3
     }
   ]
 }

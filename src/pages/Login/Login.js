@@ -10,7 +10,7 @@ function Login(props) {
     return(
         <>
         <Container>
-            <Row className="justify-content-center">
+            <Row className="justify-content-center mb-5">
                     <div className="col-12 col-md-6 col-lg-5 login-card">
                         {/* <!-- TITULO LOGIN START  --> */}
                         <div className="login-titulo text-center mt-3">

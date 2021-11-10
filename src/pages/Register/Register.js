@@ -7,8 +7,8 @@ function Register(props) {
 
     return(
         <>
-        <Container>
-            <div className="col-12 text-center mb-3 mt-5">
+        <Container className="my-5">
+            <div className="col-12 text-center mb-3">
                 <h1 className="h1">Criar novo cadastro</h1>
             </div>
             <RegisterUser/>
