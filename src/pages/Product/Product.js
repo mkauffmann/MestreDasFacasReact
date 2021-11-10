@@ -35,7 +35,7 @@ function Product(props) {
                         <div>
                             <h3 className="preco">R$ 200,30</h3>
                         </div>
-                        <div className="texto-cartao-credito">R${props.preco} ou até 12x de R$ {120 / 12} sem juros no Cartão de Crédito </div>
+                        <div className="texto-cartao-credito">R$ 120,00 ou até 12x de R$ {120.00 / 12} sem juros no Cartão de Crédito </div>
                         <hr />
                         <div className="texto-boleto">Pagamento por Boleto </div>
                         <hr />
