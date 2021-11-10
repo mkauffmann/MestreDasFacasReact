@@ -9,9 +9,7 @@ function OrderList(props){
             <div className="col-12 d-flex justify-content-between mb-4">
                 <h3>Meus Pedidos</h3>
             </div>
-            <OrderItem/>
-            <OrderItem/>
-            <OrderItem/>
+            <OrderItem number="123"/>
         </>
     )
 }

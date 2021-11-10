@@ -15,6 +15,10 @@
             {
               "ddd": "11",
               "phoneNumber": "111111111"
+            },
+            {
+              "ddd": "13",
+              "phoneNumber": "546317562"
             }
           ],
           "gender": {
@@ -27,6 +31,19 @@
               "complement": "",
               "cep": "01001-001",
               "neighborhood": "Sé",
+              "city": {
+                "cityName": "São Paulo"
+              },
+              "state": {
+                "uf": "SP"
+              }
+            },
+            {
+              "street": "Rua das Rosas",
+              "number": "126",
+              "complement": "",
+              "cep": "01001-001",
+              "neighborhood": "Vila Clementino",
               "city": {
                 "cityName": "São Paulo"
               },

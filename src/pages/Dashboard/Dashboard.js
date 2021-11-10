@@ -53,14 +53,14 @@ function Dashboard(props) {
                                     <OrderList />
                                 </Route>
                                 <Route path={`${url}/myCards`}>
-                                    <InfoList tipo="cartão" title="Meus Cartões" userData={user} isLoading={isLoading}/>
+                                    <InfoList type="cartão" title="Meus Cartões" userData={user} isLoading={isLoading}/>
                                 </Route>
-                                {/* <Route path={`${url}/myAddresses`}>
-                                    <InfoList tipo="endereço" title="Meus Endereços" />
+                                <Route path={`${url}/myAddresses`}>
+                                    <InfoList type="endereço" title="Meus Endereços" userData={user} isLoading={isLoading} />
                                 </Route>
                                 <Route path={`${url}/myTelephones`}>
-                                    <InfoList tipo="telefone" title="Meus Telefones"/>
-                                </Route> */}
+                                    <InfoList type="telefone" title="Meus Telefones" userData={user} isLoading={isLoading}/>
+                                </Route>
                             </Switch>
                         </ComponentCard>
                     </Col>
