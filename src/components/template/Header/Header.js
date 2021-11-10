@@ -281,7 +281,6 @@ rkJggg==" />
                             </svg>
                             </Link>
                         </div>
-                   
 
                     <div className="container col-4 col-sm-3 col-md-2 col-xl-1 col-xxl-1 blocoMeusPedidos"><Link to="/dashBoard/myOrders"><svg width="97"
                                 height="37" viewBox="0 0 109 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -320,26 +319,20 @@ rkJggg==" />
                         <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Facas Especiais</Link></div>
                         <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Réplicas</Link></div>
                     </div>
-                </nav>
-                {/* <!-- MENU HAMBURGUER MOBILE --> */}
-                <nav>
-                    <div className=" blocoBotao">
-                        <div className=" blocoBotao">
-                            <button className="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-                                aria-controls="offcanvasScrolling"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
-                                        fill="#FFC07F" />
-                                </svg>
-                                <a className="navegacao" href="#"><b>Explorar Categorias</b> </a></button>
-                        </div>
+                    {/* <!-- BEGING BAR OF NAVIGATION --> */}
 
-                        <div className="offcanvas offcanvas-start canva" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-                            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                            <div className="offcanvas-header cana">
-                                <h5 className="offcanvas-title" id="offcanvasScrollingLabel"></h5>
-                                <button type="" className="btn-close text-reset botaoFechar" data-bs-dismiss="offcanvas">
-                                </button>
+                    
+                    {/* <!-- MENU HAMBURGUER MOBILE --> */}
+                    <nav>
+                        <div className=" blocoBotao">
+                            <div className=" blocoBotao">
+                                <button className="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+                                    aria-controls="offcanvasScrolling"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
+                                            fill="#FFC07F" />
+                                    </svg>
+                                    <a className="navegacao" href="#"><b>Explorar Categorias</b> </a></button>
                             </div>
                             <div className="offcanvas-body canva">
                                 <ul>
@@ -352,13 +345,13 @@ rkJggg==" />
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </nav>
                     {/* <!-- FIM HEADER --> */}
                 </nav>
             </header>
             
         </>
-        
+
     )
 }
 

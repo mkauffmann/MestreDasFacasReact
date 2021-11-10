@@ -11,7 +11,9 @@ function Cart(props) {
 
             <div className={"container col-6 col-sm-4 col-md-3 col-xl-3 col-xll-3 produtoDesktop " + props.className}>
                 <div className="card " style={{ width: '18rem' }}>
+                    <Link to="/product/1">      
                     <img src={props.imagem} className="card-img-top" alt="..." />
+                    </Link>
                     <div className="card-body ">
                         <h5 className="card-title tituloProduto">{props.nomeProduto}</h5>
                         <p className="card-text precoProduto">R${props.preco}</p> <p>12x DE R${props.parcelamento}</p>

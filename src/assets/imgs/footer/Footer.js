@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import './Footer.css'
 import facebook from '../../../assets/imgs/footer/facebook.png'
 import instagram from '../../../assets/imgs/footer/instagram.png'
@@ -18,7 +17,7 @@ function Footer(props) {
                 <div className="container-fluid d-flex footer">
                     <div className="container col-12 d-flex footer ">
                         <div className="container col-3 alinhaFooter">
-                            <Link to="/category" className="footer linkFooter">Explorar Categorias</Link>
+                            <a className="footer linkFooter" href="#">Explorar Categorias</a>
 
                         </div>
                         <div className="container col-3 footer">Redes Sociais
@@ -31,7 +30,7 @@ function Footer(props) {
                 <div className="container-fluid d-flex footer ">
                     <div className="container ro col-12 d-flex footer ">
                         <div className="container col-3 footer atendimento alinhaFooter">
-                            <Link to="/contact"className="footer linkFooter">Atendimento</Link>
+                            <a className="footer linkFooter" href="#">Atendimento</a>
 
                         </div>
                         {/* Fcabook e instagram */}
@@ -59,7 +58,7 @@ function Footer(props) {
                 <div class="container-fluid d-flex footer ">
                     <div class="container ro col-12 d-flex footer ">
                         <div class="container col-3">
-                        <Link to="/about" className="footer linkFooter"> Quem Somos </Link>
+                            <a class="footer linkFooter" href="#">Quem somos</a>
 
                         </div>
                         {/* Youtube e twitter */}

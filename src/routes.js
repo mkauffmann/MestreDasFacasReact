@@ -13,6 +13,7 @@ import Success from './pages/Success/Success'
 import OrderDetails from "./pages/OrderDetails/OrderDetails"
 import NotFound from "./pages/NotFound/NotFound"
 import Contact from "./pages/Contact/Contact"
+import About from "./pages/About/About"
 
 
 export const Routes = () => {
@@ -30,6 +31,7 @@ export const Routes = () => {
             <Route path="/contact" component={Contact}/>
             <Route path="/success" component={Success}/>
             <Route path="/orderDetails" component={OrderDetails}/>
+            <Route path="/about" component={About}/>
             <Route component={NotFound}/>
             
         </Switch>
