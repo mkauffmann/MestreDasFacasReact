@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import {
     BrowserRouter as Router,
@@ -6,6 +6,7 @@ import {
     Route,
     useRouteMatch
 } from "react-router-dom";
+import axios from 'axios';
 
 import './Dashboard.css'
 import DashboardMenuMobile from '../../components/macro/Dashboard/Menu/DashboardMenuMobile'
@@ -15,53 +16,23 @@ import OrderList from '../../components/macro/Dashboard/OrderList/OrderList'
 import InfoList from '../../components/macro/Dashboard/InfoList/InfoList'
 import ComponentCard from '../../components/macro/Dashboard/ComponentCard/ComponentCard'
 
-const userTemp = {
-    "name": "Maria Kauffmann",
-    "email": "maria@gmail",
-    "cpf": "122.223.344-55",
-    "birthDate": "1992-06-13",
-    "password": "123",
-    "telephones": [
-      {
-        "ddd": "11",
-        "phoneNumber": "111111111"
-      }
-    ],
-    "gender": {
-      "description": "Feminino"
-    },
-    "addresses": [
-      {
-        "street": "Praça da Sé",
-        "number": "02",
-        "complement": "",
-        "cep": "01001-001",
-        "neighborhood": "Sé",
-        "city": {
-          "cityName": "São Paulo"
-        },
-        "state": {
-          "uf": "SP"
-        }
-      }
-    ],
-    "creditCards": [
-      {
-        "cardNumber": "4111 1111 1111 1111",
-        "cardValidDate": "12/21",
-        "holderCpf": "123.456.787-87",
-        "holderName": "Maria Kauffmann",
-        "cardBrand": {
-          "cardBrandName": "VISA"
-        }
-      }
-    ],
-    "id": 2
-}
-
 function Dashboard(props) {
-    let { url } = useRouteMatch()
-    let user = userTemp
+    let id = 2
+    const getUrl = ` http://localhost:3001/users/${id}`
+    
+    const [user, setUser] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+    const { url } = useRouteMatch()
+    
+    const getUser = () => axios.get(getUrl)
+    .then(response => {
+        setUser({...response.data})
+        setIsLoading(false)
+        console.log(user)
+    })
+    .catch(error => console.log(error))
+
+    useEffect(getUser, [])
 
     return (
         <>
@@ -77,7 +48,7 @@ function Dashboard(props) {
                         <ComponentCard>
                             <Switch>
                                 <Route path={`${url}/userForm`}>
-                                    <UserForm userData={user}/>
+                                    <UserForm userData={user} isLoading={isLoading}/>
                                 </Route>
                                 <Route path={`${url}/myOrders`}>
                                     <OrderList />
