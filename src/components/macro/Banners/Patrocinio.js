@@ -6,10 +6,10 @@ function Patrocinio(props) {
         <>
             <div class="container d-flex banner1">
                 <div class="container col-6">
-                    <img src={props.imagem} class="d-block w-100 patrocinio" />
+                    <img src={props.imagem} class="d-block w-100 patrocinio " />
                 </div>
                 <div class="container col-6">
-                    <img src={props.imagem}  class="d-block w-100 patrocinio" />
+                    <img src={props.imagem}  class="d-block w-100 patrocinio " />
                 </div>
             </div>
         </>
