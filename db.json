@@ -44,6 +44,15 @@
               "cardBrand": {
                 "cardBrandName": "VISA"
               }
+            },
+            {
+              "cardNumber": "4111 1111 1111 3456",
+              "cardValidDate": "12/21",
+              "holderCpf": "123.456.787-87",
+              "holderName": "Fulana Siqueira",
+              "cardBrand": {
+                "cardBrandName": "Mastercard"
+              }
             }
           ],
           "id": 2

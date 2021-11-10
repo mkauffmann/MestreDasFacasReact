@@ -1,17 +1,30 @@
 import React from "react"
-import Button from '../../../micro/Button/Button'
 import InfoItem from "./InfoItem/InfoItem"
 
 import './InfoList.css'
 
-function InfoList(props){
+function InfoList(props) {
+
+    const renderList = (array) => {
+        let items = []
+        for(let i = 0; i < array.length; i++){
+            items.push(<InfoItem obj={array[i]} key={i}/>)
+        }
+        return items
+    }
+
+    if (props.isLoading) {
+        return <p>Loading...</p>
+    }
+
     return (
         <>
             <div className="col-12 d-flex justify-content-between mb-4">
-                <h3>{props.type == 'card' ? 'Meus Cartões' : 'Meus Endereços'}</h3>
-                <Button class="btn-principal" label={props.type == 'card' ? 'Adicionar cartão' : 'Adicionar endereço'}/>
+                <h3>{props.title}</h3>
+                <button class="btn-custom-default btn-principal"> Adicionar {props.tipo}</button>
             </div>
-            <InfoItem type={props.type}/>
+
+            {renderList(props.userData.creditCards)}
         </>
     )
 }

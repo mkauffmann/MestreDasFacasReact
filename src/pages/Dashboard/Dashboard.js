@@ -28,7 +28,6 @@ function Dashboard(props) {
     .then(response => {
         setUser({...response.data})
         setIsLoading(false)
-        console.log(user)
     })
     .catch(error => console.log(error))
 
@@ -54,14 +53,14 @@ function Dashboard(props) {
                                     <OrderList />
                                 </Route>
                                 <Route path={`${url}/myCards`}>
-                                    <InfoList type='card' />
+                                    <InfoList tipo="cartão" title="Meus Cartões" userData={user} isLoading={isLoading}/>
                                 </Route>
-                                <Route path={`${url}/myAddresses`}>
-                                    <InfoList type='address' />
+                                {/* <Route path={`${url}/myAddresses`}>
+                                    <InfoList tipo="endereço" title="Meus Endereços" />
                                 </Route>
                                 <Route path={`${url}/myTelephones`}>
-                                    <InfoList type='telephone' />
-                                </Route>
+                                    <InfoList tipo="telefone" title="Meus Telefones"/>
+                                </Route> */}
                             </Switch>
                         </ComponentCard>
                     </Col>
