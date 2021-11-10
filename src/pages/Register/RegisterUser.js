@@ -37,7 +37,6 @@ function RegisterUser(props) {
         user = handleObject(user)
         axios.post(`${URL}`, user)
             .then(() => {
-                console.log(user)
                 setAddress("")
                 setCreditCard("")
             })
