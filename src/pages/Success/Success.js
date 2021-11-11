@@ -1,6 +1,6 @@
 import React from 'react'
 import imgCart from '../../assets/imgs/paymentForm/teste.png'
-import imgProduct from '../../assets/imgs/Product/PRODUTO.jpg'
+import imgProduct from '../../assets/imgs/product/PRODUTO.jpg'
 import Button from '../../components/micro/Button/Button'
 
 import imgfrete from '../../assets/imgs/Frete/Correios.png'

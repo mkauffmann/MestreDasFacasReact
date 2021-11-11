@@ -1,16 +1,19 @@
 import React from 'react'
 import './Checkout.css'
 
+import { Link } from 'react-router-dom'
+
 import Button from '../../components/micro/Button/Button'
 import '../../components/micro/Button/Button.css'
 
-import TotalValue from '../../components/micro/TotalValue/TotalValue'
-import '../../components/micro/TotalValue/TotalValue.css'
+import TotalValueCheckout from '../../components/micro/TotalValueCheckout/TotalValueCheckout'
 
 import IconHome from '../../assets/imgs/checkout/icon-home.png'
 import IconCredit from '../../assets/imgs/product/icone-cartao-credito.png'
 import IconBoleto from '../../assets/imgs/product/icone-boleto.png'
 import IconPix from '../../assets/imgs/product/icone-pix.png'
+
+import ProductComp from '../../components/micro/ProductComp/ProductComp'
 
 import Faca2 from '../../assets/imgs/produtos/2.jpeg'
 import Faca3 from '../../assets/imgs/produtos/3.jpeg'
@@ -111,118 +114,26 @@ function Checkout(props) {
 
                     {/* COMEÇA AQUI ATT DO 11/11 */}
 
-                    <div class="col-sm-6">
-                        <ul>
+                    <div class="container-fluid col-sm-6 col-md-6 col-lg-6">
+                        <div>
 
-                            <li class="list-group-item py-3">
-                                <div class="row g-3">
-                                    <div class="col-4 col-md-3 col-lg-2">
-                                        <a href="#">
-                                            <img width="150" src={Faca2} class="img-thumbnail" />
-                                        </a>
-                                    </div>
-
-                                    <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
-                                        <h4 style={{ fontSize: '12px' }}><b><a href="#"
-                                            class="text-produto-nome text-decoration-none text-danger">Nome do Produto</a></b></h4>
-                                        <h4 style={{ fontSize: '12px' }} class="text-produto-desc">
-                                            <small>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi animi delectus consequatur sed
-                                                culpa accusamus alias, aliquam officiis totam magni voluptas similique. Officia ab natus neque
-                                                temporibus rerum distinctio excepturi?
-                                            </small>
-                                        </h4>
-                                    </div>
-                                    <div class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-0 col-xl-2 align-self-center mt-3">
-                                        <div style={{ fontSize: '12px' }} class="text-right mt-2">
-                                            <small class="text-secondary">Subtotal: R$ 4.700,00</small>
-                                            <br />
-                                            <span class="text-dark">Valor Total: R$ 4.700,00</span>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </li>
-
-                            <li class="list-group-item py-3">
-                                <div class="row g-3">
-                                    <div class="col-4 col-md-3 col-lg-2">
-                                        <a href="#">
-                                        <img width="150" src={Faca3} class="img-thumbnail" />
-                                        </a>
-                                    </div>
-
-                                    <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
-                                        <h4 style={{ fontSize: '12px' }}><b><a href="#"
-                                            class="text-produto-nome text-decoration-none text-danger">Nome do Produto</a></b></h4>
-                                        <h4 style={{ fontSize: '12px' }} class="text-produto-desc">
-                                            <small>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi animi delectus consequatur sed
-                                                culpa accusamus alias, aliquam officiis totam magni voluptas similique. Officia ab natus neque
-                                                temporibus rerum distinctio excepturi?
-                                            </small>
-                                        </h4>
-                                    </div>
-                                    <div class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-0 col-xl-2 align-self-center mt-3">
-                                        <div style={{ fontSize: '12px' }} class="text-right mt-2">
-                                            <small class="text-secondary">Subtotal: R$ 4.700,00</small>
-                                            <br />
-                                            <span class="text-dark">Valor Total: R$ 4.700,00</span>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </li>
-
-                            <li class="list-group-item py-3">
-                                <div class="row g-3">
-                                    <div class="col-4 col-md-3 col-lg-2">
-                                        <a href="#">
-                                        <img width="150" src={Faca4} class="img-thumbnail" />
-                                        </a>
-                                    </div>
-
-                                    <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
-                                        <h4 style={{ fontSize: '12px' }}><b><a href="#"
-                                            class="text-produto-nome text-decoration-none text-danger">Nome do Produto</a></b></h4>
-                                        <h4 style={{ fontSize: '12px' }} class="text-produto-desc">
-                                            <small>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi animi delectus consequatur sed
-                                                culpa accusamus alias, aliquam officiis totam magni voluptas similique. Officia ab natus neque
-                                                temporibus rerum distinctio excepturi?
-                                            </small>
-                                        </h4>
-                                    </div>
-                                    <div class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-0 col-xl-2 align-self-center mt-3">
-                                        <div style={{ fontSize: '12px' }} class="text-right mt-2">
-                                            <small class="text-secondary">Subtotal: R$ 4.700,00</small>
-                                            <br />
-                                            <span class="text-dark">Valor Total: R$ 4.700,00</span>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </li>
-
-
+                            <ProductComp imagem={Faca4} naoMostraCaixas/>
+                            <ProductComp imagem={Faca2} naoMostraCaixas/>
+                            <ProductComp imagem={Faca3} naoMostraCaixas/>
 
                             <hr />
                             
-                                <TotalValue numero={3} info="produtos" valor={14100} />
+                                <TotalValueCheckout numero={3} info="produtos" valor={14100} />
 
-                                <TotalValue info="Frete" valor={10.91}/>
+                                <TotalValueCheckout info="Frete" valor={10.91}/>
 
                             <hr />
 
-                                <TotalValue info="Total" valor={14100 + 10.91}/>
+                                <TotalValueCheckout info="Total" valor={14100 + 10.91}/>
 
-                                <Button class="btn-principal btn-principal-finalizar" label="Finalizar Compra"/>
+                                <Link to="/success"> <Button class="btn-principal btn-principal-finalizar" label="Finalizar Compra"/> </Link>
                                 
-
-                        </ul>
+                        </div>
                     </div>
 
                     {/* TERMINA AQUI ATT DO 11/11 */}
