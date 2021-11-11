@@ -28,3 +28,10 @@
   transition: 0.1s;
   text-decoration: none;
 }
+
+.img-icone {
+    border:none;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+

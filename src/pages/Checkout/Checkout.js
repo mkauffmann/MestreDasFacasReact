@@ -4,6 +4,18 @@ import './Checkout.css'
 import Button from '../../components/micro/Button/Button'
 import '../../components/micro/Button/Button.css'
 
+import TotalValue from '../../components/micro/TotalValue/TotalValue'
+import '../../components/micro/TotalValue/TotalValue.css'
+
+import IconHome from '../../assets/imgs/checkout/icon-home.png'
+import IconCredit from '../../assets/imgs/product/icone-cartao-credito.png'
+import IconBoleto from '../../assets/imgs/product/icone-boleto.png'
+import IconPix from '../../assets/imgs/product/icone-pix.png'
+
+import Faca2 from '../../assets/imgs/produtos/2.jpeg'
+import Faca3 from '../../assets/imgs/produtos/3.jpeg'
+import Faca4 from '../../assets/imgs/produtos/24.jpeg'
+
 function Checkout(props) {
 
     return (
@@ -18,7 +30,7 @@ function Checkout(props) {
                         <br />
                         <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
                             <a class="navbar-brand" href="#">
-                                <img src="./img/Vector.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                                <img src={IconHome} width="30" height="30" class="d-inline-block align-top img-icone " alt="" />
                                 Endereço de entrega
                             </a>
                         </nav>
@@ -54,7 +66,7 @@ function Checkout(props) {
 
                             <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
                                 <a class="navbar-brand" href="#">
-                                    <img src="./img/icone-cartao-credito.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                                <img src={IconCredit} width="30" height="30" class="d-inline-block align-top img-icone" alt="" />
                                     Pagamento
                                 </a>
                             </nav>
@@ -68,7 +80,7 @@ function Checkout(props) {
                             <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
                                 <a class="navbar-brand" href="#">
                                     <input class="form-check-input custom-check" type="radio" name="flexRadioDefault" />
-                                    <img src="./img/icone-pix.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                                    <img src={IconPix} width="30" height="30" class="d-inline-block align-top img-icone" alt="" />
                                     Pix
                                 </a>
                             </nav>
@@ -78,7 +90,7 @@ function Checkout(props) {
                             <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
                                 <a class="navbar-brand" href="#">
                                     <input class="form-check-input custom-check" type="radio" name="flexRadioDefault" />
-                                    <img src="./img/icone-pix.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                                    <img src={IconCredit} width="30" height="30" class="d-inline-block align-top img-icone" alt="" />
                                     Crédito
                                 </a>
                             </nav>
@@ -86,7 +98,7 @@ function Checkout(props) {
                             <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
                                 <a class="navbar-brand" href="#">
                                     <input class="form-check-input custom-check" type="radio" name="flexRadioDefault" />
-                                    <img src="./img/icone-pix.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                                    <img src={IconBoleto} width="30" height="30" class="d-inline-block align-top img-icone" alt="" />
                                     Boleto
                                 </a>
                             </nav>
@@ -106,7 +118,7 @@ function Checkout(props) {
                                 <div class="row g-3">
                                     <div class="col-4 col-md-3 col-lg-2">
                                         <a href="#">
-                                            <img width="150" src="./img/PRODUTO.jpg" class="img-thumbnail" />
+                                            <img width="150" src={Faca2} class="img-thumbnail" />
                                         </a>
                                     </div>
 
@@ -137,7 +149,7 @@ function Checkout(props) {
                                 <div class="row g-3">
                                     <div class="col-4 col-md-3 col-lg-2">
                                         <a href="#">
-                                            <img width="150" src="./img/PRODUTO.jpg" class="img-thumbnail" />
+                                        <img width="150" src={Faca3} class="img-thumbnail" />
                                         </a>
                                     </div>
 
@@ -168,7 +180,7 @@ function Checkout(props) {
                                 <div class="row g-3">
                                     <div class="col-4 col-md-3 col-lg-2">
                                         <a href="#">
-                                            <img width="150" src="./img/PRODUTO.jpg" class="img-thumbnail" />
+                                        <img width="150" src={Faca4} class="img-thumbnail" />
                                         </a>
                                     </div>
 
@@ -198,13 +210,17 @@ function Checkout(props) {
 
 
                             <hr />
-                            <h5>04 Produtos &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; R$ 18.800,00 </h5>
-                            <h5>Frete &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; R$ 10,91 </h5>
+                            
+                                <TotalValue numero={3} info="produtos" valor={14100} />
+
+                                <TotalValue info="Frete" valor={10.91}/>
+
                             <hr />
-                            <h3 style={{ fontSize: '20px' }}>Total &ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; R$ 18.810,91 </h3>
-                            <a href="./pdf.html">
+
+                                <TotalValue info="Total" valor={14100 + 10.91}/>
+
                                 <Button class="btn-principal btn-principal-finalizar" label="Finalizar Compra"/>
-                            </a>
+                                
 
                         </ul>
                     </div>
