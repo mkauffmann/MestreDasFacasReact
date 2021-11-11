@@ -1,7 +1,7 @@
 .btn-custom{
 
     background-color: #860E1C;
-    border: solid 1px #a3a3a3;
+    border: none;
     color: white;
     
     text-align: center;
@@ -12,16 +12,11 @@
 
 }
 
-.btn-custom2{
-    text-decoration: none;
-    color: red;
-    position: relative;
-    left: 6px;
+.btn-lix-custom{
+background-color: white;
     
+    border: none;
     
-   border: none;
-   background-color: white;
-
 }
 
 .btn-custom:hover{

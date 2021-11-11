@@ -2,9 +2,12 @@
 import React from 'react'
 import imgProduct from '../../assets/imgs/Product/PRODUTO.jpg'
 import './Cart.css'
-
 import Button from '../../components/micro/Button/Button'
 import Product from '../../components/micro/Product/Product'
+import Faca1 from '../../assets/imgs/produtos/1.jpeg'
+import Faca2 from '../../assets/imgs/produtos/2.jpeg'
+import Faca3 from '../../assets/imgs/produtos/3.jpeg'
+import TotalValue from '../../components/micro/TotalValue/TotalValue'
 
 function Cart(props) {
 
@@ -19,19 +22,20 @@ function Cart(props) {
 
             <li className="list-group-item py-3">
                 
-        <Product/>
+        <Product imagem={Faca1} />
             
             </li>
             <li className="list-group-item py-3">
                 
-            <Product/>
+            <Product imagem={Faca2}/>
 
             </li>
 
             <li className="list-group-item py-3">
                 
                 
-            <Product/>
+            <Product imagem={Faca3}/>
+            
 
             </li>
             
@@ -41,8 +45,13 @@ function Cart(props) {
         </ul>
            
            
+        <TotalValue/>
            
            </div>
+
+           
+
+
         </>
     )
 }
