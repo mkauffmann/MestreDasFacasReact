@@ -3,7 +3,8 @@
     {
       "name": "maria",
       "email": "maria@maria.com",
-      "id": 1
+      "id": 1,
+      "password": "teste"
     },
     {
       "name": "Fulana da Silva",
@@ -116,6 +117,12 @@
         }
       ],
       "id": 3
+    }
+  ],
+  "login": [
+    {
+      "email": "mariatkauffmann@gmail.com",
+      "id": 1
     }
   ]
 }

@@ -19,20 +19,6 @@ body {
 } */
 
 
-/* LOGIN CARD START */
-.login-card {
-    background-color: white;
-    box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.25);
-    height: 520px;
-}
-
-/* LOGIN CARD END  */
-
-.login-titulo h3 {
-    font-family: 'Archivo Narrow', Arial, sans-serif;
-    color: #860E1C;
-}
-
 .custom-label{
     font-weight: bold;
 }
@@ -46,10 +32,6 @@ body {
     display: block;
     text-align: center;
     text-decoration: none;
-}
-
-.divisao {
-    color: #860E1C;
 }
 
 .btn-login {

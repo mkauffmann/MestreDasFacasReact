@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    useParams,
     useRouteMatch
 } from "react-router-dom";
 import axios from 'axios';
@@ -17,7 +18,7 @@ import InfoList from '../../components/macro/Dashboard/InfoList/InfoList'
 import ComponentCard from '../../components/macro/Dashboard/ComponentCard/ComponentCard'
 
 function Dashboard(props) {
-    let id = 2
+    let {id} = useParams()
     const getUrl = ` http://localhost:3001/users/${id}`
     
     const [user, setUser] = useState({})
