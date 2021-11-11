@@ -134,10 +134,8 @@ function Category(props) {
                       Ordenar por:
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <li><a class="dropdown-item" href="#"> Relevância </a></li>
                       <li><a class="dropdown-item" href="#"> Maior Preço </a></li>
                       <li><a class="dropdown-item" href="#"> Menor Preço </a></li>
-                      <li><a class="dropdown-item" href="#"> Mais Vendido </a></li>
                     </ul>
                 </div>
             </div>
