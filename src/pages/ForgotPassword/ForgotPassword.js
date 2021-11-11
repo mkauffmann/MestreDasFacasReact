@@ -12,7 +12,7 @@ import DividingBar from "../../components/micro/Login/DividingBar/DividingBar";
 function ForgotPassword(props) {
     const URL = 'http://localhost:3001/login';
     const requiredFields = ["email"]
-    const [inputValues, setInputValues] = useState({ email: "" })
+    const [inputValues, setInputValues] = useState({email : ""})
     const [isSent, setIsSent] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const { errors,
@@ -52,7 +52,7 @@ function ForgotPassword(props) {
     }
 
     const resetForm = () => {
-        setInputValues({ email: "" });
+        setInputValues({email : ""});
         resetErrorStates();
     };
 
