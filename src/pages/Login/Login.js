@@ -14,7 +14,7 @@ function Login(props) {
         <>
             <Container>
                 <Row className="justify-content-center">
-                    <CardLogin>
+                    <CardLogin classes="login-card">
                         <TitleLogin title="Faça login" subtitle="Já é nosso cliente?" />
                         <Form className="inputs-login d-flex flex-column">
                             <Form.Group controlId="email" className="mb-1">
