@@ -3,8 +3,10 @@ import { Row, Col} from "react-bootstrap";
 import Button from "../../../micro/Button/Button";
 import Input from "../../../micro/Forms/Input/Input";
 import Select from "../../../micro/Forms/Select/Select";
+import DividingBar from '../../../micro/Login/DividingBar/DividingBar'
 import useValidation from "../../../../hooks/useValidation";
 import useRegisterFormat from "../../../../hooks/useRegisterFormat";
+import UpdatePasswordForm from "./UpdatePasswordForm";
 
 function UpdateUserDataForm(props) {
     const {handleShowGender} = useRegisterFormat()
@@ -118,33 +120,14 @@ function UpdateUserDataForm(props) {
                                 value={inputValues.genderTemp} />
                         </Col>
                     </Row>
-                    <Row className="mt-5">
-                        <div className="mb-3"><h4>Trocar de Senha</h4></div>
-                        <Col md={6} className="mb-3">
-                            <Input type="password" id="senha" name="prevPassword" placeholder="Digite sua senha atual" label="Digite sua senha atual"
-                                    obrigatorio changeFunction={handleChange} 
-                                    value={inputValues.prevPassword}
-                                    error={errors.password}/>
-                        </Col>
-                        <Col md={6} className="mb-3"></Col>
-                        <Col md={6} className="mb-3">
-                            <Input type="password" id="senha" name="password" placeholder="Digite sua nova senha" label="Digite sua nova senha"
-                                    obrigatorio changeFunction={handleChange} 
-                                    value={inputValues.password}
-                                    error={errors.password}/>
-                        </Col>
-                        <Col md={6} className="mb-3">
-                        <Input type="password" id="confirmarSenha" name="confirmPassword" placeholder="Digite novamente sua nova senha" label="Confirme sua nova senha"
-                                    obrigatorio changeFunction={handleChange} value={inputValues.confirmPassword}
-                                    error={errors.confirmPassword}/>
-                        </Col>
-                    </Row>
                     <Row className="justify-content-end">
                         <Col className="d-flex justify-content-end">
-                            <Button class="btn-principal" label="Atualizar" type="submit" />
+                            <Button class="btn-principal" label="Atualizar dados pessoais" type="submit" />
                         </Col>
                     </Row>
+                    <DividingBar singleLine/>
             </form>
+            <UpdatePasswordForm />
         </>
     );
 }
