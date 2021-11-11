@@ -12,11 +12,12 @@ import DividingBar from "../../components/micro/Login/DividingBar/DividingBar";
 function ForgotPassword(props) {
     const URL = 'http://localhost:3001/login';
     const requiredFields = ["email"]
-    const [inputValues, setInputValues] = useState({email : ""}) 
+    const [inputValues, setInputValues] = useState({ email: "" })
     const [isSent, setIsSent] = useState(false)
-    const { errors, 
-        validateEmailNotEmpty, 
-        validateForm, 
+    const [errorMessage, setErrorMessage] = useState("")
+    const { errors,
+        validateEmailNotEmpty,
+        validateForm,
         resetErrorStates } = useValidation(inputValues)
 
     const handleSubmit = (event) => {
@@ -24,10 +25,13 @@ function ForgotPassword(props) {
 
         if (validateForm(requiredFields)) {
             axios.post(URL, inputValues)
-            .then(() => {
-                resetForm()
-                setIsSent(true)
-            })
+                .then((response) => {
+                    if (response.status == 201) { //mudar status code quando integrar com API
+                        resetForm()
+                        setIsSent(true) //adicionar checagem de erro se o email não pertence à uma conta
+                    }
+                })
+                .catch(error => setErrorMessage(error.message))
         }
     };
 
@@ -48,7 +52,7 @@ function ForgotPassword(props) {
     }
 
     const resetForm = () => {
-        setInputValues({email : ""});
+        setInputValues({ email: "" });
         resetErrorStates();
     };
 
@@ -62,18 +66,19 @@ function ForgotPassword(props) {
                             placeholder="Digite o email associado à sua conta"
                             value={inputValues.email}
                             changeFunction={handleChange} blurFunction={handleBlur}
-                            validation={validateEmailNotEmpty} error={errors.email}/>
+                            validation={validateEmailNotEmpty} error={errors.email} />
                         <div className="mt-3 d-flex justify-content-end">
                             <Button navigation route='/login' class='mx-2 btn-cancelar' label='Voltar' />
                             <Button class="btn-principal" label="Enviar" />
                         </div>
                     </form>
-                    {isSent 
-                    ? <>
-                        <DividingBar/>
-                        <TitleLogin title="Email enviado" subtitle="Aguarde alguns minutos e confira sua caixa de entrada"/> 
+                    {isSent
+                        ? <>
+                            <DividingBar />
+                            <TitleLogin title="Email enviado" subtitle="Aguarde alguns minutos e confira sua caixa de entrada" />
                         </>
-                    : ""}
+                        : ""}
+                    {errorMessage}
                 </CardLogin>
             </Row>
         </Container>
