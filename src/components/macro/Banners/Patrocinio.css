@@ -6,10 +6,8 @@
     
 }
 
-
-@media (min-width: 760px) {
-    .patrocinio{
-        height:80px;
-    }
+.patrocinio{
+    border: none;
 }
+
 
