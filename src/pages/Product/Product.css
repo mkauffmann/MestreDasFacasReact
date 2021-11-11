@@ -8,6 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+    margin-right: 50px;
     
 }
 
@@ -30,7 +32,7 @@
     margin-bottom: 1rem;
 }
 
-.texto-desconto, .texto-categoria {
+.texto-categoria {
     color: #860E1C;
 }
 
@@ -86,7 +88,7 @@
 /* DESCRIÇÃO */
 
 .col-descricao, .col-especificacoes {
-    box-shadow: 2px 2px 5px black;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.377);
 }
 
 
@@ -100,7 +102,7 @@
     height: 43px;
 }
 
-@media (min-width:400px) and (max-width: 768px) {
+@media (min-width:300px) and (max-width: 768px) {
     .caixa-cor-cabo {
         margin-bottom: 20px;
     }
@@ -116,3 +118,4 @@
 .btn-comprar{
     width: 180px
 }
+
