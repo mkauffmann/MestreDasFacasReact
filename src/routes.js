@@ -14,6 +14,7 @@ import OrderDetails from "./pages/OrderDetails/OrderDetails"
 import NotFound from "./pages/NotFound/NotFound"
 import Contact from "./pages/Contact/Contact"
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
+import ChangePassword from "./pages/ChangePassword/ChangePassword"
 
 export const Routes = () => {
     return (
@@ -24,13 +25,14 @@ export const Routes = () => {
             <Route path="/category" component={Category}/>
             <Route path="/checkout" component={Checkout}/>
             <Route path="/contact" component={Contact} />
-            <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/dashboard/:id" component={Dashboard}/>
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/login" component={Login}/>
             <Route path="/product/:id" component={Product}/>
             <Route path="/register" component={Register}/>
             <Route path="/success" component={Success}/>
             <Route path="/orderDetails" component={OrderDetails}/>
+            <Route path="/changePassword/:id" component={ChangePassword} />
             <Route component={NotFound}/>
         </Switch>
     )

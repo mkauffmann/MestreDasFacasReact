@@ -3,14 +3,15 @@
     {
       "name": "maria",
       "email": "maria@maria.com",
-      "id": 1
+      "id": 1,
+      "password": "teste"
     },
     {
       "name": "Maria Kauffmann",
       "email": "maria@gmail",
       "cpf": "122.223.344-55",
       "birthDate": "1992-06-13",
-      "password": "123",
+      "password": "teste",
       "telephones": [
         {
           "ddd": "11",
@@ -75,7 +76,5 @@
       "id": 2
     }
   ],
-  "login": [
-    
-  ]
+  "login": []
 }
