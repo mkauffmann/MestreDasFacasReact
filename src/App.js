@@ -6,12 +6,10 @@ import Header from './components/template/Header/Header'
 import Footer from './components/template/Footer/Footer'
 
 
-
 function App() {
   return (
     <> <Router>
       <Header/>
-     
         <Routes/>
         <Footer/>
       </Router>

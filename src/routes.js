@@ -10,8 +10,8 @@ import Login from './pages/Login/Login'
 import Product from './pages/Product/Product'
 import Register from './pages/Register/Register'
 import Success from './pages/Success/Success'
-import NotFound from "./pages/NotFound/NotFound"
 import OrderDetails from "./pages/OrderDetails/OrderDetails"
+import NotFound from "./pages/NotFound/NotFound"
 import Contact from "./pages/Contact/Contact"
 import About from "./pages/About/About"
 
@@ -24,6 +24,7 @@ export const Routes = () => {
             <Route path="/cart" component={Cart}/>
             <Route path="/category" component={Category}/>
             <Route path="/checkout" component={Checkout}/>
+            <Route path="/contact" component={Contact} />
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/login" component={Login}/>
             <Route path="/product/:id" component={Product}/>

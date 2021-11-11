@@ -16,7 +16,7 @@ function Cart(props) {
                     </Link>
                     <div className="card-body ">
                         <h5 className="card-title tituloProduto">{props.nomeProduto}</h5>
-                        <div className="card-text precoProduto">R$ {props.preco}<div>Ou</div></div> <div className="ou">12x DE R${props.parcelamento} s/juros</div><p></p>
+                        <div className="card-text precoProduto">R$ {props.preco}<div>Ou</div></div> <div className="ou">12x DE R$ {props.parcelamento} s/juros</div><p></p>
                         <Link to="/cart"><Button label="Comprar" class="btn-default btn-principal home-btn"></Button></Link>
                     </div>
                 </div>
