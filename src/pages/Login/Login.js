@@ -12,7 +12,7 @@ import TitleLogin from '../../components/micro/Login/TitleLogin/TitleLogin'
 import Input from '../../components/micro/Forms/Input/Input'
 
 function Login(props) {
-    const URL = 'http://localhost:3001/login';
+    const URL = 'http://localhost:8080/login';
     const initialValues = {
         email: "",
         password: ""
@@ -25,7 +25,8 @@ function Login(props) {
         validateEmailNotEmpty,
         isEmpty,
         validateForm,
-        resetErrorStates } = useValidation(inputValues)
+        resetErrorStates,
+        setErrors } = useValidation(inputValues)
 
 
     const handleSubmit = (event) => {
@@ -35,13 +36,21 @@ function Login(props) {
             axios.post(URL, inputValues)
                 .then((response) => {
                     console.log(response)
-                    if (response.status == 201) { //mudar status code quando integrar com API
+                    if (response.status == 200) { //mudar status code quando integrar com API
+                        setErrorMessage("")
                         resetForm()
                         setTimeout(() => setIsSent(true), 1000)
                         
                     }
                 })
-                .catch(error => setErrorMessage(error.message)) //adicionar checagem de erro se o email não pertence à uma conta
+                .catch(error => {
+                    console.log(error.response.status)
+                    if(error.response.status === 401){
+                        setErrorMessage("Email e/ou senha incorreta")
+                        setErrors({password : " ", email : " "})
+                    }
+                    
+                }) //adicionar checagem de erro se o email não pertence à uma conta
         }
     };
 
@@ -73,6 +82,9 @@ function Login(props) {
                 <Row className="justify-content-center mb-5">
                     <CardLogin classes="">
                         <TitleLogin title="Faça login" subtitle="Já é nosso cliente?" />
+                        {errorMessage == "" 
+                        ? "" 
+                        : <TitleLogin title={errorMessage}/>}
                         <form className="inputs-login d-flex flex-column" onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <Input type="email" id="loginEmail" name="email" label="Email"

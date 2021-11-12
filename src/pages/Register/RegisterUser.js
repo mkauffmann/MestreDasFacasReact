@@ -10,7 +10,7 @@ import './RegisterUser.css'
 
 
 function RegisterUser(props) {
-    const URL = 'http://localhost:3001/users';
+    const URL = "http://localhost:8080/customers/";
     const {
         handleAddressCreation,
         handleCreditCardCreation,
@@ -36,7 +36,8 @@ function RegisterUser(props) {
     const saveUser = (user) => {
         user = handleObject(user)
         axios.post(`${URL}`, user)
-            .then(() => {
+            .then((response) => {
+                console.log(response)
                 setAddress("")
                 setCreditCard("")
             })

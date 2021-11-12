@@ -19,7 +19,7 @@ import ComponentCard from '../../components/macro/Dashboard/ComponentCard/Compon
 
 function Dashboard(props) {
     let {id} = useParams()
-    const getUrl = ` http://localhost:3001/users/${id}`
+    const getUrl = `http://localhost:8080/customers/${id}`
     
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
