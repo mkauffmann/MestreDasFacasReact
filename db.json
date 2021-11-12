@@ -117,9 +117,29 @@
         }
       ],
       "id": 3
+    },
+    {
+      "name": "Rafael oliveira",
+      "email": "rafa.dev.silva@gmail.com",
+      "cpf": "460.994.678-58",
+      "birthDate": "1996-01-19",
+      "password": "r63030166",
+      "telephones": [
+        {
+          "ddd": "11",
+          "phoneNumber": "111111111"
+        }
+      ],
+      "gender": {
+        "description": "Feminino"
+      },
+      "id": 4
     }
   ],
   "login": [
-    
+    {
+      "email": "rafael.oliveiradasilva@outlook.com.br",
+      "id": 1
+    }
   ]
 }

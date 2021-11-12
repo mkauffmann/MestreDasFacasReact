@@ -13,8 +13,8 @@ import SearchQuantityResult from '../../components/micro/SearchQuantityResult/Se
 
 import Faca2 from '../../assets/imgs/produtos/2.jpeg'
 import Faca3 from '../../assets/imgs/produtos/3.jpeg'
-import Faca4 from '../../assets/imgs/produtos/24.jpeg'
-import Faca5 from '../../assets/imgs/produtos/25.jpeg'
+import Faca24 from '../../assets/imgs/produtos/24.jpeg'
+import Faca25 from '../../assets/imgs/produtos/25.jpeg'
 
 function Category(props) {
 
@@ -134,19 +134,17 @@ function Category(props) {
                       Ordenar por:
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <li><a class="dropdown-item" href="#"> Relevância </a></li>
                       <li><a class="dropdown-item" href="#"> Maior Preço </a></li>
                       <li><a class="dropdown-item" href="#"> Menor Preço </a></li>
-                      <li><a class="dropdown-item" href="#"> Mais Vendido </a></li>
                     </ul>
                 </div>
             </div>
             <div class="row catalogo-produtos2">
 
-            <Card nomeProduto="Faca-A47" imagem={Faca5} preco="156,50" parcelamento="12,30" />
+            <Card nomeProduto="Faca-A47" imagem={Faca25} preco="156,50" parcelamento="12,30" />
             <Card nomeProduto="Mc_Carioca" imagem={Faca2} preco="180,50" parcelamento="16,00" />
             <Card nomeProduto="XTR-Lich" imagem={Faca3} preco="160,50" parcelamento="19,36" />
-            <Card nomeProduto="Trx-360"  imagem={Faca4} preco="50,00" parcelamento="11,20" />
+            <Card nomeProduto="Espada Link"  imagem={Faca24} preco="50,00" parcelamento="11,20" />
 
             {/*
                 <div class="col-12 col-md-6 col-lg-3 item-catalogo">

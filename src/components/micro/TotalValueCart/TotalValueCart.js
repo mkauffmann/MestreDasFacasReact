@@ -1,10 +1,10 @@
 
 import React from 'react'
-import './TotalValue.css'
 import Button from '../../micro/Button/Button'
 
+import { Link } from 'react-router-dom'
 
-function TotalValue(props) {
+function TotalValueCart(props) {
 
     return (
         <>
@@ -25,9 +25,9 @@ function TotalValue(props) {
 
                     <div class="col-12 col-md-9 col-lg-6 col-xl-8 text-left align-self-center d-flex justify-content-end">
 
-                    <Button class={'mx-1 btn-cancelar align-self-center btn-login'} label={'Continuar comprando'}/>
+                    <Link to="/"> <Button class={'mx-1 btn-cancelar align-self-center btn-login'} label={'Continuar comprando'}/> </Link>
 
-                    <Button class={'btn-principal align-self-center btn-login'} label={'Finalizar pedido'}/>
+                    <Link to="/checkout"> <Button class={'btn-principal align-self-center btn-login'} label={'Finalizar pedido'}/> </Link>
                     
                         
                         
@@ -52,6 +52,6 @@ function TotalValue(props) {
     )
 }
 
-export default TotalValue
+export default TotalValueCart
 
 
