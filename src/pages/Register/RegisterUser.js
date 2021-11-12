@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { Modal, Row, Col, Container } from "react-bootstrap";
+import { Modal, Row, Col } from "react-bootstrap";
+import ReactLoading from 'react-loading'
 import useRegisterFormat from "../../hooks/useRegisterFormat";
 import RegisterUserDataForm from '../../components/macro/Forms/Register/RegisterUserDataForm'
 import RegisterAddressForm from '../../components/macro/Forms/Register/RegisterAddressForm'
@@ -22,6 +24,12 @@ function RegisterUser(props) {
     const [creditCard, setCreditCard] = useState("")
     const [showAddress, setShowAddress] = useState(false);
     const [showCreditCard, setShowCreditCard] = useState(false);
+    const [showFeedback, setShowFeedback] = useState(false);
+
+    const [formFeedback, setFormFeedback] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    const [success, setSuccess] = useState(false)
+    const [done, setDone] = useState(false)
 
     const savedAddress = address === "" ? false : true
     const savedCreditCard = creditCard === "" ? false : true
@@ -30,17 +38,47 @@ function RegisterUser(props) {
     const handleShowAddress = () => setShowAddress(true);
     const handleCloseCreditCard = () => setShowCreditCard(false);
     const handleShowCreditCard = () => setShowCreditCard(true);
+    const handleCloseFeedback = () => {
+        setShowFeedback(false);
+        if (success){
+            setDone(true)
+        }
+    }
 
 
 
-    const saveUser = (user) => {
-        user = handleObject(user)
-        axios.post(`${URL}`, user)
+    const saveUser = async (user) => {
+        setIsLoading(true)
+        user = await handleObject(user)
+        let formMessage = "";
+        let formIsSent = false;
+
+        await axios.post(`${URL}`, user)
             .then((response) => {
                 console.log(response)
-                setAddress("")
-                setCreditCard("")
+                if (response.status === 200) {
+                    formMessage = "Usuário cadastrado com sucesso"
+                    formIsSent = true
+                    setAddress("")
+                    setCreditCard("")
+                    setSuccess(true)
+                }
+                if (response.status === 500) {
+                    formMessage = "Erro"
+                    formIsSent = false
+                }
             })
+            .catch(error => {
+                formMessage = error.response.data.message
+                formIsSent = false
+            }).then(() => {
+                setFormFeedback(formMessage)
+            })
+
+        setShowFeedback(true)
+        setIsLoading(false)
+        
+        return formIsSent
     }
 
     const handleObject = (user) => {
@@ -90,6 +128,22 @@ function RegisterUser(props) {
 
     return (
         <>
+            <Modal show={isLoading} animation={false} centered dialogClassName="modal-loading">
+                <Modal.Body>
+                    <div>
+                        <ReactLoading type={"spinningBubbles"} color="#860E1C" height={100} width={100}/>
+                    </div>
+                </Modal.Body>
+            </Modal>
+
+             <Modal show={showFeedback} onHide={handleCloseFeedback} animation={false} centered>
+                <Modal.Header closeButton />
+                <Modal.Body>
+                    <p>{formFeedback}</p>
+                </Modal.Body>
+            </Modal>
+
+
             <RegisterUserDataForm save={saveUser} />
             <Col>
                 <Row>
@@ -127,6 +181,9 @@ function RegisterUser(props) {
                 </Modal.Footer>
             </Modal>
 
+        {done 
+        ? <Redirect to="/login" />
+        : ""}
         </>
     )
 }

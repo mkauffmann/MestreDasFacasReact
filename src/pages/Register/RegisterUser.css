@@ -39,6 +39,10 @@
     background-color: white
 }
 
+.modal-loading {
+    width: 15% !important;
+}
+
 
 @media screen and (max-width: 475px) {
     .model-position {
