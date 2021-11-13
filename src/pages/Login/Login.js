@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { Container, Row } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Container, Row, Modal } from 'react-bootstrap'
 import { Link, Redirect } from 'react-router-dom'
+import ReactLoading from 'react-loading'
 import axios from 'axios'
 import useValidation from '../../hooks/useValidation'
-
+import useLogin from '../../hooks/useLogin'
 import './Login.css'
 import Button from '../../components/micro/Button/Button'
 import CardLogin from '../../components/micro/Login/CardLogin/CardLogin'
@@ -20,6 +21,7 @@ function Login(props) {
     const requiredFields = ["email", "password"]
     const [inputValues, setInputValues] = useState({ ...initialValues })
     const [isSent, setIsSent] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const { errors,
         validateEmailNotEmpty,
@@ -27,31 +29,36 @@ function Login(props) {
         validateForm,
         resetErrorStates,
         setErrors } = useValidation(inputValues)
+    const {
+        login
+    } = useLogin()
 
+    
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
+        setIsLoading(true)
         event.preventDefault();
 
         if (validateForm(requiredFields)) {
-            axios.post(URL, inputValues)
+            await axios.post(URL, inputValues)
                 .then((response) => {
                     console.log(response)
-                    if (response.status == 200) { //mudar status code quando integrar com API
+                    if (response.status == 200) {
+                        login(response.data)
                         setErrorMessage("")
                         resetForm()
-                        setTimeout(() => setIsSent(true), 1000)
-                        
+                        setIsSent(true)
                     }
                 })
                 .catch(error => {
                     console.log(error.response.status)
-                    if(error.response.status === 401){
+                    if (error.response.status === 401) {
                         setErrorMessage("Email e/ou senha incorreta")
-                        setErrors({password : " ", email : " "})
+                        setErrors({ password: " ", email: " " })
                     }
-                    
-                }) //adicionar checagem de erro se o email não pertence à uma conta
+                })
         }
+        setIsLoading(false)
     };
 
     const handleChange = (event) => {
@@ -71,20 +78,26 @@ function Login(props) {
     }
 
     const resetForm = () => {
-        setInputValues({...initialValues});
+        setInputValues({ ...initialValues });
         resetErrorStates();
     };
 
-
     return (
         <>
+            <Modal show={isLoading} animation={false} centered dialogClassName="modal-loading">
+                <Modal.Body>
+                    <div>
+                        <ReactLoading type={"spinningBubbles"} color="#860E1C" height={100} width={100} />
+                    </div>
+                </Modal.Body>
+            </Modal>
             <Container>
                 <Row className="justify-content-center mb-5">
                     <CardLogin classes="">
                         <TitleLogin title="Faça login" subtitle="Já é nosso cliente?" />
-                        {errorMessage == "" 
-                        ? "" 
-                        : <TitleLogin title={errorMessage}/>}
+                        {errorMessage == ""
+                            ? ""
+                            : <TitleLogin title={errorMessage} />}
                         <form className="inputs-login d-flex flex-column" onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <Input type="email" id="loginEmail" name="email" label="Email"
@@ -110,9 +123,9 @@ function Login(props) {
                     </CardLogin>
                 </Row>
             </Container>
-            {isSent 
-            ? <Redirect to="/"/> 
-            : ""}
+            {isSent
+                ? <Redirect to="/"/>
+                : ""}
         </>
     )
 }
