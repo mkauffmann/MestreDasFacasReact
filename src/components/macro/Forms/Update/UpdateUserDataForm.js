@@ -15,18 +15,18 @@ function UpdateUserDataForm(props) {
         errors
     } = useValidation(inputValues)
 
-    
-    const convertGender = () => {
-        setInputValues(prevValues => {
-            return {
-                ...prevValues,
-                genderTemp : handleShowGender(inputValues)
-            }
-        })
-        console.log(inputValues)
-    }
+    console.log(inputValues)
+    // const convertGender = async () => {
+    //     await setInputValues(prevValues => {
+    //         return {
+    //             ...prevValues,
+    //             genderTemp : handleShowGender(inputValues)
+    //         }
+    //     })
+    //     console.log(inputValues)
+    // }
 
-    useEffect(convertGender, [])
+    // useEffect(() => convertGender, [])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -117,7 +117,7 @@ function UpdateUserDataForm(props) {
                                 options={["Feminino", "Masculino", "Não-binário", "Outros", "Prefiro não dizer"]}
                                 changeFunction={handleChange} 
                                 update
-                                value={inputValues.genderTemp} />
+                                value={inputValues.gender ? inputValues.gender.description : ""} />
                         </Col>
                     </Row>
                     <Row className="justify-content-end">

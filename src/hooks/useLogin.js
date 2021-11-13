@@ -20,15 +20,15 @@ function useLogin(){
         return localStorage.getItem("token") !== null && localStorage.getItem("userId") !== null;
     }
 
-    const getToken = () => localStorage.getItem("token")
-    const getUserId = () => localStorage.getItem("userId")
+    const token =  localStorage.getItem("token")
+    const userId = localStorage.getItem("userId")
 
     return {
         login, 
         logout,
         isAuthenticated,
-        getToken,
-        getUserId
+        token,
+        userId
     }
 }
 

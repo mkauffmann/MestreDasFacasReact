@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
-import {
-    BrowserRouter as Router,
-    Switch,
+import { Switch,
     Route,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 import axios from 'axios';
+
+import useLogin from "../../hooks/useLogin"
 
 import './Dashboard.css'
 import DashboardMenuMobile from '../../components/macro/Dashboard/Menu/DashboardMenuMobile'
@@ -17,22 +16,32 @@ import OrderList from '../../components/macro/Dashboard/OrderList/OrderList'
 import InfoList from '../../components/macro/Dashboard/InfoList/InfoList'
 import ComponentCard from '../../components/macro/Dashboard/ComponentCard/ComponentCard'
 
+
+
 function Dashboard(props) {
-    let {id} = useParams()
-    const getUrl = `http://localhost:8080/customers/${id}`
+    const {userId, token} = useLogin()
+    const getUrl = `http://localhost:8080/customers/${userId}`
     
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const { url } = useRouteMatch()
     
-    const getUser = () => axios.get(getUrl)
+    const getUser = () => axios.get(getUrl, {
+        headers : {
+            Authorization : `Bearer ${token}`
+        }
+    })
     .then(response => {
         setUser({...response.data})
         setIsLoading(false)
     })
     .catch(error => console.log(error))
 
-    useEffect(getUser, [])
+    const renderUser = async () => await getUser()
+
+    useEffect(() => {
+        renderUser()
+    }, [])
 
     return (
         <>
