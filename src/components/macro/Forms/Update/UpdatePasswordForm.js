@@ -7,7 +7,6 @@ import useValidation from "../../../../hooks/useValidation";
 
 function UpdatePasswordForm(props) {
     
-    const URL = ` http://localhost:3001/changePassword/`
 
     const initialValue = {
         currentPassword: "",
@@ -25,13 +24,14 @@ function UpdatePasswordForm(props) {
         setErrors
     } = useValidation(inputValues)
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        if (validateForm(requiredFields)) {
-            axios.post(URL, inputValues)
-            .then(response => {
-                resetForm()
-            })
+
+        let values = {...inputValues}
+        delete values.confirmPassword
+        if (await validateForm(requiredFields)) {
+            await props.updatePassword(values)
+            resetForm()
         }
     };
 
@@ -60,7 +60,7 @@ function UpdatePasswordForm(props) {
             <Row className="mt-5">
                 <div className="mb-3"><h4>Trocar de Senha</h4></div>
                 <Col md={6} className="mb-3">
-                    <Input type="password" id="senha" name="currentPassword" placeholder="Digite sua senha atual" label="Senha atual"
+                    <Input type="password" id="senhaAntiga" name="currentPassword" placeholder="Digite sua senha atual" label="Senha atual"
                         obrigatorio changeFunction={handleChange}
                         blurFunction={handleBlur} validation={isEmpty}
                         value={inputValues.currentPassword}

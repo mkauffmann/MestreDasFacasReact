@@ -19,7 +19,7 @@ import ComponentCard from '../../components/macro/Dashboard/ComponentCard/Compon
 
 
 function Dashboard(props) {
-    const {userId, token} = useLogin()
+    const {userId, token, logout} = useLogin()
     const getUrl = `http://localhost:8080/customers/${userId}`
     
     const [user, setUser] = useState({})
@@ -35,7 +35,9 @@ function Dashboard(props) {
         setUser({...response.data})
         setIsLoading(false)
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+        logout()
+    })
 
     const renderUser = async () => await getUser()
 

@@ -1,39 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Row, Col} from "react-bootstrap";
+
 import Button from "../../../micro/Button/Button";
 import Input from "../../../micro/Forms/Input/Input";
 import Select from "../../../micro/Forms/Select/Select";
-import DividingBar from '../../../micro/Login/DividingBar/DividingBar'
 import useValidation from "../../../../hooks/useValidation";
-import useRegisterFormat from "../../../../hooks/useRegisterFormat";
-import UpdatePasswordForm from "./UpdatePasswordForm";
+
 
 function UpdateUserDataForm(props) {
-    const {handleShowGender} = useRegisterFormat()
     const [inputValues, setInputValues] = useState({ ...props.userData});
     const {
-        errors
+        errors,
+        validateForm,
+        validateStringNotEmpty,
+        validateEmailNotEmpty,
+        setErrors
     } = useValidation(inputValues)
-
-    console.log(inputValues)
-    // const convertGender = async () => {
-    //     await setInputValues(prevValues => {
-    //         return {
-    //             ...prevValues,
-    //             genderTemp : handleShowGender(inputValues)
-    //         }
-    //     })
-    //     console.log(inputValues)
-    // }
-
-    // useEffect(() => convertGender, [])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (true) {
-            props.save(inputValues);
+        if (await validateForm(["name", "email"])) {
+            props.updateUser(inputValues);
+    
         }
-    };
+    }; 
 
     const handleChange = (event) => {
         const value = event.target.value;
@@ -44,12 +34,20 @@ function UpdateUserDataForm(props) {
         });
     };
 
-    // const handleBlur = (event, validationCallback) => {
-    //     const value = event.target.value;
-    //     const name = event.target.name;
-    //     validationCallback(value, name)
-    //     validateForm(requiredFields)
-    // }
+    const handleChangeGender = (event) => {
+        const value = event.target.value;
+
+        setInputValues((prevState) => {
+            return { ...prevState, gender: {description : value} };
+        });
+    };
+
+    const handleBlur = (event, validationCallback) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        validationCallback(value, name)
+        validateForm([])
+    }
 
     // const resetForm = () => {
     //     setInputValues({ ...initialInputValues });
@@ -68,6 +66,8 @@ function UpdateUserDataForm(props) {
                                 label="Nome completo"
                                 placeholder="Digite seu nome"
                                 changeFunction={handleChange}
+                                blurFunction={handleBlur}
+                                validation={validateStringNotEmpty}
                                 value={inputValues.name}
                                 error={errors.name}
                             />
@@ -82,6 +82,8 @@ function UpdateUserDataForm(props) {
                                 label="Email"
                                 placeholder="Digite seu email"
                                 changeFunction={handleChange}
+                                blurFunction={handleBlur}
+                                validation={validateEmailNotEmpty}
                                 value={inputValues.email}
                                 error={errors.email}
                             />
@@ -115,7 +117,7 @@ function UpdateUserDataForm(props) {
                         <Col md={6} className="mb-3">
                             <Select id="gender" name="genderTemp" label="Gênero"
                                 options={["Feminino", "Masculino", "Não-binário", "Outros", "Prefiro não dizer"]}
-                                changeFunction={handleChange} 
+                                changeFunction={handleChangeGender} 
                                 update
                                 value={inputValues.gender ? inputValues.gender.description : ""} />
                         </Col>
@@ -125,9 +127,7 @@ function UpdateUserDataForm(props) {
                             <Button class="btn-principal" label="Atualizar dados pessoais" type="submit" />
                         </Col>
                     </Row>
-                    <DividingBar singleLine/>
             </form>
-            <UpdatePasswordForm />
         </>
     );
 }

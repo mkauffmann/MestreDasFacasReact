@@ -42,7 +42,6 @@ function Login(props) {
         if (validateForm(requiredFields)) {
             await axios.post(URL, inputValues)
                 .then((response) => {
-                    console.log(response)
                     if (response.status == 200) {
                         login(response.data)
                         setErrorMessage("")
@@ -51,7 +50,6 @@ function Login(props) {
                     }
                 })
                 .catch(error => {
-                    console.log(error.response.status)
                     if (error.response.status === 401) {
                         setErrorMessage("Email e/ou senha incorreta")
                         setErrors({ password: " ", email: " " })
