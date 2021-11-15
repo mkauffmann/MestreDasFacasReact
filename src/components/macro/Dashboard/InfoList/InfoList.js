@@ -1,10 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 import InfoItem from "./InfoItem/InfoItem"
 
 import './InfoList.css'
 
 function InfoList(props) {
-
     const renderList = (array) => {
         let items = []
         for(let i = 0; i < array.length; i++){
@@ -32,11 +31,6 @@ function InfoList(props) {
 
     return (
         <>
-            <div className="col-12 d-flex justify-content-between mb-4">
-                <h3>{props.title}</h3>
-                <button class="btn-custom-default btn-principal"> Adicionar {props.type}</button>
-            </div>
-
             {chooseType(props.type)}
         </>
     )

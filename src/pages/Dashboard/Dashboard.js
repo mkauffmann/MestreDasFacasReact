@@ -15,7 +15,7 @@ import UserForm from '../../components/macro/Dashboard/UserForm/UserForm'
 import OrderList from '../../components/macro/Dashboard/OrderList/OrderList'
 import InfoList from '../../components/macro/Dashboard/InfoList/InfoList'
 import ComponentCard from '../../components/macro/Dashboard/ComponentCard/ComponentCard'
-
+import AddressList from '../../components/macro/Dashboard/InfoList/AddressList';
 
 
 function Dashboard(props) {
@@ -68,7 +68,7 @@ function Dashboard(props) {
                                     <InfoList type="cartão" title="Meus Cartões" userData={user} isLoading={isLoading}/>
                                 </Route>
                                 <Route path={`${url}/myAddresses`}>
-                                    <InfoList type="endereço" title="Meus Endereços" userData={user} isLoading={isLoading} />
+                                    <AddressList type="endereço" title="Meus Endereços" userData={user} isLoading={isLoading} />
                                 </Route>
                                 <Route path={`${url}/myTelephones`}>
                                     <InfoList type="telefone" title="Meus Telefones" userData={user} isLoading={isLoading}/>

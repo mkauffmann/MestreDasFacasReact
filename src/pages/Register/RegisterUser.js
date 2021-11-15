@@ -21,7 +21,9 @@ function RegisterUser(props) {
     } = useRegisterFormat()
 
     const [address, setAddress] = useState("");
+    const [inputAddress, setInputAddress] = useState("")
     const [creditCard, setCreditCard] = useState("")
+    const [inputCreditCard, setInputCreditCard] = useState("")
     const [showAddress, setShowAddress] = useState(false);
     const [showCreditCard, setShowCreditCard] = useState(false);
     const [showFeedback, setShowFeedback] = useState(false);
@@ -105,12 +107,16 @@ function RegisterUser(props) {
     }
 
     const handleAddress = (inputAddress) => {
+        setInputAddress(inputAddress)
+
         const formatedAddress = handleAddressCreation(inputAddress)
         setAddress({ ...formatedAddress })
         handleCloseAddress()
     }
 
     const handleCreditCard = (inputCreditCard) => {
+        setInputCreditCard(inputCreditCard)
+
         const formatedCreditCard = handleCreditCardCreation(inputCreditCard)
         setCreditCard({ ...formatedCreditCard })
         handleCloseCreditCard()
@@ -161,7 +167,7 @@ function RegisterUser(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <RegisterAddressForm save={handleAddress} alter={savedAddress ? address : ""} />
+                    <RegisterAddressForm save={handleAddress} alter={savedAddress ? inputAddress : ""} />
                 </Modal.Body>
                 <Modal.Footer className="justify-content-center">
                     <button className="btn-custom-default btn-cancelar2" onClick={cancelAddressRegister}>Cancelar cadastro</button>
@@ -174,7 +180,7 @@ function RegisterUser(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <RegisterCreditCardForm save={handleCreditCard} alter={savedCreditCard ? creditCard : ""} />
+                    <RegisterCreditCardForm save={handleCreditCard} alter={savedCreditCard ? inputCreditCard : ""} />
                 </Modal.Body>
                 <Modal.Footer className="justify-content-center">
                     <button className="btn-custom-default btn-cancelar2" onClick={cancelCreditCardRegister}>Cancelar cadastro</button>
