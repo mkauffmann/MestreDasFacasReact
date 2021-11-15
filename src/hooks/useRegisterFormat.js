@@ -57,13 +57,25 @@ function useRegisterFormat(){
         return newObj
     }
 
+    const handleShowCreditCard = (dbValues) => {
+        let newObj = {
+            ...dbValues,
+            cardBrandTemp : dbValues.cardBrand.cardBrandName
+        }
+
+        delete newObj.cardBrand
+
+        return newObj
+    }
+
     return {
         handleAddressCreation,
         handleCreditCardCreation,
         handleGenderCreation,
         handleTelephoneCreation,
         handleShowGender,
-        handleShowAddress
+        handleShowAddress,
+        handleShowCreditCard
     }
 }
 

@@ -16,7 +16,7 @@ import OrderList from '../../components/macro/Dashboard/OrderList/OrderList'
 import InfoList from '../../components/macro/Dashboard/InfoList/InfoList'
 import ComponentCard from '../../components/macro/Dashboard/ComponentCard/ComponentCard'
 import AddressList from '../../components/macro/Dashboard/InfoList/AddressList';
-
+import CreditCardList from '../../components/macro/Dashboard/InfoList/CreditCardList';
 
 function Dashboard(props) {
     const {userId, token, logout} = useLogin()
@@ -67,7 +67,7 @@ function Dashboard(props) {
                                     <OrderList />
                                 </Route>
                                 <Route path={`${url}/myCards`}>
-                                    <InfoList type="cartão" title="Meus Cartões" userData={user} isLoading={isLoading}/>
+                                    <CreditCardList type="cartão" title="Meus Cartões" userData={user} isLoading={isLoading}/>
                                 </Route>
                                 <Route path={`${url}/myAddresses`}>
                                     <AddressList type="endereço" title="Meus Endereços" userData={user} isLoading={isLoading} />

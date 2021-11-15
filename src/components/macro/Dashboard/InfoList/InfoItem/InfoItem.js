@@ -57,8 +57,8 @@ function InfoItem(props) {
                     </div>
                 </div>
                 <div className="d-flex flex-column align-items-end justify-content-between">
-                    <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista">Editar</button>
-                    <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => deleteModal = true}>Remover</button>
+                    <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
+                    <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>
                 </div>
 
             </div>
@@ -92,8 +92,8 @@ function InfoItem(props) {
                     <div><strong>Número:</strong> {telephone.phoneNumber}</div>
                 </div>
                 <div className="d-flex flex-column align-items-end justify-content-between">
-                    <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista">Editar</button>
-                    <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => deleteModal = true}>Remover</button>
+                    <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
+                    <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista my-2" onClick={() => handleOpenDeleteModal()}>Remover</button>
                 </div>
             </div>
         )
@@ -133,7 +133,10 @@ function InfoItem(props) {
             <Modal show={updateModal} onHide={handleCloseUpdateModal}>
                 <Modal.Header closeButton/>
                 <ModalBody>
-                    <RegisterAddressForm alter={handleShowAddress(props.obj)} save={handleUpdateAddress}/>
+                    {props.type === "endereço" 
+                    ? <RegisterAddressForm alter={handleShowAddress(props.obj)} save={handleUpdateAddress}/>
+                    : ""}
+                    
                 </ModalBody>
                 <Modal.Footer>
                     <button className="btn-custom-default btn-cancelar align-self-center btn-ver-lista" onClick={() => handleCloseUpdateModal()}>Cancelar</button>

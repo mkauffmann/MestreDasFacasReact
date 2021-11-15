@@ -24,7 +24,7 @@ function useValidation(inputValues) {
 
     const isEmpty = (inputValue, name) => {
     
-        if (inputValue.trim() === "") {
+        if (inputValue === "" || inputValue.trim() === "") {
             setErrors((prevState) => {
                 return {
                     ...prevState,

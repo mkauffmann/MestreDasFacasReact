@@ -5,7 +5,7 @@ import useRegisterFormat from '../../../../hooks/useRegisterFormat'
 import useLogin from "../../../../hooks/useLogin";
 import InfoList from "./InfoList";
 import RegisterAddressForm from '../../Forms/Register/RegisterAddressForm'
-
+import AddressInfoItem from "./InfoItem/AddressInfoItem/AddressInfoItem";
 
 function AddressList(props) {
     const { token, userId } = useLogin()
@@ -18,6 +18,18 @@ function AddressList(props) {
 
     const refreshPage = () => {
         window.location.reload();
+    }
+
+    const renderList = (array) => {
+        let items = []
+        for(let i = 0; i < array.length; i++){
+            items.push(<AddressInfoItem obj={array[i]} key={i} type={props.type}/>)
+        }
+        return items
+    }
+
+    if (props.isLoading) {
+        return <p>Loading...</p>
     }
 
     const cancelAddressRegister = () => {
@@ -65,7 +77,8 @@ function AddressList(props) {
                     <button className="btn-custom-default btn-cancelar2" onClick={cancelAddressRegister}>Cancelar cadastro</button>
                 </Modal.Footer>
             </Modal>
-            <InfoList type="endereço" userData={props.userData} isLoading={props.isLoading} />
+            {/* <InfoList type="endereço" userData={props.userData} isLoading={props.isLoading} /> */}
+            {renderList(props.userData.addresses)}
         </>
     )
 }
