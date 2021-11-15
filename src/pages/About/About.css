@@ -1,0 +1,14 @@
+.descricao-quem-somos {
+    display: flex;
+}
+
+.logo-about {
+    display: flex;
+    
+}
+
+.img-logo-about {
+    width: 20%;
+    border: none;
+    
+}
