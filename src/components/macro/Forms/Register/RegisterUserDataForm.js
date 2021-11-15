@@ -33,7 +33,7 @@ function RegisterForm(props) {
     } = useValidation(inputValues);
 
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         if (validateForm(requiredFields)) {

@@ -1,60 +1,107 @@
-import React, { useEffect }  from 'react'
-import { Form, Container, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Container, Row } from 'react-bootstrap'
+import { Link, Redirect } from 'react-router-dom'
+import axios from 'axios'
+import useValidation from '../../hooks/useValidation'
 
 import './Login.css'
 import Button from '../../components/micro/Button/Button'
+import CardLogin from '../../components/micro/Login/CardLogin/CardLogin'
+import DividingBar from '../../components/micro/Login/DividingBar/DividingBar'
+import TitleLogin from '../../components/micro/Login/TitleLogin/TitleLogin'
+import Input from '../../components/micro/Forms/Input/Input'
 
 
 function Login(props) {
+    const URL = 'http://localhost:3001/login';
+    const initialValues = {
+        email: "",
+        password: ""
+    }
+    const requiredFields = ["email", "password"]
+    const [inputValues, setInputValues] = useState({ ...initialValues })
+    const [isSent, setIsSent] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+    const { errors,
+        validateEmailNotEmpty,
+        isEmpty,
+        validateForm,
+        resetErrorStates } = useValidation(inputValues)
 
-    return(
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (validateForm(requiredFields)) {
+            axios.post(URL, inputValues)
+                .then((response) => {
+                    console.log(response)
+                    if (response.status == 201) { //mudar status code quando integrar com API
+                        resetForm()
+                        setTimeout(() => setIsSent(true), 1000)
+                        
+                    }
+                })
+                .catch(error => setErrorMessage(error.message)) //adicionar checagem de erro se o email não pertence à uma conta
+        }
+    };
+
+    const handleChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+
+        setInputValues((prevState) => {
+            return { ...prevState, [name]: value };
+        });
+    };
+
+    const handleBlur = (event, validationCallback) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        validationCallback(value, name)
+        validateForm(requiredFields)
+    }
+
+    const resetForm = () => {
+        setInputValues({...initialValues});
+        resetErrorStates();
+    };
+
+
+    return (
         <>
-        <Container>
-            <Row className="justify-content-center mb-5">
-                    <div className="col-12 col-md-6 col-lg-5 login-card">
-                        {/* <!-- TITULO LOGIN START  --> */}
-                        <div className="login-titulo text-center mt-3">
-                            <h3>Faça login</h3>
-                            <p>Já é nosso cliente?</p>
-                        </div>
-                    {/* <!-- TITULO LOGIN END  -->
-                    <!-- INPUTS LOGIN START  --> */}
-                    <Form className="inputs-login d-flex flex-column">
-                        <Form.Group controlId="email" className="mb-1">
-                            <Form.Label className="custom-label">Email</Form.Label>
-                            <Form.Control type="email" placeholder="Digite seu email" id="email" required/>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label className="custom-label">Senha</Form.Label>
-                            <Form.Control type="text" id="senha" placeholder="Digite sua senha" required/>
-                        </Form.Group>
-                        <Button class={'btn-principal align-self-center btn-login'} label={'Entrar'}/>
-                        <Link to="/" className="align-self-center mt-2" >Esqueci minha senha</Link>
-                    </Form>
-                    {/* <!-- INPUTS LOGIN END  -->
-
-                    <!-- BARRA/OU START  --> */}
-
-                    <div className="divisao row my-3">
-                        <div className="col-5"><hr/></div>
-                        <div className="col-2 text-center">ou</div>
-                        <div className="col-5"><hr/></div>
-                    </div>
-                    {/* <!-- BARRA/OU END  --> */}
-
-                    <div className="cadastro d-flex flex-column align-items-center mt-3">
-                        {/* <!-- TITULO CADASTRO START  --> */}
-                        <div className="login-titulo text-center">
-                            <h3>Crie uma conta</h3>
-                            <p>Ainda não é nosso cliente?</p>
-                        </div>
-                        {/* <!-- TITULO CADASTRO END  --> */}
-                        <Button navigation route='/register' class={'btn-cancelar'} label={'Cadastre-se'}/>
-                    </div>
-                </div>
-            </Row>
-        </Container>
+            <Container>
+                <Row className="justify-content-center mb-5">
+                    <CardLogin classes="">
+                        <TitleLogin title="Faça login" subtitle="Já é nosso cliente?" />
+                        <form className="inputs-login d-flex flex-column" onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <Input type="email" id="loginEmail" name="email" label="Email"
+                                    placeholder="Digite seu email"
+                                    value={inputValues.email}
+                                    changeFunction={handleChange} blurFunction={handleBlur}
+                                    validation={validateEmailNotEmpty} error={errors.email} />
+                            </div>
+                            <div className="mb-3">
+                                <Input type="password" id="loginSenha" name="password" placeholder="Digite sua senha" label="Senha"
+                                    changeFunction={handleChange}
+                                    blurFunction={handleBlur} validation={isEmpty}
+                                    value={inputValues.password}
+                                    error={errors.password} />
+                            </div>
+                            <Button class={'btn-principal align-self-center btn-login'} label={'Entrar'} />
+                            <Link to="/forgotPassword" className="align-self-center mt-2" >Esqueci minha senha</Link>
+                        </form>
+                        <DividingBar label="ou" />
+                        <TitleLogin title="Crie uma conta" subtitle="Ainda não é nosso cliente?" >
+                            <Button navigation route='/register' class={'btn-cancelar'} label={'Cadastre-se'} />
+                        </TitleLogin>
+                    </CardLogin>
+                </Row>
+            </Container>
+            {isSent 
+            ? <Redirect to="/"/> 
+            : ""}
         </>
     )
 }

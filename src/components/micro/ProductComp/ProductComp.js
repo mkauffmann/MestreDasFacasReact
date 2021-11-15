@@ -1,6 +1,6 @@
 import React from 'react'
 
-import imgProduct from '../../../assets/imgs/product/PRODUTO.jpg'
+
 import './ProductComp.css'
 import iconlix from '../../../assets/icons/checkout/lixeira.png'
 
