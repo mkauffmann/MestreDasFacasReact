@@ -13,7 +13,7 @@ import IconCredit from '../../assets/imgs/Product/icone-cartao-credito.png'
 import IconBoleto from '../../assets/imgs/Product/icone-boleto.png'
 import IconPix from '../../assets/imgs/Product/icone-pix.png'
 
-import ProductComp from '../../components/micro/ProductComp/ProductComp'
+
 
 import Faca2 from '../../assets/imgs/produtos/2.jpeg'
 import Faca3 from '../../assets/imgs/produtos/3.jpeg'

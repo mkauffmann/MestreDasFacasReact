@@ -16,12 +16,13 @@ import Contact from "./pages/Contact/Contact"
 import About from "./pages/About/About"
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import ChangePassword from "./pages/ChangePassword/ChangePassword"
+import Home2 from "./pages/Home/Home2"
 
 export const Routes = () => {
     return (
         <Switch>
-            <Route path="/" component={Home} exact/>
-            <Route path="/home" component={Home}/>
+            <Route path="/" component={Home2} exact/>
+            <Route path="/home" component={Home2}/>
             <Route path="/cart" component={Cart}/>
             <Route path="/category" component={Category}/>
             <Route path="/checkout" component={Checkout}/>
