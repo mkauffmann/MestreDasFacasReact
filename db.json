@@ -136,10 +136,19 @@
       "id": 4
     }
   ],
-  "login": [
+  "login": [],
+  "changePassword": [
     {
-      "email": "rafael.oliveiradasilva@outlook.com.br",
+      "currentPassword": "123",
+      "password": "123",
+      "confirmPassword": "123",
       "id": 1
+    },
+    {
+      "currentPassword": "1235",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 2
     }
   ]
 }
