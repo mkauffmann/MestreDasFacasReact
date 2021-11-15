@@ -3,8 +3,9 @@ import React from 'react'
 import imgProduct from '../../assets/imgs/Product/PRODUTO.jpg'
 import './Cart.css'
 
-import Button from '../../components/micro/Button/Button'
+
 import Product from '../../components/micro/Product/Product'
+
 
 function Cart(props) {
 
