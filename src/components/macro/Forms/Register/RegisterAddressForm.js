@@ -34,6 +34,7 @@ function RegisterAddressForm(props) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         setIsLoading(true)
+        
         if (await validateForm(requiredFields)) {
             if(await props.save(addressValues)){
                 setAddressValues({ ...initialValue });
@@ -45,6 +46,7 @@ function RegisterAddressForm(props) {
     const handleChange = (event) => {
         const value = event.target.value
         const name = event.target.name
+        console.log(addressValues)
 
         setAddressValues(prevValues => {
             return { ...prevValues, [name]: value }
@@ -59,6 +61,7 @@ function RegisterAddressForm(props) {
     const handleBlur = (event, validationCallback) => {
         const value = event.target.value;
         const name = event.target.name;
+        
         validationCallback(value, name)
         validateForm(requiredFields)
     }
