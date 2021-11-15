@@ -15,6 +15,8 @@ import NotFound from "./pages/NotFound/NotFound"
 import Contact from "./pages/Contact/Contact"
 import About from "./pages/About/About"
 
+import Header from './components/template/Header/Header'
+
 
 export const Routes = () => {
     return (
@@ -22,7 +24,7 @@ export const Routes = () => {
             <Route path="/" component={Home} exact/>
             <Route path="/home" component={Home}/>
             <Route path="/cart" component={Cart}/>
-            <Route path="/category" component={Category}/>
+            <Route path="/category/:id" component={Category}/>
             <Route path="/checkout" component={Checkout}/>
             <Route path="/contact" component={Contact} />
             <Route path="/dashboard" component={Dashboard}/>

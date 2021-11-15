@@ -1,4 +1,7 @@
-import React from 'react'
+import React, {useEffect, useState} from "react";
+import axios from 'axios'
+import { useParams } from "react-router-dom";
+
 import './Category.css'
 
 import Button from '../../components/micro/Button/Button'
@@ -8,8 +11,8 @@ import Card from '../../components/macro/CardHome/Card'
 import '../../components/macro/CardHome/Card.css'
 
 import SearchText from '../../components/micro/SearchText/SearchText'
-
 import SearchQuantityResult from '../../components/micro/SearchQuantityResult/SearchQuantityResult'
+// import SearchBar from '../../components/macro/Forms/SearchBar/SearchBar'
 
 import Faca2 from '../../assets/imgs/produtos/2.jpeg'
 import Faca3 from '../../assets/imgs/produtos/3.jpeg'
