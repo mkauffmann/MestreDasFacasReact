@@ -1,6 +1,7 @@
 import React from 'react'
-import './Header.css'
 import { Link } from 'react-router-dom'
+import './Header.css'
+
 
 
 
@@ -284,8 +285,7 @@ rkJggg==" />
 
                     <div className="container col-4 col-sm-3 col-md-2 col-xl-1 col-xxl-1 blocoMeusPedidos">
                         
-                    {/* MUDAR ESTE LINK QUANDO RESOLVERMOS A AUTENTICACAO */}
-                        <Link to="/dashBoard/3/myOrders"> 
+                        <Link to="/dashBoard/myOrders"> 
                             <svg width="97"
                                 height="37" viewBox="0 0 109 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path

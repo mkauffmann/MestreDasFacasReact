@@ -9,7 +9,22 @@ function useRegisterFormat(){
         return inputValues.gender.description
     }
 
+    const handleShowAddress = (dbValues) => {
+        const newObj = {
+            ...dbValues,
+            cityTemp : dbValues.city.cityName,
+            stateTemp : dbValues.state.uf,
+            number : dbValues.number.toString()
+        }
+
+        delete newObj.city
+        delete newObj.state
+
+        return newObj
+    }
+
     const handleTelephoneCreation = (inputTelephone) => {
+        console.log(inputTelephone)
         let telArr = inputTelephone.split(") ")
         const ddd = telArr[0].slice(1)
 
@@ -17,6 +32,11 @@ function useRegisterFormat(){
         const phoneNumber = numArr[0] + numArr[1]
 
         return { ddd, phoneNumber }
+    }
+
+    const handleShowFormatedTelephone = (dbTelephone) => {
+        let tel = `(${dbTelephone.ddd}) ${dbTelephone.phoneNumber.slice(0,5)}-${dbTelephone.phoneNumber.slice(-4)}`
+        return {telephoneTemp : tel}
     }
 
     const handleAddressCreation = (inputAddress) => {
@@ -43,12 +63,26 @@ function useRegisterFormat(){
         return newObj
     }
 
+    const handleShowCreditCard = (dbValues) => {
+        let newObj = {
+            ...dbValues,
+            cardBrandTemp : dbValues.cardBrand.cardBrandName
+        }
+
+        delete newObj.cardBrand
+
+        return newObj
+    }
+
     return {
         handleAddressCreation,
         handleCreditCardCreation,
         handleGenderCreation,
         handleTelephoneCreation,
-        handleShowGender
+        handleShowGender,
+        handleShowAddress,
+        handleShowCreditCard,
+        handleShowFormatedTelephone
     }
 }
 

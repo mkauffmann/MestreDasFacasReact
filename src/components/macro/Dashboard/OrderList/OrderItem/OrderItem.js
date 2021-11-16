@@ -12,7 +12,8 @@ function OrderItem(props) {
                     <p>#{props.number}</p>
                 </div>
                 <div className="container-fluid col-6 pedidosMobile">
-                    <Link to="/orderDetails">
+                    <Link to={{ pathname : "/orderDetails",
+                                state: {...props.order}}}>
                         <button className="btn-prinCipal ">
                             <i className="pedido">DETALHES DO PEDIDO</i>
                         </button>

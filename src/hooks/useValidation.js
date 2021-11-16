@@ -23,7 +23,8 @@ function useValidation(inputValues) {
     }
 
     const isEmpty = (inputValue, name) => {
-        if (inputValue.trim() === "") {
+    
+        if (inputValue === "" || inputValue.trim() === "") {
             setErrors((prevState) => {
                 return {
                     ...prevState,
@@ -68,6 +69,47 @@ function useValidation(inputValues) {
                 return {
                     ...prevState,
                     [name]: "Caracteres inválidos"
+                }
+            })
+
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        }
+    }
+
+    const validateStringNotRequired = (inputValue, name) => {
+        const regexName =
+            /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð\s,.'-]{1,}$/u;
+
+        if (!regexName.test(inputValue)) {
+            setErrors((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: "Caracteres inválidos"
+                }
+            })
+
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        }
+    }
+
+    const validateEmailNotRequired = (inputValue, name) => {
+        const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+
+        if (!regexEmail.test(inputValue)) {
+            setErrors((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: "Email inválido"
                 }
             })
 
@@ -134,6 +176,30 @@ function useValidation(inputValues) {
         } else {
             validateNotRequired(inputValue, name)
         }
+    }
+
+    const validateTelephoneNotEmpty = (inputValue, name) => {
+        if(isEmpty(inputValue, name)){
+            setErrors((prevState) => {
+                return { ...prevState, [name]: "Campo obrigatório" }
+            })
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        } else if (inputValue !== "" && inputValue.length < 15) {
+            setErrors((prevState) => {
+                return { ...prevState, [name]: "Celular inválido" }
+            })
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        } 
     }
 
     const validatePasswordNotEmpty = (inputValue, name) => {
@@ -223,7 +289,10 @@ function useValidation(inputValues) {
         validateTelephoneEmpty,
         validateNotRequired,
         validatePasswordNotEmpty,
-        validateCreditCardDate
+        validateCreditCardDate,
+        validateStringNotRequired,
+        validateEmailNotRequired,
+        validateTelephoneNotEmpty
     }
 }
 

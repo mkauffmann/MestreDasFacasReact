@@ -1,5 +1,7 @@
 import React from "react"
 import { Switch, Route} from "react-router-dom"
+import PrivateRoute from "./components/macro/Route/PrivateRoute"
+import OrderDetailsRoute from "./components/macro/Route/OrderDetailsRoute"
 
 import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
@@ -26,15 +28,15 @@ export const Routes = () => {
             <Route path="/category" component={Category}/>
             <Route path="/checkout" component={Checkout}/>
             <Route path="/contact" component={Contact} />
-            <Route path="/dashboard/:id" component={Dashboard}/>
+            <PrivateRoute path="/dashboard" component={Dashboard}/>
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/login" component={Login}/>
             <Route path="/product/:id" component={Product}/>
             <Route path="/register" component={Register}/>
             <Route path="/contact" component={Contact}/>
             <Route path="/success" component={Success}/>
-            <Route path="/orderDetails" component={OrderDetails}/>
             <Route path="/about" component={About}/>
+            <OrderDetailsRoute path="/orderDetails" component={OrderDetails}/>
             <Route path="/changePassword/:id" component={ChangePassword} />
             <Route component={NotFound}/>
             
