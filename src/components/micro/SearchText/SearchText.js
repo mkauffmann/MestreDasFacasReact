@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchBar from '../../macro/Forms/SearchBar/SearchBar'
 
 function SearchText(props) {
 

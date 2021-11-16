@@ -39,6 +39,21 @@ function Header(props) {
         })
     }, [])
 
+    // Get de barra de pesquisa:
+
+    const { textoPesquisa } = useParams()
+    const [produtosPesquisa, setProdutosPesquisa] = useState([])
+
+    useEffect(() => {
+        axios.get(`http://localhost:8080/product/search/${textoPesquisa}`)
+        .then((response) => {
+            setProdutosPesquisa([...response.data])
+        })
+        .catch((err) => {
+            console.error("Erro ao buscar os produtos" + err)
+        })
+    }, [])
+
     return (
         <>
        

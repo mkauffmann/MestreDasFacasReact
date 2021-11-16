@@ -8,7 +8,7 @@ function CategoryAllProducts(props) {
     return (
         <>
 
-            <div className="container col-2 navegacao"> <Link to="/category/5" className="navegacao"> Todas as Facas </Link> </div>
+            <div className="container col-2 navegacao"> <Link to="/category/allProducts" className="navegacao"> Todas as Facas </Link> </div>
 
 
         </>
