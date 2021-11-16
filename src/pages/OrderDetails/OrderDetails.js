@@ -1,9 +1,12 @@
 import React from 'react'
 import './OrderDetails.css'
 import Button from '../../components/micro/Button/Button'
-import { Link } from 'react-router-dom'
+import { Link, useLocation} from 'react-router-dom'
 
 function OrderDetails(props) {
+    const location = useLocation()
+    const order = location.state
+    const itemQty = order.itemRequest.length
 
     return (
         <>
@@ -16,22 +19,22 @@ function OrderDetails(props) {
             <div class="container d-flex col-12 ">
 
                 <div class="container  col-6">Pedido nº:</div>
-                <div class="container  col-6"><b> 23872146</b></div>
+                <div class="container  col-6"><b> {order.id}</b></div>
             </div>
             <div class="container d-flex col-12">
 
                 <div class="container col-6">Realizado em:</div>
-                <div class="container col-6"><b>23/06/2021</b></div>
+                <div class="container col-6"><b>{order.purchaseDate}</b></div>
             </div>
             <div class="container d-flex col-12">
 
                 <div class="container col-6">Data do Pagamento</div>
-                <div class="container col-6"><b>23/06/2021</b></div>
+                <div class="container col-6"><b>{order.paymentDate}</b></div>
             </div>
             <div class="container d-flex col-12">
 
-                <div class="container col-6">Valor total (1 itens):</div>
-                <div class="container col-6"><b>R$ 93,49</b></div>
+                <div class="container col-6">Valor total ({itemQty == 1 ? "1 item" : `${itemQty} itens`}):</div>
+                <div class="container col-6"><b>R$ {order.totalValue}</b></div>
 
             </div>
 
@@ -52,11 +55,11 @@ function OrderDetails(props) {
                             </path>
                         </g>
                     </svg>
-                    <i class="statusPedido"> PEDIDO CONCLUIDO</i></div>
+                    <i class="statusPedido"> {order.deliveryStatus.description_status_delivery}</i></div>
                 <hr/></div>
                 <div class="container col-12"> <div class=" col-12">
                     <h2>Pedido</h2>
-                    <h5><b>FACA AK-47</b> </h5>
+                    
                 </div></div>
 
 
@@ -72,7 +75,7 @@ function OrderDetails(props) {
                         Frete
                     </div>
                     <div class=" col-6">
-                        <b> Expresso</b>
+                        <b> Fixo</b>
 
                     </div>
                 </div>
@@ -82,7 +85,7 @@ function OrderDetails(props) {
                         Valor Frete
                     </div>
                     <div class=" col-6">
-                        <b>R$ 16,59</b>
+                        <b>R$ {order.freightFixed}</b>
 
                     </div>
                 </div>
@@ -92,7 +95,7 @@ function OrderDetails(props) {
                         Valor Total
                     </div>
                     <div class=" col-6">
-                        <b>R$ 93,49</b>
+                        <b>R$ {order.finalValue}</b>
 
                     </div>
                 </div>
@@ -103,7 +106,7 @@ function OrderDetails(props) {
                         Pagamento
                     </div>
                     <div class=" col-6">
-                        <b>PIX</b>
+                        <b>{order.typePayment.description_type_payment}</b>
 
                     </div>
                 </div>
@@ -113,7 +116,7 @@ function OrderDetails(props) {
                         Valor:
                     </div>
                     <div class=" col-6">
-                        <b>R$ 93,49</b>
+                        <b>R$ {order.finalValue}</b>
 
                     </div>
                     <hr/>
@@ -124,15 +127,19 @@ function OrderDetails(props) {
                         <div>
                             <h2>Endereço de Entrega</h2>
                         </div>
-                        <div>Rua Nuporanga, 1270</div>
-                        <div>Casa</div>
-                        <div>Jardim Salgado Filho</div>
-                        <div>CEP 14079015</div>
-                        <div>Ribeirão Preto, SP</div>
+                        <div>{order.address.street}, {order.address.number}</div>
+                        
+                        {order.address.complement !== null 
+                        ? <div>{order.address.complement}</div>
+                        : ""}
+                
+                        <div>{order.address.neighborhood}</div>
+                        <div>CEP {order.address.cep}</div>
+                        <div>{order.address.city.cityName}, {order.address.state.uf}</div>
                         <hr/>
                         </div>
                         <div class="container d-flex flex-row-reverse bd-highlight"  style={{marginBottom: '20px'}}>
-                            <Link to="/home"><Button label="Voltar" class="btn-default btn-cancelar btn-back"></Button></Link>
+                            <Link to="dashboard/myOrders"><Button label="Voltar" class="btn-default btn-cancelar btn-back"></Button></Link>
 
                         </div>
                         </div>
