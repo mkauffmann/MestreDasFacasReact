@@ -17,6 +17,7 @@ function ProductList(props) {
         localStorage.setItem("cart", cartString)
         localStorage.setItem('qtyCart', JSON.stringify(cartList.length))
         props.setQtyCart(cartList.length)
+        
     }
 
     const removeFromCart = (item) =>{
@@ -86,6 +87,8 @@ function ProductList(props) {
                             <span class="text-dark">Valor Total: {item.productPrice.value}</span>
 
                         </div>
+
+                        
 
 
                             

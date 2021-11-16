@@ -7,9 +7,12 @@ function Cart(props) {
     const [products, setProducts] = useState([])
     const [qtyCart, setQtyCart] = useState(0)
 
+
     useEffect(() => {
         setProducts(JSON.parse(localStorage.getItem("cart")))
         setQtyCart(JSON.parse(localStorage.getItem("qtyCart")))
+        
+   
     },[])
 
     return(
@@ -23,6 +26,7 @@ function Cart(props) {
 
            
      <h2> {qtyCart}</h2>
+  
 
         
         <ProductList products={products} cart/>
