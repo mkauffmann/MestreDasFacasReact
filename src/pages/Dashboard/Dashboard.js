@@ -17,6 +17,7 @@ import InfoList from '../../components/macro/Dashboard/InfoList/InfoList'
 import ComponentCard from '../../components/macro/Dashboard/ComponentCard/ComponentCard'
 import AddressList from '../../components/macro/Dashboard/InfoList/AddressList';
 import CreditCardList from '../../components/macro/Dashboard/InfoList/CreditCardList';
+import TelephoneList from '../../components/macro/Dashboard/InfoList/TelephoneList';
 
 function Dashboard(props) {
     const {userId, token, logout} = useLogin()
@@ -73,7 +74,7 @@ function Dashboard(props) {
                                     <AddressList type="endereço" title="Meus Endereços" userData={user} isLoading={isLoading} />
                                 </Route>
                                 <Route path={`${url}/myTelephones`}>
-                                    <InfoList type="telefone" title="Meus Telefones" userData={user} isLoading={isLoading}/>
+                                    <TelephoneList type="telefone" title="Meus Telefones" userData={user} isLoading={isLoading}/>
                                 </Route>
                             </Switch>
                         </ComponentCard>

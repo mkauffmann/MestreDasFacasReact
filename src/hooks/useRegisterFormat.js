@@ -24,6 +24,7 @@ function useRegisterFormat(){
     }
 
     const handleTelephoneCreation = (inputTelephone) => {
+        console.log(inputTelephone)
         let telArr = inputTelephone.split(") ")
         const ddd = telArr[0].slice(1)
 
@@ -31,6 +32,11 @@ function useRegisterFormat(){
         const phoneNumber = numArr[0] + numArr[1]
 
         return { ddd, phoneNumber }
+    }
+
+    const handleShowFormatedTelephone = (dbTelephone) => {
+        let tel = `(${dbTelephone.ddd}) ${dbTelephone.phoneNumber.slice(0,5)}-${dbTelephone.phoneNumber.slice(-4)}`
+        return {telephoneTemp : tel}
     }
 
     const handleAddressCreation = (inputAddress) => {
@@ -75,7 +81,8 @@ function useRegisterFormat(){
         handleTelephoneCreation,
         handleShowGender,
         handleShowAddress,
-        handleShowCreditCard
+        handleShowCreditCard,
+        handleShowFormatedTelephone
     }
 }
 
