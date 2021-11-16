@@ -118,3 +118,13 @@ header {
 .blocoTelefone {
     flex-direction: column;
 }
+
+
+.contagem{
+    border-radius: 50px;
+
+    color: black;
+    background-color: rgb(155, 146, 146);
+    width: 15px;
+    height: 15px;
+}

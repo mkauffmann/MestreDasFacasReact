@@ -22,7 +22,7 @@ function Cart(props) {
             
 
            
-        {/* <h2>{qtyCart}</h2> */}
+     <h2> {qtyCart}</h2>
 
         
         <ProductList products={products} cart/>
