@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import ProductList from '../../components/micro/ProductList/ProductList';
 
+
 function Cart(props) {
     
     const [products, setProducts] = useState([])
@@ -15,6 +16,9 @@ function Cart(props) {
    
     },[])
 
+
+    
+
     return(
         <>
 
@@ -25,14 +29,24 @@ function Cart(props) {
             
 
            
-     <h2> {qtyCart}</h2>
   
 
         
         <ProductList products={products} cart/>
         
         </ul>
+
+        <div >
+
+        <h4 >Resumo do pedido</h4>
+        <h5 >{qtyCart} Produtos: R$ 18.000,00</h5>
+        <h5 ></h5>
+        <h4 >Total: </h4>
+
         </div>
+        </div>
+
+        
       
         <Link to='/'>Home</Link>
         </>

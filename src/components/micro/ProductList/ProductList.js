@@ -1,11 +1,46 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import iconlix from '../../../assets/icons/checkout/lixeira.png'
 import './ProductList.css'
-import axios from 'axios'
+
 
 
 
 function ProductList(props) {
+
+    const URL = 'http://localhost:8080/product'
+
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+
+        getItem()
+
+    }, [])
+
+
+
+
+    const getItem = () => {
+        axios.get(`${URL}`)
+        .then((response)=> {
+            props.products(response.data)
+        })
+    }
+
+    
+
+
+
+    const deleteItem = (id) => {
+        axios.delete(`${URL}/${id}`)
+        .then(response => {
+            getItem()
+        })
+    }
+
+    
+
 
 
     const addToCart = (item) => {
@@ -16,22 +51,10 @@ function ProductList(props) {
         let cartString = JSON.stringify(cartList)
         localStorage.setItem("cart", cartString)
         localStorage.setItem('qtyCart', JSON.stringify(cartList.length))
+        
         props.setQtyCart(cartList.length)
         
     }
-
-    const removeFromCart = (item) =>{
-
-       
-
-
-    
-
-
-    }
-    
-
-
 
 
     const listProducts = () => {
@@ -57,17 +80,11 @@ function ProductList(props) {
                                 {item.descriptionProduct}
                             </small>
 
-                            
-
-                           
-
+                        
 
                         </div>
 
                         
-
-                        
-
 
                             <div style={{float: "left"}} class="btn-group  col-6  col-md-4 col-4 align-self-center justify-content-center " role="group" aria-label="...">
 
@@ -77,16 +94,20 @@ function ProductList(props) {
 
                                 <button type="button" class="  btn-custom">+</button>
 
-                                <button onClick={() => removeFromCart(item.id)} type="button" class="  mx-4 btn-lix-custom" ><img  style={{ border: "none" }}  width="25px" src={iconlix} /></button>
+                                <button  onClick={() => deleteItem (item.id)}  type="button" class="  mx-4 btn-lix-custom" ><img  style={{ border: "none" }}  width="25px" src={iconlix} /></button>
                             </div>
 
 
 
                             <div  class="text-right col-6  col-md-8 col-lg-2     ">
                             <small class="text-secondary">Subtotal: {item.productPrice.value}</small><br></br>
-                            <span class="text-dark">Valor Total: {item.productPrice.value}</span>
+                            <span class="text-dark">Valor Total:  {item.productPrice.value}</span>
 
                         </div>
+
+                        
+
+                       
 
                         
 
@@ -102,6 +123,8 @@ function ProductList(props) {
 
 
                     </div>
+
+                    
 
 
                     {
