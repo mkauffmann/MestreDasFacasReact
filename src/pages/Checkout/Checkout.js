@@ -9,9 +9,9 @@ import '../../components/micro/Button/Button.css'
 import TotalValueCheckout from '../../components/micro/TotalValueCheckout/TotalValueCheckout'
 
 import IconHome from '../../assets/imgs/checkout/icon-home.png'
-import IconCredit from '../../assets/imgs/product/icone-cartao-credito.png'
-import IconBoleto from '../../assets/imgs/product/icone-boleto.png'
-import IconPix from '../../assets/imgs/product/icone-pix.png'
+import IconCredit from '../../assets/imgs/Product/icone-cartao-credito.png'
+import IconBoleto from '../../assets/imgs/Product/icone-boleto.png'
+import IconPix from '../../assets/imgs/Product/icone-pix.png'
 
 import ProductComp from '../../components/micro/ProductComp/ProductComp'
 

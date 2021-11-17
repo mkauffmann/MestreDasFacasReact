@@ -26,18 +26,18 @@ function Header(props) {
 
     // Get de produtos:
 
-    const [produtos, setProdutos] = useState([])
+    // const [produtos, setProdutos] = useState([])
 
-    useEffect(() => {
-        axios.get('http://localhost:8080/product')
-        .then((response) => {
-            setProdutos([...response.data])
-            console.log(response)
-        })
-        .catch((err) => {
-            console.error("Erro ao buscar todos os produtos " + err)
-        })
-    }, [])
+    // useEffect(() => {
+    //     axios.get('http://localhost:8080/product')
+    //     .then((response) => {
+    //         setProdutos([...response.data])
+    //         console.log(response)
+    //     })
+    //     .catch((err) => {
+    //         console.error("Erro ao buscar todos os produtos " + err)
+    //     })
+    // }, [])
 
     // Get de barra de pesquisa:
 
@@ -357,7 +357,7 @@ rkJggg==" />
                         {/* <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Explorar Categorias</Link></div> */}
 
                         <CategoryId categorias={[...categorias]}/>
-                        <CategoryAllProducts produtos={[...produtos]}/>
+                        <CategoryAllProducts/>
                         
                         {/* <div className="container col-2 navegacao"><Link to={'/category/'+item.id} className="navegacao">Churrasco</Link></div>
                         <div className="container col-2 navegacao"><Link to="/category/2" className="navegacao">Cozinha</Link></div>

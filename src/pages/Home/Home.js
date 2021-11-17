@@ -2,36 +2,56 @@ import React from 'react'
 import './Home.css'
 import Banners from '../../components/macro/Banners/Banner'
 import Card from '../../components/macro/CardHome/Card'
-import Faca1 from '../../assets/imgs/produtos/1.jpeg'
-import Faca2 from '../../assets/imgs/produtos/2.jpeg'
-import Faca3 from '../../assets/imgs/produtos/3.jpeg'
-import Faca4 from '../../assets/imgs/produtos/4.jpeg'
-import Faca5 from '../../assets/imgs/produtos/5.jpeg'
-import Faca6 from '../../assets/imgs/produtos/6.jpeg'
-import Faca7 from '../../assets/imgs/produtos/7.jpeg'
-import Faca8 from '../../assets/imgs/produtos/8.jpeg'
 import Patrocinio from '../../components/macro/Banners/Patrocinio'
 import Brinox from '../../assets/imgs/banners/brinox.png'
 import Pepsi from '../../assets/imgs/banners/pepsi.png'
 import Tramontina from '../../assets/imgs/banners/tramontina.png'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import CategoryList from '../../components/macro/ProductList/CategoryList/CategoryList'
+
+
 
 
 function Home(props) {
-const [categories, setCategories] = useState([])
+// const [categories, setCategories] = useState([])
 
+// useEffect(() => {
+//     axios.get('http://localhost:8080/product/')
+//     .then((response) =>{
+//         setCategories(response.data)
+//         console.log(response.data)
+//     })
+//     .catch((error) =>{
+//         console.error("Aconteceu um erro!" + error)
+//     })
+// }, [])
+const [novidades, setNovidades] = useState([])
+const [destaques, setDestaques] = useState([])
+
+// USE EFFECT DE NOVIDADES
 useEffect(() => {
-    axios.get('http://localhost:8080/product/')
+    axios.get('http://localhost:8080/product/news')
     .then((response) =>{
-        setCategories(response.data)
-        console.log(response.data)
+        setNovidades(response.data)
+        
     })
     .catch((error) =>{
         console.error("Aconteceu um erro!" + error)
     })
 }, [])
+
+// USE EFFECT DE DESTAQUES
+useEffect(() => {
+    axios.get('http://localhost:8080/product/featured')
+    .then((response) =>{
+        setDestaques(response.data)
+        
+    })
+    .catch((error) =>{
+        console.error("Aconteceu um erro!" + error)
+    })
+}, [])
+
     return (
         <main>
             <Banners />
@@ -41,7 +61,8 @@ useEffect(() => {
                 <h2 className="destaques">Nossos Destaques</h2>
             </div>
             <div className="container cards">
-              <CategoryList categories={categories} />
+              {/* <CategoryList categories={categories} /> */}
+              <Card destaques={destaques}/>
             </div>
 
             {/* <!--BEGING SECOND BANNER --> */}
@@ -51,7 +72,8 @@ useEffect(() => {
                 <h2 className="destaques">Novidades</h2>
             </div>
             <div className="container cards">
-            <CategoryList categories={categories} />
+            {/* <CategoryList categories={categories} /> */}
+            <Card novidades={novidades}/>
             </div>
 
             {/* <!-- BEGING THIRD BANNER --> */}

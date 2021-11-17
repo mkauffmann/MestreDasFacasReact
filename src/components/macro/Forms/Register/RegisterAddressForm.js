@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import { Row, Col, Container } from "react-bootstrap";
-=======
 import { Row, Col, Container, Modal } from "react-bootstrap";
 import ReactLoading from 'react-loading'
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
 import axios from "axios";
 import Input from "../../../micro/Forms/Input/Input";
 import Button from "../../../micro/Button/Button";
@@ -32,17 +28,6 @@ function RegisterAddressForm(props) {
         isEmpty,
         setErrors
     } = useValidation(addressValues);
-<<<<<<< HEAD
-
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        if (validateForm(requiredFields)) {
-            props.save(addressValues);
-            setAddressValues({ ...initialValue });
-        }
-=======
     const [isLoading, setIsLoading] = useState(false)
 
 
@@ -55,7 +40,6 @@ function RegisterAddressForm(props) {
             }
         }
         setIsLoading(false)
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
     }
 
     const handleChange = (event) => {
@@ -89,10 +73,6 @@ function RegisterAddressForm(props) {
     const handleCepApi = () => {
         let cepArr = addressValues.cep.split("-")
         const inputCep = cepArr[0] + cepArr[1]
-<<<<<<< HEAD
-        console.log(inputCep)
-=======
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
         const url = `http://viacep.com.br/ws/${inputCep}/json/`
         axios.get(url)
             .then(response => {
@@ -129,8 +109,6 @@ function RegisterAddressForm(props) {
 
 
     return (
-<<<<<<< HEAD
-=======
         <>
         <Modal show={isLoading} animation={false} centered dialogClassName="modal-loading">
             <Modal.Body>
@@ -139,7 +117,6 @@ function RegisterAddressForm(props) {
                 </div>
             </Modal.Body>
         </Modal>
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
         <form onSubmit={handleSubmit} onReset={resetForm}>
             <Container className="mx-auto">
                 <Row>
@@ -210,10 +187,7 @@ function RegisterAddressForm(props) {
                 </Row>
             </Container>
         </form>
-<<<<<<< HEAD
-=======
         </>
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
     )
 }
 

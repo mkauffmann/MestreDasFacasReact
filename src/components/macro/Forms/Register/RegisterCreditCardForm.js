@@ -10,11 +10,7 @@ import useValidation from "../../../../hooks/useValidation";
 const initialInputValues = {
     cardNumber: "",
     cardValidDate: "",
-<<<<<<< HEAD
-    holderCpf: "",
-=======
     cpf: "",
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
     holderName: "",
     cardBrandTemp: ""
 }
@@ -121,21 +117,12 @@ function RegisterCreditCardForm(props) {
                             error={errors.holderName} />
                         </Col>
                         <Col md={4} className="mb-3">
-<<<<<<< HEAD
-                            <Input type="text" id="holderCpf" name="holderCpf"
-                                    label="CPF do titular" obrigatorio
-                                    mask="999.999.999-99"
-                                    changeFunction={handleChange} value={creditCardValues.holderCpf}
-                                    blurFunction={handleBlur} validation={validateCpflNotEmpty}
-                                    error={errors.holderCpf} />
-=======
                             <Input type="text" id="holderCpf" name="cpf"
                                     label="CPF do titular" obrigatorio
                                     mask="999.999.999-99"
                                     changeFunction={handleChange} value={creditCardValues.cpf}
                                     blurFunction={handleBlur} validation={validateCpflNotEmpty}
                                     error={errors.cpf} />
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
                         </Col>
                     </Row>
                     <Row className="my-3 justify-content-end">

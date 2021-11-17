@@ -4,6 +4,8 @@
     font-family: 'Barlow', sans-serif;
     font-weight: bold;
     color      : #860E1C;
+
+    
 }
 
 .precoProduto {
@@ -38,6 +40,11 @@ img{
 }
 
 
-
+.card {
+    max-width: 100%;
+}
+.card-text {
+    Word-wrap: break-Word;
+}
 
 

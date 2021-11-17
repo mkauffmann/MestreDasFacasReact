@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import UpdateUserDataForm from "../../Forms/Update/UpdateUserDataForm";
-
-
-function UserForm(props) {
-=======
 import React, { useState } from "react";
 import ReactLoading from 'react-loading'
 import { Modal } from "react-bootstrap";
@@ -70,7 +63,6 @@ function UserForm(props) {
         setIsLoading(false)
     }
     
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
 
     if (props.isLoading) {
         return (<>
@@ -80,10 +72,6 @@ function UserForm(props) {
     }
     return (
         <>
-<<<<<<< HEAD
-            <h3 className="mb-3">Editar meus dados</h3>
-            <UpdateUserDataForm userData={props.userData} />
-=======
         {errorMessage 
         ? <Modal show={showError} onHide={handleCloseError}>
             <Modal.Header closeButton/>
@@ -101,7 +89,6 @@ function UserForm(props) {
             <UpdateUserDataForm userData={props.userData} updateUser={updateUser} errorMessage={errorMessage}/>
             <DividingBar singleLine/>
             <UpdatePasswordForm updatePassword={updatePassword}/>
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
         </>
 
     )

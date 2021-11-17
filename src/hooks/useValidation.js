@@ -80,8 +80,6 @@ function useValidation(inputValues) {
         }
     }
 
-<<<<<<< HEAD
-=======
     const validateStringNotRequired = (inputValue, name) => {
         const regexName =
             /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð\s,.'-]{1,}$/u;
@@ -123,7 +121,6 @@ function useValidation(inputValues) {
         }
     }
 
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
     const validateEmailNotEmpty = (inputValue, name) => {
         const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
@@ -267,13 +264,9 @@ function useValidation(inputValues) {
         validateTelephoneEmpty,
         validateNotRequired,
         validatePasswordNotEmpty,
-<<<<<<< HEAD
-        validateCreditCardDate
-=======
         validateCreditCardDate,
         validateStringNotRequired,
         validateEmailNotRequired
->>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
     }
 }
 
