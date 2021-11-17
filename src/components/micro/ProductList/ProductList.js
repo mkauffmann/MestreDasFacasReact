@@ -5,44 +5,7 @@ import './ProductList.css'
 
 
 
-
 function ProductList(props) {
-
-    const URL = 'http://localhost:8080/product'
-
-    const [items, setItems] = useState([])
-
-    useEffect(() => {
-
-        getItem()
-
-    }, [])
-
-
-
-
-    const getItem = () => {
-        axios.get(`${URL}`)
-        .then((response)=> {
-            props.products(response.data)
-        })
-    }
-
-    
-
-
-
-    const deleteItem = (id) => {
-        axios.delete(`${URL}/${id}`)
-        .then(response => {
-            getItem()
-        })
-    }
-
-    
-
-
-
     const addToCart = (item) => {
         let cartList = localStorage.getItem("cart")
             ? JSON.parse(localStorage.getItem("cart"))
@@ -52,13 +15,18 @@ function ProductList(props) {
         localStorage.setItem("cart", cartString)
         localStorage.setItem('qtyCart', JSON.stringify(cartList.length))
         
-        props.setQtyCart(cartList.length)
         
+        props.setQtyCart(cartList.length)
     }
+
+
+
 
 
     const listProducts = () => {
         return props.products.map((item) => {
+
+            
             return (
                 
                 
@@ -80,8 +48,6 @@ function ProductList(props) {
                                 {item.descriptionProduct}
                             </small>
 
-                        
-
                         </div>
 
                         
@@ -94,7 +60,7 @@ function ProductList(props) {
 
                                 <button type="button" class="  btn-custom">+</button>
 
-                                <button  onClick={() => deleteItem (item.id)}  type="button" class="  mx-4 btn-lix-custom" ><img  style={{ border: "none" }}  width="25px" src={iconlix} /></button>
+                                <button  type="button" class="  mx-4 btn-lix-custom" ><img  style={{ border: "none" }}  width="25px" src={iconlix} /></button>
                             </div>
 
 
@@ -104,20 +70,6 @@ function ProductList(props) {
                             <span class="text-dark">Valor Total:  {item.productPrice.value}</span>
 
                         </div>
-
-                        
-
-                       
-
-                        
-
-
-                            
-                        
-
-
-
-                        
 
                         
 

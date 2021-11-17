@@ -20,11 +20,25 @@ function Home(props) {
         })
     }
 
+    const postProducts = () =>{
+
+        axios.post('http://localhost:8080/itemrequest').then((response) => {
+            setProducts(response.data)
+        })
+
+    }
+
+
+
+
+
+
+
     return(
         <>
         <h1>Home</h1>
         <h2>{qtyCart}</h2>
-        <ProductList products={products} setQtyCart={setQtyCart}/>
+        <ProductList products={products} setQtyCart={setQtyCart} postProducts={setProducts}/>
         <Link to='/cart'>Ver Carrinho</Link>
         </>
     )
