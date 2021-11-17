@@ -7,7 +7,7 @@ import CardCart from '../../macro/CardCart/CardCart'
 
 
 
-function ProductList(props) {
+function ProductListHome(props) {
 
     const checkItemCart = (item, cartList) => {
         if (cartList.length > 0) {
@@ -74,19 +74,13 @@ function ProductList(props) {
 
     const listProducts = () => {
 
-    let items = JSON.parse(localStorage.getItem("itemRequest"))
-
-
-    if( items == null){
-        return "qualquer bosta"
-
-    }
 
 
 
 
 
-        return items.map((item, index) => {
+
+        return props.products.map((item) => {
 
             return (
 
@@ -94,13 +88,13 @@ function ProductList(props) {
 
 
 
-                <li className="list-group-item " key={index}>
+                <li className="list-group-item " key={item.id}>
 
 
                     <div className="row ">
 
                         <div className="col-4 col-md-3 col-lg-1" >
-                            <img style={{ float: "left" }} className="img-thumbnail" width="100px" src={item.product.image} ></img>
+                            <img style={{ float: "left" }} className="img-thumbnail" width="100px" src={item.image} ></img>
 
                         </div>
 
@@ -108,10 +102,10 @@ function ProductList(props) {
 
                         <div class="col-8 col-md-9 col-lg-6 col-xl-5 align-self-center" >
 
-                            <div className="text-produto-nome text-decoration-none text-danger">{item.product.productName}</div>
+                            <div className="text-produto-nome text-decoration-none text-danger">{item.productName}</div>
 
                             <small >
-                                {item.product.descriptionProduct}
+                                {item.descriptionProduct}
                             </small>
 
                         </div>
@@ -122,7 +116,7 @@ function ProductList(props) {
 
                             <button o class="  btn-custom">-</button>
 
-                            <input style={{ textAlign: "center" }} type="text" value={item.quantity} />
+                            <input style={{ textAlign: "center" }} type="text" value="1"/>
 
 
                             <button type="button" type="button" class="  btn-custom">+</button>
@@ -133,8 +127,8 @@ function ProductList(props) {
 
 
                         <div class="text-right col-6  col-md-8 col-lg-2     ">
-                            <small class="text-secondary">Subtotal: {item.product.productPrice.value}</small><br></br>
-                            <span class="text-dark">Valor Total:  {item.product.productPrice.value}</span>
+                            <small class="text-secondary">Subtotal: {item.productPrice.value}</small><br></br>
+                            <span class="text-dark">Valor Total:  {item.productPrice.value}</span>
 
                         </div>
 
@@ -171,4 +165,4 @@ function ProductList(props) {
     )
 }
 
-export default ProductList
+export default ProductListHome
