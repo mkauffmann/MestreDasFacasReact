@@ -2,6 +2,9 @@ import React from 'react'
 import jwtDecode from 'jwt-decode'
 
 function useLogin(){
+    const refreshPage = () => {
+        window.location.reload();
+    } 
     const login = (token) => {
         let jwt = token;
         let decoded = jwtDecode(jwt);
@@ -28,7 +31,8 @@ function useLogin(){
         logout,
         isAuthenticated,
         token,
-        userId
+        userId,
+        refreshPage
     }
 }
 
