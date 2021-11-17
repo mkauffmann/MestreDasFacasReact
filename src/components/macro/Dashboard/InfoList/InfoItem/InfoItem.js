@@ -24,7 +24,11 @@ function InfoItem(props){
                  <div className="numero-cartao"><strong>**** **** **** {creditCard.cardNumber.slice(-4)}</strong></div>
                  <div className="infos-lista d-flex flex-column  mt-1">
                      <div><strong>Titular:</strong> {creditCard.holderName}</div>
+<<<<<<< HEAD
                      <div><strong>CPF:</strong> {creditCard.holderCpf}</div>
+=======
+                     <div><strong>CPF:</strong> {creditCard.cpf}</div>
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
                      <div><strong>Validade: </strong>{creditCard.cardValidDate}</div>
                  </div>
                 <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista">Editar</button>

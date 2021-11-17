@@ -1,0 +1,19 @@
+.produto-preco {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-produtos, .valor-produtos {
+    width: 50%;
+}
+
+@media (min-width:559px) and (max-width: 985px) {
+    /* .titulo-filtro::after {
+    display: none;
+    }     */
+    
+    .info-produtos, .valor-produtos {
+        width: 25%;
+    }
+
+}

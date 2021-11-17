@@ -80,6 +80,50 @@ function useValidation(inputValues) {
         }
     }
 
+<<<<<<< HEAD
+=======
+    const validateStringNotRequired = (inputValue, name) => {
+        const regexName =
+            /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð\s,.'-]{1,}$/u;
+
+        if (!regexName.test(inputValue)) {
+            setErrors((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: "Caracteres inválidos"
+                }
+            })
+
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        }
+    }
+
+    const validateEmailNotRequired = (inputValue, name) => {
+        const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+
+        if (!regexEmail.test(inputValue)) {
+            setErrors((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: "Email inválido"
+                }
+            })
+
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        }
+    }
+
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
     const validateEmailNotEmpty = (inputValue, name) => {
         const regexEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
@@ -223,7 +267,13 @@ function useValidation(inputValues) {
         validateTelephoneEmpty,
         validateNotRequired,
         validatePasswordNotEmpty,
+<<<<<<< HEAD
         validateCreditCardDate
+=======
+        validateCreditCardDate,
+        validateStringNotRequired,
+        validateEmailNotRequired
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
     }
 }
 

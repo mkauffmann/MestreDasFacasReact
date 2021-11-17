@@ -117,9 +117,45 @@
         }
       ],
       "id": 3
+<<<<<<< HEAD
     }
   ],
   "login": [
     
+=======
+    },
+    {
+      "name": "Rafael oliveira",
+      "email": "rafa.dev.silva@gmail.com",
+      "cpf": "460.994.678-58",
+      "birthDate": "1996-01-19",
+      "password": "r63030166",
+      "telephones": [
+        {
+          "ddd": "11",
+          "phoneNumber": "111111111"
+        }
+      ],
+      "gender": {
+        "description": "Feminino"
+      },
+      "id": 4
+    }
+  ],
+  "login": [],
+  "changePassword": [
+    {
+      "currentPassword": "123",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 1
+    },
+    {
+      "currentPassword": "1235",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 2
+    }
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
   ]
 }

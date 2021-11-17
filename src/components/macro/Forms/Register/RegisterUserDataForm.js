@@ -33,12 +33,22 @@ function RegisterForm(props) {
     } = useValidation(inputValues);
 
 
+<<<<<<< HEAD
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if (validateForm(requiredFields)) {
             props.save(inputValues);
             resetForm()
+=======
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        if (validateForm(requiredFields)) {
+            if(await props.save(inputValues)){
+                resetForm()
+            }
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
         }
     };
 

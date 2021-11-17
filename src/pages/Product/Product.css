@@ -48,7 +48,7 @@
 
 .texto-cartao-credito::before {
     content: "";
-    background-image: url(../../assets/imgs/Product/icone-cartao-credito.png);
+    background-image: url(../../assets/imgs/product/icone-cartao-credito.png);
     background-size: 35px;
     background-repeat: no-repeat;
     display: block;
@@ -61,7 +61,7 @@
 
 .texto-boleto::before {
     content: "";
-    background-image: url(../../assets/imgs/Product/icone-boleto.png);
+    background-image: url(../../assets/imgs/product/icone-boleto.png);
     background-size: 35px;
     background-repeat: no-repeat;
     display: block;
@@ -74,7 +74,7 @@
 
 .texto-pix::before {
     content: "";
-    background-image: url(../../assets/imgs/Product/icone-pix.png);
+    background-image: url(../../assets/imgs/product/icone-pix.png);
     background-size: 35px;
     background-repeat: no-repeat;
     display: block;

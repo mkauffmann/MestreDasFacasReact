@@ -4,6 +4,8 @@ import Button from '../../components/micro/Button/Button'
 import '../../components/micro/Button/Button.css'
 import Faca7 from '../../assets/imgs/home/7.jpeg'
 
+import { Link } from 'react-router-dom'
+
 function Product(props) {
 
     return (
@@ -19,17 +21,17 @@ function Product(props) {
                             <div><b> Nome do produto </b></div>
                         </div>
                         <div className="row">
-                            <div className="col-12 col-md-6 col-lg-5">
+                            {/* <div className="col-12 col-md-6 col-lg-5">
                                 <select className="form-select caixa-cor-cabo" aria-label="Default select example">
                                     <option selected>Cor do cabo</option>
                                     <option value="1">Azul</option>
                                     <option value="2">Verde</option>
                                     <option value="3">Amarelo</option>
                                 </select>
-                            </div>
+                            </div> */}
                             <div className="col-12 col-md-6 col-lg-5">
                                 {/* <button type="submit" className="btn-principal" onclick="window.location.href='meucarrinho.html'"> Comprar </button> */}
-                                <Button label='Comprar' class='btn-principal btn-comprar' />
+                                <Link to="/cart"> <Button label='Comprar' class='btn-principal btn-comprar' /> </Link>
                             </div>
                         </div>
                         <div>

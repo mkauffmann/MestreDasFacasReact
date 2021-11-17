@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { Row, Col} from "react-bootstrap";
+=======
+import React, { useState } from "react";
+import { Row, Col} from "react-bootstrap";
+
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
 import Button from "../../../micro/Button/Button";
 import Input from "../../../micro/Forms/Input/Input";
 import Select from "../../../micro/Forms/Select/Select";
 import useValidation from "../../../../hooks/useValidation";
+<<<<<<< HEAD
 import useRegisterFormat from "../../../../hooks/useRegisterFormat";
 
 function UpdateUserDataForm(props) {
@@ -32,6 +39,27 @@ function UpdateUserDataForm(props) {
             props.save(inputValues);
         }
     };
+=======
+
+
+function UpdateUserDataForm(props) {
+    const [inputValues, setInputValues] = useState({ ...props.userData});
+    const {
+        errors,
+        validateForm,
+        validateStringNotEmpty,
+        validateEmailNotEmpty,
+        setErrors
+    } = useValidation(inputValues)
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (await validateForm(["name", "email"])) {
+            props.updateUser(inputValues);
+    
+        }
+    }; 
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
 
     const handleChange = (event) => {
         const value = event.target.value;
@@ -42,12 +70,29 @@ function UpdateUserDataForm(props) {
         });
     };
 
+<<<<<<< HEAD
     // const handleBlur = (event, validationCallback) => {
     //     const value = event.target.value;
     //     const name = event.target.name;
     //     validationCallback(value, name)
     //     validateForm(requiredFields)
     // }
+=======
+    const handleChangeGender = (event) => {
+        const value = event.target.value;
+
+        setInputValues((prevState) => {
+            return { ...prevState, gender: {description : value} };
+        });
+    };
+
+    const handleBlur = (event, validationCallback) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        validationCallback(value, name)
+        validateForm([])
+    }
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
 
     // const resetForm = () => {
     //     setInputValues({ ...initialInputValues });
@@ -66,6 +111,11 @@ function UpdateUserDataForm(props) {
                                 label="Nome completo"
                                 placeholder="Digite seu nome"
                                 changeFunction={handleChange}
+<<<<<<< HEAD
+=======
+                                blurFunction={handleBlur}
+                                validation={validateStringNotEmpty}
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
                                 value={inputValues.name}
                                 error={errors.name}
                             />
@@ -80,6 +130,11 @@ function UpdateUserDataForm(props) {
                                 label="Email"
                                 placeholder="Digite seu email"
                                 changeFunction={handleChange}
+<<<<<<< HEAD
+=======
+                                blurFunction={handleBlur}
+                                validation={validateEmailNotEmpty}
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
                                 value={inputValues.email}
                                 error={errors.email}
                             />
@@ -113,6 +168,7 @@ function UpdateUserDataForm(props) {
                         <Col md={6} className="mb-3">
                             <Select id="gender" name="genderTemp" label="Gênero"
                                 options={["Feminino", "Masculino", "Não-binário", "Outros", "Prefiro não dizer"]}
+<<<<<<< HEAD
                                 changeFunction={handleChange} 
                                 update
                                 value={inputValues.genderTemp} />
@@ -137,11 +193,20 @@ function UpdateUserDataForm(props) {
                         <Input type="password" id="confirmarSenha" name="confirmPassword" placeholder="Digite novamente sua nova senha" label="Confirme sua nova senha"
                                     obrigatorio changeFunction={handleChange} value={inputValues.confirmPassword}
                                     error={errors.confirmPassword}/>
+=======
+                                changeFunction={handleChangeGender} 
+                                update
+                                value={inputValues.gender ? inputValues.gender.description : ""} />
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
                         </Col>
                     </Row>
                     <Row className="justify-content-end">
                         <Col className="d-flex justify-content-end">
+<<<<<<< HEAD
                             <Button class="btn-principal" label="Atualizar" type="submit" />
+=======
+                            <Button class="btn-principal" label="Atualizar dados pessoais" type="submit" />
+>>>>>>> 66a110f20f57a952f55ca29db1a6a8d3a2c35858
                         </Col>
                     </Row>
             </form>

@@ -7,7 +7,7 @@ function Select(props) {
         if (update) {
             return props.options.map((option, index) => {
                 return (
-                    <option key={index + 1} value={option} selected={option === props.value ? true : false}>
+                    <option key={index + 1} value={option} selected={option.toUpperCase() === props.value ? true : false}>
                         {option}
                     </option>
                 );
