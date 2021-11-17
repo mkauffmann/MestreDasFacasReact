@@ -274,7 +274,7 @@ rkJggg==" />
 
                     <div className="container col-4 col-sm-3 col-md-2 col-xl-1 col-xxl-1 blocoMeusPedidos">
 
-                        <Link to="/dashBoard/myOrders">
+                        <Link to="/dashboard/myOrders">
                             <svg width="97"
                                 height="37" viewBox="0 0 109 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
