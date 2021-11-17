@@ -59,7 +59,7 @@ function Footer(props) {
                 <div class="container-fluid d-flex footer ">
                     <div class="container ro col-12 d-flex footer ">
                         <div class="container col-3">
-                            <a class="footer linkFooter" href="#">Quem somos</a>
+                        <Link to="/about" className="footer linkFooter"> Quem Somos </Link>
 
                         </div>
                         {/* Youtube e twitter */}

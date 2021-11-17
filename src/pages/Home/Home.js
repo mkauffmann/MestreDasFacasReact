@@ -14,10 +14,24 @@ import Patrocinio from '../../components/macro/Banners/Patrocinio'
 import Brinox from '../../assets/imgs/banners/brinox.png'
 import Pepsi from '../../assets/imgs/banners/pepsi.png'
 import Tramontina from '../../assets/imgs/banners/tramontina.png'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import CategoryList from '../../components/macro/ProductList/CategoryList/CategoryList'
 
 
 function Home(props) {
+const [categories, setCategories] = useState([])
 
+useEffect(() => {
+    axios.get('http://localhost:8080/product/')
+    .then((response) =>{
+        setCategories(response.data)
+        console.log(response.data)
+    })
+    .catch((error) =>{
+        console.error("Aconteceu um erro!" + error)
+    })
+}, [])
     return (
         <main>
             <Banners />
@@ -26,11 +40,8 @@ function Home(props) {
             <div className="container destaques">
                 <h2 className="destaques">Nossos Destaques</h2>
             </div>
-            <div className="container col-12 d-flex">
-                <Card nomeProduto="Faca-A47" imagem={Faca1} preco="156,50" parcelamento="12,30" />
-                <Card nomeProduto="Mc_Carioca" className="ocultaProduto1" imagem={Faca2} preco="180,50" parcelamento="16,00" />
-                <Card nomeProduto="XTR-Lich" imagem={Faca3} preco="160,50" parcelamento="19,36" />
-                <Card nomeProduto="Trx-360" className="ocultaProduto2" imagem={Faca4} preco="50,00" parcelamento="11,20" />
+            <div className="container cards">
+              <CategoryList categories={categories} />
             </div>
 
             {/* <!--BEGING SECOND BANNER --> */}
@@ -39,11 +50,8 @@ function Home(props) {
             <div className="container destaques">
                 <h2 className="destaques">Novidades</h2>
             </div>
-            <div className="container col-12 d-flex">
-                <Card nomeProduto="Faca-A47" imagem={Faca5} preco="156,50" parcelamento="12,30" />
-                <Card nomeProduto="Mc_Carioca" className="ocultaProduto1" imagem={Faca6} preco="180,50" parcelamento="16,00" />
-                <Card nomeProduto="XTR-Lich" imagem={Faca7} preco="160,50" parcelamento="19,36" />
-                <Card nomeProduto="Trx-360" className="ocultaProduto2" imagem={Faca8} preco="50,00" parcelamento="11,20" />
+            <div className="container cards">
+            <CategoryList categories={categories} />
             </div>
 
             {/* <!-- BEGING THIRD BANNER --> */}

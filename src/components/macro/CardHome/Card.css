@@ -9,7 +9,6 @@
 .precoProduto {
     font-size  : 16px;
     font-weight: bold;
-    
     text-align : center;
     font-family: 'Barlow', sans-serif;
     
@@ -17,10 +16,14 @@
 
 .produtoDesktop {
     display: flex;
+    margin-bottom: 20px;
     
 
 }
 
+.produtoDesktop:hover {
+    cursor: pointer;
+}
 
 
 .ou{
@@ -36,23 +39,5 @@ img{
 
 
 
-@media (max-width:768px) {
-    .tituloProduto{
-        font-size: 14px;
-    }
-}
 
-@media (max-width:576px) { 
-    .ocultaProduto1 {
-        display: none;
-
-    }
-}
-
-@media (max-width:768px) { 
-    .ocultaProduto2 {
-        display: none;
-
-    }
-}
 

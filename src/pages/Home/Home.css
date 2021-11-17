@@ -11,3 +11,9 @@ h2 {
     font-family: 'Archivo Narrow', sans-serif;
 
 }
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}

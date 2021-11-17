@@ -281,9 +281,12 @@ rkJggg==" />
                             </svg>
                             </Link>
                         </div>
-                   
 
-                    <div className="container col-4 col-sm-3 col-md-2 col-xl-1 col-xxl-1 blocoMeusPedidos"><Link to="/dashBoard"><svg width="97"
+                    <div className="container col-4 col-sm-3 col-md-2 col-xl-1 col-xxl-1 blocoMeusPedidos">
+                        
+                    {/* MUDAR ESTE LINK QUANDO RESOLVERMOS A AUTENTICACAO */}
+                        <Link to="/dashBoard/3/myOrders"> 
+                            <svg width="97"
                                 height="37" viewBox="0 0 109 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M26.6667 9.04168H22.6667C22.6667 5.47484 19.6819 2.58334 16 2.58334C12.3181 2.58334 9.33333 5.47484 9.33333 9.04168H5.33333C4.59695 9.04168 4 9.61998 4 10.3333V25.8333C4 27.2601 5.19391 28.4167 6.66667 28.4167H25.3333C26.8061 28.4167 28 27.2601 28 25.8333V10.3333C28 9.61998 27.403 9.04168 26.6667 9.04168ZM12 13.5625C12 13.9192 11.7015 14.2083 11.3333 14.2083H10C9.63181 14.2083 9.33333 13.9192 9.33333 13.5625V12.2708C9.33333 11.9142 9.63181 11.625 10 11.625H11.3333C11.7015 11.625 12 11.9142 12 12.2708V13.5625ZM16 5.16668C18.2091 5.16668 20 6.90157 20 9.04168H12C12 6.90157 13.7909 5.16668 16 5.16668ZM22.6667 13.5625C22.6667 13.9192 22.3682 14.2083 22 14.2083H20.6667C20.2985 14.2083 20 13.9192 20 13.5625V12.2708C20 11.9142 20.2985 11.625 20.6667 11.625H22C22.3682 11.625 22.6667 11.9142 22.6667 12.2708V13.5625Z"
@@ -320,26 +323,20 @@ rkJggg==" />
                         <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Facas Especiais</Link></div>
                         <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Réplicas</Link></div>
                     </div>
-                </nav>
-                {/* <!-- MENU HAMBURGUER MOBILE --> */}
-                <nav>
-                    <div className=" blocoBotao">
-                        <div className=" blocoBotao">
-                            <button className="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-                                aria-controls="offcanvasScrolling"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
-                                        fill="#FFC07F" />
-                                </svg>
-                                <a className="navegacao" href="#"><b>Explorar Categorias</b> </a></button>
-                        </div>
+                    {/* <!-- BEGING BAR OF NAVIGATION --> */}
 
-                        <div className="offcanvas offcanvas-start canva" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-                            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                            <div className="offcanvas-header cana">
-                                <h5 className="offcanvas-title" id="offcanvasScrollingLabel"></h5>
-                                <button type="" className="btn-close text-reset botaoFechar" data-bs-dismiss="offcanvas">
-                                </button>
+                    
+                    {/* <!-- MENU HAMBURGUER MOBILE --> */}
+                    <nav>
+                        <div className=" blocoBotao">
+                            <div className=" blocoBotao">
+                                <button className="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+                                    aria-controls="offcanvasScrolling"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
+                                            fill="#FFC07F" />
+                                    </svg>
+                                    <a className="navegacao" href="#"><b>Explorar Categorias</b> </a></button>
                             </div>
                             <div className="offcanvas-body canva">
                                 <ul>
@@ -352,13 +349,13 @@ rkJggg==" />
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </nav>
                     {/* <!-- FIM HEADER --> */}
                 </nav>
             </header>
             
         </>
-        
+
     )
 }
 
