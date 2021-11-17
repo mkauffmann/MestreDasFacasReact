@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import useLogin from "../../../../hooks/useLogin";
 import { ReactComponent as User } from '../../../../assets/icons/user.svg'
-import {ReactComponent as Arrow} from '../../../../assets/icons/dashboard/arrow.svg'
-import DividingBar from "../../../micro/Login/DividingBar/DividingBar";
+
+
 
 function LoginLogoutButton(props) {
     const { isAuthenticated, userId, token, logout, refreshPage } = useLogin()
     const URL = `http://localhost:8080/customers/${userId}`
     const [userName, setUserName] = useState("")
-    
+
 
     const getUser = () => {
         return axios.get(URL, {
@@ -27,10 +27,10 @@ function LoginLogoutButton(props) {
         })
 
     }
-   
-    
-     
-    getUser().then((response) => {setUserName(response)})
+
+
+
+    getUser().then((response) => { setUserName(response) })
 
 
     if (!isAuthenticated()) {
@@ -62,19 +62,22 @@ function LoginLogoutButton(props) {
                 overlay={
                     <Popover>
                         <Popover.Body className="d-flex flex-column">
-                            <Link to="dashboard/userForm"> 
+                            <Link to="dashboard/userForm">
                                 <button className="btn-custom-default btn-principal">Minha conta</button>
                             </Link>
-                            <button className="btn-custom-default btn-cancelar my-2" onClick={() => { 
-                                                                                                    logout()
-                                                                                                    refreshPage()}}>Sair</button>
+                            <button className="btn-custom-default btn-cancelar my-2" onClick={() => {
+                                logout()
+                                refreshPage()
+                            }}>Sair</button>
                         </Popover.Body>
                     </Popover>
                 }
             >
-                <div className="d-flex">
-                    <User />
-                    <p>Olá {userName}!</p>
+                <div className="d-flex align-items-center">
+                    <div>
+                        <User />
+                    </div>
+                    <p className="mb-0">Olá {userName}! </p>
                 </div>
             </OverlayTrigger>
 
