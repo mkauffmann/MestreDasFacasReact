@@ -4,9 +4,16 @@ import Button from '../../components/micro/Button/Button'
 import './Product.css'
 
 function ProductCard(props) {
+
 const produto = {...props.produto} || []
+const preco = produto.productPrice !== undefined ?  produto.productPrice.value : ""
+let precoParce = (parseFloat(preco) / 12)
+let precoAvista = (parseFloat(preco))
+precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
 
     return (
+        
         <>
             <div className="container mt-5 mb-4 produto paddProduto">
                 <div className="row">
@@ -26,9 +33,9 @@ const produto = {...props.produto} || []
                             </div>
                         </div>
                         <div>
-                            {/* <h3 className="preco">R$ {produto.productPrice.value}</h3> */}
+                            <h3 className="preco">{precoAvista}</h3>
                         </div>
-                        {/* <div className="texto-cartao-credito">12x de R$ {parseInt(produto.productPrice.value/12)}  sem juros no Cartão de Crédito </div> */}
+                        <div className="texto-cartao-credito">12x de {precoParce} sem juros no Cartão de Crédito </div>
                         <hr />
                         <div className="texto-boleto">Pagamento por Boleto </div>
                         <hr />
@@ -54,10 +61,10 @@ const produto = {...props.produto} || []
                     <div className="col-12 col-md-12 col-lg-12 col-especificacoes mt-5">
                         <h3 className="mt-2"> Especificações e Dimensões </h3>
                         <ul>
-                            <li> Altura: {produto.height} </li>
-                            <li> Largura: {produto.width}  </li>
-                            <li> Comprimento: {produto.length}  </li>
-                            <li> Peso:{produto.weight} </li>
+                            <li> Altura: {produto.height}cm </li>
+                            <li> Largura: {produto.width}cm  </li>
+                            <li> Comprimento: {produto.length}cm  </li>
+                            <li> Peso:{produto.weight}G </li>
                         </ul>
                     </div>
                 </div>
