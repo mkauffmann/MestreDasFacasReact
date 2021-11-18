@@ -1,16 +1,22 @@
 .tituloProduto {
-    font-size  : 16px;
+    font-size  : 14px;
     text-align : center;
     font-family: 'Barlow', sans-serif;
     font-weight: bold;
     color      : #860E1C;
-    height: 25%;
+    height: 20%;
+    
+    
+}
 
+.card-body {
+    height: 40%;
+    padding: 2rem 1rem;
     
 }
 
 .precoProduto {
-    font-size  : 16px;
+    font-size  : 14px;
     font-weight: bold;
     text-align : center;
     font-family: 'Barlow', sans-serif;
@@ -21,7 +27,8 @@
     display: flex;
     margin-bottom: 20px;
     
-    justify-content: center;
+    align-content: start;
+    
     
 
 }
@@ -35,6 +42,9 @@
     text-align: center;
     font-family: 'Barlow', sans-serif;
     font-weight: bold;
+    height: 15%;
+    margin-bottom:10%;
+    font-size: 14px;
 }
 
 img{
@@ -42,39 +52,18 @@ img{
     border: rgba(0, 0, 0, 0.096) solid 1px;
 }
 
-
-.card {
-    max-width: 100%;
-}
-.card-text {
-    Word-wrap: break-Word;
-}
-
-
-@media (min-width:991px) and (max-width:1999px) {
-    .ou{
-        font-size: 15px
-        
+@media (max-width:992px) and (min-width:768px) {
+     .tituloProduto{
+       
+        height: 30%;
     }
     
 }
 
-@media (max-width:425px) {
+@media (max-width:447px) {
     .tituloProduto{
-        font-size:14px;
-        height: 29%;
-    }.ou{
-        font-size:14px
-    }
-    
-}
-
-@media (min-width:361px) and (max-width:508px) {
-    .tituloProduto{
-        font-size:14px;
-        height: 20%;
-    }.ou{
-        font-size:14px
-    }
-    
+      
+       height: 30%;
+   }
+   
 }

@@ -7,6 +7,7 @@ import Button from '../../micro/Button/Button'
 function Card(props) {
     const novidades = props.novidades || []
     const destaques = props.destaques || []
+    const produtos = props.produtos || []
 
     return (
 
@@ -53,7 +54,32 @@ function Card(props) {
                                     <div className="card-text precoProduto">{preco}<div>Ou</div>
                                     </div>
                                     <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
-                                    <Link to="/cart"><Button label="Comprar" class="btn-default btn-principal home-btn"></Button></Link>
+                                    <Link to="/cart"><Button label="Comprar"  class="btn-default btn-principal home-btn"></Button></Link>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+
+            }
+             {
+                produtos.map(produto => {
+                    let precoParce = (parseFloat(produto.productPrice.value) / 12)
+                    precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+                    let preco = (parseFloat(produto.productPrice.value))
+                    preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+                    return (
+                        <div className="container col-6 col-sm-6 col-md-4 col-xl-3 col-xll-3 produtoDesktop">
+                            <div className="card " style={{ width: '18rem' }}>
+                                <Link to={`/product/${produto.id}`}>
+                                    <img src={produto.image} className="card-img-top" alt="..." />
+                                </Link>
+                                <div className="card-body ">
+                                    <h5 className="card-title tituloProduto listaTudo">{produto.productName}</h5>
+                                    <div className="card-text precoProduto">{preco}<div>Ou</div>
+                                    </div>
+                                    <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
+                                    <Link to="/cart"><Button label="Comprar" class="btn-default btn-principal home-btn btn-card"></Button></Link>
                                 </div>
                             </div>
                         </div>

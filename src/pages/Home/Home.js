@@ -13,18 +13,7 @@ import { useEffect, useState } from 'react'
 
 
 function Home(props) {
-// const [categories, setCategories] = useState([])
 
-// useEffect(() => {
-//     axios.get('http://localhost:8080/product/')
-//     .then((response) =>{
-//         setCategories(response.data)
-//         console.log(response.data)
-//     })
-//     .catch((error) =>{
-//         console.error("Aconteceu um erro!" + error)
-//     })
-// }, [])
 const [novidades, setNovidades] = useState([])
 const [destaques, setDestaques] = useState([])
 
@@ -61,7 +50,7 @@ useEffect(() => {
                 <h2 className="destaques">Nossos Destaques</h2>
             </div>
             <div className="container cards">
-              {/* <CategoryList categories={categories} /> */}
+             
               <Card destaques={destaques}/>
             </div>
 
@@ -72,7 +61,7 @@ useEffect(() => {
                 <h2 className="destaques">Novidades</h2>
             </div>
             <div className="container cards">
-            {/* <CategoryList categories={categories} /> */}
+           
             <Card novidades={novidades}/>
             </div>
 
