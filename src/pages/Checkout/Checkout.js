@@ -1,150 +1,133 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Col, Row, Container } from 'react-bootstrap'
 import './Checkout.css'
 
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import Button from '../../components/micro/Button/Button'
 import '../../components/micro/Button/Button.css'
-
+import useLogin from '../../hooks/useLogin'
+import CheckoutProduct from '../../components/macro/Checkout/CheckoutProduct/CheckoutProduct'
+import PaymentTypeForm from '../../components/macro/Checkout/PaymentTypeForm/PaymentTypeForm'
 import TotalValueCheckout from '../../components/micro/TotalValueCheckout/TotalValueCheckout'
-
-import IconHome from '../../assets/imgs/checkout/icon-home.png'
-import IconCredit from '../../assets/imgs/Product/icone-cartao-credito.png'
-import IconBoleto from '../../assets/imgs/Product/icone-boleto.png'
-import IconPix from '../../assets/imgs/Product/icone-pix.png'
-
 import ProductComp from '../../components/micro/ProductComp/ProductComp'
+import DividingBar from '../../components/micro/Login/DividingBar/DividingBar'
+import AddressList from '../../components/macro/Dashboard/InfoList/AddressList'
 
-import Faca2 from '../../assets/imgs/produtos/2.jpeg'
-import Faca3 from '../../assets/imgs/produtos/3.jpeg'
-import Faca4 from '../../assets/imgs/produtos/24.jpeg'
+
+
+const initialValues = {
+    freightFixed: 3.55,
+    purchaseDate: new Date(),
+    paymentDate: "",
+    typePayment: {
+        description_type_payment: ""
+    },
+    deliveryStatus: {
+        description_status_delivery: "PEDIDO EFETUADO"
+    },
+    address: {},
+    customer: {},
+    itemRequest: []
+}
+
 
 function Checkout(props) {
+    const { userId, token, logout, refreshPage } = useLogin()
+    const getCustomerUrl = `http://localhost:8080/customers/${userId}`
+
+    const [user, setUser] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+    const [order, setOrder] = useState({...initialValues})
+    const itemRequest = JSON.parse(localStorage.getItem("itemRequest"))
+
+    const getUser = () => axios.get(getCustomerUrl, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            setUser({ ...response.data })
+            setIsLoading(false)
+        })
+        .catch(error => {
+            logout()
+            refreshPage()
+        })
+
+    const renderUser = async () => {
+        await getUser()
+    }
+
+    useEffect(() => {
+        renderUser()
+    }, [])
+
+    const renderItems = () => {
+        return itemRequest.map((item, index) => {
+            return <CheckoutProduct item={item} key={index}/>
+        })
+    }
+
+    const chooseDeliveryAddress = (value) => {
+         setOrder(prevValues => {
+             return {
+                 ...prevValues,
+                 address : {
+                     id : value
+                 }
+             }
+         })
+        
+    }
+
+    const choosePaymentType = (value) => {
+        let description = value === "cartaoDeCredito" ? "Cartão de Crédito" : value
+        
+        setOrder(prevValues => {
+            return {
+                ...prevValues,
+                typePayment : {
+                    description_type_payment : description
+                }
+            }
+        })
+    }
+
 
     return (
         <>
-
-            <div class="container mt-5 mb-4">
-
-                <h1> Finalizar compra </h1>
-
-                <div class="row">
-                    <div class="col-sm-6">
-                        <br />
-                        <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
-                            <a class="navbar-brand" href="#">
-                                <img src={IconHome} width="30" height="30" class="d-inline-block align-top img-icone " alt="" />
-                                Endereço de entrega
-                            </a>
-                        </nav>
-
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Casa
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <div style={{ float: 'left' }} class="   flex-column bd-highlight mb-3">
-                                            <div class="p-2 bd-highlight">Rua xxxxx, 00</div>
-                                            <div class="p-2 bd-highlight">00000-000</div>
-                                            <div class="p-2 bd-highlight">Vila matilde - São Paulo - SP</div>
-                                        </div>
-                                        <div style={{ float: 'left' }} class="  flex-column bd-highlight mb-3">
-                                            <div class="p-2 bd-highlight">Destinatario </div>
-                                            <div class="p-2 bd-highlight">Fulado de tal</div>
-                                        </div>
-                                        <div class=" flex-column bd-highlight mb-3 ">
-                                            <div class="p-2 bd-highlight">Referência </div>
-                                            <div class="p-2 bd-highlight">casa x</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <br />
-
-                            <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
-                                <a class="navbar-brand" href="#">
-                                <img src={IconCredit} width="30" height="30" class="d-inline-block align-top img-icone" alt="" />
-                                    Pagamento
-                                </a>
-                            </nav>
-                            <p>Você tem um Cupom de desconto ? Desejo usar agora</p>
-                            <p>Como você deseja pagar? </p>
-                            <br />
-
-
-                            <br />
-
-                            <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
-                                <a class="navbar-brand" href="#">
-                                    <input class="form-check-input custom-check" type="radio" name="flexRadioDefault" />
-                                    <img src={IconPix} width="30" height="30" class="d-inline-block align-top img-icone" alt="" />
-                                    Pix
-                                </a>
-                            </nav>
-
-                            <br />
-
-                            <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
-                                <a class="navbar-brand" href="#">
-                                    <input class="form-check-input custom-check" type="radio" name="flexRadioDefault" />
-                                    <img src={IconCredit} width="30" height="30" class="d-inline-block align-top img-icone" alt="" />
-                                    Crédito
-                                </a>
-                            </nav>
-
-                            <nav class="shadow-sm p-3 mb-5 bg-body rounded navbar navbar-light bg-light">
-                                <a class="navbar-brand" href="#">
-                                    <input class="form-check-input custom-check" type="radio" name="flexRadioDefault" />
-                                    <img src={IconBoleto} width="30" height="30" class="d-inline-block align-top img-icone" alt="" />
-                                    Boleto
-                                </a>
-                            </nav>
-
-
-
+            <Container className="mb-5">
+                <Row>
+                    <h1> Finalizar compra </h1>
+                    <DividingBar singleLine />
+                </Row>
+                <Row>
+                    <Col md={6} className="mb-5">
+                        <Row>
+                            <AddressList type="endereço" subtitle="Endereço de entrega" userData={user} isLoading={isLoading} select chooseDeliveryAddress={chooseDeliveryAddress} />
+                        </Row>
+                        <DividingBar singleLine />
+                        <Row>
+                            <PaymentTypeForm choosePaymentType={choosePaymentType} />
+                        </Row>
+                    </Col>
+                    <Col md={6}>
+                        <div className="checkout-itens">
+                            <h4 className="subtitle">Itens</h4>
+                            {renderItems()}
+                            <DividingBar singleLine />
+                            <TotalValueCheckout numero={3} info="produtos" valor={14100} />
+                            <TotalValueCheckout info="Frete" valor={10.91} />
+                            <DividingBar singleLine />
+                            <TotalValueCheckout info="Total" valor={14100 + 10.91} />
+                            <Link to="/success"> <Button class="btn-principal btn-principal-finalizar" label="Finalizar Compra" /> </Link>
                         </div>
+                    </Col>
+                </Row>
 
-                    </div>
-
-                    {/* COMEÇA AQUI ATT DO 11/11 */}
-
-                    <div class="container-fluid col-sm-6 col-md-6 col-lg-6">
-                        <div>
-
-                            <ProductComp imagem={Faca4} naoMostraCaixas/>
-                            <ProductComp imagem={Faca2} naoMostraCaixas/>
-                            <ProductComp imagem={Faca3} naoMostraCaixas/>
-
-                            <hr />
-                            
-                                <TotalValueCheckout numero={3} info="produtos" valor={14100} />
-
-                                <TotalValueCheckout info="Frete" valor={10.91}/>
-
-                            <hr />
-
-                                <TotalValueCheckout info="Total" valor={14100 + 10.91}/>
-
-                                <Link to="/success"> <Button class="btn-principal btn-principal-finalizar" label="Finalizar Compra"/> </Link>
-                                
-                        </div>
-                    </div>
-
-                    {/* TERMINA AQUI ATT DO 11/11 */}
-
-                </div>
-
-            </div>
-
-
-
-
+            </Container>
         </>
 
     )

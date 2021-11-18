@@ -8,7 +8,7 @@ import RegisterAddressForm from '../../Forms/Register/RegisterAddressForm'
 import AddressInfoItem from "./InfoItem/AddressInfoItem/AddressInfoItem";
 
 function AddressList(props) {
-    const { token, userId } = useLogin()
+    const { token, userId, refreshPage } = useLogin()
     const addURL = `http://localhost:8080/customers/addAddress/${userId}`
 
     const [showAddress, setShowAddress] = useState(false);
@@ -16,14 +16,10 @@ function AddressList(props) {
     const handleCloseAddress = () => setShowAddress(false);
     const { handleAddressCreation } = useRegisterFormat()
 
-    const refreshPage = () => {
-        window.location.reload();
-    }
-
     const renderList = (array) => {
         let items = []
         for(let i = 0; i < array.length; i++){
-            items.push(<AddressInfoItem obj={array[i]} key={i} type={props.type}/>)
+            items.push(<AddressInfoItem obj={array[i]} key={i} type={props.type} select={props.select} selectAddress={selectAddress}/>)
         }
         return items
     }
@@ -58,10 +54,24 @@ function AddressList(props) {
         
     }
 
+    const selectAddress = (selectedValue) => {
+        let newObj = {
+            address : {
+                id : selectedValue
+            }
+        }
+
+        props.chooseDeliveryAddress(newObj)
+
+    }
+
     return (
         <>
             <div className="col-12 d-flex justify-content-between mb-4">
-                <h3>Meus Endereços</h3>
+                {props.title 
+                ? <h3>{props.title}</h3>
+                :  ""}
+                <h4 className="subtitle">{props.subtitle}</h4>
                 <button class="btn-custom-default btn-principal" onClick={handleShowAddress}> Adicionar Endereço</button>
             </div>
             <Modal show={showAddress} onHide={handleCloseAddress} size="lg">
@@ -77,7 +87,6 @@ function AddressList(props) {
                     <button className="btn-custom-default btn-cancelar2" onClick={cancelAddressRegister}>Cancelar cadastro</button>
                 </Modal.Footer>
             </Modal>
-            {/* <InfoList type="endereço" userData={props.userData} isLoading={props.isLoading} /> */}
             {renderList(props.userData.addresses)}
         </>
     )

@@ -1,0 +1,52 @@
+localStorage.setItem("itemRequest", JSON.stringify([
+    {"quantity" : 2,
+      "product" : {
+        "id": 1,
+        "productName": "Faca Cutelo Tramontina Cabo Amarelo 30cm",
+        "descriptionProduct": "Cutelo especializada em cortes pesados e profundos, em qualquer tipo de alimento",
+        "weight": 270.0,
+        "length": 30.0,
+        "height": 2.0,
+        "width": 8.0,
+        "brand": {
+            "id": 2,
+            "brand": "Tramontina"
+        },
+        "category": {
+            "id": 2,
+            "description_category": "Cozinha"
+        },
+        "productPrice": {
+            "id": 3,
+            "value": 109.99
+        },
+        "image": "https://ibb.co/4JN0rZS",
+        "news": false,
+        "featured": false
+    }},
+    {"quantity" : 3,
+      "product" : {
+        "id": 2,
+        "productName": "Faca de Mesa Tramontina Aço Inox Continental",
+        "descriptionProduct": "Faca de mesa com dentes polidos, os quais trazem mais conforto nos cortes",
+        "weight": 35.0,
+        "length": 20.0,
+        "height": 2.0,
+        "width": 1.5,
+        "brand": {
+            "id": 2,
+            "brand": "Tramontina"
+        },
+        "category": {
+            "id": 2,
+            "description_category": "Cozinha"
+        },
+        "productPrice": {
+            "id": 1,
+            "value": 79.99
+        },
+        "image": "https://ibb.co/nmgF5fG",
+        "news": false,
+        "featured": false
+    }}
+  ]))

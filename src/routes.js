@@ -26,7 +26,7 @@ export const Routes = () => {
             <Route path="/home" component={Home}/>
             <Route path="/cart" component={Cart}/>
             <Route path="/category" component={Category}/>
-            <Route path="/checkout" component={Checkout}/>
+            <PrivateRoute path="/checkout" component={Checkout}/>
             <Route path="/contact" component={Contact} />
             <PrivateRoute path="/dashboard" component={Dashboard}/>
             <Route path="/forgotPassword" component={ForgotPassword} />
