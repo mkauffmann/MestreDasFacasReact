@@ -39,8 +39,9 @@ function Checkout(props) {
 
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
-    const [order, setOrder] = useState({...initialValues})
     const itemRequest = JSON.parse(localStorage.getItem("itemRequest"))
+    const [order, setOrder] = useState({ ...initialValues, itemRequest, customer: {id : userId} })
+    let totalValue = 0;
 
     const getUser = () => axios.get(getCustomerUrl, {
         headers: {
@@ -66,35 +67,39 @@ function Checkout(props) {
 
     const renderItems = () => {
         return itemRequest.map((item, index) => {
-            return <CheckoutProduct item={item} key={index}/>
+            totalValue += item.quantity * item.product.productPrice.value
+            return <CheckoutProduct item={item} key={index} />
         })
     }
 
     const chooseDeliveryAddress = (value) => {
-         setOrder(prevValues => {
-             return {
-                 ...prevValues,
-                 address : {
-                     id : value
-                 }
-             }
-         })
-        
+        setOrder(prevValues => {
+            return {
+                ...prevValues,
+                address: {
+                    id: value
+                }
+            }
+        })
+
     }
 
     const choosePaymentType = (value) => {
         let description = value === "cartaoDeCredito" ? "Cartão de Crédito" : value
-        
+
         setOrder(prevValues => {
             return {
                 ...prevValues,
-                typePayment : {
-                    description_type_payment : description
+                typePayment: {
+                    description_type_payment: description
                 }
             }
         })
     }
 
+    const handleOrder = () => {
+        console.log(order)
+    }
 
     return (
         <>
@@ -118,11 +123,13 @@ function Checkout(props) {
                             <h4 className="subtitle">Itens</h4>
                             {renderItems()}
                             <DividingBar singleLine />
-                            <TotalValueCheckout numero={3} info="produtos" valor={14100} />
-                            <TotalValueCheckout info="Frete" valor={10.91} />
-                            <DividingBar singleLine />
-                            <TotalValueCheckout info="Total" valor={14100 + 10.91} />
-                            <Link to="/success"> <Button class="btn-principal btn-principal-finalizar" label="Finalizar Compra" /> </Link>
+                            <div className="mb-3">
+                                <TotalValueCheckout numero={itemRequest.length} info={itemRequest.length == 1 ? "item" : "itens"} valor={totalValue} />
+                                <TotalValueCheckout info="Frete fixo" valor={initialValues.freightFixed} />
+                                <DividingBar singleLine />
+                                <TotalValueCheckout info="Total" valor={totalValue + initialValues.freightFixed} />
+                            </div>
+                            <button class="btn-principal btn-principal-finalizar" onClick={handleOrder} >Finalizar Compra</button>
                         </div>
                     </Col>
                 </Row>
