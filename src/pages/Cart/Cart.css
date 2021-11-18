@@ -6,6 +6,9 @@ body{
 h1{
     font-family: 'Archivo Narrow', sans-serif;
     color: #860E1C ;
+    position: relative;
+    left: 33px;
+    
 }
 .preco{
     font-family: 'Archivo Narrow', sans-serif;

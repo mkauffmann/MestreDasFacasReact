@@ -41,12 +41,6 @@ function ProductListHome(props) {
     }
 
 
-
-   
-    
-
-
-
     const addToCart = (item) => {
         let cartList = localStorage.getItem("itemRequest")
             ? JSON.parse(localStorage.getItem("itemRequest"))
@@ -64,12 +58,6 @@ function ProductListHome(props) {
     }
 
     
-
-
-
-
-
-
 
 
     const listProducts = () => {
