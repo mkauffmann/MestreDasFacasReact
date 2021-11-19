@@ -47,12 +47,11 @@ header {
     padding         : 12px;
     font-weight     : bold;
     text-align      : center;
-    
+
 }
 
 .navegacao:hover,
-.telefone:hover,
-ul:hover {
+.telefone:hover {
     color: #d1781ff3;
 }
 
@@ -76,9 +75,6 @@ ul:hover {
 
 .blocoBotao {
     background-color: #170900;
-    text-decoration: none;
-    border: none;
-    
 }
 
 @media (min-width:990px) {
@@ -121,13 +117,4 @@ ul:hover {
 
 .blocoTelefone {
     flex-direction: column;
-}
-
-ul{
-    padding: 0;
-    margin: 0;
-}
-
-.menuHamb{
-    text-decoration: none;
 }

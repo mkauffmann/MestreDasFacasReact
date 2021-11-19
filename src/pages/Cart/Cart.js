@@ -1,5 +1,6 @@
 
 import React from 'react'
+import imgProduct from '../../assets/imgs/Product/PRODUTO.jpg'
 import './Cart.css'
 import ProductComp from '../../components/micro/ProductComp/ProductComp'
 import Faca1 from '../../assets/imgs/produtos/1.jpeg'

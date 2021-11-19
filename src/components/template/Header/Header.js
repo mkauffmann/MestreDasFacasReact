@@ -1,14 +1,49 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import axios from 'axios'
 import './Header.css'
 import LoginLogoutButton from './LoginLogoutButton/LoginLogoutButton'
 
 
 
+import { Link, useParams } from 'react-router-dom'
+import CategoryId from '../../macro/CategoryId/CategoryId'
+import CategoryAllProducts from '../../macro/CategoryAllProducts/CategoryAllProducts'
 
+import SearchBar from '../../macro/Forms/SearchBar/SearchBar'
 
 
 function Header(props) {
+
+    // Get de categorias:
+    
+    const [categorias, setCategorias] = useState([])
+    
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/category/')
+            .then((response) => {
+                setCategorias([...response.data])
+            })
+            .catch((err) => {
+                console.error("Erro ao buscar categorias: " + err)
+            })
+    }, [])
+
+   
+    // Get de barra de pesquisa:
+
+    // const { textoPesquisa } = useParams()
+    // const [produtosPesquisa, setProdutosPesquisa] = useState([])
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8080/product/search/${textoPesquisa}`)
+    //     .then((response) => {
+    //         setProdutosPesquisa([...response.data])
+    //     })
+    //     .catch((err) => {
+    //         console.error("Erro ao buscar os produtos" + err)
+    //     })
+    // }, [])
 
     return (
         <>
@@ -254,17 +289,7 @@ rkJggg==" />
                     </div>
                     {/* <!-- BAR OF SEARCH --> */}
                     <div className="container col-4 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-5 pesquisa">
-                        <form className="d-flex">
-                            <input className="form-control me-1 inputPesquisa" type="search" placeholder="Pesquise por Produtos"
-                                aria-label="Search" required />
-                            <button className="btn btn-dark botaoBusca" type="submit"><svg width="20" height="28"
-                                viewBox="0 0 29 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M25.2057 22.7036L20.5038 18.0313C20.3515 17.8764 20.1819 17.7393 19.9983 17.6225L18.8228 16.8165C21.2407 13.8436 21.2632 9.60282 18.8769 6.60479C16.4906 3.60676 12.3325 2.65165 8.86426 4.3049C5.39601 5.95815 3.54325 9.77854 4.40287 13.5043C5.26249 17.23 8.60508 19.8668 12.4517 19.8535C14.3184 19.8541 16.1299 19.2239 17.5886 18.0664L18.4702 19.2344C18.5748 19.3849 18.6928 19.5256 18.8228 19.655L23.5248 24.3272C23.6351 24.4378 23.7853 24.5 23.9421 24.5C24.0988 24.5 24.249 24.4378 24.3594 24.3272L25.1822 23.5096C25.4053 23.2903 25.4157 22.9354 25.2057 22.7036ZM12.4517 17.5174C9.20571 17.5174 6.5743 14.9026 6.5743 11.677C6.5743 8.45147 9.20571 5.83665 12.4517 5.83665C15.6977 5.83665 18.3291 8.45147 18.3291 11.677C18.3291 13.226 17.7099 14.7115 16.6077 15.8068C15.5054 16.9021 14.0105 17.5174 12.4517 17.5174Z"
-                                    fill="#FFC07F" />
-                            </svg>
-                            </button>
-                        </form>
+                        <SearchBar/>
                     </div>
                     {/* <!-- ICON AND LINKS OF MIDHEADER --> */}
 
@@ -305,42 +330,44 @@ rkJggg==" />
 
                 <nav className="navDesktop">
                     <div className="container-fluid d-flex Barranavegacao col-12">
-                        <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Explorar Categorias</Link></div>
-                        <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Todas as Facas</Link></div>
-                        <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Cozinha</Link></div>
-                        <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Churrasco</Link></div>
-                        <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Facas Especiais</Link></div>
-                        <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Réplicas</Link></div>
-                    </div>
-                    {/* <!-- BEGING BAR OF NAVIGATION --> */}
+                       
 
-                    {/* <!-- MENU HAMBURGUER MOBILE --> */}
-                    <nav>
-                        <div className=" blocoBotao">
-                            <div className=" blocoBotao">
-                                <button className="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-                                    aria-controls="offcanvasScrolling"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
-                                            fill="#FFC07F" />
-                                    </svg>
-                                    <a className="navegacao" href="#"><b>Explorar Categorias</b> </a></button>
-                            </div>
-                            <div className="offcanvas-body canva">
+                        <CategoryId categorias={[...categorias]} />
+                        <CategoryAllProducts />
+
+                       
+                    </div>
+                </nav>
+                {/* <!-- BEGING BAR OF NAVIGATION --> */}
+
+
+                {/* <!-- MENU HAMBURGUER MOBILE --> */}
+                <div class="accordion blocoBotao" id="accordionPanelsStayOpenExample ">
+                    <div class="accordion-item blocoBotao">
+                        <div class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class=" blocoBotao navegacao menuHamb" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                <svg width="50" height="50" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
+                                        fill="#FFC07F" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse  blocoBotao" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body blocoBotao">
                                 <ul>
-                                    <li className="listaCanva" type="none"><Link to="/category" className="navegacao" href="#">Explorar Categorias</Link></li>
-                                    <li className="listaCanva" type="none"><Link to="/category" className="navegacao" href="#">Todas as Facas</Link></li>
-                                    <li className="listaCanva" type="none"><Link to="/category" className="navegacao" href="#">Cozinha</Link></li>
-                                    <li className="listaCanva" type="none"><Link to="/category" className="navegacao" href="#">Churrasco</Link></li>
-                                    <li className="listaCanva" type="none"><Link to="/category" className="navegacao" href="#">Facas Especiais</Link></li>
-                                    <li className="listaCanva" type="none"><Link to="/category" className="navegacao" href="#">Réplicas</Link></li>
+                                    <CategoryId categorias={[...categorias]} />
+                                    <CategoryAllProducts />
                                 </ul>
                             </div>
                         </div>
-                    </nav>
-                    {/* <!-- FIM HEADER --> */}
-                </nav>
+                    </div>
+
+                </div>
+                {/* <!-- FIM HEADER --> */}
+
             </header>
+       
         </>
 
     )

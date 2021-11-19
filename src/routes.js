@@ -18,6 +18,8 @@ import Contact from "./pages/Contact/Contact"
 import About from "./pages/About/About"
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import ChangePassword from "./pages/ChangePassword/ChangePassword"
+import CategoryAll from './pages/CategoryAll/CategoryAll'
+import CategorySearch from './pages/CategorySearch/CategorySearch'
 
 export const Routes = () => {
     return (
@@ -25,16 +27,19 @@ export const Routes = () => {
             <Route path="/" component={Home} exact/>
             <Route path="/home" component={Home}/>
             <Route path="/cart" component={Cart}/>
-            <Route path="/category" component={Category}/>
+            <Route path="/category/:id" component={Category}/>
             <Route path="/checkout" component={Checkout}/>
             <Route path="/contact" component={Contact} />
             <PrivateRoute path="/dashboard" component={Dashboard}/>
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/login" component={Login}/>
+            <Route path="/categoryAll" component={CategoryAll}/>
             <Route path="/product/:id" component={Product}/>
             <Route path="/register" component={Register}/>
             <Route path="/contact" component={Contact}/>
             <Route path="/success" component={Success}/>
+            <Route path="/categorySearch" component={CategorySearch}/>
+            <Route path="/orderDetails" component={OrderDetails}/>
             <Route path="/about" component={About}/>
             <OrderDetailsRoute path="/orderDetails" component={OrderDetails}/>
             <Route path="/changePassword/:id" component={ChangePassword} />
