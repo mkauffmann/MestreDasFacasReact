@@ -28,7 +28,7 @@ export const Routes = () => {
             <Route path="/home" component={Home}/>
             <Route path="/cart" component={Cart}/>
             <Route path="/category/:id" component={Category}/>
-            <Route path="/checkout" component={Checkout}/>
+            <PrivateRoute path="/checkout" component={Checkout}/>
             <Route path="/contact" component={Contact} />
             <PrivateRoute path="/dashboard" component={Dashboard}/>
             <Route path="/forgotPassword" component={ForgotPassword} />
@@ -37,9 +37,9 @@ export const Routes = () => {
             <Route path="/product/:id" component={Product}/>
             <Route path="/register" component={Register}/>
             <Route path="/contact" component={Contact}/>
-            <Route path="/success" component={Success}/>
             <Route path="/categorySearch" component={CategorySearch}/>
             <Route path="/orderDetails" component={OrderDetails}/>
+            <OrderDetailsRoute path="/success" component={Success}/>
             <Route path="/about" component={About}/>
             <OrderDetailsRoute path="/orderDetails" component={OrderDetails}/>
             <Route path="/changePassword/:id" component={ChangePassword} />

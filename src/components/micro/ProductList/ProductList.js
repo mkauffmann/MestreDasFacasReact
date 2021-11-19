@@ -40,13 +40,9 @@ function ProductList(props) {
         localStorage.setItem('qtyCart', JSON.stringify(cartList.length))
         props.setQtyCart(cartList.length)
     }
-    
+
     const listProducts = () => {
-
-
-
         let items = JSON.parse(localStorage.getItem("itemRequest"))
-
 
         if (items == null) {
             return "Seu carrinho esta vazio"
@@ -57,10 +53,10 @@ function ProductList(props) {
                 <>
                     <CardCart key={index} quantidade={item.quantity} descriptionProduct={item.product.descriptionProduct} productPrice={item.product.productPrice.value} productName={item.product.productName} imagem={item.product.image} />
                 </>
-
             )
         })
     }
+
     return (
         <ul>
             {listProducts()}

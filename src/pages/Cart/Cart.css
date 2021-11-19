@@ -3,13 +3,12 @@
 body{
     font-family: 'Archivo Narrow', sans-serif ;
 }
-h1, h2, h3, h4, h5 , p{
+h1, h2, h3, h4, h5{
     font-family: 'Archivo Narrow', sans-serif;
     color: #860E1C ;
     
     
 }
-
 
 .resumePedido{
 
@@ -20,9 +19,7 @@ h1, h2, h3, h4, h5 , p{
     
 
 }
-button{
-    width: 290px;
-}
+
 
 
 
