@@ -11,8 +11,9 @@ import SearchBar from '../../macro/Forms/SearchBar/SearchBar'
 function Header(props) {
 
     // Get de categorias:
-
+    
     const [categorias, setCategorias] = useState([])
+    
 
     useEffect(() => {
         axios.get('http://localhost:8080/category/')
@@ -24,21 +25,7 @@ function Header(props) {
             })
     }, [])
 
-    // Get de produtos:
-
-    // const [produtos, setProdutos] = useState([])
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:8080/product')
-    //     .then((response) => {
-    //         setProdutos([...response.data])
-    //         console.log(response)
-    //     })
-    //     .catch((err) => {
-    //         console.error("Erro ao buscar todos os produtos " + err)
-    //     })
-    // }, [])
-
+   
     // Get de barra de pesquisa:
 
     // const { textoPesquisa } = useParams()
@@ -300,7 +287,7 @@ rkJggg==" />
                     </div>
                     {/* <!-- BAR OF SEARCH --> */}
                     <div className="container col-4 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-5 pesquisa">
-                        <SearchBar />
+                        <SearchBar/>
                     </div>
                     {/* <!-- ICON AND LINKS OF MIDHEADER --> */}
 
@@ -354,15 +341,12 @@ rkJggg==" />
 
                 <nav className="navDesktop">
                     <div className="container-fluid d-flex Barranavegacao col-12">
-                        {/* <div className="container col-2 navegacao"><Link to="/category" className="navegacao">Explorar Categorias</Link></div> */}
+                       
 
                         <CategoryId categorias={[...categorias]} />
                         <CategoryAllProducts />
 
-                        {/* <div className="container col-2 navegacao"><Link to={'/category/'+item.id} className="navegacao">Churrasco</Link></div>
-                        <div className="container col-2 navegacao"><Link to="/category/2" className="navegacao">Cozinha</Link></div>
-                        <div className="container col-2 navegacao"><Link to="/category/3" className="navegacao">Facas Especiais</Link></div>
-                        <div className="container col-2 navegacao"><Link to="/category/4" className="navegacao">Réplicas</Link></div> */}
+                       
                     </div>
                 </nav>
                 {/* <!-- BEGING BAR OF NAVIGATION --> */}
@@ -383,11 +367,8 @@ rkJggg==" />
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse  blocoBotao" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body blocoBotao">
                                 <ul>
-                                    <li class="" type="none"><Link to="/category/allProducts" class="navegacao" >Churrasco</Link></li>
-                                    <li class="" type="none"><Link to="/category/1" class="navegacao" >Cozinha</Link></li>
-                                    <li class="" type="none"><Link to="/category/2" class="navegacao" >Facas Especiais</Link></li>
-                                    <li class="" type="none"><Link to="/category/3" class="navegacao" >Réplicas</Link></li>
-                                    <li class="" type="none"><Link to="/category/4" class="navegacao" >Todas as Facas</Link></li>
+                                    <CategoryId categorias={[...categorias]} />
+                                    <CategoryAllProducts />
                                 </ul>
                             </div>
                         </div>
@@ -397,7 +378,7 @@ rkJggg==" />
                 {/* <!-- FIM HEADER --> */}
 
             </header>
-
+       
         </>
 
     )

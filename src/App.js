@@ -8,9 +8,9 @@ import Footer from './components/template/Footer/Footer'
 
 function App() {
   return (
-    <><Router>
+    <>
+    <Router>
       <Header/>
-      
         <Routes/>
         <Footer/>
       </Router>

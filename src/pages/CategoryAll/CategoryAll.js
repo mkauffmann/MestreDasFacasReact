@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from 'axios'
 import { useParams } from "react-router-dom";
 
-import './Category.css'
+import './CategoryAll.css'
 
 import Button from '../../components/micro/Button/Button'
 import '../../components/micro/Button/Button.css'
@@ -15,20 +15,19 @@ import '../../components/macro/CardHome/Card.css'
 
 function Category(props) {
     const [produtos, setProdutos] = useState([])
-    const {id}= useParams()
-
+    
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/product/category/${id}`)
+        axios.get('http://localhost:8080/product/')
         .then((response) =>{
             setProdutos(response.data)
-            
             
         })
         .catch((error) =>{
             console.error("Aconteceu um erro!" + error)
         })
     }, [])
+
     
 
     return (

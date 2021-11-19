@@ -17,6 +17,8 @@ import Contact from "./pages/Contact/Contact"
 import About from "./pages/About/About"
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import ChangePassword from "./pages/ChangePassword/ChangePassword"
+import CategoryAll from './pages/CategoryAll/CategoryAll'
+import CategorySearch from './pages/CategorySearch/CategorySearch'
 
 export const Routes = () => {
     return (
@@ -30,10 +32,12 @@ export const Routes = () => {
             <PrivateRoute path="/dashboard" component={Dashboard}/>
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/login" component={Login}/>
+            <Route path="/categoryAll" component={CategoryAll}/>
             <Route path="/product/:id" component={Product}/>
             <Route path="/register" component={Register}/>
             <Route path="/contact" component={Contact}/>
             <Route path="/success" component={Success}/>
+            <Route path="/categorySearch" component={CategorySearch}/>
             <Route path="/orderDetails" component={OrderDetails}/>
             <Route path="/about" component={About}/>
             <Route path="/changePassword/:id" component={ChangePassword} />
