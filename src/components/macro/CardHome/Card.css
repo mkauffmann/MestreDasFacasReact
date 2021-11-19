@@ -1,5 +1,5 @@
 .tituloProduto {
-    font-size  : 14px;
+    font-size  : 15px;
     text-align : center;
     font-family: 'Barlow', sans-serif;
     font-weight: bold;
@@ -16,7 +16,7 @@
 }
 
 .precoProduto {
-    font-size  : 14px;
+    font-size  : 15px;
     font-weight: bold;
     text-align : center;
     font-family: 'Barlow', sans-serif;
@@ -44,7 +44,7 @@
     font-weight: bold;
     height: 15%;
     margin-bottom:10%;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 img{

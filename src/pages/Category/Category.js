@@ -42,7 +42,7 @@ function Category(props) {
 
     {/* <!-- BEGIN CATALOGO PRODUTOS --> */}
 
-        <div class="col-12 col-md-12 col-lg-12 catalogo-produtos">
+        <div class="container catalogo-produtos">
             <div class="row linha-produtos-encontrados">
             <h5 class="produtos-encontrados"> Produtos Encontrados: </h5>
                 <div class="dropdown drop-ordena">
@@ -55,7 +55,7 @@ function Category(props) {
                     </ul>
                 </div>
             </div>
-            <div class="row catalogo-produtos2">
+            <div class="row catalogo-produtos2 lista">
 
             <div className="container lista">
             <Card produtos={produtos}/>

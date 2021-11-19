@@ -79,7 +79,7 @@ function Card(props) {
                                     <div className="card-text precoProduto">{preco}<div>Ou</div>
                                     </div>
                                     <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
-                                    <Link to="/cart"><Button label="Comprar" class="btn-default btn-principal home-btn btn-card"></Button></Link>
+                                    <Link to="/cart"><Button label="Comprar" class="btn-default btn-principal home-btn"></Button></Link>
                                 </div>
                             </div>
                         </div>

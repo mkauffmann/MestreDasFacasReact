@@ -371,28 +371,28 @@ rkJggg==" />
                 {/* <!-- MENU HAMBURGUER MOBILE --> */}
                 <div class="accordion blocoBotao" id="accordionPanelsStayOpenExample ">
                     <div class="accordion-item blocoBotao">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                            <button class="accordion-button blocoBotao" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
-                            fill="#FFC07F" />
-                    </svg><a class="navegacao" href="#"><b>Explorar Categorias</b> </a>
+                        <div class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class=" blocoBotao navegacao menuHamb" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                <svg width="50" height="50" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
+                                        fill="#FFC07F" />
+                                </svg>
                             </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show blocoBotao" aria-labelledby="panelsStayOpen-headingOne">
+                        </div>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse  blocoBotao" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body blocoBotao">
-                            <ul>
-                                    <li class="" type="none"><Link to="/category/allProducts" class="navegacao" >Todas as Facas</Link></li>
+                                <ul>
+                                    <li class="" type="none"><Link to="/category/allProducts" class="navegacao" >Churrasco</Link></li>
                                     <li class="" type="none"><Link to="/category/1" class="navegacao" >Cozinha</Link></li>
-                                    <li class="" type="none"><Link to="/category/2" class="navegacao" >Churrasco</Link></li>
+                                    <li class="" type="none"><Link to="/category/2" class="navegacao" >Facas Especiais</Link></li>
                                     <li class="" type="none"><Link to="/category/3" class="navegacao" >Réplicas</Link></li>
-                                    <li class="" type="none"><Link to="/category/4" class="navegacao" >Facas Especiais</Link></li>
+                                    <li class="" type="none"><Link to="/category/4" class="navegacao" >Todas as Facas</Link></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 {/* <!-- FIM HEADER --> */}
 

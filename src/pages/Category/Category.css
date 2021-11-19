@@ -46,6 +46,7 @@
     height: 50px;
     align-items: center;
     align-content: flex-start;
+    margin-bottom: 15px;
 }
 
 .produtos-encontrados {
@@ -155,4 +156,9 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+}
+
+.row{
+    --bs-gutter-x: 10px;
+    --bs-gutter-y: none;
 }
