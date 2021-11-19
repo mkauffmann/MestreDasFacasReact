@@ -31,7 +31,7 @@ function Login(props) {
         resetErrorStates,
         setErrors } = useValidation(inputValues)
     const {
-        login
+        login, refreshPage
     } = useLogin()
 
     
@@ -48,6 +48,7 @@ function Login(props) {
                         setErrorMessage("")
                         resetForm()
                         setIsSent(true)
+                        refreshPage()
                     }
                 })
                 .catch(error => {

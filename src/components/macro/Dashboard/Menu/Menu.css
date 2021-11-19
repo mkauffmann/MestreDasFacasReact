@@ -63,7 +63,7 @@
 
 .menu-fechado {
     opacity: 0;
-    transform: translateY(-400px);
+    transform: translateY(-600px);
 }
 
 .btn-arrow {
