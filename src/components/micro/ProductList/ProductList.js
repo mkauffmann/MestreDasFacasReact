@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './ProductList.css'
 import CardCart from '../../macro/CardCart/CardCart'
+
 function ProductList(props) {
 
     const checkItemCart = (item, cartList) => {
@@ -39,6 +40,7 @@ function ProductList(props) {
         localStorage.setItem('qtyCart', JSON.stringify(cartList.length))
         props.setQtyCart(cartList.length)
     }
+    
     const listProducts = () => {
 
 

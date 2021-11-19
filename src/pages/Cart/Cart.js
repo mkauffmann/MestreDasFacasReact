@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import ProductList from '../../components/micro/ProductList/ProductList';
-import  './Cart.css'
+import './Cart.css'
 function Cart(props) {
 
     const [products, setProducts] = useState([])
@@ -13,9 +13,27 @@ function Cart(props) {
     return (
         <>
             <div class="container">
-            <h1 >Meu Carrinho</h1>
-                    <ProductList products={products}/>
+               
+                <h1 >Meu Carrinho</h1>
+
+                <ProductList products={products} />
             </div>
+
+            
+           
+
+            
+                
+
+
+           
+
+
+
+
+
+
+
             <Link to='/'>Home</Link>
         </>
     )
