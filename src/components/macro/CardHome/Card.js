@@ -2,12 +2,19 @@ import React from 'react'
 import './Card.css'
 import { Link } from 'react-router-dom'
 import Button from '../../micro/Button/Button'
+import useCart from '../../../hooks/useCart'
 
 
 function Card(props) {
     const novidades = props.novidades || []
     const destaques = props.destaques || []
     const produtos = props.produtos || []
+
+    const{
+        checkItemCart,
+        createItemRequest,
+        addToCart
+    } = useCart()
 
     return (
 
@@ -29,7 +36,7 @@ function Card(props) {
                                     <div className="card-text precoProduto"> {preco}<div>Ou</div>
                                     </div>
                                     <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
-                                    <Link to="/cart"><Button label="Comprar" class="btn-default btn-principal home-btn"></Button></Link>
+                                    <Link to="/cart"><button   onClick={()=> addToCart(produto)} label="Comprar" class="btn-custom-default btn-default btn-principal home-btn">Comprar</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +61,7 @@ function Card(props) {
                                     <div className="card-text precoProduto">{preco}<div>Ou</div>
                                     </div>
                                     <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
-                                    <Link to="/cart"><Button label="Comprar"  class="btn-default btn-principal home-btn"></Button></Link>
+                                    <Link to="/cart"><button   onClick={()=> addToCart(produto)} label="Comprar" class="btn-custom-default btn-default btn-principal home-btn">Comprar</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +86,7 @@ function Card(props) {
                                     <div className="card-text precoProduto">{preco}<div>Ou</div>
                                     </div>
                                     <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
-                                    <Link to="/cart"><Button label="Comprar" class="btn-default btn-principal home-btn"></Button></Link>
+                                    <Link to="/cart"><button   onClick={()=> addToCart(produto)} label="Comprar" class="btn-custom-default btn-default btn-principal home-btn">Comprar</button></Link>
                                 </div>
                             </div>
                         </div>

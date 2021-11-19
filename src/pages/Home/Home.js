@@ -12,8 +12,8 @@ import { useEffect, useState } from 'react'
 
 
 
-function Home(props) {
 
+function Home(props) {
 const [novidades, setNovidades] = useState([])
 const [destaques, setDestaques] = useState([])
 
@@ -71,4 +71,4 @@ useEffect(() => {
     )
 }
 
-export default Home
+ export default Home
