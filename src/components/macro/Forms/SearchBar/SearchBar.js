@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 // import axios from 'axios'
 import { Redirect } from 'react-router-dom'
@@ -12,13 +13,13 @@ function SearchBar(props) {
         localStorage.setItem("busca", busca)
         
         setIsSent(true)
-        
+        window.location.render()
     }
     return (
         <>
 
-            <form className="d-flex" onSubmit={handleSubmit}>
-                <input className="form-control me-1 inputPesquisa" type="search" placeholder="Pesquise por Produtos"
+            <form className="d-flex" action="/categorySearch">
+                <input className="form-control me-1 inputPesquisa" name="search" type="search" placeholder="Pesquise por Produtos"
                     aria-label="Search" value={busca} required onChange={(ev) => setBusca(ev.target.value)} />
 
                 <button className="btn btn-dark botaoBusca" type="submit" onClick={() => setClicou(true)}>
