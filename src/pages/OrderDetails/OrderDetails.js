@@ -8,6 +8,13 @@ function OrderDetails(props) {
     const order = location.state
     const itemQty = order.itemRequest.length
 
+    const formatDate = (date) => {
+        if (date !== null){
+            let arr = date.split("-")
+        return `${arr[2]}/${arr[1]}/${arr[0]}`
+        }
+    }
+
     return (
         <>
             <div>
@@ -24,17 +31,17 @@ function OrderDetails(props) {
                 <div class="container d-flex col-12">
 
                     <div class="container col-6">Realizado em:</div>
-                    <div class="container col-6"><b>{order.purchaseDate}</b></div>
+                    <div class="container col-6"><b>{formatDate(order.purchaseDate)}</b></div>
                 </div>
                 <div class="container d-flex col-12">
 
                     <div class="container col-6">Data do Pagamento</div>
-                    <div class="container col-6"><b>{order.paymentDate}</b></div>
+                    <div class="container col-6"><b>{formatDate(order.paymentDate)}</b></div>
                 </div>
                 <div class="container d-flex col-12">
 
                     <div class="container col-6">Valor total ({itemQty == 1 ? "1 item" : `${itemQty} itens`}):</div>
-                    <div class="container col-6"><b>R$ {order.totalValue}</b></div>
+                    <div class="container col-6"><b>{order.totalValue.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</b></div>
 
                 </div>
 
@@ -85,7 +92,7 @@ function OrderDetails(props) {
                         Valor Frete
                     </div>
                     <div class=" col-6">
-                        <b>R$ {order.freightFixed}</b>
+                        <b>{(order.freightFixed).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</b>
 
                     </div>
                 </div>
@@ -95,7 +102,7 @@ function OrderDetails(props) {
                         Valor Total
                     </div>
                     <div class=" col-6">
-                        <b>R$ {order.finalValue}</b>
+                        <b>{(order.finalValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</b>
 
                     </div>
                 </div>
@@ -116,7 +123,7 @@ function OrderDetails(props) {
                         Valor:
                     </div>
                     <div class=" col-6">
-                        <b>R$ {order.finalValue}</b>
+                        <b>{(order.finalValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</b>
 
                     </div>
                     <hr />

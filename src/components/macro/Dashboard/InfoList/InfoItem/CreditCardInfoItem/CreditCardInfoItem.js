@@ -42,12 +42,15 @@ function InfoItem(props) {
                                 <div><strong>Validade: </strong>{creditCard.cardValidDate}</div>
                             </div>
                         </div>
-                        <div className="d-flex flex-column align-items-end justify-content-between">
-                            <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
-                            {props.select === true
-                                ? ""
-                                : <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>}
-                        </div>
+                        {props.show === true
+                            ? ""
+                            : <div className="d-flex flex-column align-items-end justify-content-between">
+                                <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
+                                {props.select === true
+                                    ? ""
+                                    : <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>}
+                            </div>}
+
                     </div>
                 </div>
             </>
