@@ -55,13 +55,7 @@ function AddressList(props) {
     }
 
     const selectAddress = (selectedValue) => {
-        let newObj = {
-            address : {
-                id : selectedValue
-            }
-        }
-
-        props.chooseDeliveryAddress(newObj)
+        props.chooseDeliveryAddress(selectedValue)
 
     }
 

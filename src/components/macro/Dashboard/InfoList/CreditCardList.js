@@ -21,8 +21,8 @@ function CreditCardList(props) {
 
     const renderList = (array) => {
         let items = []
-        for(let i = 0; i < array.length; i++){
-            items.push(<CreditCardInfoItem obj={array[i]} key={i} type={props.type}/>)
+        for (let i = 0; i < array.length; i++) {
+            items.push(<CreditCardInfoItem obj={array[i]} key={i} type={props.type} select={props.select} selectCreditCard={selectCreditCard} />)
         }
         return items
     }
@@ -48,17 +48,25 @@ function CreditCardList(props) {
         }).catch(error => {
             alert(error)
         })
-        if(isValid){
+        if (isValid) {
             refreshPage()
         }
         return isValid
-        
+
+    }
+
+    const selectCreditCard = (selectedValue) => {
+        props.chooseCreditCard(selectedValue)
+
     }
 
     return (
         <>
             <div className="col-12 d-flex justify-content-between mb-4">
-                <h3>Meus Cartões</h3>
+                {props.title
+                    ? <h3>{props.title}</h3>
+                    : ""}
+                <h4 className="subtitle">{props.subtitle}</h4>
                 <button class="btn-custom-default btn-principal" onClick={handleShowCreditCard}> Adicionar Cartão de Crédito</button>
             </div>
             <Modal show={showCreditCard} onHide={handleCloseCreditCard} size="lg">

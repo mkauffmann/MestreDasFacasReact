@@ -20,19 +20,19 @@ localStorage.setItem("itemRequest", JSON.stringify([
             "id": 3,
             "value": 109.99
         },
-        "image": "https://ibb.co/4JN0rZS",
+        "image": "https://i.ibb.co/st3XYv1/1.jpg",
         "news": false,
         "featured": false
     }},
     {"quantity" : 3,
       "product" : {
-        "id": 2,
-        "productName": "Faca de Mesa Tramontina Aço Inox Continental",
-        "descriptionProduct": "Faca de mesa com dentes polidos, os quais trazem mais conforto nos cortes",
-        "weight": 35.0,
-        "length": 20.0,
-        "height": 2.0,
-        "width": 1.5,
+        "id": 3,
+        "productName": "Faca Chef Tramontina com Cabo Branco Master",
+        "descriptionProduct": "Faca de chef especializada e eficiente para qualquer alimento ",
+        "weight": 127.0,
+        "length": 30.0,
+        "height": 5.0,
+        "width": 2.0,
         "brand": {
             "id": 2,
             "brand": "Tramontina"
@@ -42,10 +42,10 @@ localStorage.setItem("itemRequest", JSON.stringify([
             "description_category": "Cozinha"
         },
         "productPrice": {
-            "id": 1,
-            "value": 79.99
+            "id": 3,
+            "value": 109.99
         },
-        "image": "https://ibb.co/nmgF5fG",
+        "image": "https://i.ibb.co/2MxcF1w/3.jpg",
         "news": false,
         "featured": false
     }}
