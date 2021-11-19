@@ -1,15 +1,23 @@
 .tituloProduto {
-    font-size  : 16px;
+    font-size  : 14px;
     text-align : center;
     font-family: 'Barlow', sans-serif;
     font-weight: bold;
     color      : #860E1C;
+    height: 20%;
+    
+    
+}
+
+.card-body {
+    height: 40%;
+    padding: 2rem 1rem;
+    
 }
 
 .precoProduto {
-    font-size  : 16px;
+    font-size  : 14px;
     font-weight: bold;
-    
     text-align : center;
     font-family: 'Barlow', sans-serif;
     
@@ -17,6 +25,10 @@
 
 .produtoDesktop {
     display: flex;
+    margin-bottom: 20px;
+    
+    align-content: start;
+    
     
 
 }
@@ -30,6 +42,9 @@
     text-align: center;
     font-family: 'Barlow', sans-serif;
     font-weight: bold;
+    height: 15%;
+    margin-bottom:10%;
+    font-size: 14px;
 }
 
 img{
@@ -37,25 +52,18 @@ img{
     border: rgba(0, 0, 0, 0.096) solid 1px;
 }
 
+@media (max-width:992px) and (min-width:768px) {
+     .tituloProduto{
+       
+        height: 30%;
+    }
+    
+}
 
-
-@media (max-width:768px) {
+@media (max-width:447px) {
     .tituloProduto{
-        font-size: 14px;
-    }
+      
+       height: 30%;
+   }
+   
 }
-
-@media (max-width:576px) { 
-    .ocultaProduto1 {
-        display: none;
-
-    }
-}
-
-@media (max-width:768px) { 
-    .ocultaProduto2 {
-        display: none;
-
-    }
-}
-

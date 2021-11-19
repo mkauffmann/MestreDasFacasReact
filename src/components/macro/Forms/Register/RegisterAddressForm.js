@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Modal } from "react-bootstrap";
+import ReactLoading from 'react-loading'
 import axios from "axios";
 import Input from "../../../micro/Forms/Input/Input";
 import Button from "../../../micro/Button/Button";
@@ -27,15 +28,18 @@ function RegisterAddressForm(props) {
         isEmpty,
         setErrors
     } = useValidation(addressValues);
+    const [isLoading, setIsLoading] = useState(false)
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-        if (validateForm(requiredFields)) {
-            props.save(addressValues);
-            setAddressValues({ ...initialValue });
+        setIsLoading(true)
+        if (await validateForm(requiredFields)) {
+            if(await props.save(addressValues)){
+                setAddressValues({ ...initialValue });
+            }
         }
+        setIsLoading(false)
     }
 
     const handleChange = (event) => {
@@ -69,7 +73,6 @@ function RegisterAddressForm(props) {
     const handleCepApi = () => {
         let cepArr = addressValues.cep.split("-")
         const inputCep = cepArr[0] + cepArr[1]
-        console.log(inputCep)
         const url = `http://viacep.com.br/ws/${inputCep}/json/`
         axios.get(url)
             .then(response => {
@@ -106,6 +109,14 @@ function RegisterAddressForm(props) {
 
 
     return (
+        <>
+        <Modal show={isLoading} animation={false} centered dialogClassName="modal-loading">
+            <Modal.Body>
+                <div>
+                    <ReactLoading type={"spinningBubbles"} color="#860E1C" height={100} width={100} />
+                </div>
+            </Modal.Body>
+        </Modal>
         <form onSubmit={handleSubmit} onReset={resetForm}>
             <Container className="mx-auto">
                 <Row>
@@ -176,6 +187,7 @@ function RegisterAddressForm(props) {
                 </Row>
             </Container>
         </form>
+        </>
     )
 }
 

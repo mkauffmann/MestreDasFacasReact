@@ -1,6 +1,5 @@
 import React from 'react'
 import './CardCart.css'
-import { Link } from 'react-router-dom'
 
 import iconlix from '../../../assets/icons/checkout/lixeira.png'
 
