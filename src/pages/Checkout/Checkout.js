@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
 import './Checkout.css'
 
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import Button from '../../components/micro/Button/Button'
@@ -42,9 +42,9 @@ function Checkout(props) {
 
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
-    const itemRequest = JSON.parse(localStorage.getItem("itemRequest"))
+    const itemRequest = localStorage.getItem("itemRequest") !== null ? JSON.parse(localStorage.getItem("itemRequest")) : []
     const [order, setOrder] = useState({ ...initialValues, itemRequest, customer: { id: userId } })
-    const [orderId, setOrderId] = useState("")
+    const [success, setSuccess] = useState(false)
     let showCreditCards = order.typePayment.description_type_payment === "Cartão de Crédito"
     let totalValue = 0;
 
@@ -73,7 +73,9 @@ function Checkout(props) {
     })
     .then(response => {
         if(response.status === 201){
-            setOrderId(response.data.id)
+            setOrder({...response.data})
+            localStorage.removeItem("itemRequest")
+            setSuccess(true)
         }
     })
     .catch(error => {
@@ -129,6 +131,10 @@ function Checkout(props) {
     }
 
     const validateOrder = () => {
+        if(order.itemRequest.length === 0){
+            alert("Seu carrinho está vazio")
+            return false
+        }
         if(order.address === null){
             alert("Selecione um endereço de entrega")
             return false
@@ -191,8 +197,11 @@ function Checkout(props) {
                         </div>
                     </Col>
                 </Row>
-
             </Container>
+            {success
+            ? <Redirect to={{pathname : "/success",
+                            state : {...order}}}/>
+            : ""}
         </>
 
     )

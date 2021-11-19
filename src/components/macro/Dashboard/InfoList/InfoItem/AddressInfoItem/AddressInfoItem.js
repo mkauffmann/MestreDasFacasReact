@@ -21,7 +21,7 @@ function AddressInfoItem(props) {
     let removeUrl = `http://localhost:8080/customers/removeAddress?customer=${userId}&address=${props.obj.id}`
     let updateUrl = `http://localhost:8080/addresses/${props.obj.id}`
 
-    const handleSelectAddress =  () => {
+    const handleSelectAddress = () => {
         props.selectAddress(props.obj.id)
     }
 
@@ -30,8 +30,8 @@ function AddressInfoItem(props) {
         return (
             <div>
                 {props.select === true
-                ? <input type="radio" value={address.id} name="address" onChange={handleSelectAddress}/>
-                : ""}
+                    ? <input type="radio" value={address.id} name="address" onChange={handleSelectAddress} />
+                    : ""}
                 <div className="card-lista d-flex flex-row mb-3 justify-content-between " key={key}>
                     <div className="infos-lista d-flex flex-column  mt-1">
                         <div><strong>Logradouro:</strong> {address.street}</div>
@@ -41,12 +41,14 @@ function AddressInfoItem(props) {
                         <div><strong>CEP: </strong>{address.cep}</div>
                         <div><strong>Cidade: </strong>{address.city.cityName}/{address.state.uf}</div>
                     </div>
-                    <div className="d-flex flex-column align-items-end justify-content-between">
-                        <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
-                        {props.select === true
-                            ? ""
-                            : <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>}
-                    </div>
+                    {props.show === true ? ""
+                        : <div className="d-flex flex-column align-items-end justify-content-between">
+                            <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
+                            {props.select === true
+                                ? ""
+                                : <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>}
+                        </div>}
+
                 </div>
             </div>
         )

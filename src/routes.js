@@ -34,7 +34,7 @@ export const Routes = () => {
             <Route path="/product/:id" component={Product}/>
             <Route path="/register" component={Register}/>
             <Route path="/contact" component={Contact}/>
-            <Route path="/success" component={Success}/>
+            <OrderDetailsRoute path="/success" component={Success}/>
             <Route path="/about" component={About}/>
             <OrderDetailsRoute path="/orderDetails" component={OrderDetails}/>
             <Route path="/changePassword/:id" component={ChangePassword} />
