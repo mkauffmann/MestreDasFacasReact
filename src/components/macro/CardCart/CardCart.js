@@ -6,7 +6,7 @@ import iconlix from '../../../assets/icons/checkout/lixeira.png'
 
 function CardCart(props) {
     const [itemQty, setItemQty] = useState(props.item.quantity)
-
+    const [total, setTotal] = useState(props.productPrice * itemQty)
 
     const handleRemove = () => {
         props.removeItem(props.key)
@@ -49,7 +49,7 @@ function CardCart(props) {
                     </div>
                 </div>
             </div>
-
+        
         </>
     )
 }

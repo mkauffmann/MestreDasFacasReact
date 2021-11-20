@@ -4,15 +4,31 @@ import { Container, Row, Col } from 'react-bootstrap';
 import ProductList from '../../components/micro/ProductList/ProductList';
 import './Cart.css'
 import DividingBar from '../../components/micro/Login/DividingBar/DividingBar';
+import TotalValueCheckout from '../../components/micro/TotalValueCheckout/TotalValueCheckout';
 
 function Cart(props) {
+    const handleSubtotal = () => {
+        let products = JSON.parse(localStorage.getItem("itemRequest"))
+        let subtotal = 0
+        for(let i = 0; i < products.length; i++){
+            subtotal += (products[i].quantity * products[i].product.productPrice.value)
+        }
+        return subtotal
+    }
 
     const [products, setProducts] = useState([])
     const [qtyCart, setQtyCart] = useState(0)
+    const [subtotal, setSubtotal] = useState(handleSubtotal())
+    
     useEffect(() => {
         setProducts(JSON.parse(localStorage.getItem("itemRequest")))
         setQtyCart(JSON.parse(localStorage.getItem("qtyCart")))
     }, [])
+
+    
+    const updateSubtotal = () => {
+        setSubtotal(handleSubtotal())
+    }
 
     return (
         <>
@@ -21,7 +37,9 @@ function Cart(props) {
                 <DividingBar singleLine />
                 <Row>
                     <Col className="d-flex flex-column">
-                        <ProductList products={products} />
+                        <ProductList products={products} updateSubtotal={updateSubtotal}/>
+                        <DividingBar singleLine/>
+                        <TotalValueCheckout info="Subtotal: " valor={subtotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}/>
                         <div className="align-self-end">
                             <Button navigation route="/" label="Continuar comprando" class="btn-cancelar my-3 mx-3" />
                             {products === null || products.length == 0
