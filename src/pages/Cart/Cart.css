@@ -1,24 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&display=swap');
-
-body{
-    font-family: 'Archivo Narrow', sans-serif ;
-}
-h1, h2, h3, h4, h5{
-    font-family: 'Archivo Narrow', sans-serif;
-    color: #860E1C ;
-    
-    
-}
-
-.resumePedido{
-
-    display: flex;
-   
-    flex-direction:column;
-    align-items: end;
-    
-
-}
 
 
 

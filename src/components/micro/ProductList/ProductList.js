@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react'
 import './ProductList.css'
 import CardCart from '../../macro/CardCart/CardCart'
 
+
 function ProductList(props) {
+
+    const refreshPage = () => {
+        window.location.reload();
+    }
 
     const checkItemCart = (item, cartList) => {
         if (cartList.length > 0) {
             for (let i = 0; i < cartList.length; i++) {
-
                 if (cartList[i].product.id == item.product.id) {
-
                     cartList[i].quantity += 1;
                     return true;
                 }
@@ -44,23 +47,44 @@ function ProductList(props) {
     const listProducts = () => {
         let items = JSON.parse(localStorage.getItem("itemRequest"))
 
-        if (items == null) {
-            return "Seu carrinho esta vazio"
-
+        if (items == null || items.length == 0) {
+            return <h4>Seu carrinho está vazio</h4>
         }
+
         return items.map((item, index) => {
             return (
                 <>
-                    <CardCart key={index} quantidade={item.quantity} descriptionProduct={item.product.descriptionProduct} productPrice={item.product.productPrice.value} productName={item.product.productName} imagem={item.product.image} />
+                    <CardCart key={index} item={item} handleValues={handleValues} removeItem={removeItem} quantidade={item.quantity} descriptionProduct={item.product.descriptionProduct} productPrice={item.product.productPrice.value} productName={item.product.productName} imagem={item.product.image} />
                 </>
             )
         })
     }
 
+    const removeItem = (index) => {
+        let productList = JSON.parse(localStorage.getItem("itemRequest"))
+        productList.splice(index, 1)
+
+        localStorage.setItem("itemRequest", JSON.stringify(productList))
+        localStorage.setItem("qtyCart",JSON.stringify(productList.length))
+        refreshPage()
+    }
+
+    const handleValues = (value, id) => {
+        let productList = JSON.parse(localStorage.getItem("itemRequest"))
+        
+        for(let i = 0; i < productList.length; i++){
+            if(productList[i].product.id == id){
+                productList[i].quantity = value
+            }
+        }
+
+        localStorage.setItem("itemRequest", JSON.stringify(productList))
+    }
+
     return (
-        <ul>
+        <>
             {listProducts()}
-        </ul>
+        </>
     )
 }
 

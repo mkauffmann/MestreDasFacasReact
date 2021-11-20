@@ -20,7 +20,7 @@ import CreditCardList from '../../components/macro/Dashboard/InfoList/CreditCard
 
 const initialValues = {
     freightFixed: 3.55,
-    purchaseDate: new Date().toISOString().slice(0,10),
+    purchaseDate: "",
     paymentDate: "",
     typePayment: {
         description_type_payment: null
@@ -29,7 +29,7 @@ const initialValues = {
         description_status_delivery: "PEDIDO EFETUADO"
     },
     address: null,
-    creditCard : null,
+    creditCard: null,
     customer: {},
     itemRequest: []
 }
@@ -40,10 +40,11 @@ function Checkout(props) {
     const getCustomerUrl = `http://localhost:8080/customers/${userId}`
     const postOrderUrl = 'http://localhost:8080/request'
 
+    const purchaseDate = new Date().toISOString().slice(0, 10)
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const itemRequest = localStorage.getItem("itemRequest") !== null ? JSON.parse(localStorage.getItem("itemRequest")) : []
-    const [order, setOrder] = useState({ ...initialValues, itemRequest, customer: { id: userId } })
+    const [order, setOrder] = useState({ ...initialValues, itemRequest, purchaseDate, customer: { id: userId } })
     const [success, setSuccess] = useState(false)
     let showCreditCards = order.typePayment.description_type_payment === "Cartão de Crédito"
     let totalValue = 0;
@@ -71,16 +72,16 @@ function Checkout(props) {
             Authorization: `Bearer ${token}`
         }
     })
-    .then(response => {
-        if(response.status === 201){
-            setOrder({...response.data})
-            localStorage.removeItem("itemRequest")
-            setSuccess(true)
-        }
-    })
-    .catch(error => {
-        alert(error.message)
-    })
+        .then(response => {
+            if (response.status === 201) {
+                setOrder({ ...response.data })
+                localStorage.removeItem("itemRequest")
+                setSuccess(true)
+            }
+        })
+        .catch(error => {
+            alert(error.message)
+        })
 
     useEffect(() => {
         renderUser()
@@ -98,7 +99,7 @@ function Checkout(props) {
             return {
                 ...prevValues,
                 address: {
-                    id : value
+                    id: value
                 }
             }
         })
@@ -109,8 +110,8 @@ function Checkout(props) {
         setOrder(prevValues => {
             return {
                 ...prevValues,
-                creditCard : {
-                    id : value
+                creditCard: {
+                    id: value
                 }
             }
         })
@@ -125,25 +126,25 @@ function Checkout(props) {
                 typePayment: {
                     description_type_payment: description
                 },
-                creditCard : null
+                creditCard: null
             }
         })
     }
 
     const validateOrder = () => {
-        if(order.itemRequest.length === 0){
+        if (order.itemRequest.length === 0) {
             alert("Seu carrinho está vazio")
             return false
         }
-        if(order.address === null){
+        if (order.address === null) {
             alert("Selecione um endereço de entrega")
             return false
         }
-        if (order.typePayment.description_type_payment === null){
+        if (order.typePayment.description_type_payment === null) {
             alert("Selecione uma forma de pagamento")
             return false
         }
-        if(order.typePayment.description_type_payment === "Cartão de Crédito" && order.creditCard == null){
+        if (order.typePayment.description_type_payment === "Cartão de Crédito" && order.creditCard == null) {
             alert("Selecione um cartão de crédito")
             return false
         }
@@ -151,7 +152,7 @@ function Checkout(props) {
     }
 
     const handleOrder = () => {
-        if(validateOrder()){
+        if (validateOrder()) {
             postOrder()
         }
     }
@@ -183,7 +184,7 @@ function Checkout(props) {
                         </Row>
                     </Col>
                     <Col md={6}>
-                        <div className="checkout-itens">
+                        <div className="checkout-itens mb-3">
                             <h4 className="subtitle">Itens</h4>
                             {renderItems()}
                             <DividingBar singleLine />
@@ -192,20 +193,26 @@ function Checkout(props) {
                                 <TotalValueCheckout info="Frete fixo" valor={initialValues.freightFixed.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} />
                                 <DividingBar singleLine />
                                 <TotalValueCheckout info="Total" valor={(totalValue + initialValues.freightFixed).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} />
+                                <button class="btn-principal btn-principal-finalizar mt-4" onClick={handleOrder} >Finalizar Compra</button>
                             </div>
-                            <button class="btn-principal btn-principal-finalizar" onClick={handleOrder} >Finalizar Compra</button>
+                        </div>
+                        <div>
+                            
+                            <Button navigation route="/" label="Continuar comprando" class="btn-cancelar my-3" />
                         </div>
                     </Col>
                 </Row>
             </Container>
             {success
-            ? <Redirect to={{pathname : "/success",
-                            state : {...order}}}/>
-            : ""}
+                ? <Redirect to={{
+                    pathname: "/success",
+                    state: { ...order }
+                }} />
+                : ""}
         </>
 
     )
 
 }
 
- export default Checkout
+export default Checkout
