@@ -31,11 +31,12 @@ function RegisterAddressForm(props) {
     const [isLoading, setIsLoading] = useState(false)
 
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         setIsLoading(true)
-        if (await validateForm(requiredFields)) {
-            if(await props.save(addressValues)){
+        
+        if (validateForm(requiredFields)) {
+            if(props.save(addressValues)){
                 setAddressValues({ ...initialValue });
             }
         }
@@ -59,6 +60,7 @@ function RegisterAddressForm(props) {
     const handleBlur = (event, validationCallback) => {
         const value = event.target.value;
         const name = event.target.name;
+        
         validationCallback(value, name)
         validateForm(requiredFields)
     }

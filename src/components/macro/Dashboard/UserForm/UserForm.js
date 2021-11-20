@@ -49,13 +49,10 @@ function UserForm(props) {
                 Authorization : `Bearer ${token}`
             }
         }).then(response => {
-            console.log(response)
             if(response.status === 202){
                 alert(response.data)
             }
         }).catch(error => {
-            console.log(error)
-            console.log(values)
             alert("Senha não confere")
            // setErrorMessage(error.response.data.message)
             setShowError(true)

@@ -1,3 +1,9 @@
+.subtitle {
+    font-family: 'Archivo Narrow', Arial, sans-serif;
+    color: #860E1C;
+
+}
+
 .card-lista {
     border: 1px #ccc solid;
     padding: 16px;

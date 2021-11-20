@@ -23,7 +23,8 @@ function useValidation(inputValues) {
     }
 
     const isEmpty = (inputValue, name) => {
-        if (inputValue.trim() === "") {
+    
+        if (inputValue === "" || inputValue.trim() === "") {
             setErrors((prevState) => {
                 return {
                     ...prevState,
@@ -177,6 +178,30 @@ function useValidation(inputValues) {
         }
     }
 
+    const validateTelephoneNotEmpty = (inputValue, name) => {
+        if(isEmpty(inputValue, name)){
+            setErrors((prevState) => {
+                return { ...prevState, [name]: "Campo obrigatório" }
+            })
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        } else if (inputValue !== "" && inputValue.length < 15) {
+            setErrors((prevState) => {
+                return { ...prevState, [name]: "Celular inválido" }
+            })
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        } 
+    }
+
     const validatePasswordNotEmpty = (inputValue, name) => {
         if (!isEmpty(inputValue, name) && inputValues.password !== inputValues.confirmPassword) {
             setErrors((prevState) => {
@@ -266,7 +291,8 @@ function useValidation(inputValues) {
         validatePasswordNotEmpty,
         validateCreditCardDate,
         validateStringNotRequired,
-        validateEmailNotRequired
+        validateEmailNotRequired,
+        validateTelephoneNotEmpty
     }
 }
 

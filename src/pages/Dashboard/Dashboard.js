@@ -13,19 +13,25 @@ import DashboardMenuMobile from '../../components/macro/Dashboard/Menu/Dashboard
 import DashboardMenuDesktop from '../../components/macro/Dashboard/Menu/DashboardMenuDesktop'
 import UserForm from '../../components/macro/Dashboard/UserForm/UserForm'
 import OrderList from '../../components/macro/Dashboard/OrderList/OrderList'
-import InfoList from '../../components/macro/Dashboard/InfoList/InfoList'
 import ComponentCard from '../../components/macro/Dashboard/ComponentCard/ComponentCard'
 import AddressList from '../../components/macro/Dashboard/InfoList/AddressList';
-
+import CreditCardList from '../../components/macro/Dashboard/InfoList/CreditCardList';
+import TelephoneList from '../../components/macro/Dashboard/InfoList/TelephoneList';
 
 function Dashboard(props) {
     const {userId, token, logout} = useLogin()
     const getUrl = `http://localhost:8080/customers/${userId}`
     
     const [user, setUser] = useState({})
+    const [orders, setOrders] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { url } = useRouteMatch()
     
+    const refreshPage = () => {
+        window.location.reload();
+    }
+
+
     const getUser = () => axios.get(getUrl, {
         headers : {
             Authorization : `Bearer ${token}`
@@ -37,13 +43,31 @@ function Dashboard(props) {
     })
     .catch(error => {
         logout()
+        refreshPage()
     })
 
-    const renderUser = async () => await getUser()
+    const getCustomerOrders = async () => {
+        await axios.get(`http://localhost:8080/request/customer/${userId}`, {
+             headers : {
+                 Authorization : `Bearer ${token}`
+             }
+         }).then((response) => {
+             if(response.status === 200){
+                 setOrders([...response.data])
+             }
+         }).catch(error => console.log(error))
+     }
+
+    const renderUser = async () => { 
+        await getUser()
+        await getCustomerOrders()
+    }
 
     useEffect(() => {
         renderUser()
     }, [])
+
+   
 
     return (
         <>
@@ -62,16 +86,16 @@ function Dashboard(props) {
                                     <UserForm userData={user} isLoading={isLoading}/>
                                 </Route>
                                 <Route path={`${url}/myOrders`}>
-                                    <OrderList />
+                                    <OrderList orders={orders} />
                                 </Route>
                                 <Route path={`${url}/myCards`}>
-                                    <InfoList type="cartão" title="Meus Cartões" userData={user} isLoading={isLoading}/>
+                                    <CreditCardList type="cartão" title="Meus Cartões" userData={user} isLoading={isLoading}/>
                                 </Route>
                                 <Route path={`${url}/myAddresses`}>
                                     <AddressList type="endereço" title="Meus Endereços" userData={user} isLoading={isLoading} />
                                 </Route>
                                 <Route path={`${url}/myTelephones`}>
-                                    <InfoList type="telefone" title="Meus Telefones" userData={user} isLoading={isLoading}/>
+                                    <TelephoneList type="telefone" title="Meus Telefones" userData={user} isLoading={isLoading}/>
                                 </Route>
                             </Switch>
                         </ComponentCard>

@@ -11,16 +11,13 @@ import '../../components/macro/CardHome/Card.css'
 
 function Category(props) {
 
-    
-    const textoPesquisa = localStorage.getItem("busca")
     const [produtosPesquisa, setProdutosPesquisa] = useState([])
-    const location = useLocation()
-    const texto = location.state.busca
+    const urlParams = new URLSearchParams(window.location.search)
+    const texto = urlParams.get("search")
     useEffect(() => {
         axios.get(`http://localhost:8080/product/search/${texto}`)
         .then((response) => {
             setProdutosPesquisa([...response.data])
-            console.log(texto)
         })
         .catch((err) => {
             console.error("Erro ao buscar os produtos" + err)

@@ -32,8 +32,9 @@ function RegisterCreditCardForm(props) {
         event.preventDefault();
 
         if (validateForm(requiredFields)) {
-            props.save(creditCardValues);
-            setCreditCardValues({ ...initialInputValues });
+            if(props.save(creditCardValues)){
+                setCreditCardValues({ ...initialInputValues });
+            }
         }
     }
 

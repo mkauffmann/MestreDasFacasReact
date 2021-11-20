@@ -1,56 +1,57 @@
-
-import React from 'react'
-
+import Button from '../../components/micro/Button/Button'
+import React, { useEffect, useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap';
+import ProductList from '../../components/micro/ProductList/ProductList';
 import './Cart.css'
-import ProductComp from '../../components/micro/ProductComp/ProductComp'
-import Faca1 from '../../assets/imgs/produtos/1.jpeg'
-import Faca2 from '../../assets/imgs/produtos/2.jpeg'
-import Faca3 from '../../assets/imgs/produtos/3.jpeg'
-import TotalValue from '../../components/micro/TotalValueCart/TotalValueCart'
+import DividingBar from '../../components/micro/Login/DividingBar/DividingBar';
+import TotalValueCheckout from '../../components/micro/TotalValueCheckout/TotalValueCheckout';
 
 function Cart(props) {
+    const handleSubtotal = () => {
+        let products = JSON.parse(localStorage.getItem("itemRequest"))
+        let subtotal = 0
+        for(let i = 0; i < products.length; i++){
+            subtotal += (products[i].quantity * products[i].product.productPrice.value)
+        }
+        return subtotal
+    }
 
-    return(
+    const [products, setProducts] = useState([])
+    const [qtyCart, setQtyCart] = useState(0)
+    const [subtotal, setSubtotal] = useState(handleSubtotal())
+    
+    useEffect(() => {
+        setProducts(JSON.parse(localStorage.getItem("itemRequest")))
+        setQtyCart(JSON.parse(localStorage.getItem("qtyCart")))
+    }, [])
+
+    
+    const updateSubtotal = () => {
+        setSubtotal(handleSubtotal())
+    }
+
+    return (
         <>
-        <div class="container">
+            <Container>
+                <h1 >Meu Carrinho</h1>
+                <DividingBar singleLine />
+                <Row>
+                    <Col className="d-flex flex-column">
+                        <ProductList products={products} updateSubtotal={updateSubtotal}/>
+                        <DividingBar singleLine/>
+                        <TotalValueCheckout info="Subtotal: " valor={subtotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}/>
+                        <div className="align-self-end">
+                            <Button navigation route="/" label="Continuar comprando" class="btn-cancelar my-3 mx-3" />
+                            {products === null || products.length == 0
+                            ? ""
+                            : <Button navigation route="/checkout" label="Fechar pedido" class="btn-principal my-3" />}
+                            
+                        </div>
 
+                    </Col>
+                </Row>
 
-           <h1>Meu carrinho</h1>
-
-           <ul className="list-group mb-3">
-
-            <li className="list-group-item py-3">
-                
-        <ProductComp imagem={Faca1} />
-            
-            </li>
-            <li className="list-group-item py-3">
-                
-            <ProductComp imagem={Faca2}/>
-
-            </li>
-
-            <li className="list-group-item py-3">
-                
-                
-            <ProductComp imagem={Faca3}/>
-            
-
-            </li>
-            
-        
-            
-
-        </ul>
-           
-           
-        <TotalValue/>
-           
-           </div>
-
-           
-
-
+            </Container>
         </>
     )
 }
