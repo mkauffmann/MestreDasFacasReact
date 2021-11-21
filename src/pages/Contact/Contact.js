@@ -1,8 +1,61 @@
-import React from "react";
+import React, {useState} from "react";
 import Button from '../../components/micro/Button/Button'
+import { useHistory } from "react-router-dom"
+import axios from 'axios'
+
+
+
+const initialValue = {
+
+    cpf: '',
+    complete_name: '',
+    email: '',
+    tel: 0,
+    motivo: '',
+    pd_numero: 0,
+    msg: ''
+   }
+
+   const URL = 'http://localhost:8080/'
+
+   
+
+
+
+
 
 
 function Contact(props){
+
+
+    const [ values, setValues ] = useState(initialValue);
+
+    function onChange(ev){
+      const { name, value } = ev.target;
+
+      setValues({ ...values, [name]: value })
+    }
+  const history = useHistory();
+   
+
+
+    function onSubmit(event){
+      event.preventDefault();
+
+      axios.post(URL+'contato', values)
+      .then((response) => {
+        
+        alert("Mensagem enviada com sucesso!")
+
+        history.push('/home');
+      });
+    
+
+    }
+
+
+
+
     return (
         <>
         <main className="container my-5">
@@ -31,18 +84,18 @@ function Contact(props){
             {/* <!-- BARRA LATERAL/SUPERIOR FIM  --> */}
             {/* <!-- FORM INICIO  --> */}
             <div className="form-container col-12 col-lg-8 mb-5">
-                <form>
+                <form onSubmit={onSubmit}>
                     <div className="row">
                         {/* <!-- CPF inicio  --> */}
                         <div className="col-12 col-md-6 mb-3">
                             <label for="cpf" className="form-label custom-label">CPF<span className="obrigatorio">*</span></label>
-                            <input type="text" id="cpf" className="form-control" placeholder="Digite seu CPF"/>
+                            <input name="cpf" onChange={onChange} type="text" id="cpf" className="form-control" placeholder="Digite seu CPF"/>
                         </div>
                         {/* <!-- CPF fim --> */}
                         {/* <!-- NOME inicio  --> */}
                         <div className="col-12 col-md-6 mb-3">
                             <label for="nome" className="form-label custom-label">Nome completo<span className="obrigatorio">*</span></label>
-                            <input type="text" id="nome" className="form-control" placeholder="Digite seu nome"/>
+                            <input name="complete_name" onChange={onChange} type="text" id="nome" className="form-control" placeholder="Digite seu nome"/>
                         </div>
                         {/* <!-- NOME fim  --> */}
                     </div>
@@ -50,13 +103,13 @@ function Contact(props){
                         {/* <!-- Email inicio  --> */}
                         <div className="col-12 col-md-6 mb-3">
                             <label for="email" className="form-label custom-label">Email<span className="obrigatorio">*</span></label>
-                            <input type="email" id="email" className="form-control" placeholder="Digite seu email"/>
+                            <input name="email" onChange={onChange} type="email" id="email" className="form-control" placeholder="Digite seu email"/>
                         </div>
                         {/* <!-- Email fim  --> */}
                         {/* <!-- TELEFONE inicio  --> */}
                         <div className="col-12 col-md-6 mb-3">
                             <label for="telefone" className="form-label custom-label">Telefone<span className="obrigatorio">*</span></label>
-                            <input type="text" id="telefone" className="form-control" placeholder="(XX) XXXXX-XXXX" required/>
+                            <input name="tel" onChange={onChange} type="text" id="telefone" className="form-control" placeholder="(XX) XXXXX-XXXX" required/>
                         </div>
                         {/* <!-- TELEFONE fim  --> */}
                     </div>
@@ -65,19 +118,19 @@ function Contact(props){
                             {/* <!-- motivo inicio  --> */}
                             <div className="col-12 col-md-6 mb-3">
                                 <label for="motivo" className="form-label custom-label">Motivo do contato<span className="obrigatorio">*</span></label>
-                                <select name="" id="motivo" className="form-select">
+                                <select name="motivo" id="motivo" className="form-select" onChange={onChange}>
                                     <option value="" selected disabled>Selecione</option>
-                                    <option value="sugestao">Sugestão</option>
-                                    <option value="duvida">Dúvida</option>
-                                    <option value="problema">Problema</option>
-                                    <option value="outro">Outros</option>
+                                    <option onChange={onChange} value="sugestao">Sugestão</option>
+                                    <option onChange={onChange} value="duvida">Dúvida</option>
+                                    <option onChange={onChange} value="problema">Problema</option>
+                                    <option onChange={onChange} value="outro">Outros</option>
                                 </select>
                             </div>
                             {/* <!-- motivo fim  --> */}
                             {/* <!-- numero do pedido inicio  --> */}
                             <div className="col-12 col-md-6 mb-3">
                                 <label for="n-pedido" className="form-label custom-label">Número do pedido</label>
-                                <input type="text" id="n-pedido" className="form-control" placeholder="Digite seu email"/>
+                                <input name="pd_numero" onChange={onChange} type="text" id="n-pedido" className="form-control" placeholder="Digite o numero do pedido"/>
                             </div>
                             {/* <!-- numero do pedido fim  --> */}
                         </div>
@@ -85,7 +138,7 @@ function Contact(props){
                        <div className="row mb-3">
                         <div className="col-12">
                             <label for="mensagem" className="form-label custom-label">Mensagem</label>
-                            <textarea className="form-control" placeholder="Deixe sua mensagem" id="mensagem"></textarea>
+                            <textarea name="msg" onChange={onChange} className="form-control" placeholder="Deixe sua mensagem" id="mensagem"></textarea>
                           </div>
                        </div>
                         {/* <!-- checkbox inicio  --> */}
@@ -116,3 +169,9 @@ function Contact(props){
 }
 
 export default Contact
+
+
+
+
+   
+  
