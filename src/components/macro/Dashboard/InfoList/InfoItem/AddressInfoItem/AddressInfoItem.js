@@ -7,8 +7,8 @@ import useRegisterFormat from "../../../../../../hooks/useRegisterFormat"
 
 
 function AddressInfoItem(props) {
-    const { token, userId } = useLogin()
-    const {handleShowAddress, handleAddressCreation} = useRegisterFormat()
+    const { token, userId, refreshPage } = useLogin()
+    const { handleShowAddress, handleAddressCreation } = useRegisterFormat()
 
     const [deleteModal, setDeleteModal] = useState(false)
     const handleCloseDeleteModal = () => setDeleteModal(false)
@@ -21,24 +21,34 @@ function AddressInfoItem(props) {
     let removeUrl = `http://localhost:8080/customers/removeAddress?customer=${userId}&address=${props.obj.id}`
     let updateUrl = `http://localhost:8080/addresses/${props.obj.id}`
 
-    const refreshPage = () => {
-        window.location.reload();
+    const handleSelectAddress = () => {
+        props.selectAddress(props.obj.id)
     }
+
 
     const renderAddressItem = (address, key) => {
         return (
-            <div className="card-lista d-flex flex-row mb-3 justify-content-between" key={key}>
-                <div className="infos-lista d-flex flex-column  mt-1">
-                    <div><strong>Logradouro:</strong> {address.street}</div>
-                    <div><strong>Número:</strong> {address.number}</div>
-                    {address.complement !== "" ? <div><strong>Complemento: </strong>{address.complement}</div> : ""}
-                    <div><strong>Bairro: </strong>{address.neighborhood}</div>
-                    <div><strong>CEP: </strong>{address.cep}</div>
-                    <div><strong>Cidade: </strong>{address.city.cityName}/{address.state.uf}</div>
-                </div>
-                <div className="d-flex flex-column align-items-end justify-content-between">
-                    <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
-                    <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>
+            <div>
+                {props.select === true
+                    ? <input type="radio" value={address.id} name="address" onChange={handleSelectAddress} />
+                    : ""}
+                <div className="card-lista d-flex flex-row mb-3 justify-content-between " key={key}>
+                    <div className="infos-lista d-flex flex-column  mt-1">
+                        <div><strong>Logradouro:</strong> {address.street}</div>
+                        <div><strong>Número:</strong> {address.number}</div>
+                        {address.complement !== "" ? <div><strong>Complemento: </strong>{address.complement}</div> : ""}
+                        <div><strong>Bairro: </strong>{address.neighborhood}</div>
+                        <div><strong>CEP: </strong>{address.cep}</div>
+                        <div><strong>Cidade: </strong>{address.city.cityName}/{address.state.uf}</div>
+                    </div>
+                    {props.show === true ? ""
+                        : <div className="d-flex flex-column align-items-end justify-content-between">
+                            <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
+                            {props.select === true
+                                ? ""
+                                : <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>}
+                        </div>}
+
                 </div>
             </div>
         )
@@ -46,8 +56,8 @@ function AddressInfoItem(props) {
 
     const handleDelete = () => {
         axios.put(removeUrl, {}, {
-            headers : {
-                Authorization : `Bearer ${token}`
+            headers: {
+                Authorization: `Bearer ${token}`
             }
         }).then(() => refreshPage())
     }
@@ -57,8 +67,8 @@ function AddressInfoItem(props) {
         let address = await handleAddressCreation(inputValues)
         console.log(address)
         axios.put(updateUrl, address, {
-            headers : {
-                Authorization : `Bearer ${token}`
+            headers: {
+                Authorization: `Bearer ${token}`
             }
         }).then(() => refreshPage())
     }
@@ -75,15 +85,17 @@ function AddressInfoItem(props) {
                 </Modal.Body>
             </Modal>
             <Modal show={updateModal} onHide={handleCloseUpdateModal}>
-                <Modal.Header closeButton/>
+                <Modal.Header closeButton />
                 <ModalBody>
-                    <RegisterAddressForm alter={handleShowAddress(props.obj)} save={handleUpdateAddress}/>   
+                    <RegisterAddressForm alter={handleShowAddress(props.obj)} save={handleUpdateAddress} />
                 </ModalBody>
                 <Modal.Footer>
                     <button className="btn-custom-default btn-cancelar align-self-center btn-ver-lista" onClick={() => handleCloseUpdateModal()}>Cancelar</button>
                 </Modal.Footer>
             </Modal>
+
             {renderAddressItem(props.obj, props.key)}
+
         </>
     )
 }

@@ -19,6 +19,7 @@ function LoginLogoutButton(props) {
                 Authorization: `Bearer ${token}`
             }
         }).then(response => {
+            console.log("oi")
             let name = response.data.name
             let nameArr = name.split(" ")
             return nameArr[0]

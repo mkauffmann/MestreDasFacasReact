@@ -7,8 +7,8 @@ import useRegisterFormat from "../../../../../../hooks/useRegisterFormat"
 
 
 function InfoItem(props) {
-    const { token, userId } = useLogin()
-    const {handleShowCreditCard, handleCreditCardCreation} = useRegisterFormat()
+    const { token, userId, refreshPage } = useLogin()
+    const { handleShowCreditCard, handleCreditCardCreation } = useRegisterFormat()
 
     const [deleteModal, setDeleteModal] = useState(false)
     const handleCloseDeleteModal = () => setDeleteModal(false)
@@ -21,35 +21,46 @@ function InfoItem(props) {
     let removeUrl = `http://localhost:8080/customers/removeCreditCard/?customer=${userId}&creditCard=${props.obj.id}`
     let updateUrl = `http://localhost:8080/creditCards/${props.obj.id}`
 
-    const refreshPage = () => {
-        window.location.reload();
+    const handleSelectCreditCard = () => {
+        props.selectCreditCard(props.obj.id)
     }
 
     const renderCreditCardItem = (creditCard, key) => {
         return (
-            <div className="card-lista d-flex flex-row mb-3 justify-content-between" key={key}>
-                <div className="infos-lista d-flex flex-column  mt-1">
-                    <div className="nome-lista"><h5>{creditCard.cardBrand.cardBrandName}</h5></div>
-                    <div className="numero-cartao"><strong>**** **** **** {creditCard.cardNumber.slice(-4)}</strong></div>
-                    <div className="infos-lista d-flex flex-column  mt-1">
-                        <div><strong>Titular:</strong> {creditCard.holderName}</div>
-                        <div><strong>CPF:</strong> {creditCard.cpf}</div>
-                        <div><strong>Validade: </strong>{creditCard.cardValidDate}</div>
+            <>
+                <div>
+                    {props.select === true
+                        ? <input type="radio" value={creditCard.id} name="creditCard" onChange={handleSelectCreditCard} />
+                        : ""}
+                    <div className="card-lista d-flex flex-row mb-3 justify-content-between" key={key}>
+                        <div className="infos-lista d-flex flex-column  mt-1">
+                            <div className="nome-lista"><h5>{creditCard.cardBrand.cardBrandName}</h5></div>
+                            <div className="numero-cartao"><strong>**** **** **** {creditCard.cardNumber.slice(-4)}</strong></div>
+                            <div className="infos-lista d-flex flex-column  mt-1">
+                                <div><strong>Titular:</strong> {creditCard.holderName}</div>
+                                <div><strong>CPF:</strong> {creditCard.cpf}</div>
+                                <div><strong>Validade: </strong>{creditCard.cardValidDate}</div>
+                            </div>
+                        </div>
+                        {props.show === true
+                            ? ""
+                            : <div className="d-flex flex-column align-items-end justify-content-between">
+                                <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
+                                {props.select === true
+                                    ? ""
+                                    : <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>}
+                            </div>}
+
                     </div>
                 </div>
-                <div className="d-flex flex-column align-items-end justify-content-between">
-                    <button className="btn-custom-default btn-cancelar align-self-end btn-ver-lista" onClick={() => handleOpenUpdateModal()}>Editar</button>
-                    <button className="btn-custom-default btn-cancelar2 align-self-end btn-ver-lista" onClick={() => handleOpenDeleteModal()}>Remover</button>
-                </div>
-
-            </div>
+            </>
         )
     }
 
     const handleDelete = () => {
         axios.put(removeUrl, {}, {
-            headers : {
-                Authorization : `Bearer ${token}`
+            headers: {
+                Authorization: `Bearer ${token}`
             }
         }).then(() => refreshPage())
     }
@@ -58,8 +69,8 @@ function InfoItem(props) {
         let creditCard = await handleCreditCardCreation(inputValues)
 
         axios.put(updateUrl, creditCard, {
-            headers : {
-                Authorization : `Bearer ${token}`
+            headers: {
+                Authorization: `Bearer ${token}`
             }
         }).then(() => refreshPage())
     }
@@ -76,9 +87,9 @@ function InfoItem(props) {
                 </Modal.Body>
             </Modal>
             <Modal show={updateModal} onHide={handleCloseUpdateModal}>
-                <Modal.Header closeButton/>
+                <Modal.Header closeButton />
                 <ModalBody>
-                    <RegisterCreditCardForm alter={handleShowCreditCard(props.obj)} save={handleUpdateAddress}/>
+                    <RegisterCreditCardForm alter={handleShowCreditCard(props.obj)} save={handleUpdateAddress} />
                 </ModalBody>
                 <Modal.Footer>
                     <button className="btn-custom-default btn-cancelar align-self-center btn-ver-lista" onClick={() => handleCloseUpdateModal()}>Cancelar</button>
