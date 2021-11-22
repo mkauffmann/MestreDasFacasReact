@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import './Header.css'
 import LoginLogoutButton from './LoginLogoutButton/LoginLogoutButton'
-
-
-
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import CategoryId from '../../macro/CategoryId/CategoryId'
 import CategoryAllProducts from '../../macro/CategoryAllProducts/CategoryAllProducts'
-
 import SearchBar from '../../macro/Forms/SearchBar/SearchBar'
-
+import CategoryIdMobile from '../../macro/CategoryId/CategoryIdMobile'
+import CategoryAllProductsMobile from '../../macro/CategoryAllProducts/CategoryAllProductsMobile'
 
 function Header(props) {
 
@@ -28,22 +25,6 @@ function Header(props) {
                 console.error("Erro ao buscar categorias: " + err)
             })
     }, [])
-
-   
-    // Get de barra de pesquisa:
-
-    // const { textoPesquisa } = useParams()
-    // const [produtosPesquisa, setProdutosPesquisa] = useState([])
-
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8080/product/search/${textoPesquisa}`)
-    //     .then((response) => {
-    //         setProdutosPesquisa([...response.data])
-    //     })
-    //     .catch((err) => {
-    //         console.error("Erro ao buscar os produtos" + err)
-    //     })
-    // }, [])
 
     return (
         <>
@@ -350,22 +331,23 @@ rkJggg==" />
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
                                         fill="#FFC07F" />
-                                </svg>
+                                </svg> 
                             </button>
+                            
                         </div>
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse  blocoBotao" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body blocoBotao">
-                                <ul>
-                                    <CategoryId categorias={[...categorias]} />
-                                    <CategoryAllProducts />
-                                </ul>
+                               
+                                    <CategoryIdMobile categorias={[...categorias]} />
+                                    <CategoryAllProductsMobile />
+                                   <SearchBar />
                             </div>
                         </div>
                     </div>
 
                 </div>
                 {/* <!-- FIM HEADER --> */}
-
+                
             </header>
        
         </>

@@ -162,3 +162,7 @@
     --bs-gutter-x: 10px;
     --bs-gutter-y: none;
 }
+
+.texto-pesquisa {
+   width: 80%;
+}

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
-import { useLocation } from "react-router-dom";
 import './CategorySearch.css'
 import '../../components/micro/Button/Button.css'
 import Card from '../../components/macro/CardHome/Card'
 import '../../components/macro/CardHome/Card.css'
 
-// import SearchBar from '../../components/macro/Forms/SearchBar/SearchBar'
+
 
 
 function Category(props) {
@@ -16,12 +15,17 @@ function Category(props) {
     const texto = urlParams.get("search")
     useEffect(() => {
         axios.get(`http://localhost:8080/product/search/${texto}`)
-        .then((response) => {
-            setProdutosPesquisa([...response.data])
-        })
-        .catch((err) => {
-            console.error("Erro ao buscar os produtos" + err)
-        })
+            .then((response) => {
+                setProdutosPesquisa([...response.data])
+                {
+                    if (produtosPesquisa == 0) {
+                        return "Não temos"
+                    }
+                }
+            })
+            .catch((err) => {
+                console.error("Erro ao buscar os produtos" + err)
+            })
     }, [])
 
 
@@ -34,13 +38,13 @@ function Category(props) {
 
                 <div class="container mt-5 mb-4">
                     <div class="row">
-                        <h2 class="texto-pesquisa mb-4"> Resultado </h2>
+                        <h2 class="texto-pesquisa mb-4"> Você pesquisou por {texto}</h2>
                     </div>
-                    <div class="row">
+                    <div class="row containerCatalogo">
 
                         {/* <!-- BEGIN CATALOGO PRODUTOS --> */}
 
-                        <div class="container catalogo-produtos">
+                        <div class="catalogo-produtos">
                             <div class="row linha-produtos-encontrados">
                                 <h5 class="produtos-encontrados"> Produtos Encontrados: </h5>
                                 <div class="dropdown drop-ordena">
@@ -57,6 +61,7 @@ function Category(props) {
 
                                 <div className="container lista">
                                     <Card produtos={produtosPesquisa} />
+
 
                                 </div>
 
