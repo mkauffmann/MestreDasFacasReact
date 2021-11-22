@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../../components/micro/Button/Button'
+import useCart from '../../hooks/useCart'
 import './Product.css'
 
 function ProductCard(props) {
-
+const {addToCart} = useCart()
 const produto = {...props.produto} || []
 const preco = produto.productPrice !== undefined ?  produto.productPrice.value : ""
 let precoParce = (parseFloat(preco) / 12)
@@ -29,7 +30,7 @@ precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency:
 
                             <div className="col-12 col-md-6 col-lg-5">
 
-                                <Link to="/cart"> <Button label='Comprar' class='btn-principal btn-comprar' /> </Link>
+                                <Link to="/cart"> <button class='btn-custom-default btn-principal btn-comprar' onClick={() => addToCart(produto)}>Comprar</button></Link>
                             </div>
                         </div>
                         <div>
