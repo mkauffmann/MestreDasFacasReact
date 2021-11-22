@@ -17,7 +17,7 @@ precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency:
         <>
             <div className="container mt-5 mb-4 produto paddProduto">
                 <div className="row">
-                    <div className="texto-categoria"> Mestre das Facas - Categoria {props.categoria} </div>
+                    
                     <div className="col-12 col-md-6 col-lg-3 col-produto">
                         <img className="imagem-produto" src={produto.image}></img>
                     </div>
@@ -64,7 +64,7 @@ precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency:
                             <li> Altura: {produto.height}cm </li>
                             <li> Largura: {produto.width}cm  </li>
                             <li> Comprimento: {produto.length}cm  </li>
-                            <li> Peso:{produto.weight}G </li>
+                            <li> Peso:{produto.weight}g </li>
                         </ul>
                     </div>
                 </div>

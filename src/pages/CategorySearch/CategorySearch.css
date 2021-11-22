@@ -137,7 +137,7 @@
 
 }
 
-@media (max-width: 420px) {
+@media (max-width: 448px) {
     .drop-ordena {
         width: 150px;
     }
@@ -146,19 +146,26 @@
         width: 125px;
     }
 
-    .texto-pesquisa {
-        font-size: 25px;
-    }
+    
     
 }
-
+.texto-pesquisa{
+    font-size: 25px;
+}
 .lista{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
 
-.row{
-    --bs-gutter-x: 10px;
-    --bs-gutter-y: none;
+.texto-pesquisa, .produtos-encontrados{
+    margin-left: 15px;
+}
+
+@media (max-width: 449px) {
+   
+    .texto-pesquisa {
+        font-size: 18px;
+    }
+    
 }

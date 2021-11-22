@@ -146,9 +146,6 @@
         width: 125px;
     }
 
-    .texto-pesquisa {
-        font-size: 25px;
-    }
     
 }
 
@@ -161,4 +158,16 @@
 .row{
     --bs-gutter-x: 10px;
     --bs-gutter-y: none;
+}
+
+.texto-pesquisa {
+    font-size: 20px;
+}
+
+@media (max-width: 449px) {
+   
+    .texto-pesquisa {
+        font-size: 18px;
+    }
+    
 }

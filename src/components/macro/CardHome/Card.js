@@ -26,7 +26,7 @@ function Card(props) {
                     let preco = (parseFloat(produto.productPrice.value))
                     preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
                     return (
-                        <div className="container col-6 col-sm-6 col-md-3 col-xl-3 col-xll-3 produtoDesktop">
+                        <div className=" col-6 col-sm-6 col-md-3 col-xl-3 col-xll-3 produtoDesktop">
                             <div className="card " style={{ width: '18rem' }}>
                                 <Link to={`/product/${produto.id}`}>
                                     <img src={produto.image} className="card-img-top" alt="..." />
@@ -51,7 +51,7 @@ function Card(props) {
                     let preco = (parseFloat(produto.productPrice.value))
                     preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
                     return (
-                        <div className="container col-6 col-sm-6 col-md-3 col-xl-3 col-xll-3 produtoDesktop">
+                        <div className=" col-6 col-sm-6 col-md-3 col-xl-3 col-xll-3 produtoDesktop">
                             <div className="card " style={{ width: '18rem' }}>
                                 <Link to={`/product/${produto.id}`}>
                                     <img src={produto.image} className="card-img-top" alt="..." />
@@ -76,7 +76,7 @@ function Card(props) {
                     let preco = (parseFloat(produto.productPrice.value))
                     preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
                     return (
-                        <div className="container col-6 col-sm-6 col-md-4 col-xl-3 col-xll-3 produtoDesktop">
+                        <div className=" col-6 col-sm-6 col-md-4 col-xl-3 col-xll-3 justi produtoDesktop">
                             <div className="card " style={{ width: '18rem' }}>
                                 <Link to={`/product/${produto.id}`}>
                                     <img src={produto.image} className="card-img-top" alt="..." />
