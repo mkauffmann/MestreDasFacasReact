@@ -11,10 +11,6 @@ function ProductList(props) {
 
     const listProducts = (items) => {
 
-        if (items == null || items.length == 0) {
-            return <h4>Seu carrinho está vazio</h4>
-        }
-        
         return items.map((item, index) => {
             return (
                 <>
