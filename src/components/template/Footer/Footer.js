@@ -18,7 +18,7 @@ function Footer(props) {
                 <div className="container-fluid d-flex footer">
                     <div className="container col-12 d-flex footer ">
                         <div className="container col-3 alinhaFooter">
-                            <Link to="/category" className="footer linkFooter">Explorar Categorias</Link>
+                            <Link to="/category/" className="footer linkFooter">Explorar Categorias</Link>
 
                         </div>
                         <div className="container col-3 footer">Redes Sociais
