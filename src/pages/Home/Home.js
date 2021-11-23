@@ -8,6 +8,7 @@ import Pepsi from '../../assets/imgs/banners/pepsi.png'
 import Tramontina from '../../assets/imgs/banners/tramontina.png'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import CardHomeList from '../../components/macro/CardHome/CardHomeList'
 
 
 
@@ -51,7 +52,7 @@ useEffect(() => {
             </div>
             <div className="container cards">
              
-              <Card destaques={destaques}/>
+              <CardHomeList produtos={destaques}/>
             </div>
 
             {/* <!--BEGING SECOND BANNER --> */}
@@ -62,7 +63,7 @@ useEffect(() => {
             </div>
             <div className="container cards">
            
-            <Card novidades={novidades}/>
+            <CardHomeList produtos={novidades}/>
             </div>
 
             {/* <!-- BEGING THIRD BANNER --> */}
