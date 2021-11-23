@@ -1,6 +1,6 @@
 footer {
     font-family: 'Barlow', sans-serif;
-
+    background-color: rgba(134, 14, 28, 1);
 }
 
 .footer,
@@ -23,7 +23,7 @@ footer {
 
 .iconRedes,
 .iconPagamento {
-    margin-left: 20%;
+    margin-left: 12%;
 }
 
 .espaco-icone-mobile {
@@ -89,9 +89,13 @@ footer {
     color: #d1781ff3;
 }
 
-footer {
-    display        : flex;
-    align-items    : center;
-    justify-content: center;
-    flex-direction : column;
+.ajuste {
+    display: flex;
+  
+
+}
+
+.visa{
+    width: 40px;
+    height: 40px;
 }

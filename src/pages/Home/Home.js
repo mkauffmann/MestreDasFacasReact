@@ -55,7 +55,7 @@ useEffect(() => {
             </div>
 
             {/* <!--BEGING SECOND BANNER --> */}
-            <a href="https://www.pepsico.com.br/" target="_blank"><Patrocinio imagem={Pepsi} /></a>
+            <a href="https://www.zwilling.com.br/" target="_blank"><Patrocinio imagem={Pepsi} /></a>
             {/* <!-- NOVIDADE DE PRODUTOS --> */}
             <div className="container destaques">
                 <h2 className="destaques">Novidades</h2>
@@ -66,7 +66,7 @@ useEffect(() => {
             </div>
 
             {/* <!-- BEGING THIRD BANNER --> */}
-            <a href="https://www.tramontina.com.br/" target="_blank"><Patrocinio imagem={Tramontina} /></a>
+           <Patrocinio imagem={Tramontina} />
         </main>
     )
 }
