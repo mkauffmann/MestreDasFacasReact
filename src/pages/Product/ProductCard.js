@@ -61,7 +61,7 @@ precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency:
                 <div className="row">
                     <div className="col-12 col-md-12 col-lg-12 col-especificacoes mt-5">
                         <h3 className="mt-2"> Especificações e Dimensões </h3>
-                        <ul>
+                        <ul className="listaDescricaoPdp">
                             <li> Altura: {produto.height}cm </li>
                             <li> Largura: {produto.width}cm  </li>
                             <li> Comprimento: {produto.length}cm  </li>

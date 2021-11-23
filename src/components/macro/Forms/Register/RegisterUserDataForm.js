@@ -66,7 +66,7 @@ function RegisterForm(props) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} onReset={resetForm}>
+            <form onSubmit={handleSubmit} onReset={resetForm} autocomplete="off">
                 <Col md={10} lg={8} className="mx-auto">
                     <Row className="mb-3">
                         <Col>
@@ -117,6 +117,7 @@ function RegisterForm(props) {
                                 value={inputValues.cpf}
                                 error={errors.cpf}
                                 mask="999.999.999-99"
+                                autocomplete="off"
                             />
                         </Col>
                         <Col md={4} className="mb-3">
