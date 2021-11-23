@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
+import moment from 'moment'
 import './Checkout.css'
 
 import { Redirect } from 'react-router-dom'
@@ -40,7 +41,7 @@ function Checkout(props) {
     const getCustomerUrl = `http://localhost:8080/customers/${userId}`
     const postOrderUrl = 'http://localhost:8080/request'
 
-    const purchaseDate = new Date().toISOString().slice(0, 10)
+    const purchaseDate = moment().format("YYYY-MM-DD")
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const itemRequest = localStorage.getItem("itemRequest") !== null ? JSON.parse(localStorage.getItem("itemRequest")) : []
