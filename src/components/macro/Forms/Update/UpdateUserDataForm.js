@@ -14,7 +14,7 @@ function UpdateUserDataForm(props) {
         validateForm,
         validateStringNotEmpty,
         validateEmailNotEmpty,
-        setErrors
+        setErrors, validateBirthday
     } = useValidation(inputValues)
 
     const handleSubmit = async (event) => {
@@ -110,6 +110,9 @@ function UpdateUserDataForm(props) {
                                 label="Data de nascimento"
                                 changeFunction={handleChange}
                                 value={inputValues.birthDate}
+                                blurFunction={handleBlur}
+                                validation={validateBirthday}
+                                error={errors.birthDate}
                             />
                         </Col>
                     </Row>

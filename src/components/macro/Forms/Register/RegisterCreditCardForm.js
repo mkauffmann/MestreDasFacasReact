@@ -102,11 +102,11 @@ function RegisterCreditCardForm(props) {
                                 error={errors.cardValidDate} />
                         </Col>
                         <Col md={2} className="mb-3">
-                            <Input type="text" id="cvv" name="cvv"
+                            <Input type="password" id="cvv" name="cvv"
                                 mask={props.alter ? "" : "999"} label="CVV" obrigatorio
                                 changeFunction={handleChange} value={props.alter ? "***" : creditCardValues.cvv}
                                 blurFunction={handleBlur} validation={isEmpty}
-                                error={errors.cardValidDate} disabled={props.alter ? true : false}/>
+                                error={errors.cvv} disabled={props.alter ? true : false}/>
                         </Col>
                         <Col md={4} className="mb-3">
                             <Input type="text" id="cardBrandTemp" name="cardBrandTemp"

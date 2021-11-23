@@ -19,7 +19,7 @@ function AddressList(props) {
     const renderList = (array) => {
         let items = []
         for(let i = 0; i < array.length; i++){
-            items.push(<AddressInfoItem obj={array[i]} key={i} type={props.type} select={props.select} selectAddress={selectAddress}/>)
+            items.push(<AddressInfoItem obj={array[i]} key={i} type={props.type} select={props.select} selectAddress={selectAddress} show={props.show}/>)
         }
         return items
     }
@@ -66,7 +66,10 @@ function AddressList(props) {
                 ? <h3>{props.title}</h3>
                 :  ""}
                 <h4 className="subtitle">{props.subtitle}</h4>
-                <button class="btn-custom-default btn-principal" onClick={handleShowAddress}> Adicionar Endereço</button>
+                {props.show
+                ? ""
+                : <button class="btn-custom-default btn-principal" onClick={handleShowAddress}> Adicionar Endereço</button>}
+                
             </div>
             <Modal show={showAddress} onHide={handleCloseAddress} size="lg">
                 <Modal.Header closeButton>
@@ -81,7 +84,7 @@ function AddressList(props) {
                     <button className="btn-custom-default btn-cancelar2" onClick={cancelAddressRegister}>Cancelar cadastro</button>
                 </Modal.Footer>
             </Modal>
-            {renderList(props.userData.addresses)}
+            {renderList(props.userData ? props.userData.addresses : props.addresses)}
         </>
     )
 }

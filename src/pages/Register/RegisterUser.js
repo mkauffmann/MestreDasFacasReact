@@ -7,8 +7,11 @@ import useRegisterFormat from "../../hooks/useRegisterFormat";
 import RegisterUserDataForm from '../../components/macro/Forms/Register/RegisterUserDataForm'
 import RegisterAddressForm from '../../components/macro/Forms/Register/RegisterAddressForm'
 import RegisterCreditCardForm from '../../components/macro/Forms/Register/RegisterCreditCardForm'
+import AddressList from "../../components/macro/Dashboard/InfoList/AddressList";
+import DividingBar from '../../components/micro/Login/DividingBar/DividingBar'
 
 import './RegisterUser.css'
+import CreditCardList from "../../components/macro/Dashboard/InfoList/CreditCardList";
 
 
 function RegisterUser(props) {
@@ -42,7 +45,7 @@ function RegisterUser(props) {
     const handleShowCreditCard = () => setShowCreditCard(true);
     const handleCloseFeedback = () => {
         setShowFeedback(false);
-        if (success){
+        if (success) {
             setDone(true)
         }
     }
@@ -79,7 +82,7 @@ function RegisterUser(props) {
 
         setShowFeedback(true)
         setIsLoading(false)
-        
+
         return formIsSent
     }
 
@@ -95,10 +98,10 @@ function RegisterUser(props) {
         }
 
         if (address !== "") {
-            user = { ...user, addresses: [{ ...address }] }
+            user = { ...user, addresses: [...address] }
         }
         if (creditCard !== "") {
-            user = { ...user, creditCards: [{ ...creditCard }] }
+            user = { ...user, creditCards: [ ...creditCard] }
         }
 
         delete user.confirmPassword
@@ -110,7 +113,7 @@ function RegisterUser(props) {
         setInputAddress(inputAddress)
 
         const formatedAddress = handleAddressCreation(inputAddress)
-        setAddress({ ...formatedAddress })
+        setAddress(prevValues => [...prevValues, formatedAddress])
         handleCloseAddress()
     }
 
@@ -118,7 +121,7 @@ function RegisterUser(props) {
         setInputCreditCard(inputCreditCard)
 
         const formatedCreditCard = handleCreditCardCreation(inputCreditCard)
-        setCreditCard({ ...formatedCreditCard })
+        setCreditCard(prevValues => [...prevValues, formatedCreditCard])
         handleCloseCreditCard()
     }
 
@@ -137,12 +140,12 @@ function RegisterUser(props) {
             <Modal show={isLoading} animation={false} centered dialogClassName="modal-loading">
                 <Modal.Body>
                     <div>
-                        <ReactLoading type={"spinningBubbles"} color="#860E1C" height={100} width={100}/>
+                        <ReactLoading type={"spinningBubbles"} color="#860E1C" height={100} width={100} />
                     </div>
                 </Modal.Body>
             </Modal>
 
-             <Modal show={showFeedback} onHide={handleCloseFeedback} animation={false} centered>
+            <Modal show={showFeedback} onHide={handleCloseFeedback} animation={false} centered>
                 <Modal.Header closeButton />
                 <Modal.Body>
                     <p>{formFeedback}</p>
@@ -159,6 +162,19 @@ function RegisterUser(props) {
                     </Col>
                 </Row>
             </Col>
+            <Row>
+                {savedAddress || savedCreditCard
+                ? <DividingBar singleLine/>
+                : ""}
+                {savedAddress
+                    ? <Col md={6}><AddressList show subtitle="Endereço cadastrado" addresses={address} /></Col>
+                    : ""}
+                {savedCreditCard
+                    ? <Col md={6}><CreditCardList show subtitle="Cartão de crédito cadastrado" creditCards={creditCard} /></Col>
+                    : ""}
+            </Row>
+
+
 
             <Modal show={showAddress} onHide={handleCloseAddress} size="lg">
                 <Modal.Header closeButton>
@@ -187,9 +203,9 @@ function RegisterUser(props) {
                 </Modal.Footer>
             </Modal>
 
-        {done 
-        ? <Redirect to="/login" />
-        : ""}
+            {done
+                ? <Redirect to="/login" />
+                : ""}
         </>
     )
 }
