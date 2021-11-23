@@ -19,7 +19,7 @@ const initialInputValues = {
 
 function RegisterForm(props) {
     const [inputValues, setInputValues] = useState({ ...initialInputValues });
-    const requiredFields = ["name", "email", "cpf", "password", "confirmPassword"]
+    const requiredFields = ["name", "email", "cpf", "password", "confirmPassword", "birthDate"]
     const {
         validateForm,
         resetErrorStates,
@@ -29,7 +29,8 @@ function RegisterForm(props) {
         validateCpflNotEmpty,
         validateTelephoneEmpty,
         validatePasswordNotEmpty,
-        validateNotRequired
+        validateNotRequired,
+        validateBirthday
     } = useValidation(inputValues);
 
 
@@ -55,6 +56,7 @@ function RegisterForm(props) {
     const handleBlur = (event, validationCallback) => {
         const value = event.target.value;
         const name = event.target.name;
+
         validationCallback(value, name)
         validateForm(requiredFields)
     }
@@ -66,7 +68,7 @@ function RegisterForm(props) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} onReset={resetForm}>
+            <form onSubmit={handleSubmit} onReset={resetForm} autocomplete="off">
                 <Col md={10} lg={8} className="mx-auto">
                     <Row className="mb-3">
                         <Col>
@@ -125,9 +127,11 @@ function RegisterForm(props) {
                                 id="birthDate"
                                 name="birthDate"
                                 label="Data de nascimento"
+                                obrigatorio
                                 changeFunction={handleChange}
-                                blurFunction={handleBlur} validation={validateNotRequired}
+                                blurFunction={handleBlur} validation={validateBirthday}
                                 value={inputValues.birthDate}
+                                error={errors.birthDate}
                             />
                         </Col>
                     </Row>
