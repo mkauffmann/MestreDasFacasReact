@@ -35,7 +35,7 @@ function InfoItem(props) {
                     <div className="card-lista d-flex flex-row mb-3 justify-content-between" key={key}>
                         <div className="infos-lista d-flex flex-column  mt-1">
                             <div className="nome-lista"><h5>{creditCard.cardBrand.cardBrandName}</h5></div>
-                            <div className="numero-cartao"><strong>**** **** **** {creditCard.lastFourDigits}</strong></div>
+                            <div className="numero-cartao"><strong>**** **** **** {creditCard.lastFourDigits ? creditCard.lastFourDigits : creditCard.cardNumber.slice(-4) }</strong></div>
                             {props.show === true
                                 ? ""
                                 : <div className="infos-lista d-flex flex-column  mt-1">
