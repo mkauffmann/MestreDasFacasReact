@@ -6,6 +6,7 @@ import '../../components/micro/Button/Button.css'
 import Card from '../../components/macro/CardHome/Card'
 import '../../components/macro/CardHome/Card.css'
 import useCart from "../../hooks/useCart";
+import CardHomeList from "../../components/macro/CardHome/CardHomeList";
 
 
 
@@ -63,7 +64,7 @@ function Category(props) {
                             <div class="row catalogo-produtos2 lista">
 
                                 <div className="container lista">
-                                    <Card produtos={produtos}/>
+                                    <CardHomeList produtos={produtos}/>
 
                                 </div>
 
