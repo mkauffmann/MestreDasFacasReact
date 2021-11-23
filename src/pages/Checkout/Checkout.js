@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
 import moment from 'moment'
 import './Checkout.css'
+// import Form from 'react-bootstrap/Form'
+import Select from "../../components/micro/Forms/Select/Select";
+
 
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
@@ -32,7 +35,8 @@ const initialValues = {
     address: null,
     creditCard: null,
     customer: {},
-    itemRequest: []
+    itemRequest: [],
+    installments: 0
 }
 
 
@@ -158,6 +162,15 @@ function Checkout(props) {
         }
     }
 
+    const handleChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+
+        setOrder((prevState) => {
+            return { ...prevState, [name]: value };
+        });
+    };
+
     return (
         <>
             <Container className="mb-5">
@@ -171,6 +184,7 @@ function Checkout(props) {
                             <AddressList type="endereço" subtitle="Endereço de entrega" userData={user} isLoading={isLoading} select chooseDeliveryAddress={chooseDeliveryAddress} />
                         </Row>
                         <DividingBar singleLine />
+
                         <Row>
                             <PaymentTypeForm choosePaymentType={choosePaymentType} />
                             {showCreditCards
@@ -181,7 +195,15 @@ function Checkout(props) {
                                 : ""}
                         </Row>
                         <Row>
-
+                        {/* <Form.Select >
+                        <option> Selecione a parcela </option>
+                        <option value="1"> 1x </option>
+                        <option value="2"> 2x </option>
+                        <option value="3"> 3x </option>
+                        </Form.Select> */}
+                        <Select id="installments" name="installments" label="Parcelamento"
+                                options={[1, 2, 3]}
+                                changeFunction={handleChange} value={order.installments} />
                         </Row>
                     </Col>
                     <Col md={6}>
