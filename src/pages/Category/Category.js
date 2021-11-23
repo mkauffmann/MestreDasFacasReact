@@ -5,7 +5,7 @@ import './Category.css'
 import '../../components/micro/Button/Button.css'
 import Card from '../../components/macro/CardHome/Card'
 import '../../components/macro/CardHome/Card.css'
-
+import useCart from "../../hooks/useCart";
 
 
 
@@ -13,6 +13,12 @@ function Category(props) {
     const [produtos, setProdutos] = useState([])
     const { id } = useParams()
 
+    // const {getInventory} = useCart()
+    // const [emEstoque, setEmEstoque] = useState(false)
+
+    // const verificarEstoque = async () => {
+    //     setEmEstoque(await getInventory(id) > 0)
+    // }
 
     useEffect(() => {
         axios.get(`http://localhost:8080/product/category/${id}`)
@@ -57,7 +63,7 @@ function Category(props) {
                             <div class="row catalogo-produtos2 lista">
 
                                 <div className="container lista">
-                                    <Card produtos={produtos} />
+                                    <Card produtos={produtos}/>
 
                                 </div>
 

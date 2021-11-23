@@ -22,10 +22,12 @@ function Cart(props) {
     const [products, setProducts] = useState([])
     const [qtyCart, setQtyCart] = useState(0)
     const [subtotal, setSubtotal] = useState(handleSubtotal())
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         setProducts(JSON.parse(localStorage.getItem("itemRequest")))
         setQtyCart(JSON.parse(localStorage.getItem("qtyCart")))
+        setIsLoading(false)
     }, [])
 
     if (products == null || products.length === 0) {
@@ -35,7 +37,10 @@ function Cart(props) {
                 <DividingBar singleLine />
                 <Row>
                     <Col className="d-flex flex-column">
-                        <h4>Seu carrinho está vazio</h4>
+                        {isLoading
+                        ? <p>Loading...</p>
+                        : <h4>Seu carrinho está vazio</h4>}
+                        
                         <DividingBar singleLine />
                         <TotalValueCheckout info="Subtotal: " valor={subtotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} />
 
