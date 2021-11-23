@@ -10,7 +10,7 @@ import DividingBar from "../../components/micro/Login/DividingBar/DividingBar";
 
 
 function ForgotPassword(props) {
-    const URL = 'http://localhost:3001/login';
+    const URL = 'http://localhost:8080/';
     const requiredFields = ["email"]
     const [inputValues, setInputValues] = useState({email : ""})
     const [isSent, setIsSent] = useState(false)
@@ -22,6 +22,8 @@ function ForgotPassword(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+     
 
         if (validateForm(requiredFields)) {
             axios.post(URL, inputValues)
@@ -61,7 +63,7 @@ function ForgotPassword(props) {
             <Row className="justify-content-center mb-5">
                 <CardLogin classes="forgot-password-card">
                     <TitleLogin title="Esqueceu sua senha?" subtitle="Digite seu email abaixo" />
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} action="">
                         <Input type="email" id="recoverEmail" name="email" label="Email"
                             placeholder="Digite o email associado à sua conta"
                             value={inputValues.email}

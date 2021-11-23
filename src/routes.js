@@ -42,7 +42,7 @@ export const Routes = () => {
             <OrderDetailsRoute path="/success" component={Success}/>
             <Route path="/about" component={About}/>
             <OrderDetailsRoute path="/orderDetails" component={OrderDetails}/>
-            <Route path="/changePassword/:id" component={ChangePassword} />
+            <Route path="/changePassword/" component={ChangePassword} />
             <Route component={NotFound}/>
             
         </Switch>
