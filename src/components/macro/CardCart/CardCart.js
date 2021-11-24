@@ -1,21 +1,40 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import useCart from '../../../hooks/useCart'
 import './CardCart.css'
 
 import iconlix from '../../../assets/icons/checkout/lixeira.png'
 
 
 function CardCart(props) {
+    const {getInventory} = useCart()
     const [itemQty, setItemQty] = useState(props.item.quantity)
-    const [total, setTotal] = useState(props.productPrice * itemQty)
+    const [estoque, setEstoque] = useState(0)
+    
+    const handleEstoque = async () => {
+        let estoque = await getInventory(props.item.product.id)
+        setEstoque(estoque)
+        handleDisponibilidade(estoque)
+    }
+
+    const handleDisponibilidade = (estoque) => {
+        if(estoque <= 0){
+            alert(`O Produto ${props.item.product.productName} não está mais disponível e será removido do seu carrinho`)
+            handleRemove()
+        }
+    }
 
     const handleRemove = () => {
         props.removeItem(props.key)
     }
 
     const addOneItem = async () => {
-        props.handleValues(itemQty + 1, props.item.product.id)
-        setItemQty(prevValue => prevValue + 1)
-        
+        if(itemQty + 1 > estoque){
+            alert("Quantidade máxima em estoque")
+        } else {
+            props.handleValues(itemQty + 1, props.item.product.id)
+            setItemQty(prevValue => prevValue + 1)
+        }
     }
 
     const removeOneItem = async () => {
@@ -25,13 +44,19 @@ function CardCart(props) {
         }
     }
 
+    useEffect(() => {
+        handleEstoque()
+    }, [])
+
     return (
         <>
             <div className="list-group mb-3">
                 <div className="list-group-item">
+                    <Link to={`/product/${props.item.product.id}`}>
                     <div className=" col-3 col-md-2 col-lg-1" >
                         <img style={{ float: "left" }} className="img-thumbnail" width="100px" src={props.imagem} ></img>
                     </div>
+                    </Link>
                     <div style={{ float: "left" }} class="mt-1 mx-1 col-8 col-md- col-lg-5 col-xl-6 align-self-center" >
                         <div className="text-produto-nome text-decoration-none text-danger">{props.productName}</div>
                         <small > {props.descriptionProduct} </small>

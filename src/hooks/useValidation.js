@@ -1,5 +1,6 @@
 import { useState } from "react";
 import cardValidator from 'card-validator'
+import moment from 'moment'
 
 
 
@@ -259,6 +260,28 @@ function useValidation(inputValues) {
         }
     }
 
+    const validateBirthday = (inputValue, name) => {
+        let birthDate = moment(inputValue)
+        let today = moment()
+        let age = today.diff(birthDate) / 1000 / 60 / 60 / 24 / 365
+
+        if(!isEmpty(inputValue, name) && age < 18.015){
+            setErrors((prevState) => {
+                return {
+                    ...prevState,
+                    [name] : "Usuário deve ser maior de 18 anos"
+                }
+            })
+
+            setValidInput((prevState) => {
+                return {
+                    ...prevState,
+                    [name]: false
+                }
+            })
+        }
+    }
+
 
     const validateForm = (requiredFields) => {
         let formIsValid = true
@@ -292,7 +315,8 @@ function useValidation(inputValues) {
         validateCreditCardDate,
         validateStringNotRequired,
         validateEmailNotRequired,
-        validateTelephoneNotEmpty
+        validateTelephoneNotEmpty,
+        validateBirthday
     }
 }
 

@@ -77,7 +77,9 @@ function Checkout(props) {
             if (response.status === 201) {
                 setOrder({ ...response.data })
                 localStorage.removeItem("itemRequest")
-                setSuccess(true)
+                localStorage.removeItem("qtyCart")
+                setSuccess(true) 
+                window.location.reload()   
             }
         })
         .catch(error => {

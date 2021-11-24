@@ -23,6 +23,15 @@
 
 /* BOTAO PRINCIPAL fim */
 
+/* BOTAO INDISPONIVEL INICIO */
+.btn-indisponivel {
+    color: rgb(104, 104, 104);
+    background-color: rgb(216, 216, 216);
+    border: solid 1px rgb(216, 216, 216);
+}
+
+/* BOTAO INDISPONIVEL FIM  */
+
 /* BOTAO CANCELAR inicio */
 
 .btn-cancelar {

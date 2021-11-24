@@ -1,17 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import Button from '../../components/micro/Button/Button'
 import useCart from '../../hooks/useCart'
 import './Product.css'
 
 function ProductCard(props) {
 const {addToCart} = useCart()
+const [addedToCart, setAddedToCart] = useState(false)
 const produto = {...props.produto} || []
 const preco = produto.productPrice !== undefined ?  produto.productPrice.value : ""
 let precoParce = (parseFloat(preco) / 12)
 let precoAvista = (parseFloat(preco))
 precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
 precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+
+const handleCart = () => {
+    addToCart(produto).then(() => setAddedToCart(true))
+}
 
     return (
         
@@ -30,7 +35,10 @@ precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency:
 
                             <div className="col-12 col-md-6 col-lg-5">
 
-                                <Link to="/cart"> <button class='btn-custom-default btn-principal btn-comprar' onClick={() => addToCart(produto)}>Comprar</button></Link>
+                             <button class={props.emEstoque ? 'btn-custom-default btn-principal btn-comprar' : 'btn-custom-default btn-indisponivel btn-comprar'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
+                             {addedToCart === true
+                                ? <Redirect to="/cart"/>
+                                : ""}
                             </div>
                         </div>
                         <div>
