@@ -36,7 +36,7 @@ function CardHome(props) {
                     <div className="card-text precoProduto"> {preco}<div>Ou</div>
                     </div>
                     <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
-                    <button class={props.emEstoque ? 'btn-custom-default btn-default btn-principal home-btn' : 'btn-custom-default btn-default btn-cancelar home-btn'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
+                    <button class={props.emEstoque ? 'btn-custom-default btn-default btn-principal home-btn' : 'btn-custom-default btn-default btn-indisponivel home-btn'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
                     {addedToCart === true
                                 ? <Redirect to="/cart"/>
                                 : ""}

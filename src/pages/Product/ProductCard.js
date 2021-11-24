@@ -35,7 +35,7 @@ const handleCart = () => {
 
                             <div className="col-12 col-md-6 col-lg-5">
 
-                             <button class={props.emEstoque ? 'btn-custom-default btn-principal btn-comprar' : 'btn-custom-default btn-cancelar btn-comprar'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
+                             <button class={props.emEstoque ? 'btn-custom-default btn-principal btn-comprar' : 'btn-custom-default btn-indisponivel btn-comprar'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
                              {addedToCart === true
                                 ? <Redirect to="/cart"/>
                                 : ""}
