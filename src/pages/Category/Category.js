@@ -18,7 +18,7 @@ function Category(props) {
         axios.get(`http://localhost:8080/product/category/${id}`)
             .then((response) => {
                 setProdutos(response.data)
-
+                    
 
             })
             .catch((error) => {

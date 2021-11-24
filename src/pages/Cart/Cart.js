@@ -7,6 +7,7 @@ import DividingBar from '../../components/micro/Login/DividingBar/DividingBar';
 import TotalValueCheckout from '../../components/micro/TotalValueCheckout/TotalValueCheckout';
 
 function Cart(props) {
+    
     const handleSubtotal = () => {
         let products = JSON.parse(localStorage.getItem("itemRequest"))
         let subtotal = 0
@@ -22,10 +23,11 @@ function Cart(props) {
     const [products, setProducts] = useState([])
     const [qtyCart, setQtyCart] = useState(0)
     const [subtotal, setSubtotal] = useState(handleSubtotal())
-
+    
     useEffect(() => {
         setProducts(JSON.parse(localStorage.getItem("itemRequest")))
         setQtyCart(JSON.parse(localStorage.getItem("qtyCart")))
+        
     }, [])
 
     if (products == null || products.length === 0) {
@@ -74,10 +76,13 @@ function Cart(props) {
 
                     </Col>
                 </Row>
-
+                                    
             </Container>
+           
         </>
+        
     )
+    
 }
 
 export default Cart

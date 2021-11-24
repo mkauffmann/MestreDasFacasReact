@@ -2,22 +2,27 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import './Header.css'
 import LoginLogoutButton from './LoginLogoutButton/LoginLogoutButton'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import CategoryId from '../../macro/CategoryId/CategoryId'
 import CategoryAllProducts from '../../macro/CategoryAllProducts/CategoryAllProducts'
 import SearchBar from '../../macro/Forms/SearchBar/SearchBar'
 import CategoryIdMobile from '../../macro/CategoryId/CategoryIdMobile'
 import CategoryAllProductsMobile from '../../macro/CategoryAllProducts/CategoryAllProductsMobile'
+import Teste from './QtdCarrinho'
 
 function Header(props) {
 
     // Get de categorias:
-    
+
     const [categorias, setCategorias] = useState([])
     
+    
+    
+
 
     useEffect(() => {
         axios.get('http://localhost:8080/category/')
+        
             .then((response) => {
                 setCategorias([...response.data])
             })
@@ -31,7 +36,7 @@ function Header(props) {
             <header>
                 {/* <!-- INICIO DO HEADER --> */}
                 <div className="container-fluid midHeader d-flex">
-                    <div className="container col-4 col-sm-3 col-md-2 col-lg-2 col-xl-2  col-xxl-2 logo"><Link to="/">
+                    <div className="container col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2  col-xxl-1 logo"><Link to="/">
                         <svg svg className="logo" version="1.0" xmlns="http://www.w3.org/2000/svg"
                             width="160" height="90" viewBox="0 85 550.000000 300.000000"
                             preserveAspectRatio="xMidYMid meet">  <image id="image0" width="500" height="500" x="0" y="0"
@@ -269,20 +274,20 @@ rkJggg==" />
 
                     </div>
                     {/* <!-- BAR OF SEARCH --> */}
-                    <div className="container col-4 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-5 pesquisa">
-                        <SearchBar/>
+                    <div className="container col-4 col-sm-6 col-md-4 col-lg-3 col-xl-4 col-xxl-4 pesquisa">
+                        <SearchBar />
                     </div>
                     {/* <!-- ICON AND LINKS OF MIDHEADER --> */}
 
-                    <div className="container col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1 col-xxl-1 BlocoBemVindo">
-                       <LoginLogoutButton/>
+                    <div className=" col-4 col-sm-3 col-md-3 col-lg-2 col-xl-1 col-xxl-1 BlocoBemVindo">
+                        <LoginLogoutButton />
                     </div>
 
-                    <div className="container col-4 col-sm-3 col-md-2 col-xl-1 col-xxl-1 blocoMeusPedidos">
+                    <div className="container col-3 col-sm-3 col-md-3 col-lg-2 col-xl-1 col-xxl-1 blocoMeusPedidos">
 
                         <Link to="/dashboard/myOrders">
-                            <svg width="97"
-                                height="37" viewBox="0 0 109 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="110"
+                                height="40" viewBox="0 0 109 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M26.6667 9.04168H22.6667C22.6667 5.47484 19.6819 2.58334 16 2.58334C12.3181 2.58334 9.33333 5.47484 9.33333 9.04168H5.33333C4.59695 9.04168 4 9.61998 4 10.3333V25.8333C4 27.2601 5.19391 28.4167 6.66667 28.4167H25.3333C26.8061 28.4167 28 27.2601 28 25.8333V10.3333C28 9.61998 27.403 9.04168 26.6667 9.04168ZM12 13.5625C12 13.9192 11.7015 14.2083 11.3333 14.2083H10C9.63181 14.2083 9.33333 13.9192 9.33333 13.5625V12.2708C9.33333 11.9142 9.63181 11.625 10 11.625H11.3333C11.7015 11.625 12 11.9142 12 12.2708V13.5625ZM16 5.16668C18.2091 5.16668 20 6.90157 20 9.04168H12C12 6.90157 13.7909 5.16668 16 5.16668ZM22.6667 13.5625C22.6667 13.9192 22.3682 14.2083 22 14.2083H20.6667C20.2985 14.2083 20 13.9192 20 13.5625V12.2708C20 11.9142 20.2985 11.625 20.6667 11.625H22C22.3682 11.625 22.6667 11.9142 22.6667 12.2708V13.5625Z"
                                     fill="#FFC07F" />
@@ -292,8 +297,8 @@ rkJggg==" />
                             </svg>
                         </Link></div>
 
-                    <div className="container col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1 col-xxl-1 blocoMeuCarrinho"><Link to="/cart"><svg width="97"
-                        height="37" viewBox="0 0 109 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div className="container col-5 col-sm-3 col-md-3 col-lg-2 col-xl-1 col-xxl-1 blocoMeuCarrinho"><Link to="/cart"><b class="qntCart"><Teste/></b><svg width="110"
+                        height="40" viewBox="0 0 109 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M26.6667 27C26.6667 28.3807 25.4727 29.5 24 29.5C22.5272 29.5 21.3333 28.3807 21.3333 27C21.3333 25.6193 22.5272 24.5 24 24.5C25.4727 24.5 26.6667 25.6193 26.6667 27ZM10.6667 24.5C9.1939 24.5 7.99999 25.6193 7.99999 27C7.99999 28.3807 9.1939 29.5 10.6667 29.5C12.1394 29.5 13.3333 28.3807 13.3333 27C13.3333 25.6193 12.1394 24.5 10.6667 24.5ZM28.6667 7.00002H7.62666L6.87999 5.75002C6.40175 4.97343 5.51648 4.49646 4.55999 4.50002H3.33332C2.96513 4.50002 2.66666 4.77984 2.66666 5.12502V6.37502C2.66666 6.7202 2.96513 7.00002 3.33332 7.00002H4.55999L10.2667 16.3625C10.3706 16.5194 10.4912 16.6659 10.6267 16.8L8.14666 21.425C7.99249 21.7032 7.99249 22.0343 8.14666 22.3125L8.43999 22.7875C8.62719 23.0813 8.96843 23.2579 9.33332 23.25H26C26.3682 23.25 26.6667 22.9702 26.6667 22.625V21.375C26.6667 21.0298 26.3682 20.75 26 20.75H11.4933L12.8267 18.1375C13.1054 18.2064 13.3918 18.2442 13.68 18.25H21.9867C23.3809 18.2237 24.6553 17.505 25.3333 16.3625L28.4667 11.2C29.0249 10.3043 29.3237 9.28737 29.3333 8.25002V7.62502C29.3333 7.27984 29.0348 7.00002 28.6667 7.00002Z"
                             fill="#FFC07F" />
@@ -311,12 +316,12 @@ rkJggg==" />
 
                 <nav className="navDesktop">
                     <div className="container-fluid d-flex Barranavegacao col-12">
-                       
+
 
                         <CategoryId categorias={[...categorias]} />
                         <CategoryAllProducts />
 
-                       
+
                     </div>
                 </nav>
                 {/* <!-- BEGING BAR OF NAVIGATION --> */}
@@ -331,25 +336,25 @@ rkJggg==" />
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4 24H28V21.3333H4V24ZM4 17.3333H28V14.6667H4V17.3333ZM4 8V10.6667H28V8H4Z"
                                         fill="#FFC07F" />
-                                </svg> 
+                                </svg>
                             </button>
-                            
+
                         </div>
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse  blocoBotao" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body blocoBotao">
-                               
-                                    <CategoryIdMobile categorias={[...categorias]} />
-                                    <CategoryAllProductsMobile />
-                                   <SearchBar />
+
+                                <CategoryIdMobile categorias={[...categorias]} />
+                                <CategoryAllProductsMobile />
+                                <SearchBar />
                             </div>
                         </div>
                     </div>
 
                 </div>
                 {/* <!-- FIM HEADER --> */}
-                
+
             </header>
-       
+
         </>
 
     )

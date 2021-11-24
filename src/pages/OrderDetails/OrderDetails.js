@@ -28,6 +28,11 @@ function OrderDetails(props) {
                     <div class="container  col-6">Pedido nº:</div>
                     <div class="container  col-6"><b> {order.id}</b></div>
                 </div>
+                <div class="container d-flex col-12 ">
+
+                    <div class="container  col-6">Nome do pedido</div>
+                    <div class="container  col-6"><b> {order.nameProduct}</b></div>
+                </div>
                 <div class="container d-flex col-12">
 
                     <div class="container col-6">Realizado em:</div>

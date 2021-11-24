@@ -4,6 +4,7 @@ function useCart(props){
     
     useEffect(() => {
         setQtyCart(JSON.parse(localStorage.getItem("qtyCart")))
+        
     }, [])
 
 const checkItemCart = (item, cartList) => {
@@ -31,27 +32,31 @@ const createItemRequest = (prod) => {
 
 const addToCart = (item) => {
     let cartList = localStorage.getItem("itemRequest")
+    
         ? JSON.parse(localStorage.getItem("itemRequest"))
         : []
-
+        
     let newItemRequest = createItemRequest(item)
-
+    
     if (!checkItemCart(newItemRequest, cartList)) {
         cartList.push(newItemRequest)
     }
+
 
     let cartString = JSON.stringify(cartList)
     localStorage.setItem("itemRequest", cartString)
     localStorage.setItem('qtyCart', JSON.stringify(cartList.length))
     setQtyCart(cartList.length)
+   
+    
 }
 
 return {
     createItemRequest,
     addToCart,
     checkItemCart
+    
 }
-
 
 }
 

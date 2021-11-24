@@ -55,7 +55,7 @@ function Footer(props) {
                             <img className="iconPagamento visa" src={pix} />
                             
                         </div>
-                        <div className="col-4 footer">
+                        <div className="col-3 footer">
                             <p>Contato</p>
                             <a class="telefonesFooter"
                                 href="tel:(11) 00000-0000">(11)

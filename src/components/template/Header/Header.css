@@ -12,16 +12,16 @@ header {
     font-size      : 13px;
     text-decoration: none;
     text-decoration: #FFC07F;
-    text-align : center;
-    font-weight: bold;
+    text-align     : center;
+    font-weight    : bold;
 }
 
 .topHeader,
 .midHeader,
 .logo,
 .blocoTelefone {
-    display    : flex;
-    align-items: center;
+    display        : flex;
+    align-items    : center;
     justify-content: center;
 }
 
@@ -47,7 +47,7 @@ header {
     padding         : 12px;
     font-weight     : bold;
     text-align      : center;
-    
+
 }
 
 .navegacao:hover,
@@ -76,12 +76,12 @@ ul:hover {
 
 .blocoBotao {
     background-color: #170900;
-    text-decoration: none;
-    border: none;
-    
+    text-decoration : none;
+    border          : none;
+
 }
 
-@media (min-width:990px) {
+@media (min-width:998px) {
 
     .blocoBotao {
         display: none;
@@ -94,14 +94,14 @@ ul:hover {
     }
 }
 
-@media (max-width:991px) {
+@media (max-width:999px) {
     .navDesktop {
         display: none;
     }
 }
 
 
-@media (max-width:800px) {
+@media (max-width:999px) {
     .pesquisa {
         display: none;
     }
@@ -114,7 +114,7 @@ ul:hover {
 }
 
 @media (max-width:575px) {
-    .blocoMeuCarrinho {
+    .blocoMeusPedidos {
         display: none;
     }
 }
@@ -123,17 +123,43 @@ ul:hover {
     flex-direction: column;
 }
 
-ul{
+ul {
     padding: 0;
-    margin: 0;
+    margin : 0;
 }
 
-.menuHamb{
+.menuHamb {
     text-decoration: none;
 }
 
-.pesquisaMobile{
+.pesquisaMobile {
     width: 70%;
+
+}
+
+.blocoMeuCarrinho{
+    display: flex;
+    position:relative
+}
+
+.qntCart {
+    position: absolute;
+    left: 28px;
+    top: -2px;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    background: #FFC07F;
+    color: #860E1C;
+    border: 1px solid ;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+   
     
 }
+
 
