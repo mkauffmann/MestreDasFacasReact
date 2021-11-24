@@ -13,11 +13,13 @@ function Category(props) {
 
     const [produtosPesquisa, setProdutosPesquisa] = useState([])
     const urlParams = new URLSearchParams(window.location.search)
+    const [isLoading, setIsLoading] = useState(true)
     const texto = urlParams.get("search")
     useEffect(() => {
         axios.get(`http://localhost:8080/product/search/${texto}`)
             .then((response) => {
                 setProdutosPesquisa([...response.data])
+                setIsLoading(false)
                 {
                     if (produtosPesquisa == 0) {
                         return "Não temos"
@@ -47,7 +49,10 @@ function Category(props) {
 
                         <div class="catalogo-produtos">
                             <div class="row linha-produtos-encontrados">
-                                <h5 class="produtos-encontrados"> Produtos Encontrados: </h5>
+                                {!isLoading && produtosPesquisa.length === 0
+                                    ? <h5 class="produtos-encontrados"> Produtos não encontrados</h5>
+                                    : <h5 class="produtos-encontrados"> Produtos Encontrados: </h5>}
+                                
                                 <div class="dropdown drop-ordena">
                                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                         Ordenar por:
@@ -61,8 +66,9 @@ function Category(props) {
                             <div class="row catalogo-produtos2 lista">
 
                                 <div className="container lista">
-                                    <CardHomeList produtos={produtosPesquisa} />
-
+                                    {isLoading
+                                        ? <p>Loading...</p>
+                                        : <CardHomeList produtos={produtosPesquisa} />}
 
                                 </div>
 

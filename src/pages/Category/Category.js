@@ -12,25 +12,19 @@ import CardHomeList from "../../components/macro/CardHome/CardHomeList";
 
 function Category(props) {
     const [produtos, setProdutos] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const { id } = useParams()
-
-    // const {getInventory} = useCart()
-    // const [emEstoque, setEmEstoque] = useState(false)
-
-    // const verificarEstoque = async () => {
-    //     setEmEstoque(await getInventory(id) > 0)
-    // }
 
     useEffect(() => {
         axios.get(`http://localhost:8080/product/category/${id}`)
             .then((response) => {
                 setProdutos(response.data)
-
-
+                setIsLoading(false)
             })
             .catch((error) => {
                 console.error("Aconteceu um erro!" + error)
             })
+            
     }, [])
 
 
@@ -64,8 +58,10 @@ function Category(props) {
                             <div class="row catalogo-produtos2 lista">
 
                                 <div className="container lista">
-                                    <CardHomeList produtos={produtos}/>
-
+                                    {isLoading
+                                    ? <p>Loading...</p>
+                                    : <CardHomeList produtos={produtos}/>}
+                                    
                                 </div>
 
                             </div>
