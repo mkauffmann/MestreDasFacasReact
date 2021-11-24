@@ -36,7 +36,7 @@ function AddressInfoItem(props) {
                     <div className="infos-lista d-flex flex-column  mt-1">
                         <div><strong>Logradouro:</strong> {address.street}</div>
                         <div><strong>Número:</strong> {address.number}</div>
-                        {address.complement !== "" ? <div><strong>Complemento: </strong>{address.complement}</div> : ""}
+                        {address.complement !== null ? <div><strong>Complemento: </strong>{address.complement}</div> : ""}
                         <div><strong>Bairro: </strong>{address.neighborhood}</div>
                         <div><strong>CEP: </strong>{address.cep}</div>
                         <div><strong>Cidade: </strong>{address.city.cityName}/{address.state.uf}</div>

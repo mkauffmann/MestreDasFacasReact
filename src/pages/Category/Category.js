@@ -5,26 +5,48 @@ import './Category.css'
 import '../../components/micro/Button/Button.css'
 import Card from '../../components/macro/CardHome/Card'
 import '../../components/macro/CardHome/Card.css'
-
+import useCart from "../../hooks/useCart";
+import CardHomeList from "../../components/macro/CardHome/CardHomeList";
 
 
 
 function Category(props) {
     const [produtos, setProdutos] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const { id } = useParams()
-
 
     useEffect(() => {
         axios.get(`http://localhost:8080/product/category/${id}`)
             .then((response) => {
                 setProdutos(response.data)
-
-
+                setIsLoading(false)
             })
             .catch((error) => {
                 console.error("Aconteceu um erro!" + error)
             })
+            
     }, [])
+
+    const UrlAsc = 'http://localhost:8080/product/orderAsc'
+    const UrlDesc = 'http://localhost:8080/product/orderDesc'
+
+    const getAsc = () => axios.get(UrlAsc, {
+    })
+    .then(response => {
+            setProdutos(response.data)
+        })
+        .catch((error) => {
+            console.error("Aconteceu um erro!" + error)
+        })
+
+    const getDesc = () => axios.get(UrlDesc, {
+    })
+    .then(response => {
+            setProdutos(response.data)
+        })
+        .catch((error) => {
+            console.error("Aconteceu um erro!" + error)
+        })
 
 
     return (
@@ -49,16 +71,18 @@ function Category(props) {
                                         Ordenar por:
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#"> Maior Preço </a></li>
-                                        <li><a class="dropdown-item" href="#"> Menor Preço </a></li>
+                                        <li><a class="dropdown-item" onClick={getDesc}> Maior Preço </a></li>
+                                        <li><a class="dropdown-item" onClick={getAsc}> Menor Preço </a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="row catalogo-produtos2 lista">
 
                                 <div className="container lista">
-                                    <Card produtos={produtos} />
-
+                                    {isLoading
+                                    ? <p>Loading...</p>
+                                    : <CardHomeList produtos={produtos}/>}
+                                    
                                 </div>
 
                             </div>
