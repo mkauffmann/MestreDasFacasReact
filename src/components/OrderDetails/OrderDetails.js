@@ -21,10 +21,10 @@ function OrderDetails(props) {
             <div className="shadow p-3 mb-5 bg-white rounded list-group list-group-horizontal-md d-flex justify-content-center ">
                 <div className="d-flex flex-column">
                     {renderList()}
-                    <h4 className="align-self-end"> Parcelas: {props.order.installments} </h4>
-                    <h4 className="align-self-end"> Valor Total: {(props.order.totalValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </h4>
+                    {/* <h4 className="align-self-end"> Parcelas: {props.order.installments} </h4> */}
                     <h4 className="align-self-end"> Frete: {(props.order.freightFixed).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </h4>
-                    <h4 className="align-self-end"> Valor Final c/Frete: <strong>{(props.order.finalValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</strong></h4>
+                    <h4 className="align-self-end"> Valor Total: {(props.order.totalValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </h4>   
+                    <h4 className="align-self-end"> Valor Total c/Frete: <strong>{(props.order.finalValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</strong></h4>
                 </div>
                 
             </div>

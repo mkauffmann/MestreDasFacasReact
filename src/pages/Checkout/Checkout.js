@@ -36,7 +36,7 @@ const initialValues = {
     creditCard: null,
     customer: {},
     itemRequest: [],
-    installments: 0
+    installments: 1
 }
 
 
@@ -94,8 +94,14 @@ function Checkout(props) {
 
     const renderItems = () => {
         return itemRequest.map((item, index) => {
-            totalValue += item.quantity * item.product.productPrice.value
+            // totalValue += item.quantity * item.product.productPrice.value
             return <CheckoutProduct item={item} key={index} />
+        })
+    }
+
+    const somaCalculoItems = () => {
+        return itemRequest.map((item, index) => {
+            totalValue += item.quantity * item.product.productPrice.value
         })
     }
 
@@ -176,6 +182,7 @@ function Checkout(props) {
             <Container className="mb-5">
                 <Row>
                     <h1> Finalizar compra </h1>
+                    {somaCalculoItems()}
                     <DividingBar singleLine />
                 </Row>
                 <Row>
@@ -195,15 +202,19 @@ function Checkout(props) {
                                 : ""}
                         </Row>
                         <Row>
-                        {/* <Form.Select >
-                        <option> Selecione a parcela </option>
-                        <option value="1"> 1x </option>
-                        <option value="2"> 2x </option>
-                        <option value="3"> 3x </option>
-                        </Form.Select> */}
-                        <Select id="installments" name="installments" label="Parcelamento"
-                                options={[1, 2, 3]}
-                                changeFunction={handleChange} value={order.installments} />
+                        {showCreditCards ?
+                        <>
+                        
+                        <Select parcelamento id="installments" name="installments" label="Parcelamento"
+                        options={[1, 2, 3, 4, 5, 6]} resultadoParcelamento={totalValue}
+                        changeFunction={handleChange} value={order.installments} />
+                        </> : 
+                        <>
+                            <p style={{display: "none"}}> {order.installments = 1} </p>
+                        </>
+                        }
+                        
+                        
                         </Row>
                     </Col>
                     <Col md={6}>
@@ -213,7 +224,7 @@ function Checkout(props) {
                             <DividingBar singleLine />
                             <div className="mb-3">
                                 <TotalValueCheckout numero={itemRequest.length} info={itemRequest.length == 1 ? "item" : "itens"} valor={totalValue.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} />
-                                <TotalValueCheckout info="Frete fixo" valor={initialValues.freightFixed.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} />
+                                <TotalValueCheckout info="Frete" valor={initialValues.freightFixed.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} />
                                 <DividingBar singleLine />
                                 <TotalValueCheckout info="Total" valor={(totalValue + initialValues.freightFixed).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} />
                                 <button class="btn-principal btn-principal-finalizar mt-4" onClick={handleOrder} >Finalizar Compra</button>
