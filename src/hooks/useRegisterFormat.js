@@ -24,7 +24,6 @@ function useRegisterFormat(){
     }
 
     const handleTelephoneCreation = (inputTelephone) => {
-        console.log(inputTelephone)
         let telArr = inputTelephone.split(") ")
         const ddd = telArr[0].slice(1)
 

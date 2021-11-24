@@ -68,7 +68,7 @@ function RegisterTelephoneForm(props) {
                     </Row>
                     <Row className="justify-content-end position-custom">
                         <Col className="d-flex justify-content-end">
-                            <Button class="btn-cancelar mx-2" label="Limpar" type="reset" />
+                        <button class="btn-custom-default btn-cancelar mx-2"  type="reset" >Limpar</button>
                             <Button class="btn-principal" label="Cadastrar" type="submit" />
                         </Col>
                     </Row>
