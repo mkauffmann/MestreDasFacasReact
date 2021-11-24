@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from 'react'
+import useCart from '../../../hooks/useCart'
 import './CardCart.css'
 
 import iconlix from '../../../assets/icons/checkout/lixeira.png'
 
 
 function CardCart(props) {
+    const {getInventory} = useCart()
     const [itemQty, setItemQty] = useState(props.item.quantity)
-    const [total, setTotal] = useState(props.productPrice * itemQty)
+    const [estoque, setEstoque] = useState(0)
+    
+    const handleEstoque = async () => {
+        setEstoque(await getInventory(props.item.product.id))
+    }
 
     const handleRemove = () => {
         props.removeItem(props.key)
     }
 
     const addOneItem = async () => {
-        props.handleValues(itemQty + 1, props.item.product.id)
-        setItemQty(prevValue => prevValue + 1)
-        
+        if(itemQty + 1 > estoque){
+            alert("Quantidade máxima em estoque")
+        } else {
+            props.handleValues(itemQty + 1, props.item.product.id)
+            setItemQty(prevValue => prevValue + 1)
+        }
     }
 
     const removeOneItem = async () => {
@@ -24,6 +33,8 @@ function CardCart(props) {
             setItemQty(prevValue => prevValue - 1)
         }
     }
+
+    useEffect(() => handleEstoque(), [])
 
     return (
         <>
