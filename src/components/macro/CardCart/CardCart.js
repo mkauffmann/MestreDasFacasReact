@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import useCart from '../../../hooks/useCart'
 import './CardCart.css'
 
@@ -11,7 +12,16 @@ function CardCart(props) {
     const [estoque, setEstoque] = useState(0)
     
     const handleEstoque = async () => {
-        setEstoque(await getInventory(props.item.product.id))
+        let estoque = await getInventory(props.item.product.id)
+        setEstoque(estoque)
+        handleDisponibilidade(estoque)
+    }
+
+    const handleDisponibilidade = (estoque) => {
+        if(estoque <= 0){
+            alert(`O Produto ${props.item.product.productName} não está mais disponível e será removido do seu carrinho`)
+            handleRemove()
+        }
     }
 
     const handleRemove = () => {
@@ -34,15 +44,19 @@ function CardCart(props) {
         }
     }
 
-    useEffect(() => handleEstoque(), [])
+    useEffect(() => {
+        handleEstoque()
+    }, [])
 
     return (
         <>
             <div className="list-group mb-3">
                 <div className="list-group-item">
+                    <Link to={`/product/${props.item.product.id}`}>
                     <div className=" col-3 col-md-2 col-lg-1" >
                         <img style={{ float: "left" }} className="img-thumbnail" width="100px" src={props.imagem} ></img>
                     </div>
+                    </Link>
                     <div style={{ float: "left" }} class="mt-1 mx-1 col-8 col-md- col-lg-5 col-xl-6 align-self-center" >
                         <div className="text-produto-nome text-decoration-none text-danger">{props.productName}</div>
                         <small > {props.descriptionProduct} </small>
