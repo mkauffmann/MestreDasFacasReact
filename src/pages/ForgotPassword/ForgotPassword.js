@@ -18,7 +18,8 @@ function ForgotPassword(props) {
     const { errors,
         validateEmailNotEmpty,
         validateForm,
-        resetErrorStates } = useValidation(inputValues)
+        resetErrorStates,
+        setErrors } = useValidation(inputValues)
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -28,12 +29,18 @@ function ForgotPassword(props) {
         if (validateForm(requiredFields)) {
             axios.post(URL, inputValues)
                 .then((response) => {
-                    if (response.status == 201) { //mudar status code quando integrar com API
+                    if (response.status == 200) { //mudar status code quando integrar com API
+                        setErrorMessage("")
                         resetForm()
                         setIsSent(true) //adicionar checagem de erro se o email não pertence à uma conta
                     }
                 })
-                .catch(error => setErrorMessage(error.message))
+                .catch(error => {
+                    if (error.response.status === 401) {
+                        setErrorMessage("Email e/ou senha incorreta")
+                        setErrors({ password: " ", email: " " })
+                    }
+                })
         }
     };
 
