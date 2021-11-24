@@ -15,14 +15,14 @@ function Success(props) {
 
 
     return (
-        <>
+        <>  
             <OrderCode order={order}/>
             <div class="mt-1 container">
                 <div>
                     <OrderDetails order={order}/>
                 </div>
                <PayMentForm order={order}/>
-            </div>
+            </div>    
         </>
     )
 }

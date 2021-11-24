@@ -12,6 +12,14 @@ function Select(props) {
                     </option>
                 );
             });
+        } else if (props.parcelamento) {
+            return props.options.map((option, index) => {
+                return (
+                    <option key={index + 1} value={option}>
+                        {option}x de {(props.resultadoParcelamento / option).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+                    </option>
+                );
+            });
         } else {
             return props.options.map((option, index) => {
                 return (
