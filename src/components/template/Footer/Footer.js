@@ -6,7 +6,7 @@ import instagram from '../../../assets/imgs/footer/instagram.png'
 import youtube from '../../../assets/imgs/footer/youtube.png'
 import twitter from '../../../assets/imgs/footer/twitter.png'
 import icon from '../../../assets/imgs/footer/visacon.ico'
-import pix from '../../../assets/imgs/footer/icone-pix.png'
+import pix from '../../../assets/imgs/footer/pix.png'
 import boleto from '../../../assets/imgs/footer/icone-boleto.png'
 
 import CategoryAllProducts from '../../macro/CategoryAllProducts/CategoryAllProducts'
@@ -23,11 +23,11 @@ function Footer(props) {
                 <div className="container-fluid">
                     <div className="container d-flex ajuste">
                         <div className="col-3 footer ">
-                            <CategoryAllProducts allFooter/>
+                            <CategoryAllProducts allFooter />
                             <p><Link to="/contact" className="footer linkFooter">Atendimento</Link></p>
                             <p><Link to="/about" className="footer linkFooter"> Quem Somos </Link></p>
                             <p><Link to="/contact" className="footer linkFooter"> Trabalhe Conosco </Link></p>
-                             
+
                         </div>
                         <div className="col-3 footer">
                             <p>Redes Sociais</p>
@@ -55,7 +55,7 @@ function Footer(props) {
                             <img className="iconPagamento visa" src={icon} /><p></p>
                             <img className=" visa" src={boleto} />
                             <img className="iconPagamento visa" src={pix} />
-                            
+
                         </div>
                         <div className="col-3 footer">
                             <p>Contato</p>
@@ -72,8 +72,8 @@ function Footer(props) {
                         <div class="final">©Copyright 2021 - Mestre das Facas - Todos os direitos reservados Mestre
                             das Facas com Agência de Cutelaria Online S.A.
                             <p>Endereço: Avenida Paulista 1560, 3º Andar CEP 0000-000, Bela Vista, São Paulo/SP</p></div>
-                            
-                            
+
+
                         <div class="container col-3 logo final"></div>
                     </div>
 
@@ -114,6 +114,8 @@ function Footer(props) {
                             </defs>
                         </svg>
                         <img className="visa" src={icon} />
+                        <img className=" visa" src={boleto} />
+                        <img className=" visa" src={pix} />
 
                     </div>
                 </div>
