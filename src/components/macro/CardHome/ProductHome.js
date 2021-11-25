@@ -11,9 +11,14 @@ function ProductHome(props) {
 
     const { getInventory } = useCart()
     const [emEstoque, setEmEstoque] = useState(false)
+    const [ultimasUnidades, setUltimasUnidades] = useState(false)
 
     const verificarEstoque = async () => {
-        setEmEstoque(await getInventory(id) > 0)
+        let estoque = await getInventory(id)
+        setEmEstoque(estoque > 0)
+        if(estoque < 5){
+            setUltimasUnidades(true)
+        }
     }
 
     useEffect(() => {
@@ -22,7 +27,7 @@ function ProductHome(props) {
 
     return (
         <>
-            <CardHome produto={{ ...props.produto }} emEstoque={emEstoque} />
+            <CardHome produto={{ ...props.produto }} emEstoque={emEstoque} ultimasUnidades={ultimasUnidades}/>
         </>
     )
 }

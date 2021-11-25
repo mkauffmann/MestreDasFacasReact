@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
+import { Badge } from 'react-bootstrap'
 import './Card.css'
 import { Link, Redirect } from 'react-router-dom'
 
@@ -15,18 +16,21 @@ function CardHome(props) {
     const {
         addToCart,
     } = useCart()
-    
+
 
     const handleCart = () => {
         addToCart(produto)
     }
-    
-    
+
+
 
     return (
         <div className=" col-6 col-sm-6 col-md-3 col-xl-3 col-xll-3 produtoDesktop">
             <div className="card " style={{ width: '18rem' }}>
                 <Link to={`/product/${produto.id}`}>
+                    {props.ultimasUnidades
+                        ? <Badge className="ultimas-unidades position-absolute mt-1 mx-1" pill bg="dark">Últimas unidades!</Badge>
+                        : ""}
                     <img src={produto.image} className="card-img-top" alt="..." />
                 </Link>
                 <div className="card-body ">
@@ -35,7 +39,7 @@ function CardHome(props) {
                     </div>
                     <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
                     <button class={props.emEstoque ? 'btn-custom-default btn-default btn-principal home-btn' : 'btn-custom-default btn-default btn-indisponivel home-btn'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
-                    
+
                 </div>
             </div>
         </div>
