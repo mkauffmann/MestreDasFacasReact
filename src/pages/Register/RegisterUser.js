@@ -98,10 +98,10 @@ function RegisterUser(props) {
         }
 
         if (address !== "") {
-            user = { ...user, addresses: [...address] }
+            user = { ...user, addresses: [{ ...address }] }
         }
         if (creditCard !== "") {
-            user = { ...user, creditCards: [ ...creditCard] }
+            user = { ...user, creditCards: [{ ...creditCard }] }
         }
 
         delete user.confirmPassword
@@ -113,15 +113,18 @@ function RegisterUser(props) {
         setInputAddress(inputAddress)
 
         const formatedAddress = handleAddressCreation(inputAddress)
-        setAddress(prevValues => [...prevValues, formatedAddress])
+        setAddress({ ...formatedAddress })
         handleCloseAddress()
     }
 
     const handleCreditCard = (inputCreditCard) => {
+        inputCreditCard.lastFourDigits = inputCreditCard.cardNumber.slice(-4)
+        
         setInputCreditCard(inputCreditCard)
-
+        
         const formatedCreditCard = handleCreditCardCreation(inputCreditCard)
-        setCreditCard(prevValues => [...prevValues, formatedCreditCard])
+        
+        setCreditCard({ ...formatedCreditCard })
         handleCloseCreditCard()
     }
 
@@ -167,10 +170,12 @@ function RegisterUser(props) {
                 ? <DividingBar singleLine/>
                 : ""}
                 {savedAddress
-                    ? <Col md={6}><AddressList show subtitle="Endereço cadastrado" addresses={address} /></Col>
+                    ? <Col md={6}><AddressList show subtitle="Endereço cadastrado" addresses={[address]} /></Col>
                     : ""}
                 {savedCreditCard
-                    ? <Col md={6}><CreditCardList show subtitle="Cartão de crédito cadastrado" creditCards={creditCard} /></Col>
+                    ? <Col md={6}>
+                        <CreditCardList show subtitle="Cartão de crédito cadastrado" creditCards={[creditCard]} />
+                        </Col>
                     : ""}
             </Row>
 

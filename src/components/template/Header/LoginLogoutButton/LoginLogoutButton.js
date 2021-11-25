@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import useLogin from "../../../../hooks/useLogin";
 import { ReactComponent as User } from '../../../../assets/icons/user.svg'
+import Dashboard from "../../../../pages/Dashboard/Dashboard";
+import { useParams, Route, Redirect } from "react-router";
 
 
 
 function LoginLogoutButton(props) {
+    const {userForm} = useParams()
+    console.log(useParams)
+
+
+
     const { isAuthenticated, userId, token, logout, refreshPage } = useLogin()
     const URL = `http://localhost:8080/customers/${userId}`
     const [userName, setUserName] = useState("")
+
+    
 
 
     const getUser = () => {
@@ -27,6 +36,12 @@ function LoginLogoutButton(props) {
         })
 
     }
+
+
+  
+
+   
+    
 
 
 
@@ -62,8 +77,8 @@ function LoginLogoutButton(props) {
                 overlay={
                     <Popover>
                         <Popover.Body className="d-flex flex-column">
-                            <Link to="dashboard/userForm">
-                                <button className="btn-custom-default btn-principal">Minha conta</button>
+                            <Link to="/dashboard/userForm">
+                                <button className="btn-custom-default btn-principal">Minha conta</button >
                             </Link>
                             <button className="btn-custom-default btn-cancelar my-2" onClick={() => {
                                 logout()

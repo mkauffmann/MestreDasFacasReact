@@ -10,7 +10,7 @@ import DividingBar from "../../components/micro/Login/DividingBar/DividingBar";
 
 
 function ForgotPassword(props) {
-    const URL = 'http://localhost:3001/login';
+    const URL = 'http://localhost:8080/';
     const requiredFields = ["email"]
     const [inputValues, setInputValues] = useState({email : ""})
     const [isSent, setIsSent] = useState(false)
@@ -18,20 +18,29 @@ function ForgotPassword(props) {
     const { errors,
         validateEmailNotEmpty,
         validateForm,
-        resetErrorStates } = useValidation(inputValues)
+        resetErrorStates,
+        setErrors } = useValidation(inputValues)
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
+     
+
         if (validateForm(requiredFields)) {
             axios.post(URL, inputValues)
                 .then((response) => {
-                    if (response.status == 201) { //mudar status code quando integrar com API
+                    if (response.status == 200) { //mudar status code quando integrar com API
+                        setErrorMessage("")
                         resetForm()
                         setIsSent(true) //adicionar checagem de erro se o email não pertence à uma conta
                     }
                 })
-                .catch(error => setErrorMessage(error.message))
+                .catch(error => {
+                    if (error.response.status === 401) {
+                        setErrorMessage("Email e/ou senha incorreta")
+                        setErrors({ password: " ", email: " " })
+                    }
+                })
         }
     };
 
@@ -61,7 +70,7 @@ function ForgotPassword(props) {
             <Row className="justify-content-center mb-5">
                 <CardLogin classes="forgot-password-card">
                     <TitleLogin title="Esqueceu sua senha?" subtitle="Digite seu email abaixo" />
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} action="">
                         <Input type="email" id="recoverEmail" name="email" label="Email"
                             placeholder="Digite o email associado à sua conta"
                             value={inputValues.email}

@@ -1,8 +1,7 @@
 import React from "react"
-import { Switch, Route} from "react-router-dom"
+import {BrowserRouter,Switch, Route, Redirect} from "react-router-dom"
 import PrivateRoute from "./components/macro/Route/PrivateRoute"
 import OrderDetailsRoute from "./components/macro/Route/OrderDetailsRoute"
-
 import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
 import Category from './pages/Category/Category'
@@ -20,9 +19,10 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import ChangePassword from "./pages/ChangePassword/ChangePassword"
 import CategoryAll from './pages/CategoryAll/CategoryAll'
 import CategorySearch from './pages/CategorySearch/CategorySearch'
-
 export const Routes = () => {
     return (
+        
+        
         <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/home" component={Home}/>
@@ -42,9 +42,11 @@ export const Routes = () => {
             <OrderDetailsRoute path="/success" component={Success}/>
             <Route path="/about" component={About}/>
             <OrderDetailsRoute path="/orderDetails" component={OrderDetails}/>
-            <Route path="/changePassword/:id" component={ChangePassword} />
+            <Route path="/changePassword/:token" component={ChangePassword} />
             <Route component={NotFound}/>
-            
         </Switch>
+
+       
+        
     )
 }

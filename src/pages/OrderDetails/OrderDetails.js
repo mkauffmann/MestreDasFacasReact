@@ -101,7 +101,7 @@ function OrderDetails(props) {
 
                     </div>
                 </div>
-                <div class="container d-flex col-12">
+                {/* <div class="container d-flex col-12">
 
                     <div class=" col-6">
                         Valor Total
@@ -110,7 +110,7 @@ function OrderDetails(props) {
                         <b>{(order.finalValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</b>
 
                     </div>
-                </div>
+                </div> */}
 
                 <div class="container d-flex col-12">
 
@@ -122,10 +122,39 @@ function OrderDetails(props) {
 
                     </div>
                 </div>
+                
+                {order.installments > 1 ?
+                <>
                 <div class="container d-flex col-12">
 
                     <div class=" col-6">
-                        Valor:
+                        Parcelas
+                    </div>
+                    <div class=" col-6">
+                        <b>{order.installments}</b>
+
+                    </div>
+
+                </div>
+
+                <div class="container d-flex col-12">
+
+                    <div class=" col-6">
+                        Valor de cada Parcela
+                    </div>
+                    <div class=" col-6">
+                        <b>{(order.installmentsValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</b>
+
+                    </div>
+                </div> 
+                </>
+                : ""
+                }
+                
+                <div class="container d-flex col-12">
+
+                    <div class=" col-6">
+                        Valor c/Frete:
                     </div>
                     <div class=" col-6">
                         <b>{(order.finalValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</b>
