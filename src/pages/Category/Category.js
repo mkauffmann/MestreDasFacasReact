@@ -27,8 +27,8 @@ function Category(props) {
             
     }, [])
 
-    const UrlAsc = 'http://localhost:8080/product/orderAsc'
-    const UrlDesc = 'http://localhost:8080/product/orderDesc'
+    const UrlAsc = `http://localhost:8080/product/orderAscCatg/${id}`
+    const UrlDesc = `http://localhost:8080/product/orderDescCatg/${id}`
 
     const getAsc = () => axios.get(UrlAsc, {
     })

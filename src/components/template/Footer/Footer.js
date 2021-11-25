@@ -9,6 +9,8 @@ import icon from '../../../assets/imgs/footer/visacon.ico'
 import pix from '../../../assets/imgs/footer/icone-pix.png'
 import boleto from '../../../assets/imgs/footer/icone-boleto.png'
 
+import CategoryAllProducts from '../../macro/CategoryAllProducts/CategoryAllProducts'
+
 
 
 function Footer(props) {
@@ -21,16 +23,16 @@ function Footer(props) {
                 <div className="container-fluid">
                     <div className="container d-flex ajuste">
                         <div className="col-3 footer ">
-                            <p><Link to="/category" className="footer linkFooter">Explorar Categorias</Link></p>
+                            <CategoryAllProducts allFooter/>
                             <p><Link to="/contact" className="footer linkFooter">Atendimento</Link></p>
                             <p><Link to="/about" className="footer linkFooter"> Quem Somos </Link></p>
-                            <p><a class="footer linkFooter" href="#">Trabalhe conosco</a></p>
+                            <p><Link to="/contact" className="footer linkFooter"> Trabalhe Conosco </Link></p>
                              
                         </div>
                         <div className="col-3 footer">
                             <p>Redes Sociais</p>
                             <a href="https://www.facebook.com/Mestre-das-Facas-109510481482419/" target="_blank"><img className="icones" src={facebook} /></a>
-                            <a href="https://www.instagram.com/eimestredasfacas?r=nametag/" target="_blank"><img className="icones icone-espaco" src={instagram} /></a><p></p>
+                            <a href="https://www.instagram.com/eimestredasfacas/" target="_blank"><img className="icones icone-espaco" src={instagram} /></a><p></p>
                             <a href="https://youtube.com/channel/UCcDiqj726UwCd9MYwmpVOmA/" target="_blank"><img className="icones" src={youtube} /></a>
                             <a href="https://twitter.com/FacasMestre?s=08/" target="_blank"><img className="icones icone-espaco" src={twitter} /></a>
 
