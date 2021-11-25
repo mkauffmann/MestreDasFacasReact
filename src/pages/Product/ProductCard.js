@@ -1,44 +1,46 @@
 import React, { useEffect, useState } from 'react'
+import { Badge } from 'react-bootstrap'
 import { Link, Redirect } from 'react-router-dom'
 import Button from '../../components/micro/Button/Button'
 import useCart from '../../hooks/useCart'
 import './Product.css'
 
 function ProductCard(props) {
-const {addToCart} = useCart()
-const [addedToCart, setAddedToCart] = useState(false)
-const produto = {...props.produto} || []
-const preco = produto.productPrice !== undefined ?  produto.productPrice.value : ""
-let precoParce = (parseFloat(preco) / 12)
-let precoAvista = (parseFloat(preco))
-precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
-precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+    const { addToCart } = useCart()
 
-const handleCart = () => {
-    addToCart(produto).then(() => setAddedToCart(true))
-}
+    const produto = { ...props.produto } || []
+    const preco = produto.productPrice !== undefined ? produto.productPrice.value : ""
+    let precoParce = (parseFloat(preco) / 12)
+    let precoAvista = (parseFloat(preco))
+    precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+    precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+
+    const handleCart = () => {
+        addToCart(produto)
+    }
 
     return (
-        
+
         <>
             <div className="container mt-5 mb-4 produto paddProduto">
                 <div className="row">
-                    
+
                     <div className="col-12 col-md-6 col-lg-3 col-produto">
-                        <img className="imagem-produto" src={produto.image}></img>
+                        <img className="imagem-produto" src={produto.image} alt={produto.productName} />
                     </div>
                     <div className="col-12 col-md-6 col-lg-9">
+                        {props.ultimasUnidades
+                            ? <Badge className="ultimas-unidades" pill bg="dark">Últimas unidades!</Badge>
+                            : ""}
                         <div className="nome-do-produto">
                             <div><b>{produto.productName}</b></div>
                         </div>
                         <div className="row">
 
                             <div className="col-12 col-md-6 col-lg-5">
-
-                             <button class={props.emEstoque ? 'btn-custom-default btn-principal btn-comprar' : 'btn-custom-default btn-indisponivel btn-comprar'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
-                             {addedToCart === true
-                                ? <Redirect to="/cart"/>
-                                : ""}
+                                <button class={props.emEstoque ? 'btn-custom-default btn-principal btn-comprar' : 'btn-custom-default btn-indisponivel btn-comprar'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>
+                                    {props.emEstoque ? "Comprar" : "Indisponível"}
+                                </button>
                             </div>
                         </div>
                         <div>

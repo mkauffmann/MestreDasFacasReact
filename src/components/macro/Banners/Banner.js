@@ -14,21 +14,21 @@ function Banner(props) {
             <div className="container carousel-custom"  >
                 <Carousel variant="light">
                     <Carousel.Item>
-                        <Link to="/product/:id"><img
+                        <Link to="/category/1"><img
                             className="d-block w-100 carousel"
                             src={Banner4}
                             alt="First slide"
                         /></Link>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <Link to="/product/:id"><img
+                        <Link to="/product/21"><img
                             className="d-block w-100 carousel"
                             src={Banner2}
                             alt="Second slide"
                         /></Link>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <Link to="/product/:id"><img
+                        <Link to="/product/20"><img
                             className="d-block w-100 carousel"
                             src={Banner3}
                             alt="Third slide"

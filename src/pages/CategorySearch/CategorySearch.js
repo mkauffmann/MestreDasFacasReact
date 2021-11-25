@@ -31,6 +31,26 @@ function Category(props) {
             })
     }, [])
 
+    const UrlAsc = `http://localhost:8080/product/orderAscSearch/${texto}`
+    const UrlDesc = `http://localhost:8080/product/orderDescSearch/${texto}`
+
+    const getAsc = () => axios.get(UrlAsc, {
+    })
+    .then(response => {
+        setProdutosPesquisa(response.data)
+        })
+        .catch((error) => {
+            console.error("Aconteceu um erro!" + error)
+        })
+
+    const getDesc = () => axios.get(UrlDesc, {
+    })
+    .then(response => {
+        setProdutosPesquisa(response.data)
+        })
+        .catch((error) => {
+            console.error("Aconteceu um erro!" + error)
+        })
 
 
     return (
@@ -58,8 +78,8 @@ function Category(props) {
                                         Ordenar por:
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#"> Maior Preço </a></li>
-                                        <li><a class="dropdown-item" href="#"> Menor Preço </a></li>
+                                        <li><a class="dropdown-item" onClick={getDesc}> Maior Preço </a></li>
+                                        <li><a class="dropdown-item" onClick={getAsc}> Menor Preço </a></li>
                                     </ul>
                                 </div>
                             </div>

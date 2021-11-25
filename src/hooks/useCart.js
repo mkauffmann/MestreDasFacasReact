@@ -45,7 +45,6 @@ function useCart(props) {
         let cartList = localStorage.getItem("itemRequest")
             ? JSON.parse(localStorage.getItem("itemRequest"))
             : []
-
         let inventory = await getInventory(item.id)
         if (inventory > 0) {
             let newItemRequest = createItemRequest(item)
@@ -58,6 +57,9 @@ function useCart(props) {
             localStorage.setItem("itemRequest", cartString)
             localStorage.setItem('qtyCart', JSON.stringify(cartList.length))
             setQtyCart(cartList.length)
+            window.location.reload()
+            window.location.href = "http://localhost:3000/cart";
+            
         } else {
             alert("Produto sem estoque")
         }
@@ -70,7 +72,6 @@ function useCart(props) {
         checkItemCart,
         getInventory
     }
-
 
 }
 

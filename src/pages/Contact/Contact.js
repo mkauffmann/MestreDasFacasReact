@@ -121,6 +121,7 @@ function Contact(props){
                                 <select name="motivo" id="motivo" className="form-select" onChange={onChange}>
                                     <option value="" selected disabled>Selecione</option>
                                     <option onChange={onChange} value="sugestao">Sugestão</option>
+                                    <option onChange={onChange} value="duvida">Trabalhe conosco</option>
                                     <option onChange={onChange} value="duvida">Dúvida</option>
                                     <option onChange={onChange} value="problema">Problema</option>
                                     <option onChange={onChange} value="outro">Outros</option>
