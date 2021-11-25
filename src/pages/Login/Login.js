@@ -82,6 +82,10 @@ function Login(props) {
         resetErrorStates();
     };
 
+    function goBack() {
+        window.history.back();
+      }
+
     return (
         <>
             <Modal show={isLoading} animation={false} centered dialogClassName="modal-loading">
@@ -113,7 +117,7 @@ function Login(props) {
                                     value={inputValues.password}
                                     error={errors.password} />
                             </div>
-                            <Button class={'btn-principal align-self-center btn-login'} label={'Entrar'} />
+                            <Button   class={'btn-principal align-self-center btn-login'} label={'Entrar'} />
                             <Link to="/forgotPassword" className="align-self-center mt-2" >Esqueci minha senha</Link>
                         </form>
                         <DividingBar label="ou" />
@@ -124,7 +128,7 @@ function Login(props) {
                 </Row>
             </Container>
             {isSent
-                ? <Redirect to="/"/>
+                ? <Redirect  to="/cart"/>
                 : ""}
         </>
     )

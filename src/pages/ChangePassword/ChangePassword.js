@@ -8,13 +8,15 @@ import CardLogin from "../../components/micro/Login/CardLogin/CardLogin";
 import Input from '../../components/micro/Forms/Input/Input'
 import TitleLogin from "../../components/micro/Login/TitleLogin/TitleLogin";
 import Button from '../../components/micro/Button/Button'
+import useLogin from "../../hooks/useLogin";
 
 function ChangePassword(props) {
-    let { id } = useParams()
-    const URL = `http://localhost:3001/users/${id}`
+    const {token} = useParams()
+    const URL = `http://localhost:8080/ChangePassword/${token}`
     const initialValues = {
         password: "",
-        confirmPassword: ""
+        confirmPassword:""
+        
     }
     const requiredFields = ["password", "confirmPassword"]
     const [inputValues, setInputValues] = useState({ ...initialValues })
@@ -29,7 +31,9 @@ function ChangePassword(props) {
         event.preventDefault();
 
         if (validateForm(requiredFields)) {
-            axios.patch(URL, { password: inputValues.password })
+            delete inputValues.confirmPassword
+            axios.post(URL, inputValues)
+            
                 .then((response) => {
                     if(response.status == 200){ //confirmar statusCode na integração final
                         resetForm()
@@ -67,7 +71,7 @@ function ChangePassword(props) {
                 <Row className="justify-content-center mb-5">
                     <CardLogin classes="forgot-password-card">
                         <TitleLogin title="Alterar senha" subtitle="Escolha sua nova senha" />
-                        <form onSubmit={handleSubmit}>
+                        <form  onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <Input type="password" id="senha" name="password" placeholder="Digite sua senha" label="Digite sua senha"
                                     obrigatorio changeFunction={handleChange}

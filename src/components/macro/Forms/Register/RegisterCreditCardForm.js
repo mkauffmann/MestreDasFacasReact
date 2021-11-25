@@ -9,6 +9,8 @@ import useValidation from "../../../../hooks/useValidation";
 
 const initialInputValues = {
     cardNumber: "",
+    lastFourDigits: "",
+    cvv: "",
     cardValidDate: "",
     cpf: "",
     holderName: "",
@@ -17,7 +19,7 @@ const initialInputValues = {
 
 function RegisterCreditCardForm(props) {
     const [creditCardValues, setCreditCardValues] = useState(props.alter ? props.alter : { ...initialInputValues })
-    const requiredFields = props.alter ? ["holderCpf", "holderName", "cardValidDate"] : ["cardNumber", "holderCpf", "holderName", "cardBrandTemp", "cardValidDate"]
+    const requiredFields = props.alter ? ["holderCpf", "holderName", "cardValidDate"] : ["cardNumber", "holderCpf", "holderName", "cardBrandTemp", "cardValidDate", "cvv"]
     const {
         validateForm,
         resetErrorStates,
@@ -47,6 +49,18 @@ function RegisterCreditCardForm(props) {
         })
     }
 
+    const handleChangeDate = (event) => {
+        const value = event.target.value
+        const name = event.target.name
+
+        setCreditCardValues(prevValues => {
+            return { ...prevValues, [name]: value }
+        })
+
+        validateCreditCardDate(value, name)
+    }
+
+
     const resetForm = () => {
         setCreditCardValues({ ...initialInputValues })
         resetErrorStates()
@@ -70,12 +84,14 @@ function RegisterCreditCardForm(props) {
         let numberValidation = cardValidator.number(creditCardValues.cardNumber)
 
         if (numberValidation.isValid) {
+            let brand = numberValidation.card.type.toUpperCase()
             setCreditCardValues(prevState => {
                 return {
                     ...prevState,
                     cardBrandTemp: numberValidation.card.type.toUpperCase()
                 }
             })
+            isEmpty(brand, "cardBrandTemp")
         }
 
     }
@@ -97,22 +113,21 @@ function RegisterCreditCardForm(props) {
                         <Col md={2} className="mb-3">
                             <Input type="text" id="cardValidDate" name="cardValidDate"
                                 mask="99/99" label="Validade" obrigatorio
-                                changeFunction={handleChange} value={creditCardValues.cardValidDate}
+                                changeFunction={handleChangeDate} value={creditCardValues.cardValidDate}
                                 blurFunction={handleBlur} validation={validateCreditCardDate}
                                 error={errors.cardValidDate} />
                         </Col>
                         <Col md={2} className="mb-3">
-                            <Input type="text" id="cvv" name="cvv"
+                            <Input type="password" id="cvv" name="cvv"
                                 mask={props.alter ? "" : "999"} label="CVV" obrigatorio
                                 changeFunction={handleChange} value={props.alter ? "***" : creditCardValues.cvv}
                                 blurFunction={handleBlur} validation={isEmpty}
-                                error={errors.cardValidDate} disabled={props.alter ? true : false}/>
+                                error={errors.cvv} disabled={props.alter ? true : false}/>
                         </Col>
                         <Col md={4} className="mb-3">
                             <Input type="text" id="cardBrandTemp" name="cardBrandTemp"
                                 label="Bandeira" obrigatorio
                                 changeFunction={handleChange} value={creditCardValues.cardBrandTemp}
-                                blurFunction={handleBlur} validation={validateStringNotEmpty}
                                 error={errors.cardBrandTemp} disabled />
                         </Col>
                     </Row>
@@ -137,7 +152,7 @@ function RegisterCreditCardForm(props) {
                         <Col className="d-flex justify-content-end">
                             {props.alter
                                 ? ""
-                                : <Button class="btn-cancelar mx-2" label="Limpar" type="reset" />}
+                                : <button class="btn-custom-default btn-cancelar mx-2"  type="reset" >Limpar</button>}
 
                             <Button class="btn-principal" label="Salvar" type="submit" />
                         </Col>

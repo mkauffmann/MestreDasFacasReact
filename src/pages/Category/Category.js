@@ -5,25 +5,26 @@ import './Category.css'
 import '../../components/micro/Button/Button.css'
 import Card from '../../components/macro/CardHome/Card'
 import '../../components/macro/CardHome/Card.css'
-
+import useCart from "../../hooks/useCart";
+import CardHomeList from "../../components/macro/CardHome/CardHomeList";
 
 
 
 function Category(props) {
     const [produtos, setProdutos] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const { id } = useParams()
-
 
     useEffect(() => {
         axios.get(`http://localhost:8080/product/category/${id}`)
             .then((response) => {
                 setProdutos(response.data)
-
-
+                setIsLoading(false)
             })
             .catch((error) => {
                 console.error("Aconteceu um erro!" + error)
             })
+            
     }, [])
 
     const UrlAsc = `http://localhost:8080/product/orderAscCatg/${id}`
@@ -78,8 +79,10 @@ function Category(props) {
                             <div class="row catalogo-produtos2 lista">
 
                                 <div className="container lista">
-                                    <Card produtos={produtos} />
-
+                                    {isLoading
+                                    ? <p>Loading...</p>
+                                    : <CardHomeList produtos={produtos}/>}
+                                    
                                 </div>
 
                             </div>

@@ -22,7 +22,7 @@ function CreditCardList(props) {
     const renderList = (array) => {
         let items = []
         for (let i = 0; i < array.length; i++) {
-            items.push(<CreditCardInfoItem obj={array[i]} key={i} type={props.type} select={props.select} selectCreditCard={selectCreditCard} />)
+            items.push(<CreditCardInfoItem obj={array[i]} key={i} type={props.type} select={props.select} selectCreditCard={selectCreditCard} show={props.show} />)
         }
         return items
     }
@@ -67,7 +67,10 @@ function CreditCardList(props) {
                     ? <h3>{props.title}</h3>
                     : ""}
                 <h4 className="subtitle">{props.subtitle}</h4>
-                <button class="btn-custom-default btn-principal" onClick={handleShowCreditCard}> Adicionar Cartão de Crédito</button>
+                {props.show
+                ? ""
+                : <button class="btn-custom-default btn-principal" onClick={handleShowCreditCard}> Adicionar Cartão de Crédito</button>}
+                
             </div>
             <Modal show={showCreditCard} onHide={handleCloseCreditCard} size="lg">
                 <Modal.Header closeButton>
@@ -82,7 +85,7 @@ function CreditCardList(props) {
                     <button className="btn-custom-default btn-cancelar2" onClick={cancelCreditCardRegister}>Cancelar cadastro</button>
                 </Modal.Footer>
             </Modal>
-            {renderList(props.userData.creditCards)}
+            {renderList(props.userData ? props.userData.creditCards : props.creditCards)}
         </>
     )
 }
