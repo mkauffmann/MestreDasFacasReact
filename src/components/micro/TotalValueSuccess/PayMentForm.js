@@ -18,7 +18,12 @@ function PaymenteForm(props) {
                     <h3 className="text-produto-nome">Forma de Pagamento</h3>
                     
                     {props.order.creditCard !== null
-                        ? <CreditCardInfoItem obj={props.order.creditCard} show />
+                        ? 
+                        <>
+                        <CreditCardInfoItem obj={props.order.creditCard} show />
+                        <h3 className="text-produto-nome">Parcelamento</h3>
+                        <h5> {props.order.installments}x de {(props.order.installmentsValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </h5>
+                        </>
                         : <h5 className="text-produto-nome">{props.order.typePayment.description_type_payment}</h5>}
                 </div>
                 <div className="teste list-group-item d-flex flex-column justify-content-center">
