@@ -4,6 +4,8 @@ import imgfrete from '../../../assets/imgs/Frete/Correios.png'
 import CreditCardInfoItem from '../../macro/Dashboard/InfoList/InfoItem/CreditCardInfoItem/CreditCardInfoItem'
 import AddressInfoItem from '../../macro/Dashboard/InfoList/InfoItem/AddressInfoItem/AddressInfoItem'
 import Button from '../Button/Button'
+import Pix from '../../macro/SuccessPagePaymentForm/Pix/Pix'
+import Boleto from '../../macro/SuccessPagePaymentForm/Boleto/Boleto'
 
 function PaymenteForm(props) {
 
@@ -16,15 +18,39 @@ function PaymenteForm(props) {
             <div class="shadow p-3 mb-5 bg-white rounded list-group list-group-horizontal-md d-flex justify-content-around">
                 <div className="teste list-group-item d-flex flex-column">
                     <h3 className="text-produto-nome">Forma de Pagamento</h3>
-                    
+
+
                     {props.order.creditCard !== null
-                        ? 
+                        ?
                         <>
-                        <CreditCardInfoItem obj={props.order.creditCard} show />
-                        <h3 className="text-produto-nome">Parcelamento</h3>
-                        <h5> {props.order.installments}x de {(props.order.installmentsValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </h5>
+                            <CreditCardInfoItem obj={props.order.creditCard} show />
+                            <h3 className="text-produto-nome">Parcelamento</h3>
+                            <h5> {props.order.installments}x de {(props.order.installmentsValue).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </h5>
                         </>
-                        : <h5 className="text-produto-nome">{props.order.typePayment.description_type_payment}</h5>}
+                        :
+                        <h5 className="text-produto-nome">{props.order.typePayment.description_type_payment}</h5>
+                    }
+                    
+
+                    {props.order.typePayment.description_type_payment == "PIX"
+                        ?
+                        <>
+                            <Pix obj={props.order.typePayment.description_type_payment} show />
+                        </>
+                        :
+                        <h5 className="text-produto-nome"></h5>
+                    }
+
+                    {props.order.typePayment.description_type_payment == "Boleto"
+                        ?
+                        <>
+                            <Boleto obj={props.order.typePayment.description_type_payment} show />
+                        </>
+                        :
+                        <h5 className="text-produto-nome"></h5>
+                    }
+
+
                 </div>
                 <div className="teste list-group-item d-flex flex-column justify-content-center">
                     <div>
