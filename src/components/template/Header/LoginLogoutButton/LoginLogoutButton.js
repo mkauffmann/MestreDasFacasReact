@@ -4,24 +4,16 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import useLogin from "../../../../hooks/useLogin";
 import { ReactComponent as User } from '../../../../assets/icons/user.svg'
-import Dashboard from "../../../../pages/Dashboard/Dashboard";
-import { useParams, Route, Redirect } from "react-router";
 
 
 
 function LoginLogoutButton(props) {
-    const {userForm} = useParams()
-    console.log(useParams)
-
-
 
     const { isAuthenticated, userId, token, logout, refreshPage } = useLogin()
     const URL = `http://localhost:8080/customers/${userId}`
     const [userName, setUserName] = useState("")
 
     
-
-
     const getUser = () => {
         return axios.get(URL, {
             headers: {
@@ -36,12 +28,6 @@ function LoginLogoutButton(props) {
         })
 
     }
-
-
-  
-
-   
-    
 
 
 
