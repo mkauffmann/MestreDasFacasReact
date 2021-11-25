@@ -15,12 +15,10 @@ function CardHome(props) {
     const {
         addToCart,
     } = useCart()
-
-    const [addedToCart, setAddedToCart] = useState(false)
     
 
     const handleCart = () => {
-        addToCart(produto).then(() => setAddedToCart(true))
+        addToCart(produto)
     }
     
     
@@ -37,9 +35,6 @@ function CardHome(props) {
                     </div>
                     <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
                     <button class={props.emEstoque ? 'btn-custom-default btn-default btn-principal home-btn' : 'btn-custom-default btn-default btn-indisponivel home-btn'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
-                    {addedToCart === true
-                                ? <Redirect to="/cart"/>
-                                : ""}
                     
                 </div>
             </div>

@@ -6,7 +6,7 @@ import './Product.css'
 
 function ProductCard(props) {
 const {addToCart} = useCart()
-const [addedToCart, setAddedToCart] = useState(false)
+
 const produto = {...props.produto} || []
 const preco = produto.productPrice !== undefined ?  produto.productPrice.value : ""
 let precoParce = (parseFloat(preco) / 12)
@@ -15,7 +15,7 @@ precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: '
 precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
 
 const handleCart = () => {
-    addToCart(produto).then(() => setAddedToCart(true))
+    addToCart(produto)
 }
 
     return (
@@ -36,9 +36,6 @@ const handleCart = () => {
                             <div className="col-12 col-md-6 col-lg-5">
 
                              <button class={props.emEstoque ? 'btn-custom-default btn-principal btn-comprar' : 'btn-custom-default btn-indisponivel btn-comprar'} onClick={() => handleCart()} disabled={props.emEstoque ? false : true}>{props.emEstoque ? "Comprar" : "Indisponível"}</button>
-                             {addedToCart === true
-                                ? <Redirect to="/cart"/>
-                                : ""}
                             </div>
                         </div>
                         <div>
