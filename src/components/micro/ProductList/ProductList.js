@@ -20,10 +20,15 @@ function ProductList(props) {
         })
     }
 
-    const removeItem = (index) => {
+    const removeItem = (productId) => {
         let productList = JSON.parse(localStorage.getItem("itemRequest"))
-        productList.splice(index, 1)
-
+        for(let i = 0; i < productList.length; i++){
+            if(productList[i].product.id == productId){
+                productList.splice(i, 1)
+                break;
+            }
+        }
+        
         localStorage.setItem("itemRequest", JSON.stringify(productList))
         localStorage.setItem("qtyCart",JSON.stringify(productList.length))
         refreshPage()

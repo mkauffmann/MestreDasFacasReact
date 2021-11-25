@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Col, Row, Container } from 'react-bootstrap'
+import { Col, Row, Container, Modal } from 'react-bootstrap'
 import moment from 'moment'
 import './Checkout.css'
 // import Form from 'react-bootstrap/Form'
@@ -54,6 +54,13 @@ function Checkout(props) {
     let showCreditCards = order.typePayment.description_type_payment === "Cartão de Crédito"
     let totalValue = 0;
 
+    const [errorMessage, setErrorMessage] = useState("")
+    const [showError, setShowError] = useState(false)
+    const hideErrorMessage = () => {
+        setShowError(false)
+        window.location.href = "http://localhost:3000/cart";
+    }
+
     const getUser = () => axios.get(getCustomerUrl, {
         headers: {
             Authorization: `Bearer ${token}`
@@ -87,7 +94,9 @@ function Checkout(props) {
             }
         })
         .catch(error => {
-            alert(error.message)
+            setErrorMessage(error.response.data.message)
+            setShowError(true)
+            // alert(error.response.data.message)
         })
 
     useEffect(() => {
@@ -181,6 +190,13 @@ function Checkout(props) {
 
     return (
         <>
+        <Modal show={showError}>
+            <Modal.Body>
+                <h5>{errorMessage}</h5>
+                <p>Por favor, retorne ao carrinho para rever sua compra</p>
+                <button onClick={hideErrorMessage} className="btn-custom-default btn-cancelar">Retornar ao carrinho</button>
+            </Modal.Body>
+        </Modal>
             <Container className="mb-5">
                 <Row>
                     <h1> Finalizar compra </h1>
