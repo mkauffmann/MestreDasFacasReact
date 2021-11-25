@@ -43,7 +43,7 @@ function CardCart(props) {
     }
 
     const handleRemove = () => {
-        props.removeItem(props.key)
+        props.removeItem(props.item.product.id)
     }
 
     const addOneItem = async () => {
