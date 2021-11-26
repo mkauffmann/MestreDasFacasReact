@@ -29,7 +29,7 @@ function ProductCard(props) {
                         <img className="imagem-produto" src={produto.image} alt={produto.productName} />
                     </div>
                     <div className="col-12 col-md-6 col-lg-9">
-                        {props.ultimasUnidades
+                        {props.ultimasUnidades && props.emEstoque
                             ? <Badge className="ultimas-unidades" pill bg="dark">Últimas unidades!</Badge>
                             : ""}
                         <div className="nome-do-produto">

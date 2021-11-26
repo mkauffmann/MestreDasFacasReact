@@ -28,7 +28,7 @@ function CardHome(props) {
         <div className=" col-6 col-sm-6 col-md-3 col-xl-3 col-xll-3 produtoDesktop">
             <div className="card " style={{ width: '18rem' }}>
                 <Link to={`/product/${produto.id}`}>
-                    {props.ultimasUnidades
+                    {props.ultimasUnidades && props.emEstoque
                         ? <Badge className="ultimas-unidades position-absolute mt-1 mx-1" pill bg="dark">Últimas unidades!</Badge>
                         : ""}
                     <img src={produto.image} className="card-img-top" alt="..." />
