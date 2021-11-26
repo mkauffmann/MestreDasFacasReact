@@ -10,7 +10,7 @@ function ProductCard(props) {
 
     const produto = { ...props.produto } || []
     const preco = produto.productPrice !== undefined ? produto.productPrice.value : ""
-    let precoParce = (parseFloat(preco) / 12)
+    let precoParce = (parseFloat(preco) / 6)
     let precoAvista = (parseFloat(preco))
     precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
     precoAvista = precoAvista.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
@@ -46,7 +46,7 @@ function ProductCard(props) {
                         <div>
                             <h3 className="preco">{precoAvista}</h3>
                         </div>
-                        <div className="texto-cartao-credito">12x de {precoParce} sem juros no Cartão de Crédito </div>
+                        <div className="texto-cartao-credito">6x de {precoParce} sem juros no Cartão de Crédito </div>
                         <hr />
                         <div className="texto-boleto">Pagamento por Boleto </div>
                         <hr />

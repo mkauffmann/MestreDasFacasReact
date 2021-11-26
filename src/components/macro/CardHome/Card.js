@@ -21,7 +21,7 @@ function Card(props) {
         <>
             {
                 novidades.map(produto => {
-                    let precoParce = (parseFloat(produto.productPrice.value) / 12)
+                    let precoParce = (parseFloat(produto.productPrice.value) / 6)
                     precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
                     let preco = (parseFloat(produto.productPrice.value))
                     preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
@@ -35,7 +35,7 @@ function Card(props) {
                                     <h5 className="card-title tituloProduto">{produto.productName}</h5>
                                     <div className="card-text precoProduto"> {preco}<div>Ou</div>
                                     </div>
-                                    <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
+                                    <div className="ou">6x DE  {precoParce} sem juros</div><p></p>
                                     <Link to="/cart"><button   onClick={()=> addToCart(produto)} label="Comprar" class="btn-custom-default btn-default btn-principal home-btn">Comprar</button></Link>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@ function Card(props) {
             }
             {
                 destaques.map(produto => {
-                    let precoParce = (parseFloat(produto.productPrice.value) / 12)
+                    let precoParce = (parseFloat(produto.productPrice.value) / 6)
                     precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
                     let preco = (parseFloat(produto.productPrice.value))
                     preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
@@ -60,7 +60,7 @@ function Card(props) {
                                     <h5 className="card-title tituloProduto">{produto.productName}</h5>
                                     <div className="card-text precoProduto">{preco}<div>Ou</div>
                                     </div>
-                                    <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
+                                    <div className="ou">6x DE  {precoParce} sem juros</div><p></p>
                                     <Link to="/cart"><button   onClick={()=> addToCart(produto)} label="Comprar" class="btn-custom-default btn-default btn-principal home-btn">Comprar</button></Link>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@ function Card(props) {
             }
              {
                 produtos.map(produto => {
-                    let precoParce = (parseFloat(produto.productPrice.value) / 12)
+                    let precoParce = (parseFloat(produto.productPrice.value) / 6)
                     precoParce = precoParce.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
                     let preco = (parseFloat(produto.productPrice.value))
                     preco = preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
@@ -85,7 +85,7 @@ function Card(props) {
                                     <h5 className="card-title tituloProduto listaTudo">{produto.productName}</h5>
                                     <div className="card-text precoProduto">{preco}<div>Ou</div>
                                     </div>
-                                    <div className="ou">12x DE  {precoParce} sem juros</div><p></p>
+                                    <div className="ou">6x DE  {precoParce} sem juros</div><p></p>
                                     <Link to="/cart"><button   onClick={()=> addToCart(produto)} label="Comprar" class="btn-custom-default btn-default btn-principal home-btn">Comprar</button></Link>
                                 </div>
                             </div>

@@ -3,6 +3,8 @@ import './OrderDetails.css'
 import Button from '../../components/micro/Button/Button'
 import { Link, useLocation } from 'react-router-dom'
 import SuccessProduct from '../../components/macro/SuccessProduct/SuccessProduct'
+import Boleto from '../../components/macro/SuccessPagePaymentForm/Boleto/Boleto'
+import Pix from '../../components/macro/SuccessPagePaymentForm/Pix/Pix'
 
 function OrderDetails(props) {
     const location = useLocation()
@@ -110,16 +112,20 @@ function OrderDetails(props) {
 
 
                     <div class="container d-flex col-12">
+                        
 
                         <div class=" col-6">
                             Pagamento:
+                            
                         </div>
+                        
                         <div class=" col-6">
                             <b>{order.typePayment.description_type_payment}</b>
-
                         </div>
+                        
+                        
                     </div>
-
+                    
                     {order.installments > 1 ?
                         <>
                             <div class="container d-flex col-12">
@@ -158,10 +164,45 @@ function OrderDetails(props) {
 
                         </div>
                         <hr />
+                        
                     </div>
+                    {order.typePayment.description_type_payment == "PIX"
+                        ?
+                        <>
+                        <div class="container d-flex col-12">
+                    <div class=" mt-4 col-6">
+                        Copiar código Pix:
+                    </div>
+
+                    <div  class=" mb-1 col-6"><Pix obj={order.typePayment.description_type_payment} show /></div>
+                            
+                            </div>
+                        </>
+                        :
+                        <h5 className="text-produto-nome"></h5>
+                    }
+                   
+                    
+
+                    {order.typePayment.description_type_payment == "Boleto"
+                        ?
+                        <>
+                        <div class="container d-flex col-12">
+                    <div class=" mt-4 col-6">
+                        Boleto para pagamento:
+                    </div>
+
+                    <div  class=" mb-1 col-6"><Boleto obj={order.typePayment.description_type_payment} show /></div>
+                            
+                            </div>
+                        </>
+                        :
+                        <h5 className="text-produto-nome"></h5>
+                    }
 
 
                 </div>
+                
             </div>
         </>
     )

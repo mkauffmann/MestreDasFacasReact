@@ -28,7 +28,7 @@ function Boleto(props) {
     return (
         <>
 
-            <Button className="mt-4 btn-custom-default btn-principal" onClick={() => setLgShow(true)}>Pagar Boleto</Button>
+            <Button className="mt-4 btn-custom-default btn-principal" onClick={() => setLgShow(true)}>Imprimir boleto</Button>
 
             <Modal
                 size="lg"
@@ -67,10 +67,6 @@ function Boleto(props) {
                          <Button href="https://drive.google.com/file/d/11gyEvmJo9M2_WDQIuoanQG_oCJONWVmS/view?usp=sharing" target="_blank" className="btn-custom-default btn-principal" >Imprimir boleto</Button>
                         
                         
-                        </Col>
-                        <Col className="mt-3 d-flex justify-content-center" xs={12} md={12}>
-
-                            <p className="alerta">O código é válido até dia DD/MM/YYYY</p>
                         </Col>
 
                         <Col className="mt-1 d-flex justify-content-center" xs={12} md={12}>

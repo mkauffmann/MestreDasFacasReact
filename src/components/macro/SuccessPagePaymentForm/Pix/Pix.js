@@ -93,11 +93,6 @@ function Pix(props) {
       }
      
             </Col>
-            <Col className="mt-3 d-flex justify-content-center" xs={12} md={12}>
-              
-
-              <p className="alerta">O código é válido até às 23:00</p>
-            </Col>
 
             <Col className="mt-1 d-flex justify-content-center" xs={12} md={12}>
 
