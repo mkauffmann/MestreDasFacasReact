@@ -130,6 +130,7 @@ function RegisterAddressForm(props) {
                                 changeFunction={handleChange} value={addressValues.cep}
                                 blurFunction={handleBlurCep} validation={isEmpty}
                                 error={errors.cep} />
+                            <a className="form-text" href="https://buscacepinter.correios.com.br/app/endereco/index.php?t" target="_blank">Não sei meu CEP</a>
                         </Col>
                     </Row>
                     <Row>
