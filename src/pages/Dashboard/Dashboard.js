@@ -71,7 +71,7 @@ function Dashboard(props) {
 
     return (
         <>
-            <Container>
+            <Container className="mb-5">
                 <Row>
                     <Col>
                         <DashboardMenuMobile username={user.name} />
