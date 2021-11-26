@@ -1,6 +1,7 @@
 import { useState } from "react";
 import cardValidator from 'card-validator'
 import moment from 'moment'
+import { cpf } from 'cpf-cnpj-validator'; 
 
 
 
@@ -144,9 +145,8 @@ function useValidation(inputValues) {
     }
 
     const validateCpflNotEmpty = (inputValue, name) => {
-        const regexCpf = /^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/g;
 
-        if (!isEmpty(inputValue, name) && !regexCpf.test(inputValue)) {
+        if (!isEmpty(inputValue, name) && !cpf.isValid(inputValue)) {
             setErrors((prevState) => {
                 return {
                     ...prevState,
