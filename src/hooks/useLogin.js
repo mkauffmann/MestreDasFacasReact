@@ -5,12 +5,9 @@ function useLogin(){
     const refreshPage = () => {
         window.location.reload();
     } 
+
     const login = (token) => {
         let jwt = token;
-        let decoded = jwtDecode(jwt);
-        let userId = decoded.sub;
-
-        localStorage.setItem("userId", userId)
         localStorage.setItem("token", jwt)
     }
 
@@ -20,11 +17,22 @@ function useLogin(){
     }
 
     const isAuthenticated = () => {
-        return localStorage.getItem("token") !== null && localStorage.getItem("userId") !== null;
+        return localStorage.getItem("token") !== null
+    }
+
+    const getUserId = () => {
+        let jwt = localStorage.getItem("token")
+        if(jwt != null){
+            let decoded = jwtDecode(jwt)
+            let userId = decoded.sub
+    
+            return userId
+        }
+        
     }
 
     const token =  localStorage.getItem("token")
-    const userId = localStorage.getItem("userId")
+    const userId = getUserId()
 
     return {
         login, 
@@ -32,6 +40,7 @@ function useLogin(){
         isAuthenticated,
         token,
         userId,
+        getUserId,
         refreshPage
     }
 }
