@@ -10,8 +10,10 @@ import RegisterCreditCardForm from '../../components/macro/Forms/Register/Regist
 import AddressList from "../../components/macro/Dashboard/InfoList/AddressList";
 import DividingBar from '../../components/micro/Login/DividingBar/DividingBar'
 
-import './RegisterUser.css'
+
 import CreditCardList from "../../components/macro/Dashboard/InfoList/CreditCardList";
+
+import './RegisterUser.css'
 
 
 function RegisterUser(props) {
@@ -140,12 +142,11 @@ function RegisterUser(props) {
 
     return (
         <>
-            <Modal show={isLoading} animation={false} centered dialogClassName="modal-loading">
-                <Modal.Body>
-                    <div>
-                        <ReactLoading type={"spinningBubbles"} color="#860E1C" height={100} width={100} />
-                    </div>
-                </Modal.Body>
+            <Modal className="modallimpo" show={isLoading} animation={false} centered dialogClassName="modal-loading">
+            
+                <div>
+                    <ReactLoading animation={false} centered show={isLoading} className="modallimpo" type={"spinningBubbles"} color="#860e1c" height={70} width={70} />
+                </div>
             </Modal>
 
             <Modal show={showFeedback} onHide={handleCloseFeedback} animation={false} centered>
