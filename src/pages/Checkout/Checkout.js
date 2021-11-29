@@ -53,6 +53,7 @@ function Checkout(props) {
     const [success, setSuccess] = useState(false)
     let showCreditCards = order.typePayment.description_type_payment === "Cartão de Crédito"
     let totalValue = 0;
+    let finalValue = 0;
 
     const [errorMessage, setErrorMessage] = useState("")
     const [showError, setShowError] = useState(false)
@@ -113,6 +114,7 @@ function Checkout(props) {
     const somaCalculoItems = () => {
         return itemRequest.map((item, index) => {
             totalValue += item.quantity * item.product.productPrice.value
+            finalValue = totalValue + initialValues.freightFixed
         })
     }
 
@@ -224,7 +226,7 @@ function Checkout(props) {
                         <>
                         
                         <Select parcelamento id="installments" name="installments" label="Parcelamento"
-                        options={[1, 2, 3, 4, 5, 6]} resultadoParcelamento={totalValue}
+                        options={[1, 2, 3, 4, 5, 6]} resultadoParcelamento={finalValue}
                         changeFunction={handleChange} value={order.installments} />
                         </> : 
                         <>
