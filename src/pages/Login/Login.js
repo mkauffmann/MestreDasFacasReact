@@ -88,13 +88,12 @@ function Login(props) {
 
     return (
         <>
-            <Modal show={isLoading} animation={false} centered dialogClassName="modal-loading">
-                <Modal.Body>
-                    <div>
-                        <ReactLoading type={"spinningBubbles"} color="#860E1C" height={100} width={100} />
-                    </div>
-                </Modal.Body>
-            </Modal>
+            <Modal className="modallimpo" show={isLoading} animation={false} centered dialogClassName="modal-loading">
+            
+            <div>
+                <ReactLoading animation={false} centered show={isLoading} className="modallimpo" type={"spinningBubbles"} color="#860e1c" height={70} width={70} />
+            </div>
+        </Modal>
             <Container>
                 <Row className="justify-content-center mb-5">
                     <CardLogin classes="">
