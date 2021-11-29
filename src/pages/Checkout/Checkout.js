@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Col, Row, Container, Modal } from 'react-bootstrap'
 import moment from 'moment'
 import './Checkout.css'
+import ReactLoading from 'react-loading'
 // import Form from 'react-bootstrap/Form'
 import Select from "../../components/micro/Forms/Select/Select";
 
@@ -80,7 +81,9 @@ function Checkout(props) {
         await getUser()
     }
 
-    const postOrder = () => axios.post(postOrderUrl, order, {
+    const postOrder = () => {
+        setIsLoading(true)
+        axios.post(postOrderUrl, order, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -91,6 +94,7 @@ function Checkout(props) {
                 localStorage.removeItem("itemRequest")
                 localStorage.removeItem("qtyCart")
                 setSuccess(true) 
+                setIsLoading(false)
                 window.location.reload()   
             }
         })
@@ -98,7 +102,7 @@ function Checkout(props) {
             setErrorMessage(error.response.data.message)
             setShowError(true)
             // alert(error.response.data.message)
-        })
+        })}
 
     useEffect(() => {
         renderUser()
@@ -192,6 +196,12 @@ function Checkout(props) {
 
     return (
         <>
+        <Modal className="modallimpo" show={isLoading} animation={false} centered dialogClassName="modal-loading">
+            
+            <div>
+                <ReactLoading animation={false} centered show={isLoading} className="modallimpo" type={"spinningBubbles"} color="#860e1c" height={70} width={70} />
+            </div>
+        </Modal>
         <Modal show={showError}>
             <Modal.Body>
                 <h5>{errorMessage}</h5>
