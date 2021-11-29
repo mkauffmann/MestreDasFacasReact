@@ -18,6 +18,7 @@ function ChangePassword(props) {
         confirmPassword:""
         
     }
+    console.log(URL)
     const requiredFields = ["password", "confirmPassword"]
     const [inputValues, setInputValues] = useState({ ...initialValues })
     const [isSent, setIsSent] = useState(false)
@@ -36,6 +37,7 @@ function ChangePassword(props) {
             
                 .then((response) => {
                     if(response.status == 200){ //confirmar statusCode na integração final
+                        alert("Senha redefinida com sucesso!")
                         resetForm()
                         setTimeout(() => setIsSent(true), 1000)
                     }

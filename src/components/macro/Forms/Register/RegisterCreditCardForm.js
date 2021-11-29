@@ -115,7 +115,7 @@ function RegisterCreditCardForm(props) {
                                 mask="99/99" label="Validade" obrigatorio
                                 changeFunction={handleChangeDate} value={creditCardValues.cardValidDate}
                                 blurFunction={handleBlur} validation={validateCreditCardDate}
-                                error={errors.cardValidDate} />
+                                error={errors.cardValidDate} disabled={props.alter ? true : false}/>
                         </Col>
                         <Col md={2} className="mb-3">
                             <Input type="password" id="cvv" name="cvv"

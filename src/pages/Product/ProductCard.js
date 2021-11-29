@@ -4,9 +4,14 @@ import { Link, Redirect } from 'react-router-dom'
 import Button from '../../components/micro/Button/Button'
 import useCart from '../../hooks/useCart'
 import './Product.css'
+import 'react-medium-image-zoom/dist/styles.css'
+import Zoom from 'react-medium-image-zoom'
+
+
 
 function ProductCard(props) {
     const { addToCart } = useCart()
+
 
     const produto = { ...props.produto } || []
     const preco = produto.productPrice !== undefined ? produto.productPrice.value : ""
@@ -26,7 +31,10 @@ function ProductCard(props) {
                 <div className="row">
 
                     <div className="col-12 col-md-6 col-lg-3 col-produto">
-                        <img className="imagem-produto" src={produto.image} alt={produto.productName} />
+                    
+                        
+                        
+                    <Zoom> <img className="imagem-produto" src={produto.image} alt={produto.productName} width="200px" /></Zoom>
                     </div>
                     <div className="col-12 col-md-6 col-lg-9">
                         {props.ultimasUnidades && props.emEstoque
