@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Col, Row, Container, Modal } from 'react-bootstrap'
 import moment from 'moment'
 import './Checkout.css'
-// import Form from 'react-bootstrap/Form'
 import Select from "../../components/micro/Forms/Select/Select";
 
 
@@ -96,7 +95,7 @@ function Checkout(props) {
         .catch(error => {
             setErrorMessage(error.response.data.message)
             setShowError(true)
-            // alert(error.response.data.message)
+            
         })
 
     useEffect(() => {
@@ -105,7 +104,7 @@ function Checkout(props) {
 
     const renderItems = () => {
         return itemRequest.map((item, index) => {
-            // totalValue += item.quantity * item.product.productPrice.value
+           
             return <CheckoutProduct item={item} key={index} />
         })
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import Label from "../Label/Label";
-import "./Select.css";
+
 
 function Select(props) {
     const renderOptions = (update) => {

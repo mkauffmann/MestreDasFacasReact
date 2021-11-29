@@ -11,18 +11,6 @@
     padding-top: 10px;
 }
 
-/* .titulo-filtro::after {
-    content: "";
-    background-image: url(../img/icone-diminuir-filtros.png);
-    background-size: 30px;
-    background-repeat: no-repeat;
-    display: block;
-    position: absolute;
-    margin-top: -15px;
-    margin-left: 225px;
-    width: 160px;
-    height: 40px;
-} */
 
 .custom-check {
     border-color: #860e1c;
@@ -119,18 +107,9 @@
     justify-content: center;
 }
 
-/* @media (max-width: 1000px) {
-    .filtros {
-        display: none;
-    }
-    
-} */
+
 
 @media (min-width:974px) and (max-width: 1190px) {
-    /* .titulo-filtro::after {
-    display: none;
-    }     */
-    
     .imagem-produto-ctg {
         width: 224px;
     }

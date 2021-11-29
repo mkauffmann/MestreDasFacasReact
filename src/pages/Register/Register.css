@@ -1,6 +1,4 @@
-/* *{
-    box-sizing: border-box;
-} */
+
 
 body{
     font-family: 'Barlow', Arial, sans-serif;
@@ -11,13 +9,7 @@ h1 {
     color: #860E1C;
 }
 
-/* .custom-label{
-    font-weight: bold;
-}
 
-.obrigatorio {
-    color: #860E1C;
-} */
 
 .label-check-custom{
     font-size: 0.8rem;
