@@ -1,5 +1,4 @@
 import React from 'react'
-import './OrderDetails.css'
 import imgProduct from '../../assets/imgs/produtos/1.jpeg'
 import Button from '../../components/micro/Button/Button'
 import SuccessProduct from '../../components/macro/SuccessProduct/SuccessProduct'

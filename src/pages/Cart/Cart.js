@@ -2,7 +2,6 @@ import Button from '../../components/micro/Button/Button'
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import ProductList from '../../components/micro/ProductList/ProductList';
-import './Cart.css'
 import DividingBar from '../../components/micro/Login/DividingBar/DividingBar';
 import TotalValueCheckout from '../../components/micro/TotalValueCheckout/TotalValueCheckout';
 

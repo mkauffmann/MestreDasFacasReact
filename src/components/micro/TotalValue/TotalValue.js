@@ -1,6 +1,6 @@
 
 import React from 'react'
-import './TotalValue.css'
+
 import Button from '../../micro/Button/Button'
 
 

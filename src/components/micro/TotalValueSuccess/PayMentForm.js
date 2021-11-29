@@ -1,5 +1,4 @@
 import React from 'react'
-import './PaymenteForm.css'
 import imgfrete from '../../../assets/imgs/Frete/Correios.png'
 import CreditCardInfoItem from '../../macro/Dashboard/InfoList/InfoItem/CreditCardInfoItem/CreditCardInfoItem'
 import AddressInfoItem from '../../macro/Dashboard/InfoList/InfoItem/AddressInfoItem/AddressInfoItem'

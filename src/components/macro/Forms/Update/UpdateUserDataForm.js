@@ -49,10 +49,7 @@ function UpdateUserDataForm(props) {
         validateForm([])
     }
 
-    // const resetForm = () => {
-    //     setInputValues({ ...initialInputValues });
-    //     resetErrorStates();
-    // };
+
 
     return (
         <>

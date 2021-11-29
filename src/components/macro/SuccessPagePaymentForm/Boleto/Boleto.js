@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './boleto.css'
 import { useState, useEffect } from "react";
 import Button from "@restart/ui/esm/Button";
 import { Modal } from "react-bootstrap";
