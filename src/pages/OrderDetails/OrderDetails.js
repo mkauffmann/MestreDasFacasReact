@@ -112,20 +112,20 @@ function OrderDetails(props) {
 
 
                     <div class="container d-flex col-12">
-                        
+
 
                         <div class=" col-6">
                             Pagamento:
-                            
+
                         </div>
-                        
+
                         <div class=" col-6">
                             <b>{order.typePayment.description_type_payment}</b>
                         </div>
-                        
-                        
+
+
                     </div>
-                    
+
                     {order.installments > 1 ?
                         <>
                             <div class="container d-flex col-12">
@@ -164,36 +164,36 @@ function OrderDetails(props) {
 
                         </div>
                         <hr />
-                        
+
                     </div>
                     {order.typePayment.description_type_payment == "PIX"
                         ?
                         <>
-                        <div class="container d-flex col-12">
-                    <div class=" mt-4 col-6">
-                        Copiar código Pix:
-                    </div>
+                            <div class="container d-flex col-12">
+                                <div class=" mt-4 col-6">
+                                    Copiar código Pix:
+                                </div>
 
-                    <div  class=" mb-1 col-6"><Pix obj={order.typePayment.description_type_payment} show /></div>
-                            
+                                <div class=" mb-1 col-6"><Pix obj={order.typePayment.description_type_payment} show /></div>
+
                             </div>
                         </>
                         :
                         <h5 className="text-produto-nome"></h5>
                     }
-                   
-                    
+
+
 
                     {order.typePayment.description_type_payment == "Boleto"
                         ?
                         <>
-                        <div class="container d-flex col-12">
-                    <div class=" mt-4 col-6">
-                        Boleto para pagamento:
-                    </div>
+                            <div class="container d-flex col-12">
+                                <div class=" mt-4 col-6">
+                                    Boleto para pagamento:
+                                </div>
 
-                    <div  class=" mb-1 col-6"><Boleto obj={order.typePayment.description_type_payment} show /></div>
-                            
+                                <div class=" mb-1 col-6"><Boleto obj={order.typePayment.description_type_payment} show /></div>
+
                             </div>
                         </>
                         :
@@ -202,7 +202,9 @@ function OrderDetails(props) {
 
 
                 </div>
-                
+                <div className="d-flex justify-content-end container mb-3">
+                    <Button navigation route="/dashboard/myOrders" class="btn-cancelar" label="Voltar" />
+                </div>
             </div>
         </>
     )
