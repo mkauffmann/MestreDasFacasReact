@@ -26,7 +26,7 @@ function useValidation(inputValues) {
 
     const isEmpty = (inputValue, name) => {
     
-        if (inputValue === "" || inputValue.trim() === "") {
+        if (inputValue === undefined || inputValue === "" || inputValue.trim() === "") {
             setErrors((prevState) => {
                 return {
                     ...prevState,
@@ -293,6 +293,7 @@ function useValidation(inputValues) {
                     formIsValid = false
                 }
             } else if (validInput[key] === false){
+                isEmpty(inputValues[key], key)
                 formIsValid = false
             }
         }
