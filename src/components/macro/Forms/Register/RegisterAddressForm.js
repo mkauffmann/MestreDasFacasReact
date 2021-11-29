@@ -20,7 +20,7 @@ function RegisterAddressForm(props) {
     const [addressValues, setAddressValues] = useState(props.alter ? props.alter : { ...initialValue })
     const requiredFields = ["street", "number", "cep", "neighborhood", "cityTemp", "stateTemp"]
     const {
-        validateForm,
+        validateAddressForm,
         resetErrorStates,
         errors,
         validateStringNotEmpty,
@@ -35,7 +35,7 @@ function RegisterAddressForm(props) {
         event.preventDefault();
         setIsLoading(true)
 
-        if (validateForm(requiredFields)) {
+        if (validateAddressForm(requiredFields)) {
             if (props.save(addressValues)) {
                 setAddressValues({ ...initialValue });
             }
@@ -50,6 +50,7 @@ function RegisterAddressForm(props) {
         setAddressValues(prevValues => {
             return { ...prevValues, [name]: value }
         })
+
     }
 
     const resetForm = () => {
@@ -62,7 +63,7 @@ function RegisterAddressForm(props) {
         const name = event.target.name;
 
         validationCallback(value, name)
-        validateForm(requiredFields)
+        validateAddressForm(requiredFields)
     }
 
     const handleBlurCep = (event, validationCallback) => {
@@ -171,7 +172,7 @@ function RegisterAddressForm(props) {
                                 label="Cidade" obrigatorio
                                 changeFunction={handleChange} value={addressValues.cityTemp}
                                 blurFunction={handleBlur} validation={validateStringNotEmpty}
-                                error={errors.cityTemp} />
+                                error={errors.cityTemp} disabled/>
                         </Col>
                         <Col md={2} className="mb-3">
                             <Input type="text" id="state" name="stateTemp"
@@ -179,7 +180,7 @@ function RegisterAddressForm(props) {
                                 mask="aa"
                                 changeFunction={handleChange} value={addressValues.stateTemp}
                                 blurFunction={handleBlur} validation={isEmpty}
-                                error={errors.stateTemp} />
+                                error={errors.stateTemp} disabled/>
                         </Col>
                     </Row>
                     <Row className="my-3 justify-content-end">

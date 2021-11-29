@@ -53,7 +53,7 @@ function RegisterTelephoneForm(props) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} onReset={resetForm}>
+            <form onSubmit={handleSubmit} onReset={resetForm} autoComplete="off">
                 <Col md={10} lg={8} className="mx-auto">
                     <Row>
                         <Col>

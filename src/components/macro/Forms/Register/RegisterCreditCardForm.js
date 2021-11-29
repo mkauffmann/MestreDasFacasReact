@@ -19,7 +19,7 @@ const initialInputValues = {
 
 function RegisterCreditCardForm(props) {
     const [creditCardValues, setCreditCardValues] = useState(props.alter ? props.alter : { ...initialInputValues })
-    const requiredFields = props.alter ? ["holderCpf", "holderName", "cardValidDate"] : ["cardNumber", "holderCpf", "holderName", "cardBrandTemp", "cardValidDate", "cvv"]
+    const requiredFields = props.alter ? ["cpf", "holderName", "cardValidDate"] : ["cardNumber", "cpf", "holderName", "cardBrandTemp", "cardValidDate", "cvv"]
     const {
         validateForm,
         resetErrorStates,
@@ -92,6 +92,14 @@ function RegisterCreditCardForm(props) {
                 }
             })
             isEmpty(brand, "cardBrandTemp")
+        } else {
+            setCreditCardValues(prevState => {
+                return {
+                    ...prevState,
+                    cardBrandTemp: ""
+                }
+            })
+            isEmpty("", "cardBrandTemp")
         }
 
     }

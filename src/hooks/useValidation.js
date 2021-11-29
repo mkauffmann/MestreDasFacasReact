@@ -243,21 +243,24 @@ function useValidation(inputValues) {
 
     const validateCreditCardDate = (inputValue, name) => {
         const cardValidation = cardValidator.expirationDate(inputValue)
-        if (!isEmpty(inputValue, name) && !cardValidation.isValid){
-            setErrors((prevState) => {
-                return {
-                    ...prevState,
-                    [name] : "Data inválida"
-                }
-            })
-
-            setValidInput((prevState) => {
-                return {
-                    ...prevState,
-                    [name]: false
-                }
-            })
+        if(!isEmpty(inputValue, name)) {
+            if (!cardValidation.isValid){
+                setErrors((prevState) => {
+                    return {
+                        ...prevState,
+                        [name] : "Data inválida"
+                    }
+                })
+    
+                setValidInput((prevState) => {
+                    return {
+                        ...prevState,
+                        [name]: false
+                    }
+                })
+            }
         }
+        
     }
 
     const validateBirthday = (inputValue, name) => {
@@ -293,6 +296,23 @@ function useValidation(inputValues) {
                     formIsValid = false
                 }
             } else if (validInput[key] === false){
+                formIsValid = false
+            }
+        }
+        
+       return formIsValid
+    };
+
+    const validateAddressForm = (requiredFields) => {
+        let formIsValid = true
+
+        for (const key in validInput){
+            if (validInput[key] === null){
+                if(requiredFields.includes(key)){
+                    isEmpty(inputValues[key], key)
+                    formIsValid = false
+                }
+            } else if (validInput[key] === false){
                 isEmpty(inputValues[key], key)
                 formIsValid = false
             }
@@ -300,6 +320,7 @@ function useValidation(inputValues) {
         
        return formIsValid
     };
+
 
     return {
         validateForm,
@@ -317,7 +338,8 @@ function useValidation(inputValues) {
         validateStringNotRequired,
         validateEmailNotRequired,
         validateTelephoneNotEmpty,
-        validateBirthday
+        validateBirthday,
+        validateAddressForm
     }
 }
 
