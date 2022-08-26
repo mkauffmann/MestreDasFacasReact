@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Mestre das Facas
+#### E-commerce desenvolvido em grupo como conclusão da formação Quero Ser Dev, bootcamp promovido pela Raia Drogasil. Projeto Front-end em React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Telas
 
-## Available Scripts
+#### Home
+<img width="1280" alt="home" src="https://user-images.githubusercontent.com/70024598/186982521-1bae1ca4-dee3-4249-85e7-0e27bda44307.png">
 
-In the project directory, you can run:
+#### Login
+<img width="1276" alt="login" src="https://user-images.githubusercontent.com/70024598/186982626-1c7a3b10-17d1-4120-beb9-1ffcb186d86e.png">
 
-### `npm start`
+#### Cadastro de usuário
+<img width="1280" alt="cadastro1" src="https://user-images.githubusercontent.com/70024598/186982653-c0248281-b470-437c-97ad-5242903d43e5.png">
+<img width="1272" alt="cadastro2" src="https://user-images.githubusercontent.com/70024598/186982673-2933bf37-9310-4ee0-9860-d27d7371a8c9.png">
+<img width="1280" alt="cadastro3" src="https://user-images.githubusercontent.com/70024598/186982685-8d2b57d4-066a-48ee-80b5-4c87191b47df.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Painel de controle
+<img width="1280" alt="painel" src="https://user-images.githubusercontent.com/70024598/186982719-c2a874cc-4583-4068-ae74-3162381c0b5a.png">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Catálogo de produtos
+<img width="1280" alt="catalogo" src="https://user-images.githubusercontent.com/70024598/186982586-b293ca32-69ef-4dee-b413-c0bd55f4ff8b.png">
 
-### `npm test`
+#### Carrinho
+<img width="1280" alt="carrinho" src="https://user-images.githubusercontent.com/70024598/186982776-cea210f0-ffa2-41dd-9fa1-ee313e9688ea.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Finalizar compra
+<img width="1280" alt="finalizar" src="https://user-images.githubusercontent.com/70024598/186982811-08e66b11-19aa-4fc6-9234-51aa758e3bf4.png">
